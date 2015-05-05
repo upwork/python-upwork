@@ -1,0 +1,14 @@
+language: python
+
+python:
+  - "2.7"
+
+install: "pip install -r requirements.py"
+
+script: nosetests
+
+notifications:
+  email:
+    recipients:
+      - apisupport@upwork.com
+    on_failure: change
