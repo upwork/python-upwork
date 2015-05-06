@@ -10,7 +10,7 @@
    :target: http://travis-ci.org/upwork/php-upwork
    :alt: Build status
 
-Copyright (c) 2010-2014, Upwork http://www.upwork.com
+Copyright (c) 2010-2015, Upwork http://www.upwork.com
 All rights reserved.
 
 

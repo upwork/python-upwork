@@ -8,5 +8,6 @@ perl -pi -e "s/_static/static/g;" /tmp/_gh-pages/*.html
 perl -pi -e "s/_sources/sources/g;" /tmp/_gh-pages/*.html
 perl -pi -e "s/_static/static/g;" /tmp/_gh-pages/reference-docs/*.html
 perl -pi -e "s/_sources/sources/g;" /tmp/_gh-pages/reference-docs/*.html
-git checkout gh-pages -f
-cp -rf /tmp/_gh-pages/* .
+#git checkout gh-pages -f
+#cp -rf /tmp/_gh-pages/* .
+cp -rf /tmp/_gh-pages/* ../gh-pages
