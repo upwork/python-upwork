@@ -1,0 +1,321 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>How to &mdash; python-upwork 1.0.0 documentation</title>
+    
+    <link rel="stylesheet" href="static/sphinxdoc.css" type="text/css" />
+    <link rel="stylesheet" href="static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '1.0.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="static/jquery.js"></script>
+    <script type="text/javascript" src="static/underscore.js"></script>
+    <script type="text/javascript" src="static/doctools.js"></script>
+    <link rel="top" title="python-upwork 1.0.0 documentation" href="index.html" />
+    <link rel="next" title="Reference Documentation: Classes and Methods" href="reference_docs.html" />
+    <link rel="prev" title="Getting started" href="getting_started.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="reference_docs.html" title="Reference Documentation: Classes and Methods"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="getting_started.html" title="Getting started"
+             accesskey="P">previous</a> |</li>
+        <li><a href="index.html">python-upwork 1.0.0 documentation</a> &raquo;</li> 
+      </ul>
+    </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">How to</a><ul>
+<li><a class="reference internal" href="#authenticate">Authenticate</a></li>
+<li><a class="reference internal" href="#freelancer-s-information">Freelancer&#8217;s information</a></li>
+<li><a class="reference internal" href="#search-freelancers">Search Freelancers</a></li>
+<li><a class="reference internal" href="#search-jobs">Search Jobs</a></li>
+<li><a class="reference internal" href="#metadata-information">Metadata information</a></li>
+<li><a class="reference internal" href="#hiring">Hiring</a></li>
+<li><a class="reference internal" href="#work-with-jobs">Work with jobs</a></li>
+<li><a class="reference internal" href="#team-s-information">Team&#8217;s information</a></li>
+<li><a class="reference internal" href="#trays-and-messages">Trays and messages</a></li>
+<li><a class="reference internal" href="#send-message">Send message</a></li>
+<li><a class="reference internal" href="#get-timereports">Get timereports</a></li>
+<li><a class="reference internal" href="#get-finreports">Get finreports</a></li>
+<li><a class="reference internal" href="#work-with-activities">Work with Activities</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="getting_started.html"
+                        title="previous chapter">Getting started</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="reference_docs.html"
+                        title="next chapter">Reference Documentation: Classes and Methods</a></p>
+  <h3>This Page</h3>
+  <ul class="this-page-menu">
+    <li><a href="sources/how_to.txt"
+           rel="nofollow">Show Source</a></li>
+  </ul>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="how-to">
+<span id="id1"></span><h1>How to<a class="headerlink" href="#how-to" title="Permalink to this headline">¶</a></h1>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">Every method is fully documented in the docstring, so you can refer to the <a class="reference internal" href="reference_docs.html#reference-docs"><em>Reference Documentation: Classes and Methods</em></a> or directly view help in the interactive console.</p>
+</div>
+<p>To get help on the method use:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">help</span><span class="p">(</span><span class="n">client</span><span class="o">.</span><span class="n">provider</span><span class="o">.</span><span class="n">search_jobs</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>or if you use <tt class="docutils literal"><span class="pre">IPython</span></tt> just add <tt class="docutils literal"><span class="pre">?</span></tt> symbol at the end of an object/class/method:</p>
+<div class="highlight-python"><div class="highlight"><pre>client.provider.search_jobs?
+</pre></div>
+</div>
+<div class="section" id="authenticate">
+<span id="id2"></span><h2>Authenticate<a class="headerlink" href="#authenticate" title="Permalink to this headline">¶</a></h2>
+<p><a class="reference external" href="https://developers.upwork.com/?lang=python#authentication">https://developers.upwork.com/?lang=python#authentication</a></p>
+<p>To authenticate your web application with the python-upwork, use something similar
+to the code below:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">public_key</span> <span class="o">=</span> <span class="nb">raw_input</span><span class="p">(</span><span class="s">&#39;Please enter public key: &gt; &#39;</span><span class="p">)</span>
+<span class="n">secret_key</span> <span class="o">=</span> <span class="nb">raw_input</span><span class="p">(</span><span class="s">&#39;Please enter secret key: &gt; &#39;</span><span class="p">)</span>
+
+<span class="c">#Instantiating a client without an auth token</span>
+<span class="n">client</span> <span class="o">=</span> <span class="n">upwork</span><span class="o">.</span><span class="n">Client</span><span class="p">(</span><span class="n">public_key</span><span class="p">,</span> <span class="n">secret_key</span><span class="p">)</span>
+
+<span class="k">print</span> <span class="s">&quot;Please to this URL (authorize the app if necessary):&quot;</span>
+<span class="k">print</span> <span class="n">client</span><span class="o">.</span><span class="n">auth</span><span class="o">.</span><span class="n">get_authorize_url</span><span class="p">()</span>
+<span class="k">print</span> <span class="s">&quot;After that you should be redirected back to your app URL with &quot;</span> <span class="o">+</span> \
+      <span class="s">&quot;additional ?oauth_verifier= parameter&quot;</span>
+
+<span class="n">verifier</span> <span class="o">=</span> <span class="nb">raw_input</span><span class="p">(</span><span class="s">&#39;Enter oauth_verifier: &#39;</span><span class="p">)</span>
+
+<span class="n">oauth_access_token</span><span class="p">,</span> <span class="n">oauth_access_token_secret</span> <span class="o">=</span> \
+    <span class="n">client</span><span class="o">.</span><span class="n">auth</span><span class="o">.</span><span class="n">get_access_token</span><span class="p">(</span><span class="n">verifier</span><span class="p">)</span>
+
+<span class="c"># Instantiating a new client, now with a token.</span>
+<span class="c"># Not strictly necessary here (could just set `client.oauth_access_token`</span>
+<span class="c"># and `client.oauth_access_token_secret`), but typical for web apps,</span>
+<span class="c"># which wouldn&#39;t probably keep client instances between requests</span>
+<span class="n">client</span> <span class="o">=</span> <span class="n">upwork</span><span class="o">.</span><span class="n">Client</span><span class="p">(</span><span class="n">public_key</span><span class="p">,</span> <span class="n">secret_key</span><span class="p">,</span>
+                      <span class="n">oauth_access_token</span><span class="o">=</span><span class="n">oauth_access_token</span><span class="p">,</span>
+                      <span class="n">oauth_access_token_secret</span><span class="o">=</span><span class="n">oauth_access_token_secret</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="freelancer-s-information">
+<span id="provider-information"></span><h2>Freelancer&#8217;s information<a class="headerlink" href="#freelancer-s-information" title="Permalink to this headline">¶</a></h2>
+<p><a class="reference external" href="https://developers.upwork.com/?lang=python#public-profiles_get-brief-profile-summary">https://developers.upwork.com/?lang=python#public-profiles_get-brief-profile-summary</a>
+<a class="reference external" href="https://developers.upwork.com/?lang=python#public-profiles_get-profile-details">https://developers.upwork.com/?lang=python#public-profiles_get-profile-details</a></p>
+<p>To get information about freelancer, use following methods (click the link to see detailed description of parameters):</p>
+<p><a class="reference internal" href="reference-docs/upwork.routers.html#upwork.routers.provider.Provider.get_provider" title="upwork.routers.provider.Provider.get_provider"><tt class="xref py py-meth docutils literal"><span class="pre">client.provider.get_provider</span></tt></a></p>
+<p><a class="reference internal" href="reference-docs/upwork.routers.html#upwork.routers.provider.Provider.get_provider_brief" title="upwork.routers.provider.Provider.get_provider_brief"><tt class="xref py py-meth docutils literal"><span class="pre">client.provider.get_provider_brief</span></tt></a></p>
+</div>
+<div class="section" id="search-freelancers">
+<h2>Search Freelancers<a class="headerlink" href="#search-freelancers" title="Permalink to this headline">¶</a></h2>
+<p>To search for a freelancer (<a class="reference external" href="https://developers.upwork.com/?lang=python#public-profiles_search-for-freelancers">https://developers.upwork.com/?lang=python#public-profiles_search-for-freelancers</a>) by the query string, use:</p>
+<p><a class="reference internal" href="reference-docs/upwork.routers.html#upwork.routers.provider.Provider_V2.search_providers" title="upwork.routers.provider.Provider_V2.search_providers"><tt class="xref py py-meth docutils literal"><span class="pre">client.provider_v2.search_providers</span></tt></a></p>
+</div>
+<div class="section" id="search-jobs">
+<h2>Search Jobs<a class="headerlink" href="#search-jobs" title="Permalink to this headline">¶</a></h2>
+<p>To search jobs(<a class="reference external" href="https://developers.upwork.com/?lang=python#jobs_search-for-jobs">https://developers.upwork.com/?lang=python#jobs_search-for-jobs</a>) by the query string, use:</p>
+<p><a class="reference internal" href="reference-docs/upwork.routers.html#upwork.routers.provider.Provider_V2.search_jobs" title="upwork.routers.provider.Provider_V2.search_jobs"><tt class="xref py py-meth docutils literal"><span class="pre">client.provider_v2.search_jobs</span></tt></a></p>
+</div>
+<div class="section" id="metadata-information">
+<span id="id3"></span><h2>Metadata information<a class="headerlink" href="#metadata-information" title="Permalink to this headline">¶</a></h2>
+<p>To get information about available categories, skills, regions and tests use:</p>
+<p><a class="reference internal" href="reference-docs/upwork.routers.html#upwork.routers.provider.Provider.get_categories_metadata" title="upwork.routers.provider.Provider.get_categories_metadata"><tt class="xref py py-meth docutils literal"><span class="pre">client.provider.get_categories_metadata</span></tt></a></p>
+<p><a class="reference internal" href="reference-docs/upwork.routers.html#upwork.routers.provider.Provider.get_skills_metadata" title="upwork.routers.provider.Provider.get_skills_metadata"><tt class="xref py py-meth docutils literal"><span class="pre">client.provider.get_skills_metadata</span></tt></a></p>
+<p><a class="reference internal" href="reference-docs/upwork.routers.html#upwork.routers.provider.Provider.get_regions_metadata" title="upwork.routers.provider.Provider.get_regions_metadata"><tt class="xref py py-meth docutils literal"><span class="pre">client.provider.get_regions_metadata</span></tt></a></p>
+<p><a class="reference internal" href="reference-docs/upwork.routers.html#upwork.routers.provider.Provider.get_tests_metadata" title="upwork.routers.provider.Provider.get_tests_metadata"><tt class="xref py py-meth docutils literal"><span class="pre">client.provider.get_tests_metadata</span></tt></a></p>
+</div>
+<div class="section" id="hiring">
+<span id="id4"></span><h2>Hiring<a class="headerlink" href="#hiring" title="Permalink to this headline">¶</a></h2>
+<p>Upwork Hiring API <a class="reference external" href="https://developers.upwork.com/?lang=python#contracts-and-offers">https://developers.upwork.com/?lang=python#contracts-and-offers</a> allows to do such tasks as:</p>
+<ul class="simple">
+<li>Create new job posting <a class="reference internal" href="reference-docs/upwork.routers.html#upwork.routers.hr.HR.post_job" title="upwork.routers.hr.HR.post_job"><tt class="xref py py-meth docutils literal"><span class="pre">client.hr.post_job</span></tt></a></li>
+<li>Update existing job post <a class="reference internal" href="reference-docs/upwork.routers.html#upwork.routers.hr.HR.update_job" title="upwork.routers.hr.HR.update_job"><tt class="xref py py-meth docutils literal"><span class="pre">client.hr.update_job</span></tt></a></li>
+<li>Work with milestones for fixed priced jobs: see <a class="reference external" href="https://developers.upwork.com/?lang=python#contracts-and-offers_milestones">https://developers.upwork.com/?lang=python#contracts-and-offers_milestones</a></li>
+<li>View existing jobs <a class="reference internal" href="reference-docs/upwork.routers.html#upwork.routers.hr.HR.get_jobs" title="upwork.routers.hr.HR.get_jobs"><tt class="xref py py-meth docutils literal"><span class="pre">client.hr.get_jobs</span></tt></a></li>
+</ul>
+<ul class="simple">
+<li>Invite to interview <a class="reference internal" href="reference-docs/upwork.routers.html#upwork.routers.hr.HR_V1.invite_to_interview" title="upwork.routers.hr.HR_V1.invite_to_interview"><tt class="xref py py-meth docutils literal"><span class="pre">client.hr_v1.invite_to_interview</span></tt></a></li>
+</ul>
+<ul class="simple">
+<li>Make an offer <a class="reference internal" href="reference-docs/upwork.routers.html#upwork.routers.hr.HR.post_offer" title="upwork.routers.hr.HR.post_offer"><tt class="xref py py-meth docutils literal"><span class="pre">client.hr.post_offer</span></tt></a></li>
+<li>View active engagements <a class="reference internal" href="reference-docs/upwork.routers.html#upwork.routers.hr.HR.get_engagements" title="upwork.routers.hr.HR.get_engagements"><tt class="xref py py-meth docutils literal"><span class="pre">client.hr.get_engagements</span></tt></a></li>
+<li>Pay a bonus to the contractor <a class="reference internal" href="reference-docs/upwork.routers.html#upwork.routers.hr.HR.post_team_adjustment" title="upwork.routers.hr.HR.post_team_adjustment"><tt class="xref py py-meth docutils literal"><span class="pre">client.hr.post_team_adjustment</span></tt></a></li>
+<li>End the contract with freelancer <a class="reference internal" href="reference-docs/upwork.routers.html#upwork.routers.hr.HR.end_contract" title="upwork.routers.hr.HR.end_contract"><tt class="xref py py-meth docutils literal"><span class="pre">client.hr.end_contract</span></tt></a></li>
+</ul>
+</div>
+<div class="section" id="work-with-jobs">
+<span id="id5"></span><h2>Work with jobs<a class="headerlink" href="#work-with-jobs" title="Permalink to this headline">¶</a></h2>
+<p><a class="reference external" href="https://developers.upwork.com/?lang=python#jobs_get-job-profile">https://developers.upwork.com/?lang=python#jobs_get-job-profile</a></p>
+<p>To work with jobs you should use <a class="reference internal" href="reference-docs/upwork.routers.html#upwork.routers.job.Job" title="upwork.routers.job.Job"><tt class="xref py py-class docutils literal"><span class="pre">client.job</span></tt></a> wrapper:</p>
+<div class="highlight-python"><div class="highlight"><pre>tasks = client.job.get_job_profile(job key)
+</pre></div>
+</div>
+<p>Where:</p>
+<ul class="simple">
+<li>job_key - The job key or a list of keys, separated by <tt class="docutils literal"><span class="pre">&quot;;&quot;</span></tt>, number of keys per request is limited by 20. You can access profile by job reference number, in that case you can&#8217;t specify a list of jobs, only one profile per request is available.</li>
+</ul>
+</div>
+<div class="section" id="team-s-information">
+<span id="team-information"></span><h2>Team&#8217;s information<a class="headerlink" href="#team-s-information" title="Permalink to this headline">¶</a></h2>
+<p><a class="reference external" href="https://developers.upwork.com/?lang=python#companies-and-teams">https://developers.upwork.com/?lang=python#companies-and-teams</a></p>
+<p>After authentication, you can get teams&#8217; information from client instance you have:</p>
+<p><a class="reference internal" href="reference-docs/upwork.routers.html#upwork.routers.team.Team_V2.get_teamrooms" title="upwork.routers.team.Team_V2.get_teamrooms"><tt class="xref py py-meth docutils literal"><span class="pre">client.team_v2.get_teamrooms</span></tt></a></p>
+<p>To get snapshots:</p>
+<p><a class="reference internal" href="reference-docs/upwork.routers.html#upwork.routers.team.Team_V2.get_snapshots" title="upwork.routers.team.Team_V2.get_snapshots"><tt class="xref py py-meth docutils literal"><span class="pre">client.team_v2.get_snapshots</span></tt></a></p>
+<p>To get user&#8217;s workdiaries inside the team:</p>
+<p><a class="reference internal" href="reference-docs/upwork.routers.html#upwork.routers.team.Team.get_workdiaries" title="upwork.routers.team.Team.get_workdiaries"><tt class="xref py py-meth docutils literal"><span class="pre">client.team.get_workdiaries</span></tt></a></p>
+</div>
+<div class="section" id="trays-and-messages">
+<span id="get-messages"></span><h2>Trays and messages<a class="headerlink" href="#trays-and-messages" title="Permalink to this headline">¶</a></h2>
+<p><a class="reference external" href="https://developers.upwork.com/?lang=python#messages">https://developers.upwork.com/?lang=python#messages</a></p>
+<p>Get user&#8217;s trays (if user not provided, authenticated user will be taken):</p>
+<p><a class="reference internal" href="reference-docs/upwork.routers.html#upwork.routers.mc.MC.get_trays" title="upwork.routers.mc.MC.get_trays"><tt class="xref py py-meth docutils literal"><span class="pre">client.mc.get_trays</span></tt></a></p>
+<p>Get content of the tray:</p>
+<p><a class="reference internal" href="reference-docs/upwork.routers.html#upwork.routers.mc.MC.get_tray_content" title="upwork.routers.mc.MC.get_tray_content"><tt class="xref py py-meth docutils literal"><span class="pre">client.mc.get_tray_content</span></tt></a></p>
+<p>Get content of the thread:</p>
+<p><a class="reference internal" href="reference-docs/upwork.routers.html#upwork.routers.mc.MC.get_thread_content" title="upwork.routers.mc.MC.get_thread_content"><tt class="xref py py-meth docutils literal"><span class="pre">client.mc.get_thread_content</span></tt></a></p>
+</div>
+<div class="section" id="send-message">
+<span id="id6"></span><h2>Send message<a class="headerlink" href="#send-message" title="Permalink to this headline">¶</a></h2>
+<p><a class="reference external" href="https://developers.upwork.com/?lang=python#messages_send-message">https://developers.upwork.com/?lang=python#messages_send-message</a></p>
+<p>To send message:</p>
+<p><a class="reference internal" href="reference-docs/upwork.routers.html#upwork.routers.mc.MC.post_message" title="upwork.routers.mc.MC.post_message"><tt class="xref py py-meth docutils literal"><span class="pre">client.mc.post_message</span></tt></a></p>
+</div>
+<div class="section" id="get-timereports">
+<span id="id7"></span><h2>Get timereports<a class="headerlink" href="#get-timereports" title="Permalink to this headline">¶</a></h2>
+<p><a class="reference external" href="https://developers.upwork.com/?lang=python#reports_time-reports-fields">https://developers.upwork.com/?lang=python#reports_time-reports-fields</a></p>
+<p>To get timereports, use, based on the level of the timereports you need:</p>
+<p><a class="reference internal" href="reference-docs/upwork.routers.html#upwork.routers.timereport.TimeReport.get_provider_report" title="upwork.routers.timereport.TimeReport.get_provider_report"><tt class="xref py py-meth docutils literal"><span class="pre">client.timereport.get_provider_report</span></tt></a></p>
+<p><a class="reference internal" href="reference-docs/upwork.routers.html#upwork.routers.timereport.TimeReport.get_agency_report" title="upwork.routers.timereport.TimeReport.get_agency_report"><tt class="xref py py-meth docutils literal"><span class="pre">timereport.get_company_report</span></tt></a></p>
+<p><a class="reference internal" href="reference-docs/upwork.routers.html#upwork.routers.timereport.TimeReport.get_agency_report" title="upwork.routers.timereport.TimeReport.get_agency_report"><tt class="xref py py-meth docutils literal"><span class="pre">timereport.get_agency_report</span></tt></a></p>
+<p>Below is an example how to construct a GDS query:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">client</span><span class="o">.</span><span class="n">timereport</span><span class="o">.</span><span class="n">get_provider_report</span><span class="p">(</span><span class="s">&#39;user1&#39;</span><span class="p">,</span>
+       <span class="n">upwork</span><span class="o">.</span><span class="n">utils</span><span class="o">.</span><span class="n">Query</span><span class="p">(</span><span class="n">select</span><span class="o">=</span><span class="n">upwork</span><span class="o">.</span><span class="n">utils</span><span class="o">.</span><span class="n">Query</span><span class="o">.</span><span class="n">DEFAULT_TIMEREPORT_FIELDS</span><span class="p">,</span>
+                    <span class="n">where</span><span class="o">=</span><span class="p">(</span><span class="n">upwork</span><span class="o">.</span><span class="n">utils</span><span class="o">.</span><span class="n">Q</span><span class="p">(</span><span class="s">&#39;worked_on&#39;</span><span class="p">)</span> <span class="o">&lt;=</span> <span class="n">date</span><span class="o">.</span><span class="n">today</span><span class="p">())</span> <span class="o">&amp;</span>\
+                            <span class="p">(</span><span class="n">upwork</span><span class="o">.</span><span class="n">utils</span><span class="o">.</span><span class="n">Q</span><span class="p">(</span><span class="s">&#39;worked_on&#39;</span><span class="p">)</span> <span class="o">&gt;</span> <span class="s">&#39;2010-05-01&#39;</span><span class="p">)))</span>
+
+
+<span class="n">client</span><span class="o">.</span><span class="n">timereport</span><span class="o">.</span><span class="n">get_provider_report</span><span class="p">(</span><span class="s">&#39;user1&#39;</span><span class="p">,</span>
+       <span class="n">upwork</span><span class="o">.</span><span class="n">utils</span><span class="o">.</span><span class="n">Query</span><span class="p">(</span><span class="n">select</span><span class="o">=</span><span class="n">upwork</span><span class="o">.</span><span class="n">utils</span><span class="o">.</span><span class="n">Query</span><span class="o">.</span><span class="n">DEFAULT_TIMEREPORT_FIELDS</span><span class="p">,</span>
+                    <span class="n">where</span><span class="o">=</span><span class="p">(</span><span class="n">upwork</span><span class="o">.</span><span class="n">utils</span><span class="o">.</span><span class="n">Q</span><span class="p">(</span><span class="s">&#39;worked_on&#39;</span><span class="p">)</span> <span class="o">&lt;=</span> <span class="n">date</span><span class="o">.</span><span class="n">today</span><span class="p">())</span> <span class="o">&amp;</span>\
+                            <span class="p">(</span><span class="n">upwork</span><span class="o">.</span><span class="n">utils</span><span class="o">.</span><span class="n">Q</span><span class="p">(</span><span class="s">&#39;worked_on&#39;</span><span class="p">)</span> <span class="o">&gt;</span> <span class="s">&#39;2010-05-01&#39;</span><span class="p">)),</span> <span class="n">hours</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+
+<span class="n">client</span><span class="o">.</span><span class="n">timereport</span><span class="o">.</span><span class="n">get_agency_report</span><span class="p">(</span><span class="s">&#39;company1&#39;</span><span class="p">,</span> <span class="s">&#39;agency1&#39;</span><span class="p">,</span>
+       <span class="n">upwork</span><span class="o">.</span><span class="n">utils</span><span class="o">.</span><span class="n">Query</span><span class="p">(</span><span class="n">select</span><span class="o">=</span><span class="n">upwork</span><span class="o">.</span><span class="n">utils</span><span class="o">.</span><span class="n">Query</span><span class="o">.</span><span class="n">DEFAULT_TIMEREPORT_FIELDS</span><span class="p">,</span>
+                    <span class="n">where</span><span class="o">=</span><span class="p">(</span><span class="n">upwork</span><span class="o">.</span><span class="n">utils</span><span class="o">.</span><span class="n">Q</span><span class="p">(</span><span class="s">&#39;worked_on&#39;</span><span class="p">)</span> <span class="o">&lt;=</span> <span class="n">date</span><span class="o">.</span><span class="n">today</span><span class="p">())</span> <span class="o">&amp;</span>\
+                            <span class="p">(</span><span class="n">upwork</span><span class="o">.</span><span class="n">utils</span><span class="o">.</span><span class="n">Q</span><span class="p">(</span><span class="s">&#39;worked_on&#39;</span><span class="p">)</span> <span class="o">&gt;</span> <span class="s">&#39;2010-05-01&#39;</span><span class="p">)),</span> <span class="n">hours</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="get-finreports">
+<span id="id8"></span><h2>Get finreports<a class="headerlink" href="#get-finreports" title="Permalink to this headline">¶</a></h2>
+<p><a class="reference external" href="https://developers.upwork.com/?lang=python#reports_financial-reports-fields">https://developers.upwork.com/?lang=python#reports_financial-reports-fields</a></p>
+<p>Financial reports are also using GDS queries.</p>
+<p>Please see <a class="reference internal" href="reference-docs/upwork.routers.html#upwork.routers.finreport.Finreports" title="upwork.routers.finreport.Finreports"><tt class="xref py py-class docutils literal"><span class="pre">Finreports</span></tt></a> wrapper</p>
+</div>
+<div class="section" id="work-with-activities">
+<span id="work-with-tasks"></span><h2>Work with Activities<a class="headerlink" href="#work-with-activities" title="Permalink to this headline">¶</a></h2>
+<p><a class="reference external" href="https://developers.upwork.com/?lang=python#activities">https://developers.upwork.com/?lang=python#activities</a></p>
+<p>To work with Activities you should use <a class="reference internal" href="reference-docs/upwork.routers.html#upwork.routers.task.Task" title="upwork.routers.task.Task"><tt class="xref py py-class docutils literal"><span class="pre">client.task</span></tt></a> wrapper:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">tasks</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">task</span><span class="o">.</span><span class="n">get_team_tasks</span><span class="p">(</span><span class="s">&#39;your_company_id&#39;</span><span class="p">,</span> <span class="s">&#39;your_team_id&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Note, that <tt class="docutils literal"><span class="pre">company_id</span></tt> here is basically a <tt class="docutils literal"><span class="pre">parent_team__id</span></tt> value
+from the <tt class="docutils literal"><span class="pre">hr.get_team()</span></tt> API call.</p>
+<p>Methods to get activities:</p>
+<p><a class="reference internal" href="reference-docs/upwork.routers.html#upwork.routers.task.Task.get_team_tasks" title="upwork.routers.task.Task.get_team_tasks"><tt class="xref py py-meth docutils literal"><span class="pre">client.task.get_team_tasks</span></tt></a></p>
+<p><a class="reference internal" href="reference-docs/upwork.routers.html#upwork.routers.task.Task.get_company_tasks" title="upwork.routers.task.Task.get_company_tasks"><tt class="xref py py-meth docutils literal"><span class="pre">client.task.get_company_tasks</span></tt></a></p>
+<p><a class="reference internal" href="reference-docs/upwork.routers.html#upwork.routers.task.Task.get_team_specific_tasks" title="upwork.routers.task.Task.get_team_specific_tasks"><tt class="xref py py-meth docutils literal"><span class="pre">client.task.get_team_specific_tasks</span></tt></a></p>
+<p><a class="reference internal" href="reference-docs/upwork.routers.html#upwork.routers.task.Task.get_company_specific_tasks" title="upwork.routers.task.Task.get_company_specific_tasks"><tt class="xref py py-meth docutils literal"><span class="pre">client.task.get_company_specific_tasks</span></tt></a></p>
+<p>Create and update activities:</p>
+<p><a class="reference internal" href="reference-docs/upwork.routers.html#upwork.routers.task.Task.post_team_task" title="upwork.routers.task.Task.post_team_task"><tt class="xref py py-meth docutils literal"><span class="pre">client.task.post_team_task</span></tt></a></p>
+<p><a class="reference internal" href="reference-docs/upwork.routers.html#upwork.routers.task.Task.post_company_task" title="upwork.routers.task.Task.post_company_task"><tt class="xref py py-meth docutils literal"><span class="pre">client.task.post_company_task</span></tt></a></p>
+<p><a class="reference internal" href="reference-docs/upwork.routers.html#upwork.routers.task.Task.put_team_task" title="upwork.routers.task.Task.put_team_task"><tt class="xref py py-meth docutils literal"><span class="pre">client.task.put_team_task</span></tt></a></p>
+<p><a class="reference internal" href="reference-docs/upwork.routers.html#upwork.routers.task.Task.put_company_task" title="upwork.routers.task.Task.put_company_task"><tt class="xref py py-meth docutils literal"><span class="pre">client.task.put_company_task</span></tt></a></p>
+<p>Archive/unarchive activities:</p>
+<p><a class="reference internal" href="reference-docs/upwork.routers.html#upwork.routers.task.Task.archive_team_task" title="upwork.routers.task.Task.archive_team_task"><tt class="xref py py-meth docutils literal"><span class="pre">client.task.archive_team_task</span></tt></a></p>
+<p><a class="reference internal" href="reference-docs/upwork.routers.html#upwork.routers.task.Task.archive_company_task" title="upwork.routers.task.Task.archive_company_task"><tt class="xref py py-meth docutils literal"><span class="pre">client.task.archive_company_task</span></tt></a></p>
+<p><a class="reference internal" href="reference-docs/upwork.routers.html#upwork.routers.task.Task.unarchive_team_task" title="upwork.routers.task.Task.unarchive_team_task"><tt class="xref py py-meth docutils literal"><span class="pre">client.task.unarchive_team_task</span></tt></a></p>
+<p><a class="reference internal" href="reference-docs/upwork.routers.html#upwork.routers.task.Task.unarchive_company_task" title="upwork.routers.task.Task.unarchive_company_task"><tt class="xref py py-meth docutils literal"><span class="pre">client.task.unarchive_company_task</span></tt></a></p>
+<p>Assign activities to the contractor&#8217;s engagement:</p>
+<p><a class="reference internal" href="reference-docs/upwork.routers.html#upwork.routers.task.Task.assign_engagement" title="upwork.routers.task.Task.assign_engagement"><tt class="xref py py-meth docutils literal"><span class="pre">client.task.assign_engagement</span></tt></a></p>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="reference_docs.html" title="Reference Documentation: Classes and Methods"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="getting_started.html" title="Getting started"
+             >previous</a> |</li>
+        <li><a href="index.html">python-upwork 1.0.0 documentation</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright 2010-2013, upwork.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.3.
+    </div>
+  </body>
+</html>

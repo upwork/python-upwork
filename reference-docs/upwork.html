@@ -1,0 +1,876 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>upwork package &mdash; python-upwork 1.0.0 documentation</title>
+    
+    <link rel="stylesheet" href="../static/sphinxdoc.css" type="text/css" />
+    <link rel="stylesheet" href="../static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '1.0.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../static/jquery.js"></script>
+    <script type="text/javascript" src="../static/underscore.js"></script>
+    <script type="text/javascript" src="../static/doctools.js"></script>
+    <link rel="top" title="python-upwork 1.0.0 documentation" href="../index.html" />
+    <link rel="up" title="Reference Documentation: Classes and Methods" href="../reference_docs.html" />
+    <link rel="next" title="upwork.routers package" href="upwork.routers.html" />
+    <link rel="prev" title="Reference Documentation: Classes and Methods" href="../reference_docs.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="upwork.routers.html" title="upwork.routers package"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="../reference_docs.html" title="Reference Documentation: Classes and Methods"
+             accesskey="P">previous</a> |</li>
+        <li><a href="../index.html">python-upwork 1.0.0 documentation</a> &raquo;</li>
+          <li><a href="../reference_docs.html" accesskey="U">Reference Documentation: Classes and Methods</a> &raquo;</li> 
+      </ul>
+    </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="../index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">upwork package</a><ul>
+<li><a class="reference internal" href="#module-upwork">Module contents</a></li>
+<li><a class="reference internal" href="#subpackages">Subpackages</a></li>
+<li><a class="reference internal" href="#submodules">Submodules</a></li>
+<li><a class="reference internal" href="#module-upwork.client">upwork.client module</a></li>
+<li><a class="reference internal" href="#module-upwork.config">upwork.config module</a></li>
+<li><a class="reference internal" href="#module-upwork.exceptions">upwork.exceptions module</a></li>
+<li><a class="reference internal" href="#module-upwork.http">upwork.http module</a></li>
+<li><a class="reference internal" href="#module-upwork.namespaces">upwork.namespaces module</a></li>
+<li><a class="reference internal" href="#module-upwork.oauth">upwork.oauth module</a></li>
+<li><a class="reference internal" href="#module-upwork.utils">upwork.utils module</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="../reference_docs.html"
+                        title="previous chapter">Reference Documentation: Classes and Methods</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="upwork.routers.html"
+                        title="next chapter">upwork.routers package</a></p>
+  <h3>This Page</h3>
+  <ul class="this-page-menu">
+    <li><a href="../sources/reference-docs/upwork.txt"
+           rel="nofollow">Show Source</a></li>
+  </ul>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="upwork-package">
+<h1>upwork package<a class="headerlink" href="#upwork-package" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="module-upwork">
+<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-upwork" title="Permalink to this headline">¶</a></h2>
+<p>Main package of the python bindings for Upwork API.</p>
+<p>For convenience some most commonly used functionalities are imported here,
+so you can use:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="kn">from</span> <span class="nn">upwork</span> <span class="kn">import</span> <span class="n">Client</span>
+<span class="kn">from</span> <span class="nn">upwork</span> <span class="kn">import</span> <span class="n">raise_http_error</span>
+</pre></div>
+</div>
+<dl class="function">
+<dt id="upwork.get_version">
+<tt class="descclassname">upwork.</tt><tt class="descname">get_version</tt><big>(</big><big>)</big><a class="headerlink" href="#upwork.get_version" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="class">
+<dt id="upwork.Client">
+<em class="property">class </em><tt class="descclassname">upwork.</tt><tt class="descname">Client</tt><big>(</big><em>public_key</em>, <em>secret_key</em>, <em>oauth_access_token=None</em>, <em>oauth_access_token_secret=None</em>, <em>fmt='json'</em>, <em>finreport=True</em>, <em>hr=True</em>, <em>mc=True</em>, <em>offers=True</em>, <em>provider=True</em>, <em>task=True</em>, <em>team=True</em>, <em>timereport=True</em>, <em>job=True</em><big>)</big><a class="headerlink" href="#upwork.Client" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <tt class="xref py py-class docutils literal"><span class="pre">object</span></tt></p>
+<p>Main API client with oAuth v1 authorization.</p>
+<dl class="docutils">
+<dt><em>Parameters:</em></dt>
+<dd><table class="first last docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">public_key:</th><td class="field-body">Public API key</td>
+</tr>
+<tr class="field-even field"><th class="field-name">secret_key:</th><td class="field-body">API key secret</td>
+</tr>
+<tr class="field-odd field"><th class="field-name" colspan="2">oauth_access_token:</th></tr>
+<tr class="field-odd field"><td>&nbsp;</td><td class="field-body">oAuth access token public key</td>
+</tr>
+<tr class="field-even field"><th class="field-name" colspan="2">oauth_access_token_secret:</th></tr>
+<tr class="field-even field"><td>&nbsp;</td><td class="field-body">oAuth access token secret key</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">fmt:</th><td class="field-body">(optional, default <tt class="docutils literal"><span class="pre">json</span></tt>)
+API response format.
+Currently only <tt class="docutils literal"><span class="pre">'json'</span></tt> is supported</td>
+</tr>
+<tr class="field-even field"><th class="field-name">finreport:</th><td class="field-body">(optional, default <tt class="docutils literal"><span class="pre">True</span></tt>)
+Whether to attach
+<a class="reference internal" href="upwork.routers.html#module-upwork.routers.finreport" title="upwork.routers.finreport"><tt class="xref py py-mod docutils literal"><span class="pre">upwork.routers.finreport</span></tt></a> router</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">hr:</th><td class="field-body">(optional, default <tt class="docutils literal"><span class="pre">True</span></tt>)
+Whether to attach
+<a class="reference internal" href="upwork.routers.html#module-upwork.routers.hr" title="upwork.routers.hr"><tt class="xref py py-mod docutils literal"><span class="pre">upwork.routers.hr</span></tt></a> router</td>
+</tr>
+<tr class="field-even field"><th class="field-name">mc:</th><td class="field-body">(optional, default <tt class="docutils literal"><span class="pre">True</span></tt>)
+Whether to attach
+<a class="reference internal" href="upwork.routers.html#module-upwork.routers.mc" title="upwork.routers.mc"><tt class="xref py py-mod docutils literal"><span class="pre">upwork.routers.mc</span></tt></a> router</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">offers:</th><td class="field-body">(optional, default <tt class="docutils literal"><span class="pre">True</span></tt>)
+Whether to attach
+<a class="reference internal" href="upwork.routers.html#module-upwork.routers.offers" title="upwork.routers.offers"><tt class="xref py py-mod docutils literal"><span class="pre">upwork.routers.offers</span></tt></a> router</td>
+</tr>
+<tr class="field-even field"><th class="field-name">provider:</th><td class="field-body">(optional, default <tt class="docutils literal"><span class="pre">True</span></tt>)
+Whether to attach
+<a class="reference internal" href="upwork.routers.html#module-upwork.routers.provider" title="upwork.routers.provider"><tt class="xref py py-mod docutils literal"><span class="pre">upwork.routers.provider</span></tt></a> router</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">task:</th><td class="field-body">(optional, default <tt class="docutils literal"><span class="pre">True</span></tt>)
+Whether to attach
+<a class="reference internal" href="upwork.routers.html#module-upwork.routers.task" title="upwork.routers.task"><tt class="xref py py-mod docutils literal"><span class="pre">upwork.routers.task</span></tt></a> router</td>
+</tr>
+<tr class="field-even field"><th class="field-name">team:</th><td class="field-body">(optional, default <tt class="docutils literal"><span class="pre">True</span></tt>)
+Whether to attach
+<a class="reference internal" href="upwork.routers.html#module-upwork.routers.team" title="upwork.routers.team"><tt class="xref py py-mod docutils literal"><span class="pre">upwork.routers.team</span></tt></a> router</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">timereport:</th><td class="field-body">(optional, default <tt class="docutils literal"><span class="pre">True</span></tt>)
+Whether to attach
+<a class="reference internal" href="upwork.routers.html#module-upwork.routers.timereport" title="upwork.routers.timereport"><tt class="xref py py-mod docutils literal"><span class="pre">upwork.routers.timereport</span></tt></a> router</td>
+</tr>
+<tr class="field-even field"><th class="field-name">job:</th><td class="field-body">(optional, default <tt class="docutils literal"><span class="pre">True</span></tt>)
+Whether to attach
+<a class="reference internal" href="upwork.routers.html#module-upwork.routers.job" title="upwork.routers.job"><tt class="xref py py-mod docutils literal"><span class="pre">upwork.routers.job</span></tt></a> router</td>
+</tr>
+</tbody>
+</table>
+</dd>
+</dl>
+<dl class="method">
+<dt id="upwork.Client.delete">
+<tt class="descname">delete</tt><big>(</big><em>url</em>, <em>data=None</em><big>)</big><a class="headerlink" href="#upwork.Client.delete" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="upwork.Client.get">
+<tt class="descname">get</tt><big>(</big><em>url</em>, <em>data=None</em><big>)</big><a class="headerlink" href="#upwork.Client.get" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="upwork.Client.post">
+<tt class="descname">post</tt><big>(</big><em>url</em>, <em>data=None</em><big>)</big><a class="headerlink" href="#upwork.Client.post" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="upwork.Client.put">
+<tt class="descname">put</tt><big>(</big><em>url</em>, <em>data=None</em><big>)</big><a class="headerlink" href="#upwork.Client.put" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="upwork.Client.read">
+<tt class="descname">read</tt><big>(</big><em>url</em>, <em>data=None</em>, <em>method='GET'</em>, <em>fmt='json'</em><big>)</big><a class="headerlink" href="#upwork.Client.read" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns parsed Python object or raises an error.</p>
+<dl class="docutils">
+<dt><em>Parameters:</em></dt>
+<dd><table class="first last docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">url:</th><td class="field-body"><p class="first">Target url</p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">data:</th><td class="field-body"><p class="first">Dictionary with parameters</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">method:</th><td class="field-body"><p class="first">(optional, default <tt class="docutils literal"><span class="pre">GET</span></tt>)
+HTTP method, possible values:</p>
+<blockquote>
+<div><ul class="simple">
+<li><tt class="docutils literal"><span class="pre">GET</span></tt></li>
+<li><tt class="docutils literal"><span class="pre">POST</span></tt></li>
+<li><tt class="docutils literal"><span class="pre">PUT</span></tt></li>
+<li><tt class="docutils literal"><span class="pre">DELETE</span></tt></li>
+</ul>
+</div></blockquote>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">fmt:</th><td class="field-body"><p class="first last">(optional, default <tt class="docutils literal"><span class="pre">json</span></tt>)
+API response format.
+Currently only <tt class="docutils literal"><span class="pre">'json'</span></tt> is supported</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="upwork.Client.urlopen">
+<tt class="descname">urlopen</tt><big>(</big><em>url</em>, <em>data=None</em>, <em>method='GET'</em>, <em>headers=None</em><big>)</big><a class="headerlink" href="#upwork.Client.urlopen" title="Permalink to this definition">¶</a></dt>
+<dd><p>Perform oAuth v1 signed HTTP request.</p>
+<dl class="docutils">
+<dt><em>Parameters:</em></dt>
+<dd><table class="first last docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">url:</th><td class="field-body"><p class="first">Target url</p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">data:</th><td class="field-body"><p class="first">Dictionary with parameters</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">method:</th><td class="field-body"><p class="first">(optional, default <tt class="docutils literal"><span class="pre">GET</span></tt>)
+HTTP method, possible values:</p>
+<blockquote>
+<div><ul class="simple">
+<li><tt class="docutils literal"><span class="pre">GET</span></tt></li>
+<li><tt class="docutils literal"><span class="pre">POST</span></tt></li>
+<li><tt class="docutils literal"><span class="pre">PUT</span></tt></li>
+<li><tt class="docutils literal"><span class="pre">DELETE</span></tt></li>
+</ul>
+</div></blockquote>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">headers:</th><td class="field-body"><p class="first last">(optional, default <tt class="docutils literal"><span class="pre">{}</span></tt>)
+Dictionary with header values</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="function">
+<dt id="upwork.raise_http_error">
+<tt class="descclassname">upwork.</tt><tt class="descname">raise_http_error</tt><big>(</big><em>url</em>, <em>response</em><big>)</big><a class="headerlink" href="#upwork.raise_http_error" title="Permalink to this definition">¶</a></dt>
+<dd><p>Raise custom <tt class="docutils literal"><span class="pre">urllib2.HTTPError</span></tt> exception.</p>
+<dl class="docutils">
+<dt><em>Parameters:</em></dt>
+<dd><table class="first last docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">url:</th><td class="field-body">Url that caused an error</td>
+</tr>
+<tr class="field-even field"><th class="field-name">response:</th><td class="field-body"><tt class="docutils literal"><span class="pre">urllib3</span></tt> response object</td>
+</tr>
+</tbody>
+</table>
+</dd>
+</dl>
+</dd></dl>
+
+</div>
+<div class="section" id="subpackages">
+<h2>Subpackages<a class="headerlink" href="#subpackages" title="Permalink to this headline">¶</a></h2>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="upwork.routers.html">upwork.routers package</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="upwork.routers.html#module-upwork.routers">Module contents</a></li>
+<li class="toctree-l2"><a class="reference internal" href="upwork.routers.html#submodules">Submodules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="upwork.routers.html#module-upwork.routers.finreport">upwork.routers.finreport module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="upwork.routers.html#module-upwork.routers.hr">upwork.routers.hr module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="upwork.routers.html#module-upwork.routers.job">upwork.routers.job module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="upwork.routers.html#module-upwork.routers.mc">upwork.routers.mc module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="upwork.routers.html#module-upwork.routers.offers">upwork.routers.offers module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="upwork.routers.html#module-upwork.routers.provider">upwork.routers.provider module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="upwork.routers.html#module-upwork.routers.task">upwork.routers.task module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="upwork.routers.html#module-upwork.routers.team">upwork.routers.team module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="upwork.routers.html#module-upwork.routers.timereport">upwork.routers.timereport module</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+<div class="section" id="submodules">
+<h2>Submodules<a class="headerlink" href="#submodules" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="module-upwork.client">
+<span id="upwork-client-module"></span><h2>upwork.client module<a class="headerlink" href="#module-upwork.client" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="upwork.client.Client">
+<em class="property">class </em><tt class="descclassname">upwork.client.</tt><tt class="descname">Client</tt><big>(</big><em>public_key</em>, <em>secret_key</em>, <em>oauth_access_token=None</em>, <em>oauth_access_token_secret=None</em>, <em>fmt='json'</em>, <em>finreport=True</em>, <em>hr=True</em>, <em>mc=True</em>, <em>offers=True</em>, <em>provider=True</em>, <em>task=True</em>, <em>team=True</em>, <em>timereport=True</em>, <em>job=True</em><big>)</big><a class="headerlink" href="#upwork.client.Client" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <tt class="xref py py-class docutils literal"><span class="pre">object</span></tt></p>
+<p>Main API client with oAuth v1 authorization.</p>
+<dl class="docutils">
+<dt><em>Parameters:</em></dt>
+<dd><table class="first last docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">public_key:</th><td class="field-body">Public API key</td>
+</tr>
+<tr class="field-even field"><th class="field-name">secret_key:</th><td class="field-body">API key secret</td>
+</tr>
+<tr class="field-odd field"><th class="field-name" colspan="2">oauth_access_token:</th></tr>
+<tr class="field-odd field"><td>&nbsp;</td><td class="field-body">oAuth access token public key</td>
+</tr>
+<tr class="field-even field"><th class="field-name" colspan="2">oauth_access_token_secret:</th></tr>
+<tr class="field-even field"><td>&nbsp;</td><td class="field-body">oAuth access token secret key</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">fmt:</th><td class="field-body">(optional, default <tt class="docutils literal"><span class="pre">json</span></tt>)
+API response format.
+Currently only <tt class="docutils literal"><span class="pre">'json'</span></tt> is supported</td>
+</tr>
+<tr class="field-even field"><th class="field-name">finreport:</th><td class="field-body">(optional, default <tt class="docutils literal"><span class="pre">True</span></tt>)
+Whether to attach
+<a class="reference internal" href="upwork.routers.html#module-upwork.routers.finreport" title="upwork.routers.finreport"><tt class="xref py py-mod docutils literal"><span class="pre">upwork.routers.finreport</span></tt></a> router</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">hr:</th><td class="field-body">(optional, default <tt class="docutils literal"><span class="pre">True</span></tt>)
+Whether to attach
+<a class="reference internal" href="upwork.routers.html#module-upwork.routers.hr" title="upwork.routers.hr"><tt class="xref py py-mod docutils literal"><span class="pre">upwork.routers.hr</span></tt></a> router</td>
+</tr>
+<tr class="field-even field"><th class="field-name">mc:</th><td class="field-body">(optional, default <tt class="docutils literal"><span class="pre">True</span></tt>)
+Whether to attach
+<a class="reference internal" href="upwork.routers.html#module-upwork.routers.mc" title="upwork.routers.mc"><tt class="xref py py-mod docutils literal"><span class="pre">upwork.routers.mc</span></tt></a> router</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">offers:</th><td class="field-body">(optional, default <tt class="docutils literal"><span class="pre">True</span></tt>)
+Whether to attach
+<a class="reference internal" href="upwork.routers.html#module-upwork.routers.offers" title="upwork.routers.offers"><tt class="xref py py-mod docutils literal"><span class="pre">upwork.routers.offers</span></tt></a> router</td>
+</tr>
+<tr class="field-even field"><th class="field-name">provider:</th><td class="field-body">(optional, default <tt class="docutils literal"><span class="pre">True</span></tt>)
+Whether to attach
+<a class="reference internal" href="upwork.routers.html#module-upwork.routers.provider" title="upwork.routers.provider"><tt class="xref py py-mod docutils literal"><span class="pre">upwork.routers.provider</span></tt></a> router</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">task:</th><td class="field-body">(optional, default <tt class="docutils literal"><span class="pre">True</span></tt>)
+Whether to attach
+<a class="reference internal" href="upwork.routers.html#module-upwork.routers.task" title="upwork.routers.task"><tt class="xref py py-mod docutils literal"><span class="pre">upwork.routers.task</span></tt></a> router</td>
+</tr>
+<tr class="field-even field"><th class="field-name">team:</th><td class="field-body">(optional, default <tt class="docutils literal"><span class="pre">True</span></tt>)
+Whether to attach
+<a class="reference internal" href="upwork.routers.html#module-upwork.routers.team" title="upwork.routers.team"><tt class="xref py py-mod docutils literal"><span class="pre">upwork.routers.team</span></tt></a> router</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">timereport:</th><td class="field-body">(optional, default <tt class="docutils literal"><span class="pre">True</span></tt>)
+Whether to attach
+<a class="reference internal" href="upwork.routers.html#module-upwork.routers.timereport" title="upwork.routers.timereport"><tt class="xref py py-mod docutils literal"><span class="pre">upwork.routers.timereport</span></tt></a> router</td>
+</tr>
+<tr class="field-even field"><th class="field-name">job:</th><td class="field-body">(optional, default <tt class="docutils literal"><span class="pre">True</span></tt>)
+Whether to attach
+<a class="reference internal" href="upwork.routers.html#module-upwork.routers.job" title="upwork.routers.job"><tt class="xref py py-mod docutils literal"><span class="pre">upwork.routers.job</span></tt></a> router</td>
+</tr>
+</tbody>
+</table>
+</dd>
+</dl>
+<dl class="method">
+<dt id="upwork.client.Client.delete">
+<tt class="descname">delete</tt><big>(</big><em>url</em>, <em>data=None</em><big>)</big><a class="headerlink" href="#upwork.client.Client.delete" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="upwork.client.Client.get">
+<tt class="descname">get</tt><big>(</big><em>url</em>, <em>data=None</em><big>)</big><a class="headerlink" href="#upwork.client.Client.get" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="upwork.client.Client.post">
+<tt class="descname">post</tt><big>(</big><em>url</em>, <em>data=None</em><big>)</big><a class="headerlink" href="#upwork.client.Client.post" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="upwork.client.Client.put">
+<tt class="descname">put</tt><big>(</big><em>url</em>, <em>data=None</em><big>)</big><a class="headerlink" href="#upwork.client.Client.put" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="upwork.client.Client.read">
+<tt class="descname">read</tt><big>(</big><em>url</em>, <em>data=None</em>, <em>method='GET'</em>, <em>fmt='json'</em><big>)</big><a class="headerlink" href="#upwork.client.Client.read" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns parsed Python object or raises an error.</p>
+<dl class="docutils">
+<dt><em>Parameters:</em></dt>
+<dd><table class="first last docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">url:</th><td class="field-body"><p class="first">Target url</p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">data:</th><td class="field-body"><p class="first">Dictionary with parameters</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">method:</th><td class="field-body"><p class="first">(optional, default <tt class="docutils literal"><span class="pre">GET</span></tt>)
+HTTP method, possible values:</p>
+<blockquote>
+<div><ul class="simple">
+<li><tt class="docutils literal"><span class="pre">GET</span></tt></li>
+<li><tt class="docutils literal"><span class="pre">POST</span></tt></li>
+<li><tt class="docutils literal"><span class="pre">PUT</span></tt></li>
+<li><tt class="docutils literal"><span class="pre">DELETE</span></tt></li>
+</ul>
+</div></blockquote>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">fmt:</th><td class="field-body"><p class="first last">(optional, default <tt class="docutils literal"><span class="pre">json</span></tt>)
+API response format.
+Currently only <tt class="docutils literal"><span class="pre">'json'</span></tt> is supported</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="upwork.client.Client.urlopen">
+<tt class="descname">urlopen</tt><big>(</big><em>url</em>, <em>data=None</em>, <em>method='GET'</em>, <em>headers=None</em><big>)</big><a class="headerlink" href="#upwork.client.Client.urlopen" title="Permalink to this definition">¶</a></dt>
+<dd><p>Perform oAuth v1 signed HTTP request.</p>
+<dl class="docutils">
+<dt><em>Parameters:</em></dt>
+<dd><table class="first last docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">url:</th><td class="field-body"><p class="first">Target url</p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">data:</th><td class="field-body"><p class="first">Dictionary with parameters</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">method:</th><td class="field-body"><p class="first">(optional, default <tt class="docutils literal"><span class="pre">GET</span></tt>)
+HTTP method, possible values:</p>
+<blockquote>
+<div><ul class="simple">
+<li><tt class="docutils literal"><span class="pre">GET</span></tt></li>
+<li><tt class="docutils literal"><span class="pre">POST</span></tt></li>
+<li><tt class="docutils literal"><span class="pre">PUT</span></tt></li>
+<li><tt class="docutils literal"><span class="pre">DELETE</span></tt></li>
+</ul>
+</div></blockquote>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">headers:</th><td class="field-body"><p class="first last">(optional, default <tt class="docutils literal"><span class="pre">{}</span></tt>)
+Dictionary with header values</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-upwork.config">
+<span id="upwork-config-module"></span><h2>upwork.config module<a class="headerlink" href="#module-upwork.config" title="Permalink to this headline">¶</a></h2>
+<p>Here we watch the <tt class="docutils literal"><span class="pre">PYTHON_UPWORK_BASE_URL</span></tt>
+variable and if it is defined, use it as <tt class="docutils literal"><span class="pre">BASE_URL</span></tt>.</p>
+</div>
+<div class="section" id="module-upwork.exceptions">
+<span id="upwork-exceptions-module"></span><h2>upwork.exceptions module<a class="headerlink" href="#module-upwork.exceptions" title="Permalink to this headline">¶</a></h2>
+<dl class="exception">
+<dt id="upwork.exceptions.APINotImplementedException">
+<em class="property">exception </em><tt class="descclassname">upwork.exceptions.</tt><tt class="descname">APINotImplementedException</tt><big>(</big><em>*args</em>, <em>**kwargs</em><big>)</big><a class="headerlink" href="#upwork.exceptions.APINotImplementedException" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#upwork.exceptions.BaseException" title="upwork.exceptions.BaseException"><tt class="xref py py-class docutils literal"><span class="pre">upwork.exceptions.BaseException</span></tt></a></p>
+</dd></dl>
+
+<dl class="exception">
+<dt id="upwork.exceptions.ApiValueError">
+<em class="property">exception </em><tt class="descclassname">upwork.exceptions.</tt><tt class="descname">ApiValueError</tt><big>(</big><em>*args</em>, <em>**kwargs</em><big>)</big><a class="headerlink" href="#upwork.exceptions.ApiValueError" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#upwork.exceptions.BaseException" title="upwork.exceptions.BaseException"><tt class="xref py py-class docutils literal"><span class="pre">upwork.exceptions.BaseException</span></tt></a></p>
+</dd></dl>
+
+<dl class="exception">
+<dt id="upwork.exceptions.AuthenticationError">
+<em class="property">exception </em><tt class="descclassname">upwork.exceptions.</tt><tt class="descname">AuthenticationError</tt><big>(</big><em>*args</em>, <em>**kwargs</em><big>)</big><a class="headerlink" href="#upwork.exceptions.AuthenticationError" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#upwork.exceptions.BaseException" title="upwork.exceptions.BaseException"><tt class="xref py py-class docutils literal"><span class="pre">upwork.exceptions.BaseException</span></tt></a></p>
+</dd></dl>
+
+<dl class="exception">
+<dt id="upwork.exceptions.BaseException">
+<em class="property">exception </em><tt class="descclassname">upwork.exceptions.</tt><tt class="descname">BaseException</tt><big>(</big><em>*args</em>, <em>**kwargs</em><big>)</big><a class="headerlink" href="#upwork.exceptions.BaseException" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <tt class="xref py py-class docutils literal"><span class="pre">exceptions.Exception</span></tt></p>
+<p>Base exception class.</p>
+<p>Performs logging.</p>
+<dl class="method">
+<dt id="upwork.exceptions.BaseException.upwork_debug">
+<tt class="descname">upwork_debug</tt><big>(</big><em>*args</em>, <em>**kwargs</em><big>)</big><a class="headerlink" href="#upwork.exceptions.BaseException.upwork_debug" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="exception">
+<dt id="upwork.exceptions.BaseHttpException">
+<em class="property">exception </em><tt class="descclassname">upwork.exceptions.</tt><tt class="descname">BaseHttpException</tt><big>(</big><em>*args</em>, <em>**kwargs</em><big>)</big><a class="headerlink" href="#upwork.exceptions.BaseHttpException" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <tt class="xref py py-class docutils literal"><span class="pre">urllib2.HTTPError</span></tt>, <a class="reference internal" href="#upwork.exceptions.BaseException" title="upwork.exceptions.BaseException"><tt class="xref py py-class docutils literal"><span class="pre">upwork.exceptions.BaseException</span></tt></a></p>
+</dd></dl>
+
+<dl class="exception">
+<dt id="upwork.exceptions.HTTP400BadRequestError">
+<em class="property">exception </em><tt class="descclassname">upwork.exceptions.</tt><tt class="descname">HTTP400BadRequestError</tt><big>(</big><em>*args</em>, <em>**kwargs</em><big>)</big><a class="headerlink" href="#upwork.exceptions.HTTP400BadRequestError" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#upwork.exceptions.BaseHttpException" title="upwork.exceptions.BaseHttpException"><tt class="xref py py-class docutils literal"><span class="pre">upwork.exceptions.BaseHttpException</span></tt></a></p>
+</dd></dl>
+
+<dl class="exception">
+<dt id="upwork.exceptions.HTTP401UnauthorizedError">
+<em class="property">exception </em><tt class="descclassname">upwork.exceptions.</tt><tt class="descname">HTTP401UnauthorizedError</tt><big>(</big><em>*args</em>, <em>**kwargs</em><big>)</big><a class="headerlink" href="#upwork.exceptions.HTTP401UnauthorizedError" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#upwork.exceptions.BaseHttpException" title="upwork.exceptions.BaseHttpException"><tt class="xref py py-class docutils literal"><span class="pre">upwork.exceptions.BaseHttpException</span></tt></a></p>
+</dd></dl>
+
+<dl class="exception">
+<dt id="upwork.exceptions.HTTP403ForbiddenError">
+<em class="property">exception </em><tt class="descclassname">upwork.exceptions.</tt><tt class="descname">HTTP403ForbiddenError</tt><big>(</big><em>*args</em>, <em>**kwargs</em><big>)</big><a class="headerlink" href="#upwork.exceptions.HTTP403ForbiddenError" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#upwork.exceptions.BaseHttpException" title="upwork.exceptions.BaseHttpException"><tt class="xref py py-class docutils literal"><span class="pre">upwork.exceptions.BaseHttpException</span></tt></a></p>
+</dd></dl>
+
+<dl class="exception">
+<dt id="upwork.exceptions.HTTP404NotFoundError">
+<em class="property">exception </em><tt class="descclassname">upwork.exceptions.</tt><tt class="descname">HTTP404NotFoundError</tt><big>(</big><em>*args</em>, <em>**kwargs</em><big>)</big><a class="headerlink" href="#upwork.exceptions.HTTP404NotFoundError" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#upwork.exceptions.BaseHttpException" title="upwork.exceptions.BaseHttpException"><tt class="xref py py-class docutils literal"><span class="pre">upwork.exceptions.BaseHttpException</span></tt></a></p>
+</dd></dl>
+
+<dl class="exception">
+<dt id="upwork.exceptions.IncorrectJsonResponseError">
+<em class="property">exception </em><tt class="descclassname">upwork.exceptions.</tt><tt class="descname">IncorrectJsonResponseError</tt><big>(</big><em>*args</em>, <em>**kwargs</em><big>)</big><a class="headerlink" href="#upwork.exceptions.IncorrectJsonResponseError" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#upwork.exceptions.BaseException" title="upwork.exceptions.BaseException"><tt class="xref py py-class docutils literal"><span class="pre">upwork.exceptions.BaseException</span></tt></a></p>
+</dd></dl>
+
+<dl class="exception">
+<dt id="upwork.exceptions.InvalidConfiguredException">
+<em class="property">exception </em><tt class="descclassname">upwork.exceptions.</tt><tt class="descname">InvalidConfiguredException</tt><big>(</big><em>*args</em>, <em>**kwargs</em><big>)</big><a class="headerlink" href="#upwork.exceptions.InvalidConfiguredException" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#upwork.exceptions.BaseException" title="upwork.exceptions.BaseException"><tt class="xref py py-class docutils literal"><span class="pre">upwork.exceptions.BaseException</span></tt></a></p>
+</dd></dl>
+
+<dl class="exception">
+<dt id="upwork.exceptions.NotAuthenticatedError">
+<em class="property">exception </em><tt class="descclassname">upwork.exceptions.</tt><tt class="descname">NotAuthenticatedError</tt><big>(</big><em>*args</em>, <em>**kwargs</em><big>)</big><a class="headerlink" href="#upwork.exceptions.NotAuthenticatedError" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#upwork.exceptions.BaseException" title="upwork.exceptions.BaseException"><tt class="xref py py-class docutils literal"><span class="pre">upwork.exceptions.BaseException</span></tt></a></p>
+</dd></dl>
+
+</div>
+<div class="section" id="module-upwork.http">
+<span id="upwork-http-module"></span><h2>upwork.http module<a class="headerlink" href="#module-upwork.http" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="upwork.http.raise_http_error">
+<tt class="descclassname">upwork.http.</tt><tt class="descname">raise_http_error</tt><big>(</big><em>url</em>, <em>response</em><big>)</big><a class="headerlink" href="#upwork.http.raise_http_error" title="Permalink to this definition">¶</a></dt>
+<dd><p>Raise custom <tt class="docutils literal"><span class="pre">urllib2.HTTPError</span></tt> exception.</p>
+<dl class="docutils">
+<dt><em>Parameters:</em></dt>
+<dd><table class="first last docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">url:</th><td class="field-body">Url that caused an error</td>
+</tr>
+<tr class="field-even field"><th class="field-name">response:</th><td class="field-body"><tt class="docutils literal"><span class="pre">urllib3</span></tt> response object</td>
+</tr>
+</tbody>
+</table>
+</dd>
+</dl>
+</dd></dl>
+
+</div>
+<div class="section" id="module-upwork.namespaces">
+<span id="upwork-namespaces-module"></span><h2>upwork.namespaces module<a class="headerlink" href="#module-upwork.namespaces" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="upwork.namespaces.Namespace">
+<em class="property">class </em><tt class="descclassname">upwork.namespaces.</tt><tt class="descname">Namespace</tt><big>(</big><em>client</em><big>)</big><a class="headerlink" href="#upwork.namespaces.Namespace" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <tt class="xref py py-class docutils literal"><span class="pre">object</span></tt></p>
+<p>A special &#8216;proxy&#8217; class to keep API methods organized.</p>
+<p>Use this class for defining new routers.</p>
+<dl class="attribute">
+<dt id="upwork.namespaces.Namespace.api_url">
+<tt class="descname">api_url</tt><em class="property"> = None</em><a class="headerlink" href="#upwork.namespaces.Namespace.api_url" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="upwork.namespaces.Namespace.base_url">
+<tt class="descname">base_url</tt><em class="property"> = 'https://www.upwork.com/api/'</em><a class="headerlink" href="#upwork.namespaces.Namespace.base_url" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="upwork.namespaces.Namespace.delete">
+<tt class="descname">delete</tt><big>(</big><em>url</em>, <em>data=None</em><big>)</big><a class="headerlink" href="#upwork.namespaces.Namespace.delete" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="upwork.namespaces.Namespace.full_url">
+<tt class="descname">full_url</tt><big>(</big><em>url</em><big>)</big><a class="headerlink" href="#upwork.namespaces.Namespace.full_url" title="Permalink to this definition">¶</a></dt>
+<dd><p>Gets relative URL of API method and returns a full URL</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="upwork.namespaces.Namespace.get">
+<tt class="descname">get</tt><big>(</big><em>url</em>, <em>data=None</em><big>)</big><a class="headerlink" href="#upwork.namespaces.Namespace.get" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="upwork.namespaces.Namespace.post">
+<tt class="descname">post</tt><big>(</big><em>url</em>, <em>data=None</em><big>)</big><a class="headerlink" href="#upwork.namespaces.Namespace.post" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="upwork.namespaces.Namespace.put">
+<tt class="descname">put</tt><big>(</big><em>url</em>, <em>data=None</em><big>)</big><a class="headerlink" href="#upwork.namespaces.Namespace.put" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="upwork.namespaces.Namespace.version">
+<tt class="descname">version</tt><em class="property"> = 1</em><a class="headerlink" href="#upwork.namespaces.Namespace.version" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="upwork.namespaces.GdsNamespace">
+<em class="property">class </em><tt class="descclassname">upwork.namespaces.</tt><tt class="descname">GdsNamespace</tt><big>(</big><em>client</em><big>)</big><a class="headerlink" href="#upwork.namespaces.GdsNamespace" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#upwork.namespaces.Namespace" title="upwork.namespaces.Namespace"><tt class="xref py py-class docutils literal"><span class="pre">upwork.namespaces.Namespace</span></tt></a></p>
+<p>Gds API only allows GET requests.</p>
+<dl class="attribute">
+<dt id="upwork.namespaces.GdsNamespace.base_url">
+<tt class="descname">base_url</tt><em class="property"> = 'https://www.upwork.com/gds/'</em><a class="headerlink" href="#upwork.namespaces.GdsNamespace.base_url" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="upwork.namespaces.GdsNamespace.delete">
+<tt class="descname">delete</tt><big>(</big><em>url</em>, <em>data=None</em><big>)</big><a class="headerlink" href="#upwork.namespaces.GdsNamespace.delete" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="upwork.namespaces.GdsNamespace.post">
+<tt class="descname">post</tt><big>(</big><em>url</em>, <em>data=None</em><big>)</big><a class="headerlink" href="#upwork.namespaces.GdsNamespace.post" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="upwork.namespaces.GdsNamespace.put">
+<tt class="descname">put</tt><big>(</big><em>url</em>, <em>data=None</em><big>)</big><a class="headerlink" href="#upwork.namespaces.GdsNamespace.put" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-upwork.oauth">
+<span id="upwork-oauth-module"></span><h2>upwork.oauth module<a class="headerlink" href="#module-upwork.oauth" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="upwork.oauth.OAuth">
+<em class="property">class </em><tt class="descclassname">upwork.oauth.</tt><tt class="descname">OAuth</tt><big>(</big><em>client</em><big>)</big><a class="headerlink" href="#upwork.oauth.OAuth" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#upwork.namespaces.Namespace" title="upwork.namespaces.Namespace"><tt class="xref py py-class docutils literal"><span class="pre">upwork.namespaces.Namespace</span></tt></a></p>
+<p>Authorization router.</p>
+<p>Has methods for retrieving access tokens and
+<a class="reference internal" href="#upwork.oauth.OAuth.get_info" title="upwork.oauth.OAuth.get_info"><tt class="xref py py-meth docutils literal"><span class="pre">get_info()</span></tt></a> method for
+checking you&#8217;re authorized successfully and ready to work with API.</p>
+<dl class="attribute">
+<dt id="upwork.oauth.OAuth.access_token_url">
+<tt class="descname">access_token_url</tt><em class="property"> = 'https://www.upwork.com/api/auth/v1/oauth/token/access'</em><a class="headerlink" href="#upwork.oauth.OAuth.access_token_url" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="upwork.oauth.OAuth.api_url">
+<tt class="descname">api_url</tt><em class="property"> = 'auth/'</em><a class="headerlink" href="#upwork.oauth.OAuth.api_url" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="upwork.oauth.OAuth.authorize_url">
+<tt class="descname">authorize_url</tt><em class="property"> = 'https://www.upwork.com/services/api/auth'</em><a class="headerlink" href="#upwork.oauth.OAuth.authorize_url" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="upwork.oauth.OAuth.get_access_token">
+<tt class="descname">get_access_token</tt><big>(</big><em>verifier</em><big>)</big><a class="headerlink" href="#upwork.oauth.OAuth.get_access_token" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns access token and access token secret.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="upwork.oauth.OAuth.get_authorize_url">
+<tt class="descname">get_authorize_url</tt><big>(</big><em>callback_url=None</em><big>)</big><a class="headerlink" href="#upwork.oauth.OAuth.get_authorize_url" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns authentication URL to be used in a browser.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="upwork.oauth.OAuth.get_info">
+<tt class="descname">get_info</tt><big>(</big><big>)</big><a class="headerlink" href="#upwork.oauth.OAuth.get_info" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get a detailed info about current authnticated user         and some data from his profile.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="upwork.oauth.OAuth.get_oauth_consumer">
+<tt class="descname">get_oauth_consumer</tt><big>(</big><big>)</big><a class="headerlink" href="#upwork.oauth.OAuth.get_oauth_consumer" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns OAuth consumer object.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="upwork.oauth.OAuth.get_oauth_params">
+<tt class="descname">get_oauth_params</tt><big>(</big><em>url</em>, <em>key</em>, <em>secret</em>, <em>data=None</em>, <em>method='GET'</em>, <em>to_header=False</em>, <em>to_dict=False</em><big>)</big><a class="headerlink" href="#upwork.oauth.OAuth.get_oauth_params" title="Permalink to this definition">¶</a></dt>
+<dd><p>Converts a mapping object to signed url query.</p>
+<dl class="docutils">
+<dt><em>Parameters:</em></dt>
+<dd><table class="first last docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">url:</th><td class="field-body">Target url</td>
+</tr>
+<tr class="field-even field"><th class="field-name">key:</th><td class="field-body">Public API key</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">secret:</th><td class="field-body">Public API key secret</td>
+</tr>
+<tr class="field-even field"><th class="field-name">data:</th><td class="field-body">Dictionary with data parameters</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">method:</th><td class="field-body">Mehtod to be called, default is <tt class="docutils literal"><span class="pre">GET</span></tt></td>
+</tr>
+<tr class="field-even field"><th class="field-name">to_header:</th><td class="field-body">If <tt class="docutils literal"><span class="pre">True</span></tt>, data will be encoded as auth
+headers</td>
+</tr>
+</tbody>
+</table>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="upwork.oauth.OAuth.get_request_token">
+<tt class="descname">get_request_token</tt><big>(</big><big>)</big><a class="headerlink" href="#upwork.oauth.OAuth.get_request_token" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns request token and request token secret.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="upwork.oauth.OAuth.request_token_url">
+<tt class="descname">request_token_url</tt><em class="property"> = 'https://www.upwork.com/api/auth/v1/oauth/token/request'</em><a class="headerlink" href="#upwork.oauth.OAuth.request_token_url" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="upwork.oauth.OAuth.version">
+<tt class="descname">version</tt><em class="property"> = 1</em><a class="headerlink" href="#upwork.oauth.OAuth.version" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-upwork.utils">
+<span id="upwork-utils-module"></span><h2>upwork.utils module<a class="headerlink" href="#module-upwork.utils" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="upwork.utils.Q">
+<em class="property">class </em><tt class="descclassname">upwork.utils.</tt><tt class="descname">Q</tt><big>(</big><em>arg1</em>, <em>operator=None</em>, <em>arg2=None</em><big>)</big><a class="headerlink" href="#upwork.utils.Q" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <tt class="xref py py-class docutils literal"><span class="pre">object</span></tt></p>
+<p>Simple GDS query constructor.</p>
+<p>Used to costruct <a class="reference internal" href="#upwork.utils.Query" title="upwork.utils.Query"><tt class="xref py py-class docutils literal"><span class="pre">upwork.utils.Query</span></tt></a>.</p>
+<dl class="method">
+<dt id="upwork.utils.Q.arg_to_string">
+<tt class="descname">arg_to_string</tt><big>(</big><em>arg</em><big>)</big><a class="headerlink" href="#upwork.utils.Q.arg_to_string" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="upwork.utils.Query">
+<em class="property">class </em><tt class="descclassname">upwork.utils.</tt><tt class="descname">Query</tt><big>(</big><em>select</em>, <em>where=None</em>, <em>order_by=None</em><big>)</big><a class="headerlink" href="#upwork.utils.Query" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <tt class="xref py py-class docutils literal"><span class="pre">object</span></tt></p>
+<p>Simple GDS query.</p>
+<p><em>Example:</em>:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">client</span><span class="o">.</span><span class="n">timereport</span><span class="o">.</span><span class="n">get_provider_report</span><span class="p">(</span><span class="s">&#39;user1&#39;</span><span class="p">,</span>
+    <span class="n">upwork</span><span class="o">.</span><span class="n">utils</span><span class="o">.</span><span class="n">Query</span><span class="p">(</span><span class="n">select</span><span class="o">=</span><span class="n">upwork</span><span class="o">.</span><span class="n">utils</span><span class="o">.</span><span class="n">Query</span><span class="o">.</span><span class="n">DEFAULT_TIMEREPORT_FIELDS</span><span class="p">,</span>
+                      <span class="n">where</span><span class="o">=</span><span class="p">(</span><span class="n">upwork</span><span class="o">.</span><span class="n">utils</span><span class="o">.</span><span class="n">Q</span><span class="p">(</span><span class="s">&#39;worked_on&#39;</span><span class="p">)</span> <span class="o">&lt;=</span> <span class="n">date</span><span class="o">.</span><span class="n">today</span><span class="p">())</span> <span class="o">&amp;</span>
+                      <span class="p">(</span><span class="n">upwork</span><span class="o">.</span><span class="n">utils</span><span class="o">.</span><span class="n">Q</span><span class="p">(</span><span class="s">&#39;worked_on&#39;</span><span class="p">)</span> <span class="o">&gt;</span> <span class="s">&#39;2010-05-01&#39;</span><span class="p">)))</span>
+</pre></div>
+</div>
+<dl class="attribute">
+<dt id="upwork.utils.Query.DEFAULT_FINREPORT_FIELDS">
+<tt class="descname">DEFAULT_FINREPORT_FIELDS</tt><em class="property"> = ['reference', 'date', 'buyer_company__id', 'buyer_company_name', 'buyer_team__id', 'buyer_team_name', 'provider_company__id', 'provider_company_name', 'provider_team__id', 'provider_team_name', 'provider__id', 'provider_name', 'type', 'subtype', 'amount']</em><a class="headerlink" href="#upwork.utils.Query.DEFAULT_FINREPORT_FIELDS" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="upwork.utils.Query.DEFAULT_TIMEREPORT_FIELDS">
+<tt class="descname">DEFAULT_TIMEREPORT_FIELDS</tt><em class="property"> = ['worked_on', 'team_id', 'team_name', 'task', 'memo', 'hours']</em><a class="headerlink" href="#upwork.utils.Query.DEFAULT_TIMEREPORT_FIELDS" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="upwork.utils.Table">
+<em class="property">class </em><tt class="descclassname">upwork.utils.</tt><tt class="descname">Table</tt><big>(</big><em>data</em><big>)</big><a class="headerlink" href="#upwork.utils.Table" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <tt class="xref py py-class docutils literal"><span class="pre">object</span></tt></p>
+<p>A helper class to access cryptic GDS response as a list of dictionaries.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="upwork.utils.assert_parameter">
+<tt class="descclassname">upwork.utils.</tt><tt class="descname">assert_parameter</tt><big>(</big><em>parameter_name</em>, <em>value</em>, <em>options_list</em><big>)</big><a class="headerlink" href="#upwork.utils.assert_parameter" title="Permalink to this definition">¶</a></dt>
+<dd><p>Raise an exception if parameter&#8217;s value not in options list.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="upwork.utils.decimal_default">
+<tt class="descclassname">upwork.utils.</tt><tt class="descname">decimal_default</tt><big>(</big><em>obj</em><big>)</big><a class="headerlink" href="#upwork.utils.decimal_default" title="Permalink to this definition">¶</a></dt>
+<dd><p>JSON serialization of Decimal.</p>
+<dl class="docutils">
+<dt><em>Usage:</em></dt>
+<dd><tt class="docutils literal"><span class="pre">json.dumps(data,</span> <span class="pre">default=decimal_default)</span></tt></dd>
+</dl>
+<p>Converts decimal to string.</p>
+</dd></dl>
+
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="upwork.routers.html" title="upwork.routers package"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="../reference_docs.html" title="Reference Documentation: Classes and Methods"
+             >previous</a> |</li>
+        <li><a href="../index.html">python-upwork 1.0.0 documentation</a> &raquo;</li>
+          <li><a href="../reference_docs.html" >Reference Documentation: Classes and Methods</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright 2010-2013, upwork.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.3.
+    </div>
+  </body>
+</html>

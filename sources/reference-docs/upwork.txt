@@ -1,0 +1,76 @@
+upwork package
+==============
+
+Module contents
+---------------
+
+.. automodule:: upwork
+    :members:
+    :undoc-members:
+    :show-inheritance:
+
+Subpackages
+-----------
+
+.. toctree::
+
+    upwork.routers
+
+Submodules
+----------
+
+upwork.client module
+--------------------
+
+.. automodule:: upwork.client
+    :members:
+    :undoc-members:
+    :show-inheritance:
+
+upwork.config module
+--------------------
+
+.. automodule:: upwork.config
+    :members:
+    :undoc-members:
+    :show-inheritance:
+
+upwork.exceptions module
+------------------------
+
+.. automodule:: upwork.exceptions
+    :members:
+    :undoc-members:
+    :show-inheritance:
+
+upwork.http module
+------------------
+
+.. automodule:: upwork.http
+    :members:
+    :undoc-members:
+    :show-inheritance:
+
+upwork.namespaces module
+------------------------
+
+.. automodule:: upwork.namespaces
+    :members:
+    :undoc-members:
+    :show-inheritance:
+
+upwork.oauth module
+-------------------
+
+.. automodule:: upwork.oauth
+    :members:
+    :undoc-members:
+    :show-inheritance:
+
+upwork.utils module
+-------------------
+
+.. automodule:: upwork.utils
+    :members:
+    :undoc-members:
+    :show-inheritance:
