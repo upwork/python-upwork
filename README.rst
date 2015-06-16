@@ -17,17 +17,16 @@ All rights reserved.
 ============================
 Python bindings to Upwork API
 ============================
-
 This is a Python bindings for Public Upwork API https://developers.upwork.com/
 Using the API you can build apps that will help you:
 
-* Mangage your distributed team
+* Manage your distributed team
 * Search for contractors and jobs
 * Send bulk invitations to interview and make offers
 * Send bulk messages to your team
 * Retrieve Time & Financial information for your company, team and contractors
 
-API is the best way to comunicate between apps.
+API is the best way to communicate between apps.
 
 
 Requirements
@@ -36,6 +35,7 @@ httplib2==0.9
 oauth2==1.5.211
 urllib3==1.10
 httplib2.system-ca-certs-locater==0.1.1
+
 
 Installation
 ============
@@ -47,7 +47,7 @@ All the dependencies will be automatically installed as well.
 
 SSL Certificates Note
 =====================
-We recomend to install a package ``httplib2.system_ca_certs_locater`` (it is installed by default during ``python_upwork`` installation)::
+We recommend to install a package ``httplib2.system_ca_certs_locater`` (it is installed by default during ``python_upwork`` installation)::
 
     pip install pbr httplib2.system_ca_certs_locater
 
@@ -59,13 +59,13 @@ If you want to use your own certificates, put the following code during initiali
 
 
 
-Quickstart
-==========
+Quick start
+============
 First, you need to create API key for authorization here:
 https://www.upwork.com/services/api/keys
 
 Installing **Ipython** interactive shell is very useful for playing
-with the API, it has autocomplete, history, displays docstring help if you add '?'
+with the API, it has auto complete, history, displays docstring help if you add '?'
 to the end of variable/function/class/method and many other nice things.
 So we greatly encourage you to install it: ``pip install ipython``
 
@@ -84,6 +84,6 @@ Useful Links
 
 * `Git repo <http://github.com/upwork/python-upwork>`_
 * `Issues <http://github.com/upwork/python-upwork/issues>`_
-* `Documentation <http://upwork.github.com/python-upwork/>`_
+* `Documentation <http://upwork.github.io/python-upwork>`_
 * `Mailing list <http://groups.google.com/group/python-upwork>`_
 * `Facebook group <http://www.facebook.com/group.php?gid=136364403050710>`_
