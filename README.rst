@@ -17,8 +17,8 @@ All rights reserved.
 ============================
 Python bindings to Upwork API
 ============================
-This is a Python bindings for Public Upwork API https://developers.upwork.com/
-Using the API you can build apps that will help you:
+These are Python bindings for Upwork Public API https://developers.upwork.com/
+You can use the API to build apps that will help you:
 
 * Manage your distributed team
 * Search for contractors and jobs
@@ -26,7 +26,7 @@ Using the API you can build apps that will help you:
 * Send bulk messages to your team
 * Retrieve Time & Financial information for your company, team and contractors
 
-API is the best way to communicate between apps.
+The API is the best way to communicate between apps.
 
 
 Requirements
@@ -47,13 +47,13 @@ All the dependencies will be automatically installed as well.
 
 SSL Certificates Note
 =====================
-We recommend to install a package ``httplib2.system_ca_certs_locater`` (it is installed by default during ``python_upwork`` installation)::
+We recommend installing the package ``httplib2.system_ca_certs_locater`` (it is installed by default during ``python_upwork`` installation)::
 
     pip install pbr httplib2.system_ca_certs_locater
 
 It will force ``httplib2`` to use the OS's certificates file.
 
-If you want to use your own certificates, put the following code during initialization::
+If you want to use your own certificates, introduce the following code during initialization::
 
     os.environ['HTTPLIB_CA_CERTS_PATH'] = '/path/to/my/ca_certs.txt'
 
@@ -61,19 +61,19 @@ If you want to use your own certificates, put the following code during initiali
 
 Quick start
 ============
-First, you need to create API key for authorization here:
+First, you need to create an API key for the authorization process here:
 https://www.upwork.com/services/api/keys
 
-Installing **Ipython** interactive shell is very useful for playing
-with the API, it has auto complete, history, displays docstring help if you add '?'
-to the end of variable/function/class/method and many other nice things.
-So we greatly encourage you to install it: ``pip install ipython``
+Installing **Ipython** interactive shell is very useful for working
+with the API. It offers features such as auto complete, history and docstring help display
+if you add '?' to the end of the variable/function/class/method among other interesting functionalities.
+So we really encourage you to install this shell: ``pip install ipython``
 
 To get started, look at the docs http://upwork.github.io/python-upwork/how_to.html
 and also look at the ``examples/`` folder to see examples how to
 obtain oauth access tokens for web application and desktop application.
 
-Also threre's a list of opensource projects using ``python-upwork``:
+Also, threre's a list of opensource projects using ``python-upwork``:
 
 * Upwork Meter https://github.com/kipanshi/upwork_meter
 * Upwork Graphs https://github.com/demalexx/upwork-graphs
