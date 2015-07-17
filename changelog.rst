@@ -5,6 +5,13 @@
 Changelog
 ***************
 
+.. _1.0.1:
+
+Version 1.0.1
+-------------
+* Added new API call - :py:meth:`Get Workdays by Company <upwork.routers.team.Team_V2.get_workdays_by_company>`.
+* Added new API call - :py:meth:`Get Workdays by Contract <upwork.routers.team.Team_V2.get_workdays_by_contract>`.
+
 .. _1.0.0:
 
 Version 1.0.0
