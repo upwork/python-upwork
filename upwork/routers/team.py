@@ -220,6 +220,76 @@ class Team_V2(Namespace):
 
         return snapshots
 
+    def get_workdays_by_company(self, company_id, from_date, till_date, tz=None):
+        """
+        Retrieve workdays by company
+
+        *Parameters:*
+          :company_id:  The Company ID.
+
+          :from_date:   The target start date in `yyyymmdd` format.
+
+          :end_date:    The target end date in `yyyymmdd` format.
+
+          :tz:          (optional) Time zone to use. Possible values:
+                          * 'mine' (default)
+                          * 'user'
+                          * 'gmt'
+
+        """
+        url = 'workdays/companies/{0}/{1},{2}'.format(company_id, from_date, till_date)
+
+        data = {}
+
+        if tz:
+            assert_parameter('tz', tz, self.TZ_CHOICES)
+            data['tz'] = tz
+
+        result = self.get(url, data)
+        if 'error' in result:
+            return result
+
+        workdays = result.get('workdays', data)
+        if not isinstance(workdays, list):
+            workdays = {}
+
+        return workdays
+
+    def get_workdays_by_contract(self, contract_id, from_date, till_date, tz=None):
+        """
+        Retrieve workdays by contract
+
+        *Parameters:*
+          :contract_id: The Contract ID.
+
+          :from_date:   The target start date in `yyyymmdd` format.
+
+          :end_date:    The target end date in `yyyymmdd` format.
+
+          :tz:          (optional) Time zone to use. Possible values:
+                          * 'mine' (default)
+                          * 'user'
+                          * 'gmt'
+
+        """
+        url = 'workdays/contracts/{0}/{1},{2}'.format(contract_id, from_date, till_date)
+
+        data = {}
+
+        if tz:
+            assert_parameter('tz', tz, self.TZ_CHOICES)
+            data['tz'] = tz
+
+        result = self.get(url, data)
+        if 'error' in result:
+            return result
+
+        workdays = result.get('workdays', data)
+        if not isinstance(workdays, list):
+            workdays = {}
+
+        return workdays
+
     def get_workdiaries_by_contract(self, contract_id, date, tz=None):
         """
         Retrieve workdiary snapshots by contract

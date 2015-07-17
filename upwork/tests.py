@@ -387,6 +387,12 @@ def test_team():
     eq_(te_v2.get_workdiaries_by_contract(1, 1), (teamrooms_dict['snapshots']['user'],
         [teamrooms_dict['snapshots']['snapshot']]))
 
+    #test get_workdays
+    eq_(te_v2.get_workdays_by_company(1, 1, 1), {})
+
+    #test get_workdays_by_contract
+    eq_(te_v2.get_workdays_by_contract(1, 1, 1), {})
+
     #test get_snapshot_by_contract
     eq_(te_v2.get_snapshot_by_contract(1), {'status':'private'})
 
