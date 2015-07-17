@@ -25,8 +25,8 @@
     <script type="text/javascript" src="static/doctools.js"></script>
     <link rel="top" title="python-upwork 1.0.0 documentation" href="index.html" /> 
   </head>
-  <body>
-    <div class="related">
+  <body role="document">
+    <div class="related" role="navigation" aria-label="related navigation">
       <h3>Navigation</h3>
       <ul>
         <li class="right" style="margin-right: 10px">
@@ -35,10 +35,10 @@
         <li class="right" >
           <a href="py-modindex.html" title="Python Module Index"
              >modules</a> |</li>
-        <li><a href="index.html">python-upwork 1.0.0 documentation</a> &raquo;</li> 
+        <li class="nav-item nav-item-0"><a href="index.html">python-upwork 1.0.0 documentation</a> &raquo;</li> 
       </ul>
     </div>
-      <div class="sphinxsidebar">
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
         <div class="sphinxsidebarwrapper">
   <h3><a href="index.html">Table Of Contents</a></h3>
   <ul>
@@ -46,18 +46,20 @@
 <li><a class="reference internal" href="#requirements">Requirements</a></li>
 <li><a class="reference internal" href="#installation">Installation</a></li>
 <li><a class="reference internal" href="#ssl-certificates-note">SSL Certificates Note</a></li>
-<li><a class="reference internal" href="#quickstart">Quickstart</a></li>
+<li><a class="reference internal" href="#quick-start">Quick start</a></li>
 <li><a class="reference internal" href="#useful-links">Useful Links</a></li>
 </ul>
 </li>
 </ul>
 
-  <h3>This Page</h3>
-  <ul class="this-page-menu">
-    <li><a href="sources/README.txt"
-           rel="nofollow">Show Source</a></li>
-  </ul>
-<div id="searchbox" style="display: none">
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="sources/README.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
   <h3>Quick search</h3>
     <form class="search" action="search.html" method="get">
       <input type="text" name="q" />
@@ -76,25 +78,25 @@
     <div class="document">
       <div class="documentwrapper">
         <div class="bodywrapper">
-          <div class="body">
+          <div class="body" role="main">
             
   <a class="reference external image-reference" href="http://www.apache.org/licenses/LICENSE-2.0.html"><img alt="License" src="http://img.shields.io/packagist/l/upwork/php-upwork.svg" /></a>
 <a class="reference external image-reference" href="http://badge.fury.io/py/python-upwork"><img alt="PyPI version" src="https://badge.fury.io/py/python-upwork.svg" /></a>
 <a class="reference external image-reference" href="http://travis-ci.org/upwork/php-upwork"><img alt="Build status" src="https://travis-ci.org/upwork/php-upwork.svg" /></a>
-<p>Copyright (c) 2010-2014, Upwork <a class="reference external" href="http://www.upwork.com">http://www.upwork.com</a>
+<p>Copyright (c) 2010-2015, Upwork <a class="reference external" href="http://www.upwork.com">http://www.upwork.com</a>
 All rights reserved.</p>
 <div class="section" id="python-bindings-to-upwork-api">
 <h1>Python bindings to Upwork API<a class="headerlink" href="#python-bindings-to-upwork-api" title="Permalink to this headline">¶</a></h1>
-<p>This is a Python bindings for Public Upwork API <a class="reference external" href="https://developers.upwork.com/">https://developers.upwork.com/</a>
-Using the API you can build apps that will help you:</p>
+<p>These are Python bindings for Upwork Public API <a class="reference external" href="https://developers.upwork.com/">https://developers.upwork.com/</a>
+You can use the API to build apps that will help you:</p>
 <ul class="simple">
-<li>Mangage your distributed team</li>
+<li>Manage your distributed team</li>
 <li>Search for contractors and jobs</li>
 <li>Send bulk invitations to interview and make offers</li>
 <li>Send bulk messages to your team</li>
 <li>Retrieve Time &amp; Financial information for your company, team and contractors</li>
 </ul>
-<p>API is the best way to comunicate between apps.</p>
+<p>The API is the best way to communicate between apps.</p>
 <div class="section" id="requirements">
 <h2>Requirements<a class="headerlink" href="#requirements" title="Permalink to this headline">¶</a></h2>
 <p>httplib2==0.9
@@ -110,28 +112,28 @@ httplib2.system-ca-certs-locater==0.1.1</p>
 </div>
 <div class="section" id="ssl-certificates-note">
 <h2>SSL Certificates Note<a class="headerlink" href="#ssl-certificates-note" title="Permalink to this headline">¶</a></h2>
-<p>We recomend to install a package <tt class="docutils literal"><span class="pre">httplib2.system_ca_certs_locater</span></tt> (it is installed by default during <tt class="docutils literal"><span class="pre">python_upwork</span></tt> installation):</p>
+<p>We recommend installing the package <code class="docutils literal"><span class="pre">httplib2.system_ca_certs_locater</span></code> (it is installed by default during <code class="docutils literal"><span class="pre">python_upwork</span></code> installation):</p>
 <div class="highlight-python"><div class="highlight"><pre>pip install pbr httplib2.system_ca_certs_locater
 </pre></div>
 </div>
-<p>It will force <tt class="docutils literal"><span class="pre">httplib2</span></tt> to use the OS&#8217;s certificates file.</p>
-<p>If you want to use your own certificates, put the following code during initialization:</p>
+<p>It will force <code class="docutils literal"><span class="pre">httplib2</span></code> to use the OS&#8217;s certificates file.</p>
+<p>If you want to use your own certificates, introduce the following code during initialization:</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="p">[</span><span class="s">&#39;HTTPLIB_CA_CERTS_PATH&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s">&#39;/path/to/my/ca_certs.txt&#39;</span>
 </pre></div>
 </div>
 </div>
-<div class="section" id="quickstart">
-<h2>Quickstart<a class="headerlink" href="#quickstart" title="Permalink to this headline">¶</a></h2>
-<p>First, you need to create API key for authorization here:
+<div class="section" id="quick-start">
+<h2>Quick start<a class="headerlink" href="#quick-start" title="Permalink to this headline">¶</a></h2>
+<p>First, you need to create an API key for the authorization process here:
 <a class="reference external" href="https://www.upwork.com/services/api/keys">https://www.upwork.com/services/api/keys</a></p>
-<p>Installing <strong>Ipython</strong> interactive shell is very useful for playing
-with the API, it has autocomplete, history, displays docstring help if you add &#8216;?&#8217;
-to the end of variable/function/class/method and many other nice things.
-So we greatly encourage you to install it: <tt class="docutils literal"><span class="pre">pip</span> <span class="pre">install</span> <span class="pre">ipython</span></tt></p>
+<p>Installing <strong>Ipython</strong> interactive shell is very useful for working
+with the API. It offers features such as auto complete, history and docstring help display
+if you add &#8216;?&#8217; to the end of the variable/function/class/method among other interesting functionalities.
+So we really encourage you to install this shell: <code class="docutils literal"><span class="pre">pip</span> <span class="pre">install</span> <span class="pre">ipython</span></code></p>
 <p>To get started, look at the docs <a class="reference external" href="http://upwork.github.io/python-upwork/how_to.html">http://upwork.github.io/python-upwork/how_to.html</a>
-and also look at the <tt class="docutils literal"><span class="pre">examples/</span></tt> folder to see examples how to
+and also look at the <code class="docutils literal"><span class="pre">examples/</span></code> folder to see examples how to
 obtain oauth access tokens for web application and desktop application.</p>
-<p>Also threre&#8217;s a list of opensource projects using <tt class="docutils literal"><span class="pre">python-upwork</span></tt>:</p>
+<p>Also, threre&#8217;s a list of opensource projects using <code class="docutils literal"><span class="pre">python-upwork</span></code>:</p>
 <ul class="simple">
 <li>Upwork Meter <a class="reference external" href="https://github.com/kipanshi/upwork_meter">https://github.com/kipanshi/upwork_meter</a></li>
 <li>Upwork Graphs <a class="reference external" href="https://github.com/demalexx/upwork-graphs">https://github.com/demalexx/upwork-graphs</a></li>
@@ -142,7 +144,7 @@ obtain oauth access tokens for web application and desktop application.</p>
 <ul class="simple">
 <li><a class="reference external" href="http://github.com/upwork/python-upwork">Git repo</a></li>
 <li><a class="reference external" href="http://github.com/upwork/python-upwork/issues">Issues</a></li>
-<li><a class="reference external" href="http://upwork.github.com/python-upwork/">Documentation</a></li>
+<li><a class="reference external" href="http://upwork.github.io/python-upwork">Documentation</a></li>
 <li><a class="reference external" href="http://groups.google.com/group/python-upwork">Mailing list</a></li>
 <li><a class="reference external" href="http://www.facebook.com/group.php?gid=136364403050710">Facebook group</a></li>
 </ul>
@@ -155,7 +157,7 @@ obtain oauth access tokens for web application and desktop application.</p>
       </div>
       <div class="clearer"></div>
     </div>
-    <div class="related">
+    <div class="related" role="navigation" aria-label="related navigation">
       <h3>Navigation</h3>
       <ul>
         <li class="right" style="margin-right: 10px">
@@ -164,12 +166,12 @@ obtain oauth access tokens for web application and desktop application.</p>
         <li class="right" >
           <a href="py-modindex.html" title="Python Module Index"
              >modules</a> |</li>
-        <li><a href="index.html">python-upwork 1.0.0 documentation</a> &raquo;</li> 
+        <li class="nav-item nav-item-0"><a href="index.html">python-upwork 1.0.0 documentation</a> &raquo;</li> 
       </ul>
     </div>
-    <div class="footer">
+    <div class="footer" role="contentinfo">
         &copy; Copyright 2010-2013, upwork.
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.3.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.3.1.
     </div>
   </body>
 </html>
