@@ -6,6 +6,10 @@
    :target: http://badge.fury.io/py/python-upwork
    :alt: PyPI version
 
+.. image:: https://img.shields.io/github/release/upwork/python-upwork.svg
+   :target: https://github.com/upwork/perl-upwork/releases
+   :alt: GitHub release
+
 .. image:: https://travis-ci.org/upwork/php-upwork.svg
    :target: http://travis-ci.org/upwork/php-upwork
    :alt: Build status
