@@ -2,7 +2,6 @@
 # python-upwork version 0.5
 # (C) 2010-2015 Upwork
 
-import os
 import time
 import urlparse
 import urllib

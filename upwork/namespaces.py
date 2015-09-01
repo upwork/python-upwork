@@ -1,7 +1,7 @@
 # Python bindings to Upwork API
 # python-upwork version 0.5
 # (C) 2010-2015 Upwork
-import os
+import urlparse
 from .config import BASE_URL
 
 __all__ = ['Namespace', 'GdsNamespace']
