@@ -27,10 +27,9 @@ class OAuth(Namespace):
     api_url = 'auth/'
     version = 1
 
-    request_token_url = os.path.join(
-        BASE_URL, 'api/auth/v1/oauth/token/request')
-    authorize_url = os.path.join(BASE_URL, 'services/api/auth')
-    access_token_url = os.path.join(BASE_URL, 'api/auth/v1/oauth/token/access')
+    request_token_url = urlparse.urljoin(BASE_URL, '/api/auth/v1/oauth/token/request')
+    authorize_url = urlparse.urljoin(BASE_URL, '/services/api/auth')
+    access_token_url = urlparse.urljoin(BASE_URL, '/api/auth/v1/oauth/token/access')
 
     def get_oauth_params(self, url, key, secret, data=None, method='GET',
                          to_header=False, to_dict=False):
