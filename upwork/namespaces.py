@@ -15,7 +15,7 @@ class Namespace(object):
 
     """
 
-    base_url = os.path.join(BASE_URL, 'api/')
+    base_url = urlparse.urljoin(BASE_URL, 'api/')
     api_url = None
     version = 1
 
@@ -45,7 +45,7 @@ class Namespace(object):
 
 class GdsNamespace(Namespace):
     """Gds API only allows GET requests."""
-    base_url = os.path.join(BASE_URL, 'gds/')
+    base_url = urlparse.urljoin(BASE_URL, 'gds/')
 
     def post(self, url, data=None):
         return None
