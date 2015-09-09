@@ -89,7 +89,7 @@ class Client(object):
                                   Whether to attach
                                   :py:mod:`upwork.routers.job` router
 
-      :timeout:                   (optional, default ``60 secs``)
+      :timeout:                   (optional, default ``3 secs``)
                                   Socket operations timeout.
     """
 
@@ -97,7 +97,7 @@ class Client(object):
                  oauth_access_token=None, oauth_access_token_secret=None,
                  fmt='json', finreport=True, hr=True, mc=True,
                  offers=True, provider=True, task=True, team=True,
-                 timereport=True, job=True, timeout=60):
+                 timereport=True, job=True, timeout=3):
 
         self.public_key = public_key
         self.secret_key = secret_key
