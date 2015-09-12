@@ -38,12 +38,7 @@ class Task(Namespace):
 
         url = 'tasks/companies/{0}/teams/{1}/tasks'.format(company_id,
                                                            team_id)
-        result = self.get(url, data=data)
-
-        try:
-            return result["tasks"] or []
-        except KeyError:
-            return result
+        return self.get(url, data=data)
 
     def get_company_tasks(self, company_id,
                           paging_offset=0, paging_count=1000):
