@@ -1222,7 +1222,7 @@ def patched_urlopen_task(*args, **kwargs):
 def test_get_team_tasks():
     task = get_client().task
 
-    assert task.get_team_tasks(1, 1) == task_dict['tasks'], \
+    assert task.get_team_tasks(1, 1) == task_dict, \
         task.get_team_tasks(1, 1)
 
 
@@ -1230,7 +1230,7 @@ def test_get_team_tasks():
 def test_get_company_tasks():
     task = get_client().task
 
-    assert task.get_company_tasks(1) == task_dict['tasks'], \
+    assert task.get_company_tasks(1) == task_dict, \
         task.get_company_tasks(1)
 
 

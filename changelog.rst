@@ -5,6 +5,14 @@
 Changelog
 ***************
 
+.. _1.0.2:
+
+Version 1.0.2
+-------------
+* os.path.join changed to urlparse.urljoin for supporting Windows systems
+* added timeout option for configuring oauth client
+* added paging support for Activities API, (!) note: the changes are not backward compatible for get_team_tasks and get_company_tasks
+
 .. _1.0.1:
 
 Version 1.0.1
