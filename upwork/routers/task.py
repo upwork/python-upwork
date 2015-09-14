@@ -12,7 +12,8 @@ class Task(Namespace):
     api_url = 'otask/'
     version = 1
 
-    def get_team_tasks(self, company_id, team_id):
+    def get_team_tasks(self, company_id, team_id,
+                       paging_offset=0, paging_count=1000):
         """
         Retrieve a list of all activities in the given team.
 
@@ -29,15 +30,18 @@ class Task(Namespace):
                           from ``hr.get_team()`` API call.
 
         """
+        if paging_offset or not paging_count == 1000:
+            data = {'page': '{0};{1}'.format(paging_offset,
+                                             paging_count)}
+        else:
+            data = {}
+
         url = 'tasks/companies/{0}/teams/{1}/tasks'.format(company_id,
                                                            team_id)
-        result = self.get(url)
-        try:
-            return result["tasks"] or []
-        except KeyError:
-            return result
+        return self.get(url, data=data)
 
-    def get_company_tasks(self, company_id):
+    def get_company_tasks(self, company_id,
+                          paging_offset=0, paging_count=1000):
         """
         Retrieve a list of all activities within a company.
         It is equivalent to the ``get_team_tasks`` so that
@@ -54,7 +58,12 @@ class Task(Namespace):
                           from ``hr.get_team()`` API call.
         """
         team_id = company_id
-        return self.get_team_tasks(company_id, team_id)
+        return self.get_team_tasks(
+            company_id,
+            team_id,
+            paging_offset=paging_offset,
+            paging_count=paging_count
+        )
 
     def _encode_task_codes(self, task_codes):
         if isinstance(task_codes, (list, tuple)):
