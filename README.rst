@@ -19,7 +19,7 @@ All rights reserved.
 
 
 ============================
-Python bindings to Upwork API
+Upwork API
 ============================
 These are Python bindings for Upwork Public API https://developers.upwork.com/
 You can use the API to build apps that will help you:

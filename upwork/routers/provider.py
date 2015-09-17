@@ -266,15 +266,6 @@ class Provider(Namespace):
         result = self.get(url, data=data)
         return result.get('jobs', result)
 
-    def get_categories_metadata(self):
-        """
-        Returns list of all categories available for job/contractor profiles.
-
-        """
-        url = 'metadata/categories'
-        result = self.get(url)
-        return result.get('categories', result)
-
     def get_skills_metadata(self):
         """
         Returns list of all skills available for job/contractor profiles.
@@ -371,12 +362,12 @@ class Provider_V2(Namespace):
            :tests_top_30:   Search for contractors that are
                             in top 30 for test
 
-           :category:    Search for category of contractor profile.
+           :category2:   Search for category of contractor profile.
                          Use
                          :py:meth:`~upwork.routers.provider.Provider.get_categories_metadata`
                          to get available categories
 
-           :subcategory: Search for subcategory of contractor profile.
+           :subcategory2: Search for subcategory of contractor profile.
                          Use
                          :py:meth:`~upwork.routers.provider.Provider.get_categories_metadata`
                          to get available categories
@@ -485,11 +476,11 @@ class Provider_V2(Namespace):
            :tests_top_30:    Search for jobs that require provider to be
                              in top 30 for test
 
-           :category:    Search for category of job profile
+           :category2:   Search for category of job profile
                          See full list here:
                          https://developers.upwork.com/?lang=python#metadata_list-categories
 
-           :subcategory: Search for subcategory of job profile
+           :subcategory2: Search for subcategory of job profile
                          See full list here:
                          https://developers.upwork.com/?lang=python#metadata_list-categories
                          in the table "Changes"

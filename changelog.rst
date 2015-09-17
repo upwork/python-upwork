@@ -5,6 +5,12 @@
 Changelog
 ***************
 
+.. _1.1.0:
+
+Version 1.1.0
+-------------
+* Get Categories (V1) is now fully depricated
+
 .. _1.0.2:
 
 Version 1.0.2
