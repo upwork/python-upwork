@@ -1181,7 +1181,6 @@ def test_get_financial_entities_provider():
 
 task_dict = {u'tasks': 'task1'}
 
-
 def patched_urlopen_task(*args, **kwargs):
     return MicroMock(data=json.dumps(task_dict), status=200)
 
@@ -1258,6 +1257,13 @@ def test_put_company_task():
                                  all_in_company=True) == task_dict, \
         task.put_company_task(1, 1, '1', 'ttt', engagements=[1, 2],
                               all_in_company=True)
+
+@patch('urllib3.PoolManager.urlopen', patched_urlopen_task)
+def test_assign_to_engagement():
+    task_v2 = get_client().task_v2
+
+    assert task_v2.assign_to_engagement(1, "1;2") == task_dict, \
+        task_v2.task_assign_to_engagement(1, "1;2")
 
 
 @patch('urllib3.PoolManager.urlopen', patched_urlopen_task)

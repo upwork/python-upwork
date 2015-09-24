@@ -425,6 +425,12 @@ class Task_V2(Namespace):
     api_url = 'tasks/'
     version = 2
 
+    def _encode_task_codes(self, task_codes):
+        if isinstance(task_codes, (list, tuple)):
+            return ';'.join(str(c) for c in task_codes)
+        else:
+            return str(task_codes)
+
     def list_engagement_activities(self, engagement_ref):
         """
         Retrieve list of all activities assigned to the specific engagement.
@@ -439,4 +445,29 @@ class Task_V2(Namespace):
         """
         url = 'tasks/contracts/{0}'.format(engagement_ref)
         result = self.get(url)
+        return result
+
+    def assign_to_engagement(self, engagement_ref, task_codes=None):
+        """Assign a list of activities to the existing engagement.
+
+        Note that activity will appear in contractor's team client
+        only if his engagement is assigned to the activity and
+        activities are activated for the ongoing contract.
+
+        This will override assigned engagements for the given activities.
+        For example, if you pass empty ``task_codes`` or just omit
+        this parameter, contractor engagement will be unassigned from
+        all Activities.
+
+        *Parameters:*
+          :engagement_ref: Engagement ID that will be assigned/unassigned
+                           to the given list of Activities.
+
+          :task_codes:    Task codes (must be a list, even of 1 item)
+
+        """
+        task_codes = self._encode_task_codes(task_codes)
+        url = 'tasks/contracts/{0}'.format(engagement_ref)
+        data = {'tasks': task_codes}
+        result = self.put(url, data)
         return result
