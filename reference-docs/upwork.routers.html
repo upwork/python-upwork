@@ -6,24 +6,24 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>upwork.routers package &mdash; python-upwork 1.0.1 documentation</title>
+    <title>upwork.routers package &mdash; python-upwork 1.1.0 documentation</title>
     
-    <link rel="stylesheet" href="../static/sphinxdoc.css" type="text/css" />
-    <link rel="stylesheet" href="../static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/sphinxdoc.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
     
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../',
-        VERSION:     '1.0.1',
+        VERSION:     '1.1.0',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
       };
     </script>
-    <script type="text/javascript" src="../static/jquery.js"></script>
-    <script type="text/javascript" src="../static/underscore.js"></script>
-    <script type="text/javascript" src="../static/doctools.js"></script>
-    <link rel="top" title="python-upwork 1.0.1 documentation" href="../index.html" />
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <link rel="top" title="python-upwork 1.1.0 documentation" href="../index.html" />
     <link rel="up" title="upwork package" href="upwork.html" />
     <link rel="next" title="Changelog" href="../changelog.html" />
     <link rel="prev" title="upwork package" href="upwork.html" /> 
@@ -44,7 +44,7 @@
         <li class="right" >
           <a href="upwork.html" title="upwork package"
              accesskey="P">previous</a> |</li>
-        <li class="nav-item nav-item-0"><a href="../index.html">python-upwork 1.0.1 documentation</a> &raquo;</li>
+        <li class="nav-item nav-item-0"><a href="../index.html">python-upwork 1.1.0 documentation</a> &raquo;</li>
           <li class="nav-item nav-item-1"><a href="../reference_docs.html" >Reference Documentation: Classes and Methods</a> &raquo;</li>
           <li class="nav-item nav-item-2"><a href="upwork.html" accesskey="U">upwork package</a> &raquo;</li> 
       </ul>
@@ -78,7 +78,7 @@
   <div role="note" aria-label="source link">
     <h3>This Page</h3>
     <ul class="this-page-menu">
-      <li><a href="../sources/reference-docs/upwork.routers.txt"
+      <li><a href="../_sources/reference-docs/upwork.routers.txt"
             rel="nofollow">Show Source</a></li>
     </ul>
    </div>
@@ -2381,12 +2381,6 @@ The default value is <code class="docutils literal"><span class="pre">1</span></
 <dd></dd></dl>
 
 <dl class="method">
-<dt id="upwork.routers.provider.Provider.get_categories_metadata">
-<code class="descname">get_categories_metadata</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#upwork.routers.provider.Provider.get_categories_metadata" title="Permalink to this definition">¶</a></dt>
-<dd><p>Returns list of all categories available for job/contractor profiles.</p>
-</dd></dl>
-
-<dl class="method">
 <dt id="upwork.routers.provider.Provider.get_provider">
 <code class="descname">get_provider</code><span class="sig-paren">(</span><em>provider_ciphertext</em><span class="sig-paren">)</span><a class="headerlink" href="#upwork.routers.provider.Provider.get_provider" title="Permalink to this definition">¶</a></dt>
 <dd><p>Retrieve an exhaustive list of attributes associated with the         referenced provider.</p>
@@ -2462,320 +2456,6 @@ The default value is <code class="docutils literal"><span class="pre">1</span></
 <dt id="upwork.routers.provider.Provider.get_tests_metadata">
 <code class="descname">get_tests_metadata</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#upwork.routers.provider.Provider.get_tests_metadata" title="Permalink to this definition">¶</a></dt>
 <dd><p>Returns list of all available tests at Upwork.</p>
-</dd></dl>
-
-<dl class="method">
-<dt id="upwork.routers.provider.Provider.search_jobs">
-<code class="descname">search_jobs</code><span class="sig-paren">(</span><em>data=None</em>, <em>page_offset=0</em>, <em>page_size=20</em>, <em>order_by=None</em><span class="sig-paren">)</span><a class="headerlink" href="#upwork.routers.provider.Provider.search_jobs" title="Permalink to this definition">¶</a></dt>
-<dd><p>Search Upwork jobs.
-NOTE: This call will be deprecated in favor to API V2
-<a class="reference internal" href="#upwork.routers.provider.Provider_V2.search_jobs" title="upwork.routers.provider.Provider_V2.search_jobs"><code class="xref py py-meth docutils literal"><span class="pre">search_jobs()</span></code></a></p>
-<dl class="docutils">
-<dt><em>Parameters:</em></dt>
-<dd><table class="first last docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">data:</th><td class="field-body"><dl class="first docutils">
-<dt>A dict of the following parameters</dt>
-<dd><p class="first last">(all parameters are optional):</p>
-</dd>
-</dl>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">q:</th><td class="field-body"><p class="first">Query, e.g. &#8220;python&#8221;,
-search the text of the job&#8217;s description.</p>
-</td>
-</tr>
-<tr class="field-even field"><th class="field-name">c1:</th><td class="field-body"><p class="first">Category name. Use Metadata API to get the list
-of currently valid categories</p>
-</td>
-</tr>
-<tr class="field-odd field"><th class="field-name">c2:</th><td class="field-body"><p class="first">Subcategory, which is related to category (c1),
-please use c2[] to specify a couple subcategories</p>
-</td>
-</tr>
-<tr class="field-even field"><th class="field-name">qs:</th><td class="field-body"><p class="first">Skill required, single value or comma-separated list</p>
-</td>
-</tr>
-<tr class="field-odd field"><th class="field-name">fb:</th><td class="field-body"><p class="first">Feedback (adjusted score). Limit your search to buyers
-with at least a score of the number passed in this
-parameter. Use the following values to filter by score:</p>
-<blockquote>
-<div><ul class="simple">
-<li>none = &#8216;0&#8217;</li>
-<li>1 - 4 Scores = &#8216;10&#8217;</li>
-<li>4 - 4.5 Scores = &#8216;40&#8217;</li>
-<li>4.5 - 5 Scores = &#8216;45&#8217;</li>
-<li>5.0 Scores = &#8216;50&#8217;</li>
-</ul>
-</div></blockquote>
-</td>
-</tr>
-<tr class="field-even field"><th class="field-name">min:</th><td class="field-body"><p class="first">Minimum budget</p>
-</td>
-</tr>
-<tr class="field-odd field"><th class="field-name">max:</th><td class="field-body"><p class="first">Maximum budget</p>
-</td>
-</tr>
-<tr class="field-even field"><th class="field-name">t:</th><td class="field-body"><p class="first">Job type. Possible values are:
-* &#8216;Hourly&#8217;
-* &#8216;Fixed&#8217;</p>
-</td>
-</tr>
-<tr class="field-odd field"><th class="field-name">wl:</th><td class="field-body"><p class="first">Hours per week. This parameter can only be used when
-searching Hourly jobs. These numbers are
-a little arbitrary, so follow the following parameters
-in order to successfully use this parameter:</p>
-<blockquote>
-<div><ul class="simple">
-<li>As Needed &lt; 10 Hours/Week = &#8216;0&#8217;</li>
-<li>Part Time: 10-30 hrs/week = &#8216;20&#8217;</li>
-<li>Full Time: 30+ hrs/week = &#8216;40&#8217;</li>
-</ul>
-</div></blockquote>
-</td>
-</tr>
-<tr class="field-even field"><th class="field-name">dur:</th><td class="field-body"><p class="first">Engagement duration. This parameter can only be used
-when searching Hourly jobs. These numbers are
-a little arbitrary, so follow the following parameters
-in order to successfully use this parameter:</p>
-<blockquote>
-<div><ul class="simple">
-<li>Ongoing / More than 6 months = &#8216;26&#8217;</li>
-<li>3 to 6 months = &#8216;13&#8217;</li>
-<li>1 to 3 months = &#8216;4&#8217;</li>
-<li>Less than 1 month = &#8216;1&#8217;</li>
-<li>Less than 1 week = &#8216;0&#8217;</li>
-</ul>
-</div></blockquote>
-</td>
-</tr>
-<tr class="field-odd field"><th class="field-name">dp:</th><td class="field-body"><p class="first">Date posted. Search jobs posted according to timeframe.
-Use the following parameters to specify a timeframe:</p>
-<blockquote>
-<div><ul class="simple">
-<li>Any Timeframe  = empty</li>
-<li>Last 24 hours = &#8216;0&#8217;</li>
-<li>Last 24 hours - 3 Days = &#8216;1&#8217;</li>
-<li>Last 3-7 Days = &#8216;3&#8217;</li>
-<li>Last 7-14 Days - &#8216;7&#8217;</li>
-<li>Last 14-30 Days - &#8216;14&#8217;</li>
-<li>&gt; 30 Days - &#8216;30&#8217;</li>
-</ul>
-</div></blockquote>
-</td>
-</tr>
-<tr class="field-even field"><th class="field-name">st:</th><td class="field-body"><p class="first">Job status. Search for Canceled jobs, In Progress Jobs
-and Completed Jobs. Defaults to Open Jobs.
-Possible values:</p>
-<blockquote>
-<div><ul class="simple">
-<li>Open Jobs = &#8216;Open&#8217;</li>
-<li>Jobs in Progress = &#8216;In Progress&#8217;</li>
-<li>Completed Jobs = &#8216;Completed&#8217;</li>
-<li>Canceled Jobs = &#8216;Cancelled&#8217;</li>
-</ul>
-</div></blockquote>
-</td>
-</tr>
-<tr class="field-odd field"><th class="field-name">tba:</th><td class="field-body"><p class="first">Total billed assignments.
-Limit your search to buyers who completed at least
-this number of paid assignments. Possible values:</p>
-<blockquote>
-<div><ul class="simple">
-<li>none = &#8216;0&#8217;</li>
-<li>has 1-5 billed assignments = &#8216;1&#8217;</li>
-<li>has 5-10 billed assignments = &#8216;5&#8217;</li>
-<li>has &gt;10 billed assignments = &#8216;10&#8217;</li>
-</ul>
-</div></blockquote>
-</td>
-</tr>
-<tr class="field-even field"><th class="field-name">gr:</th><td class="field-body"><p class="first">Preferred group. Limits your search to buyers
-in a particular group</p>
-</td>
-</tr>
-<tr class="field-odd field"><th class="field-name">to:</th><td class="field-body"><p class="first last">Search the provider profile title text only.
-Possible values: &#8216;yes&#8217;|&#8217;no&#8217;, by default &#8216;no&#8217;.</p>
-</td>
-</tr>
-</tbody>
-</table>
-</td>
-</tr>
-<tr class="field-even field"><th class="field-name">page_offset:</th><td class="field-body"><p class="first">Start of page (number of results to skip) (optional)</p>
-</td>
-</tr>
-<tr class="field-odd field"><th class="field-name">page_size:</th><td class="field-body"><p class="first">Page size (number of results) (optional: default 20)</p>
-</td>
-</tr>
-<tr class="field-even field"><th class="field-name">order_by:</th><td class="field-body"><p class="first last">Sorting, in format
-<code class="docutils literal"><span class="pre">$field_name1;$field_name2;..$field_nameN;AD...A</span></code>,
-where A means &#8216;Ascending&#8217;, D means &#8216;Descending&#8217;,
-e.g. <code class="docutils literal"><span class="pre">date_posted;A</span></code></p>
-</td>
-</tr>
-</tbody>
-</table>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="method">
-<dt id="upwork.routers.provider.Provider.search_providers">
-<code class="descname">search_providers</code><span class="sig-paren">(</span><em>data=None</em>, <em>page_offset=0</em>, <em>page_size=20</em>, <em>order_by=None</em><span class="sig-paren">)</span><a class="headerlink" href="#upwork.routers.provider.Provider.search_providers" title="Permalink to this definition">¶</a></dt>
-<dd><p>Search Upwork providers.
-NOTE: This call will be deprecated in favor to API V2
-<a class="reference internal" href="#upwork.routers.provider.Provider_V2.search_providers" title="upwork.routers.provider.Provider_V2.search_providers"><code class="xref py py-meth docutils literal"><span class="pre">search_providers()</span></code></a></p>
-<dl class="docutils">
-<dt><em>Parameters:</em></dt>
-<dd><table class="first last docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">data:</th><td class="field-body"><dl class="first docutils">
-<dt>A dict of the following parameters</dt>
-<dd><p class="first last">(all parameters are optional):</p>
-</dd>
-</dl>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">q:</th><td class="field-body"><p class="first">Search query, e.g. &#8220;python&#8221;.
-Any text that appears in a provider&#8217;s profile</p>
-</td>
-</tr>
-<tr class="field-even field"><th class="field-name">c1:</th><td class="field-body"><p class="first">Category name.
-Use
-<a class="reference internal" href="#upwork.routers.provider.Provider.get_categories_metadata" title="upwork.routers.provider.Provider.get_categories_metadata"><code class="xref py py-meth docutils literal"><span class="pre">get_categories_metadata()</span></code></a>
-to get the list of currently valid categories</p>
-</td>
-</tr>
-<tr class="field-odd field"><th class="field-name">c2:</th><td class="field-body"><p class="first">Subcategory, which is related to category (c1),
-please use c2[] to specify a couple subcategories.
-Use
-<a class="reference internal" href="#upwork.routers.provider.Provider.get_categories_metadata" title="upwork.routers.provider.Provider.get_categories_metadata"><code class="xref py py-meth docutils literal"><span class="pre">get_categories_metadata()</span></code></a>
-to get available subcategories.</p>
-</td>
-</tr>
-<tr class="field-even field"><th class="field-name">fb:</th><td class="field-body"><p class="first">Feedback (adjusted score),
-e.g. <code class="docutils literal"><span class="pre">fb='2.0</span> <span class="pre">-</span> <span class="pre">2.9</span> <span class="pre">Stars'</span></code>
-This searches for providers who have an adjusted
-feedback score equal or greater (up to 5) than the number
-passed in this parameter (decimals are okay).</p>
-</td>
-</tr>
-<tr class="field-odd field"><th class="field-name">hrs:</th><td class="field-body"><p class="first">(Total hours) This searches for providers who have
-a total number of hours equal or greater to the number
-passed in this parameter.</p>
-</td>
-</tr>
-<tr class="field-even field"><th class="field-name">ir:</th><td class="field-body"><p class="first">This boolean parameter is used in combination with
-the total hours worked parameter, and searches providers
-who have worked within the last six months.
-&#8220;Yes&#8221; or &#8220;No&#8221; are the only valid searches.
-Omitting this will default to &#8216;No&#8217;.</p>
-</td>
-</tr>
-<tr class="field-odd field"><th class="field-name">min:</th><td class="field-body"><p class="first">The provider&#8217;s minimum rate they have charged
-in the past. Excludes providers with a public rate
-less than this amount.</p>
-</td>
-</tr>
-<tr class="field-even field"><th class="field-name">max:</th><td class="field-body"><p class="first">The provider&#8217;s maximum rate they have charged
-in the past. Excludes providers with a public rate
-greater than this amount.</p>
-</td>
-</tr>
-<tr class="field-odd field"><th class="field-name">loc:</th><td class="field-body"><p class="first">Country region. Limit your searches to a
-specific country region. Possible values:</p>
-<blockquote>
-<div><ul class="simple">
-<li>&#8216;Australasia&#8217;</li>
-<li>&#8216;East Asia&#8217;</li>
-<li>&#8216;Eastern Europe&#8217;</li>
-<li>&#8216;North America&#8217;</li>
-<li>&#8216;South Asia&#8217;</li>
-<li>&#8216;Western Europe&#8217;</li>
-<li>&#8216;Misc&#8217;</li>
-</ul>
-</div></blockquote>
-</td>
-</tr>
-<tr class="field-even field"><th class="field-name">pt:</th><td class="field-body"><p class="first">Provider type. Limit your search to independent
-or affiliate providers. Possible values:</p>
-<blockquote>
-<div><ul class="simple">
-<li>&#8216;Individual&#8217;</li>
-<li>&#8216;Affiliated&#8217;</li>
-</ul>
-</div></blockquote>
-<p>By default both types are returned.</p>
-</td>
-</tr>
-<tr class="field-odd field"><th class="field-name">last:</th><td class="field-body"><p class="first">Limit your search to providers who were active
-after the date passed in this parameter.
-Dates should be formatted like: 07-13-2009</p>
-</td>
-</tr>
-<tr class="field-even field"><th class="field-name">test:</th><td class="field-body"><p class="first">Limit your search to providers who have passed
-a specific test (based on the test id).
-You can get available tests using
-<a class="reference internal" href="#upwork.routers.provider.Provider.get_tests_metadata" title="upwork.routers.provider.Provider.get_tests_metadata"><code class="xref py py-meth docutils literal"><span class="pre">get_tests_metadata()</span></code></a>
-Only singe value is allowed.</p>
-</td>
-</tr>
-<tr class="field-odd field"><th class="field-name">port:</th><td class="field-body"><p class="first">Limit your search to providers who have at least
-this number of portfolio items.</p>
-</td>
-</tr>
-<tr class="field-even field"><th class="field-name">rdy:</th><td class="field-body"><p class="first">Only return Upwork ready providers.</p>
-</td>
-</tr>
-<tr class="field-odd field"><th class="field-name">eng:</th><td class="field-body"><p class="first">Limit your results to providers who have
-at least the rating passed in the parameter.
-Only the following English levels are available
-(no decimals): [1,2,3,4,5]</p>
-</td>
-</tr>
-<tr class="field-even field"><th class="field-name">ag:</th><td class="field-body"><p class="first">Agency reference. Limit your search to a specific agency.</p>
-</td>
-</tr>
-<tr class="field-odd field"><th class="field-name">to:</th><td class="field-body"><p class="first">Search the provider profile title text only.
-Possible values: &#8216;yes&#8217;|&#8217;no&#8217;, by default &#8216;no&#8217;.</p>
-</td>
-</tr>
-<tr class="field-even field"><th class="field-name">g:</th><td class="field-body"><p class="first">Limit your search to a specific group.</p>
-</td>
-</tr>
-<tr class="field-odd field"><th class="field-name">skills:</th><td class="field-body"><p class="first last">Required skills. A name of the skill.
-Multiple values are allowed as a comma-separated string</p>
-</td>
-</tr>
-</tbody>
-</table>
-</td>
-</tr>
-<tr class="field-even field"><th class="field-name">page_offset:</th><td class="field-body"><p class="first">Start of page (number of results to skip) (optional)</p>
-</td>
-</tr>
-<tr class="field-odd field"><th class="field-name">page_size:</th><td class="field-body"><p class="first">Page size (number of results) (optional: default 20)</p>
-</td>
-</tr>
-<tr class="field-even field"><th class="field-name">order_by:</th><td class="field-body"><p class="first last">Sorting, in format
-$field_name1;$field_name2;..$field_nameN;AD...A,
-where &#8216;A&#8217; means ascending, &#8216;D&#8217; means descending,
-the only available sort field as of now is &#8220;Date Created&#8221;</p>
-</td>
-</tr>
-</tbody>
-</table>
-</dd>
-</dl>
 </dd></dl>
 
 <dl class="attribute">
@@ -2854,12 +2534,12 @@ in top 10 for test</p>
 in top 30 for test</p>
 </td>
 </tr>
-<tr class="field-even field"><th class="field-name">category:</th><td class="field-body"><p class="first">Search for category of job profile
+<tr class="field-even field"><th class="field-name">category2:</th><td class="field-body"><p class="first">Search for category of job profile
 See full list here:
 <a class="reference external" href="https://developers.upwork.com/?lang=python#metadata_list-categories">https://developers.upwork.com/?lang=python#metadata_list-categories</a></p>
 </td>
 </tr>
-<tr class="field-odd field"><th class="field-name">subcategory:</th><td class="field-body"><p class="first">Search for subcategory of job profile
+<tr class="field-odd field"><th class="field-name">subcategory2:</th><td class="field-body"><p class="first">Search for subcategory of job profile
 See full list here:
 <a class="reference external" href="https://developers.upwork.com/?lang=python#metadata_list-categories">https://developers.upwork.com/?lang=python#metadata_list-categories</a>
 in the table &#8220;Changes&#8221;</p>
@@ -3035,15 +2715,15 @@ in top 10 for test</p>
 in top 30 for test</p>
 </td>
 </tr>
-<tr class="field-even field"><th class="field-name">category:</th><td class="field-body"><p class="first">Search for category of contractor profile.
+<tr class="field-even field"><th class="field-name">category2:</th><td class="field-body"><p class="first">Search for category of contractor profile.
 Use
-<a class="reference internal" href="#upwork.routers.provider.Provider.get_categories_metadata" title="upwork.routers.provider.Provider.get_categories_metadata"><code class="xref py py-meth docutils literal"><span class="pre">get_categories_metadata()</span></code></a>
+<code class="xref py py-meth docutils literal"><span class="pre">get_categories_metadata()</span></code>
 to get available categories</p>
 </td>
 </tr>
-<tr class="field-odd field"><th class="field-name">subcategory:</th><td class="field-body"><p class="first">Search for subcategory of contractor profile.
+<tr class="field-odd field"><th class="field-name">subcategory2:</th><td class="field-body"><p class="first">Search for subcategory of contractor profile.
 Use
-<a class="reference internal" href="#upwork.routers.provider.Provider.get_categories_metadata" title="upwork.routers.provider.Provider.get_categories_metadata"><code class="xref py py-meth docutils literal"><span class="pre">get_categories_metadata()</span></code></a>
+<code class="xref py py-meth docutils literal"><span class="pre">get_categories_metadata()</span></code>
 to get available categories</p>
 </td>
 </tr>
@@ -3273,7 +2953,7 @@ from <code class="docutils literal"><span class="pre">hr.get_team()</span></code
 
 <dl class="method">
 <dt id="upwork.routers.task.Task.get_company_tasks">
-<code class="descname">get_company_tasks</code><span class="sig-paren">(</span><em>company_id</em><span class="sig-paren">)</span><a class="headerlink" href="#upwork.routers.task.Task.get_company_tasks" title="Permalink to this definition">¶</a></dt>
+<code class="descname">get_company_tasks</code><span class="sig-paren">(</span><em>company_id</em>, <em>paging_offset=0</em>, <em>paging_count=1000</em><span class="sig-paren">)</span><a class="headerlink" href="#upwork.routers.task.Task.get_company_tasks" title="Permalink to this definition">¶</a></dt>
 <dd><p>Retrieve a list of all activities within a company.
 It is equivalent to the <code class="docutils literal"><span class="pre">get_team_tasks</span></code> so that
 <code class="docutils literal"><span class="pre">team_id</span></code> is equal to <code class="docutils literal"><span class="pre">company_id</span></code> which is parent
@@ -3322,7 +3002,7 @@ from <code class="docutils literal"><span class="pre">hr.get_team()</span></code
 
 <dl class="method">
 <dt id="upwork.routers.task.Task.get_team_tasks">
-<code class="descname">get_team_tasks</code><span class="sig-paren">(</span><em>company_id</em>, <em>team_id</em><span class="sig-paren">)</span><a class="headerlink" href="#upwork.routers.task.Task.get_team_tasks" title="Permalink to this definition">¶</a></dt>
+<code class="descname">get_team_tasks</code><span class="sig-paren">(</span><em>company_id</em>, <em>team_id</em>, <em>paging_offset=0</em>, <em>paging_count=1000</em><span class="sig-paren">)</span><a class="headerlink" href="#upwork.routers.task.Task.get_team_tasks" title="Permalink to this definition">¶</a></dt>
 <dd><p>Retrieve a list of all activities in the given team.</p>
 <p>This call returns both archived and active activities.</p>
 <p>The user authenticated must have been granted the appropriate
@@ -3599,6 +3279,34 @@ Example:
 <dt id="upwork.routers.task.Task_V2.api_url">
 <code class="descname">api_url</code><em class="property"> = 'tasks/'</em><a class="headerlink" href="#upwork.routers.task.Task_V2.api_url" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
+
+<dl class="method">
+<dt id="upwork.routers.task.Task_V2.assign_to_engagement">
+<code class="descname">assign_to_engagement</code><span class="sig-paren">(</span><em>engagement_ref</em>, <em>task_codes=None</em><span class="sig-paren">)</span><a class="headerlink" href="#upwork.routers.task.Task_V2.assign_to_engagement" title="Permalink to this definition">¶</a></dt>
+<dd><p>Assign a list of activities to the existing engagement.</p>
+<p>Note that activity will appear in contractor&#8217;s team client
+only if his engagement is assigned to the activity and
+activities are activated for the ongoing contract.</p>
+<p>This will override assigned engagements for the given activities.
+For example, if you pass empty <code class="docutils literal"><span class="pre">task_codes</span></code> or just omit
+this parameter, contractor engagement will be unassigned from
+all Activities.</p>
+<dl class="docutils">
+<dt><em>Parameters:</em></dt>
+<dd><table class="first last docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">engagement_ref:</th><td class="field-body">Engagement ID that will be assigned/unassigned
+to the given list of Activities.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">task_codes:</th><td class="field-body">Task codes (must be a list, even of 1 item)</td>
+</tr>
+</tbody>
+</table>
+</dd>
+</dl>
+</dd></dl>
 
 <dl class="method">
 <dt id="upwork.routers.task.Task_V2.list_engagement_activities">
@@ -4191,7 +3899,7 @@ Default: <code class="docutils literal"><span class="pre">False</span></code></t
         <li class="right" >
           <a href="upwork.html" title="upwork package"
              >previous</a> |</li>
-        <li class="nav-item nav-item-0"><a href="../index.html">python-upwork 1.0.1 documentation</a> &raquo;</li>
+        <li class="nav-item nav-item-0"><a href="../index.html">python-upwork 1.1.0 documentation</a> &raquo;</li>
           <li class="nav-item nav-item-1"><a href="../reference_docs.html" >Reference Documentation: Classes and Methods</a> &raquo;</li>
           <li class="nav-item nav-item-2"><a href="upwork.html" >upwork package</a> &raquo;</li> 
       </ul>

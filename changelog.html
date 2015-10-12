@@ -6,24 +6,24 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>Changelog &mdash; python-upwork 1.0.1 documentation</title>
+    <title>Changelog &mdash; python-upwork 1.1.0 documentation</title>
     
-    <link rel="stylesheet" href="static/sphinxdoc.css" type="text/css" />
-    <link rel="stylesheet" href="static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="_static/sphinxdoc.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
     
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    './',
-        VERSION:     '1.0.1',
+        VERSION:     '1.1.0',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
       };
     </script>
-    <script type="text/javascript" src="static/jquery.js"></script>
-    <script type="text/javascript" src="static/underscore.js"></script>
-    <script type="text/javascript" src="static/doctools.js"></script>
-    <link rel="top" title="python-upwork 1.0.1 documentation" href="index.html" />
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="top" title="python-upwork 1.1.0 documentation" href="index.html" />
     <link rel="next" title="BSD license" href="license.html" />
     <link rel="prev" title="upwork.routers package" href="reference-docs/upwork.routers.html" /> 
   </head>
@@ -43,7 +43,7 @@
         <li class="right" >
           <a href="reference-docs/upwork.routers.html" title="upwork.routers package"
              accesskey="P">previous</a> |</li>
-        <li class="nav-item nav-item-0"><a href="index.html">python-upwork 1.0.1 documentation</a> &raquo;</li> 
+        <li class="nav-item nav-item-0"><a href="index.html">python-upwork 1.1.0 documentation</a> &raquo;</li> 
       </ul>
     </div>
       <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
@@ -51,6 +51,8 @@
   <h3><a href="index.html">Table Of Contents</a></h3>
   <ul>
 <li><a class="reference internal" href="#">Changelog</a><ul>
+<li><a class="reference internal" href="#version-1-1-0">Version 1.1.0</a></li>
+<li><a class="reference internal" href="#version-1-0-2">Version 1.0.2</a></li>
 <li><a class="reference internal" href="#version-1-0-1">Version 1.0.1</a></li>
 <li><a class="reference internal" href="#version-1-0-0">Version 1.0.0</a></li>
 <li><a class="reference internal" href="#version-0-5-8">Version 0.5.8</a></li>
@@ -81,7 +83,7 @@
   <div role="note" aria-label="source link">
     <h3>This Page</h3>
     <ul class="this-page-menu">
-      <li><a href="sources/changelog.txt"
+      <li><a href="_sources/changelog.txt"
             rel="nofollow">Show Source</a></li>
     </ul>
    </div>
@@ -108,21 +110,36 @@
             
   <div class="section" id="changelog">
 <span id="id1"></span><h1>Changelog<a class="headerlink" href="#changelog" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="version-1-1-0">
+<span id="id2"></span><h2>Version 1.1.0<a class="headerlink" href="#version-1-1-0" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li>Get Categories (V1) is now fully depricated</li>
+<li>Added new Activities API - <a class="reference internal" href="reference-docs/upwork.routers.html#upwork.routers.task.Task_V2.assign_to_engagement" title="upwork.routers.task.Task_V2.assign_to_engagement"><code class="xref py py-meth docutils literal"><span class="pre">Assign</span> <span class="pre">to</span> <span class="pre">specific</span> <span class="pre">engagement</span> <span class="pre">the</span> <span class="pre">list</span> <span class="pre">of</span> <span class="pre">activities</span></code></a>.</li>
+</ul>
+</div>
+<div class="section" id="version-1-0-2">
+<span id="id3"></span><h2>Version 1.0.2<a class="headerlink" href="#version-1-0-2" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li>os.path.join changed to urlparse.urljoin for supporting Windows systems</li>
+<li>added timeout option for configuring oauth client</li>
+<li>added paging support for Activities API, (!) note: the changes are not backward compatible for get_team_tasks and get_company_tasks</li>
+</ul>
+</div>
 <div class="section" id="version-1-0-1">
-<span id="id2"></span><h2>Version 1.0.1<a class="headerlink" href="#version-1-0-1" title="Permalink to this headline">¶</a></h2>
+<span id="id4"></span><h2>Version 1.0.1<a class="headerlink" href="#version-1-0-1" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
 <li>Added new API call - <a class="reference internal" href="reference-docs/upwork.routers.html#upwork.routers.team.Team_V2.get_workdays_by_company" title="upwork.routers.team.Team_V2.get_workdays_by_company"><code class="xref py py-meth docutils literal"><span class="pre">Get</span> <span class="pre">Workdays</span> <span class="pre">by</span> <span class="pre">Company</span></code></a>.</li>
 <li>Added new API call - <a class="reference internal" href="reference-docs/upwork.routers.html#upwork.routers.team.Team_V2.get_workdays_by_contract" title="upwork.routers.team.Team_V2.get_workdays_by_contract"><code class="xref py py-meth docutils literal"><span class="pre">Get</span> <span class="pre">Workdays</span> <span class="pre">by</span> <span class="pre">Contract</span></code></a>.</li>
 </ul>
 </div>
 <div class="section" id="version-1-0-0">
-<span id="id3"></span><h2>Version 1.0.0<a class="headerlink" href="#version-1-0-0" title="Permalink to this headline">¶</a></h2>
+<span id="id5"></span><h2>Version 1.0.0<a class="headerlink" href="#version-1-0-0" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
 <li>Rebranding, the library moved to <code class="docutils literal"><span class="pre">python-upwork</span></code></li>
 </ul>
 </div>
 <div class="section" id="version-0-5-8">
-<span id="id4"></span><h2>Version 0.5.8<a class="headerlink" href="#version-0-5-8" title="Permalink to this headline">¶</a></h2>
+<span id="id6"></span><h2>Version 0.5.8<a class="headerlink" href="#version-0-5-8" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
 <li>Added new API call - <code class="xref py py-meth docutils literal"><span class="pre">Get</span> <span class="pre">Snapshot</span> <span class="pre">by</span> <span class="pre">Contract</span></code>.</li>
 <li>Added new API call - <a class="reference internal" href="reference-docs/upwork.routers.html#upwork.routers.team.Team_V2.update_snapshot_by_contract" title="upwork.routers.team.Team_V2.update_snapshot_by_contract"><code class="xref py py-meth docutils literal"><span class="pre">Update</span> <span class="pre">Snapshot</span> <span class="pre">memo</span> <span class="pre">by</span> <span class="pre">Contract</span></code></a>.</li>
@@ -134,14 +151,14 @@
 </ul>
 </div>
 <div class="section" id="version-0-5-7">
-<span id="id5"></span><h2>Version 0.5.7<a class="headerlink" href="#version-0-5-7" title="Permalink to this headline">¶</a></h2>
+<span id="id7"></span><h2>Version 0.5.7<a class="headerlink" href="#version-0-5-7" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
 <li>Added new API call - <a class="reference internal" href="reference-docs/upwork.routers.html#upwork.routers.offers.Offers.accept_or_decline" title="upwork.routers.offers.Offers.accept_or_decline"><code class="xref py py-meth docutils literal"><span class="pre">Accept</span> <span class="pre">or</span> <span class="pre">decline</span> <span class="pre">an</span> <span class="pre">offer</span></code></a>.</li>
 <li>Added new conditionally required parameter <code class="docutils literal"><span class="pre">category2</span></code> to <a class="reference internal" href="reference-docs/upwork.routers.html#upwork.routers.hr.HR.post_job" title="upwork.routers.hr.HR.post_job"><code class="xref py py-meth docutils literal"><span class="pre">Post</span> <span class="pre">job</span></code></a> API.</li>
 </ul>
 </div>
 <div class="section" id="version-0-5-6">
-<span id="id6"></span><h2>Version 0.5.6<a class="headerlink" href="#version-0-5-6" title="Permalink to this headline">¶</a></h2>
+<span id="id8"></span><h2>Version 0.5.6<a class="headerlink" href="#version-0-5-6" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
 <li>Added new API call - <a class="reference internal" href="reference-docs/upwork.routers.html#upwork.routers.provider.Provider_V2.get_categories_metadata" title="upwork.routers.provider.Provider_V2.get_categories_metadata"><code class="xref py py-meth docutils literal"><span class="pre">List</span> <span class="pre">categories</span> <span class="pre">(v2)</span></code></a>.</li>
 <li>Added new API call - <a class="reference internal" href="reference-docs/upwork.routers.html#upwork.routers.team.Team_V2.get_workdiaries_by_contract" title="upwork.routers.team.Team_V2.get_workdiaries_by_contract"><code class="xref py py-meth docutils literal"><span class="pre">Get</span> <span class="pre">Work</span> <span class="pre">Diary</span> <span class="pre">by</span> <span class="pre">Contract</span></code></a>.</li>
@@ -152,16 +169,16 @@
 </ul>
 </div>
 <div class="section" id="version-0-5-5-1">
-<span id="id7"></span><h2>Version 0.5.5.1<a class="headerlink" href="#version-0-5-5-1" title="Permalink to this headline">¶</a></h2>
+<span id="id9"></span><h2>Version 0.5.5.1<a class="headerlink" href="#version-0-5-5-1" title="Permalink to this headline">¶</a></h2>
 <p>Minor maintenance release:</p>
 <ul class="simple">
-<li>Updated urllib3 requirements to <a href="#id8"><span class="problematic" id="id9">``</span></a>urllib3==1.10`</li>
+<li>Updated urllib3 requirements to <a href="#id10"><span class="problematic" id="id11">``</span></a>urllib3==1.10`</li>
 <li>Use fixed requirements in the <code class="docutils literal"><span class="pre">setup.py</span></code></li>
 <li>Add <code class="docutils literal"><span class="pre">httplib.system-ca-certs-locater</span></code> and update Readme</li>
 </ul>
 </div>
 <div class="section" id="version-0-5-5">
-<span id="id10"></span><h2>Version 0.5.5<a class="headerlink" href="#version-0-5-5" title="Permalink to this headline">¶</a></h2>
+<span id="id12"></span><h2>Version 0.5.5<a class="headerlink" href="#version-0-5-5" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
 <li>Added new API call - <a class="reference internal" href="reference-docs/upwork.routers.html#upwork.routers.hr.HR_V3.create_milestone" title="upwork.routers.hr.HR_V3.create_milestone"><code class="xref py py-meth docutils literal"><span class="pre">Create</span> <span class="pre">a</span> <span class="pre">new</span> <span class="pre">Milestone</span></code></a>.</li>
 <li>Added new API call - <a class="reference internal" href="reference-docs/upwork.routers.html#upwork.routers.hr.HR_V3.edit_milestone" title="upwork.routers.hr.HR_V3.edit_milestone"><code class="xref py py-meth docutils literal"><span class="pre">Edit</span> <span class="pre">the</span> <span class="pre">Milestone</span></code></a>.</li>
@@ -178,7 +195,7 @@ and will be removed in future releases.</li>
 </ul>
 </div>
 <div class="section" id="version-0-5-4">
-<span id="id11"></span><h2>Version 0.5.4<a class="headerlink" href="#version-0-5-4" title="Permalink to this headline">¶</a></h2>
+<span id="id13"></span><h2>Version 0.5.4<a class="headerlink" href="#version-0-5-4" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
 <li>Added new API call - <a class="reference internal" href="reference-docs/upwork.routers.html#upwork.routers.hr.HR.suspend_contract" title="upwork.routers.hr.HR.suspend_contract"><code class="xref py py-meth docutils literal"><span class="pre">Suspend</span> <span class="pre">Contract</span></code></a>.</li>
 <li>Added new API call - <a class="reference internal" href="reference-docs/upwork.routers.html#upwork.routers.hr.HR.restart_contract" title="upwork.routers.hr.HR.restart_contract"><code class="xref py py-meth docutils literal"><span class="pre">Restart</span> <span class="pre">Contract</span></code></a>.</li>
@@ -186,7 +203,7 @@ and will be removed in future releases.</li>
 </ul>
 </div>
 <div class="section" id="version-0-5-3">
-<span id="id12"></span><h2>Version 0.5.3<a class="headerlink" href="#version-0-5-3" title="Permalink to this headline">¶</a></h2>
+<span id="id14"></span><h2>Version 0.5.3<a class="headerlink" href="#version-0-5-3" title="Permalink to this headline">¶</a></h2>
 <ul>
 <li><dl class="first docutils">
 <dt>New API calls added:</dt>
@@ -205,7 +222,7 @@ and will be removed in future releases.</li>
 </ul>
 </div>
 <div class="section" id="version-0-5-2">
-<span id="id13"></span><h2>Version 0.5.2<a class="headerlink" href="#version-0-5-2" title="Permalink to this headline">¶</a></h2>
+<span id="id15"></span><h2>Version 0.5.2<a class="headerlink" href="#version-0-5-2" title="Permalink to this headline">¶</a></h2>
 <ul>
 <li><p class="first">Fixed engagements API call, so that you can call
 <code class="docutils literal"><span class="pre">client.hr.get_engagements()</span></code> without any parameter
@@ -242,14 +259,14 @@ use it on your own risk. It will be reworked in future.</li>
 </ul>
 </div>
 <div class="section" id="version-0-5-1">
-<span id="id14"></span><h2>Version 0.5.1<a class="headerlink" href="#version-0-5-1" title="Permalink to this headline">¶</a></h2>
+<span id="id16"></span><h2>Version 0.5.1<a class="headerlink" href="#version-0-5-1" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
 <li>Fixed bug preventing update (<code class="docutils literal"><span class="pre">PUT</span></code> method) for oTask codes that
 contained non-urlsafe characters, e.g. &#8220;space&#8221;, &#8220;colon&#8221;, etc.</li>
 </ul>
 </div>
 <div class="section" id="version-0-5">
-<span id="id15"></span><h2>Version 0.5<a class="headerlink" href="#version-0-5" title="Permalink to this headline">¶</a></h2>
+<span id="id17"></span><h2>Version 0.5<a class="headerlink" href="#version-0-5" title="Permalink to this headline">¶</a></h2>
 <p><em>October 2013</em></p>
 <p>Backwards incompatibility changes:</p>
 <ul class="simple">
@@ -282,7 +299,7 @@ method&#8217;s docstring to see comprehensive description</li>
 </ul>
 </div>
 <div class="section" id="version-0-4">
-<span id="id16"></span><h2>Version 0.4<a class="headerlink" href="#version-0-4" title="Permalink to this headline">¶</a></h2>
+<span id="id18"></span><h2>Version 0.4<a class="headerlink" href="#version-0-4" title="Permalink to this headline">¶</a></h2>
 <p><em>May 2011</em></p>
 <ul class="simple">
 <li><em>Incompatibility with previous release</em> Changed name of the otask router to the task</li>
@@ -299,7 +316,7 @@ method&#8217;s docstring to see comprehensive description</li>
 </ul>
 </div>
 <div class="section" id="version-0-2">
-<span id="id17"></span><h2>Version 0.2<a class="headerlink" href="#version-0-2" title="Permalink to this headline">¶</a></h2>
+<span id="id19"></span><h2>Version 0.2<a class="headerlink" href="#version-0-2" title="Permalink to this headline">¶</a></h2>
 <p><em>October 2010</em></p>
 <ul class="simple">
 <li>All helpers classes moved to the utils.py, added Table helper class</li>
@@ -307,7 +324,7 @@ method&#8217;s docstring to see comprehensive description</li>
 </ul>
 </div>
 <div class="section" id="version-0-1-2">
-<span id="id18"></span><h2>Version 0.1.2<a class="headerlink" href="#version-0-1-2" title="Permalink to this headline">¶</a></h2>
+<span id="id20"></span><h2>Version 0.1.2<a class="headerlink" href="#version-0-1-2" title="Permalink to this headline">¶</a></h2>
 <p><em>29 September 2010</em></p>
 <p>Bug fix release</p>
 <ul class="simple">
@@ -316,7 +333,7 @@ method&#8217;s docstring to see comprehensive description</li>
 </ul>
 </div>
 <div class="section" id="version-0-1-1">
-<span id="id19"></span><h2>Version 0.1.1<a class="headerlink" href="#version-0-1-1" title="Permalink to this headline">¶</a></h2>
+<span id="id21"></span><h2>Version 0.1.1<a class="headerlink" href="#version-0-1-1" title="Permalink to this headline">¶</a></h2>
 <p><em>15 July 2010</em></p>
 <p>Bug fix release</p>
 <ul class="simple">
@@ -325,7 +342,7 @@ method&#8217;s docstring to see comprehensive description</li>
 </ul>
 </div>
 <div class="section" id="version-0-1">
-<span id="id20"></span><h2>Version 0.1<a class="headerlink" href="#version-0-1" title="Permalink to this headline">¶</a></h2>
+<span id="id22"></span><h2>Version 0.1<a class="headerlink" href="#version-0-1" title="Permalink to this headline">¶</a></h2>
 <p><em>08 July 2010</em></p>
 <p>First public release</p>
 </div>
@@ -352,7 +369,7 @@ method&#8217;s docstring to see comprehensive description</li>
         <li class="right" >
           <a href="reference-docs/upwork.routers.html" title="upwork.routers package"
              >previous</a> |</li>
-        <li class="nav-item nav-item-0"><a href="index.html">python-upwork 1.0.1 documentation</a> &raquo;</li> 
+        <li class="nav-item nav-item-0"><a href="index.html">python-upwork 1.1.0 documentation</a> &raquo;</li> 
       </ul>
     </div>
     <div class="footer" role="contentinfo">
