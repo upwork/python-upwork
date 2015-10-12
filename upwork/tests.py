@@ -493,12 +493,12 @@ offers = {u'lister':
            {u'count': u'10', u'offset': u'0'}, u'sort': u''},
            u'offer': [offer, offer]}
 
-job = {u'subcategory': u'Development', u'reference': u'1',
+job = {u'subcategory2': u'Development', u'reference': u'1',
        u'buyer_company__name': u'Python community',
        u'job_type': u'fixed-price', u'created_time': u'000',
        u'created_by': u'test', u'duration': u'',
        u'last_candidacy_access_time': u'',
-       u'category': u'Web',
+       u'category2': u'Web',
        u'buyer_team__reference': u'169108', u'title': u'translation',
        u'buyer_company__reference': u'1', u'num_active_candidates': u'0',
        u'buyer_team__name': u'Python community 2', u'start_date': u'000',
@@ -715,21 +715,6 @@ def test_hr_restart_contract():
     assert result == hr_dict, result
 
 
-job_data = {
-    'buyer_team_reference': 111,
-    'title': 'Test job from API',
-    'job_type': 'hourly',
-    'description': 'this is test job, please do not apply to it',
-    'visibility': 'upwork',
-    'category': 'Web Development',
-    'subcategory': 'Other - Web Development',
-    'budget': 100,
-    'duration': 10,
-    'start_date': 'some start date',
-    'skills': ['Python', 'JS']
-}
-
-
 job_data2 = {
     'buyer_team_reference': 111,
     'title': 'Test job from API',
@@ -773,8 +758,8 @@ def patched_urlopen_job_data_parameters(self, method, url, **kwargs):
     post_dict.pop('oauth_nonce')
     eq_(
         dict(post_dict.items()),
-        {'category': ['Web Development'], 'buyer_team__reference': ['111'],
-         'subcategory': ['Other - Web Development'],
+        {'category2': ['Web Development'], 'buyer_team__reference': ['111'],
+         'subcategory2': ['Other - Web Development'],
          'title': ['Test job from API'],
          'skills': ['Python;JS'], 'job_type': ['hourly'],
          'oauth_consumer_key': ['public'],
@@ -786,12 +771,6 @@ def patched_urlopen_job_data_parameters(self, method, url, **kwargs):
          'start_date': ['some start date'],
          'description': ['this is test job, please do not apply to it']})
     return MicroMock(data='{"some":"data"}', status=200)
-
-
-@patch('urllib3.PoolManager.urlopen', patched_urlopen_job_data_parameters)
-def test_job_data_parameters():
-    hr = get_client().hr
-    hr.post_job(**job_data)
 
 
 @patch('urllib3.PoolManager.urlopen', patched_urlopen_job_data_parameters2)
@@ -868,17 +847,6 @@ def test_provider():
     #test get_provider_brief
     assert pr.get_provider_brief(1) == provider_dict['profile'], \
         pr.get_provider_brief(1)
-
-    #test search_providers
-    assert pr.search_providers(data={'a': 1}) == provider_dict['providers'], \
-        pr.search_providers(data={'a': 1})
-
-    #test search_jobs
-    assert pr.search_jobs(data={'a': 1}) == provider_dict['jobs'], \
-        pr.get_jobs(data={'a': 1})
-
-    result = pr.get_categories_metadata()
-    assert result == provider_dict['categories']
 
     result = pr.get_skills_metadata()
     assert result == provider_dict['skills']
@@ -1213,7 +1181,6 @@ def test_get_financial_entities_provider():
 
 task_dict = {u'tasks': 'task1'}
 
-
 def patched_urlopen_task(*args, **kwargs):
     return MicroMock(data=json.dumps(task_dict), status=200)
 
@@ -1290,6 +1257,13 @@ def test_put_company_task():
                                  all_in_company=True) == task_dict, \
         task.put_company_task(1, 1, '1', 'ttt', engagements=[1, 2],
                               all_in_company=True)
+
+@patch('urllib3.PoolManager.urlopen', patched_urlopen_task)
+def test_assign_to_engagement():
+    task_v2 = get_client().task_v2
+
+    assert task_v2.assign_to_engagement(1, "1;2") == task_dict, \
+        task_v2.task_assign_to_engagement(1, "1;2")
 
 
 @patch('urllib3.PoolManager.urlopen', patched_urlopen_task)

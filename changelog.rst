@@ -5,6 +5,13 @@
 Changelog
 ***************
 
+.. _1.1.0:
+
+Version 1.1.0
+-------------
+* Get Categories (V1) is now fully depricated
+* Added new Activities API - :py:meth:`Assign to specific engagement the list of activities <upwork.routers.task.Task_V2.assign_to_engagement>`.
+
 .. _1.0.2:
 
 Version 1.0.2
