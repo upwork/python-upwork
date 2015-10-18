@@ -7,11 +7,11 @@
    :alt: PyPI version
 
 .. image:: https://img.shields.io/github/release/upwork/python-upwork.svg
-   :target: https://github.com/upwork/perl-upwork/releases
+   :target: https://github.com/upwork/python-upwork/releases
    :alt: GitHub release
 
-.. image:: https://travis-ci.org/upwork/php-upwork.svg
-   :target: http://travis-ci.org/upwork/php-upwork
+.. image:: https://travis-ci.org/upwork/python-upwork.svg
+   :target: http://travis-ci.org/upwork/python-upwork
    :alt: Build status
 
 Copyright (c) 2010-2015, Upwork http://www.upwork.com
