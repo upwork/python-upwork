@@ -4,6 +4,13 @@
 ***************
 Changelog
 ***************
+***************
+
+.. _1.1.1:
+
+Version 1.1.1
+-------------
+* Drop obsoleted Get Offer API, Get Client/Contractor Offer should be used instead.
 
 .. _1.1.0:
 

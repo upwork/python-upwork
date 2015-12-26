@@ -630,18 +630,6 @@ class HR(Namespace):
         result = self.get(url, data)
         return result.get('offers', result)
 
-    def get_offer(self, offer_reference):
-        """
-        Retrieve the referenced offer.
-
-        *Parameters:*
-          :offer_reference:   Offer reference ID
-
-        """
-        url = 'offers/{0}'.format(offer_reference)
-        result = self.get(url)
-        return result.get('offer', result)
-
     def post_offer(self, job_reference, provider_team_reference=None,
                    provider_reference=None, profile_key=None,
                    message_from_buyer=None, engagement_title=None,

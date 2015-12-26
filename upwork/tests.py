@@ -645,7 +645,6 @@ def test_get_hrv2_offers():
     hr = get_client().hr
     #test get_offers
     assert hr.get_offers(1) == hr_dict[u'offers'], hr.get_offers()
-    assert hr.get_offer(1) == hr_dict[u'offer'], hr.get_offer(1)
 
 
 @patch('urllib3.PoolManager.urlopen', patched_urlopen_hr)
