@@ -77,11 +77,6 @@ To get started, look at the docs http://upwork.github.io/python-upwork/how_to.ht
 and also look at the ``examples/`` folder to see examples how to
 obtain oauth access tokens for web application and desktop application.
 
-Also, threre's a list of opensource projects using ``python-upwork``:
-
-* Upwork Meter https://github.com/kipanshi/upwork_meter
-* Upwork Graphs https://github.com/demalexx/upwork-graphs
-
 
 Useful Links
 ============
