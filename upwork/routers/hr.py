@@ -339,8 +339,8 @@ class HR(Namespace):
         return result.get('job', result)
 
     def post_job(self, buyer_team_reference, title, job_type, description,
-                 visibility, category=None, subcategory=None, budget=None, duration=None,
-                 start_date=None, skills=None, subcategory2=None):
+                 visibility, budget=None, duration=None, start_date=None,
+                 skills=None, category2=None, subcategory2=None):
         """
         Post a job.
 
@@ -371,13 +371,6 @@ class HR(Namespace):
                                        where the buyer wants to control
                                        the potential applicants
 
-          :category:               (conditionally optional) The category of job, e.g. 'Web Development'
-                                   (where to get? - see Metadata API)
-
-          :subcategory:            (conditionally optional) The subcategory of job, e.g.
-                                   'Web Programming'
-                                   (where to get? - see Metadata API)
-
           :budget:                 (conditionally optional) The budget of the
                                    Job, e.g. 100. Is used for 'fixed-price'
                                    jobs only.
@@ -394,6 +387,11 @@ class HR(Namespace):
           :skills:                 (optional) Skills required for the job.
                                    Must be a list or tuple even of one item,
                                    e.g. ``['python']``
+
+          :category2:              (conditionally optional) The category (V2) of job, e.g.
+                                   'Development'
+                                   (where to get? - see Metadata API, List Categories (V2))
+
 
           :subcategory2:           (conditionally optional) The subcategory (V2) of job, e.g.
                                    'Web & Mobile Programming'
@@ -414,14 +412,11 @@ class HR(Namespace):
         assert_parameter('visibility', visibility, self.JOB_VISIBILITY_OPTIONS)
         data['visibility'] = visibility
 
-        if (category is None or subcategory is None) and subcategory2 is None:
-            raise ApiValueError('Either one of the sub/category V1 or V2 parameters '
-                                'must be specified')
-        if category:
-            data['category'] = category
+        if category2 is None or subcategory2 is None:
+            raise ApiValueError('sub/category2 parameters must be specified')
 
-        if subcategory:
-            data['subcategory'] = subcategory
+        if category2:
+            data['category2'] = category2
 
         if subcategory2:
             data['subcategory2'] = subcategory2
@@ -443,8 +438,8 @@ class HR(Namespace):
         return result
 
     def update_job(self, job_id, buyer_team_reference, title, description,
-                   visibility, category=None, subcategory=None, budget=None,
-                   duration=None, start_date=None, status=None):
+                   visibility, budget=None, duration=None, start_date=None,
+                   status=None, category2=None, subcategory2=None):
         """
         Update a job.
 
@@ -472,14 +467,6 @@ class HR(Namespace):
                                        where the buyer wants to control
                                        the potential applicants
 
-          :category:               (optional) The category of job, e.g.
-                                   'Web Development'
-                                   (where to get? - see Metadata API)
-
-          :subcategory:            (optional) The subcategory of job, e.g.
-                                   'Web Programming'
-                                   (where to get? - see Metadata API)
-
           :budget:                 (conditionally optional) The budget of the
                                    Job, e.g. 100. Is used for 'fixed-price'
                                    jobs only.
@@ -500,6 +487,15 @@ class HR(Namespace):
                                    - 'filled'
                                    - 'cancelled'
 
+          :category2:              (conditionally optional) The category (V2) of job, e.g.
+                                   'Development'
+                                   (where to get? - see Metadata API, List Categories (V2))
+
+
+          :subcategory2:           (conditionally optional) The subcategory (V2) of job, e.g.
+                                   'Web & Mobile Programming'
+                                   (where to get? - see Metadata API, List Categories (V2))
+
         """
         url = 'jobs/{0}'.format(job_id)
         data = {}
@@ -511,8 +507,8 @@ class HR(Namespace):
         assert_parameter('visibility', visibility, self.JOB_VISIBILITY_OPTIONS)
         data['visibility'] = visibility
 
-        data['category'] = category
-        data['subcategory'] = subcategory
+        data['category2'] = category2
+        data['subcategory2'] = subcategory2
 
         if budget is None and duration is None:
             raise ApiValueError('Either one of the ``budget``or ``duration`` '

@@ -721,6 +721,7 @@ job_data2 = {
     'job_type': 'hourly',
     'description': 'this is test job, please do not apply to it',
     'visibility': 'upwork',
+    'category2': 'Web, Mobile & Software Dev',
     'subcategory2': 'Web & Mobile Development',
     'budget': 100,
     'duration': 10,
@@ -737,6 +738,7 @@ def patched_urlopen_job_data_parameters2(self, method, url, **kwargs):
     eq_(
         dict(post_dict.items()),
         {'buyer_team__reference': ['111'],
+         'category2': ['Web, Mobile & Software Dev'],
          'subcategory2': ['Web & Mobile Development'],
          'title': ['Test job from API'],
          'skills': ['Python;JS'], 'job_type': ['hourly'],
