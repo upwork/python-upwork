@@ -8,6 +8,7 @@ import logging
 import urllib3
 import ca_certs_locater
 
+from urllib3 import Retry
 
 from upwork.oauth import OAuth
 from upwork.http import raise_http_error
@@ -116,7 +117,8 @@ class Client(object):
         self.http = urllib3.PoolManager(
             cert_reqs='CERT_REQUIRED',
             ca_certs=ca_certs_locater.get(),
-            timeout=int(timeout)
+            timeout=int(timeout),
+            retries=Retry(2, backoff_factor=0.5)
         )
 
         self.oauth_access_token = oauth_access_token
