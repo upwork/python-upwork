@@ -118,7 +118,7 @@ class Client(object):
             cert_reqs='CERT_REQUIRED',
             ca_certs=ca_certs_locater.get(),
             timeout=int(timeout),
-            retry=Retry(2, backoff_factor=0.5)
+            retries=Retry(2, backoff_factor=0.5)
         )
 
         self.oauth_access_token = oauth_access_token
