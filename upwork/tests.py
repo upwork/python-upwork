@@ -860,140 +860,91 @@ def test_provider():
     assert result == provider_dict['tests']
 
 
-trays_dict = {'trays': [{u'unread': u'0',
-              u'type': u'sent',
-              u'id': u'1',
-              u'tray_api': u'/api/mc/v1/trays/username/sent.json'},
-              {u'unread': u'0',
-               u'type': u'inbox',
-               u'id': u'2',
-               u'tray_api': u'/api/mc/v1/trays/username/inbox.json'},
-              {u'unread': u'0',
-               u'type': u'notifications',
-               u'id': u'3',
-               u'tray_api': u'/api/mc/v1/trays/username/notifications.json'}]}
+rooms_dict = {u'rooms': []}
 
+def patched_urlopen_rooms(*args, **kwargs):
+    return MicroMock(data=json.dumps(rooms_dict), status=200)
 
-def patched_urlopen_trays(*args, **kwargs):
-    return MicroMock(data=json.dumps(trays_dict), status=200)
-
-
-@patch('urllib3.PoolManager.urlopen', patched_urlopen_trays)
-def test_get_trays():
-    mc = get_client().mc
+@patch('urllib3.PoolManager.urlopen', patched_urlopen_rooms)
+def test_get_rooms():
+    messages = get_client().messages
 
     #test full_url
-    full_url = mc.full_url('test')
-    assert full_url == 'https://www.upwork.com/api/mc/v1/test', full_url
+    full_url = messages.full_url('testcompany/rooms')
+    assert full_url == 'https://www.upwork.com/api/messages/v3/testcompany/rooms', full_url
 
-    #test get_trays
-    assert mc.get_trays(1) == trays_dict['trays'], mc.get_trays(1)
-    assert mc.get_trays(1, paging_offset=10, paging_count=10) ==\
-         trays_dict['trays'], mc.get_trays(1, paging_offset=10, paging_count=10)
+    #test get_rooms
+    assert messages.get_rooms("testcompany") == rooms_dict, messages.get_rooms("testcompany")
 
+room_dict = {u'room': {}}
 
-tray_content_dict = {"current_tray": {"threads": '1'}}
+def patched_urlopen_room(*args, **kwargs):
+    return MicroMock(data=json.dumps(room_dict), status=200)
 
+@patch('urllib3.PoolManager.urlopen', patched_urlopen_room)
+def test_get_room_details():
+    messages = get_client().messages
 
-def patched_urlopen_tray_content(*args, **kwargs):
-    return MicroMock(data=json.dumps(tray_content_dict), status=200)
+    #test get_room_details
+    assert messages.get_room_details("testcompany", "room-id") ==\
+	room_dict, messages.get_room_details("testcompany", "room-id")
 
+@patch('urllib3.PoolManager.urlopen', patched_urlopen_room)
+def test_get_room_by_offer():
+    messages = get_client().messages
 
-@patch('urllib3.PoolManager.urlopen', patched_urlopen_tray_content)
-def test_get_tray_content():
-    mc = get_client().mc
+    #test get_room_by_offer
+    assert messages.get_room_by_offer("testcompany", "1234") ==\
+	room_dict, messages.get_room_by_offer("testcompany", "1234")
 
-    #test get_tray_content
-    assert mc.get_tray_content(1, 1) ==\
-         tray_content_dict['current_tray']['threads'], mc.get_tray_content(1, 1)
-    assert mc.get_tray_content(1, 1, paging_offset=10, paging_count=10) ==\
-         tray_content_dict['current_tray']['threads'], \
-         mc.get_tray_content(1, 1, paging_offset=10, paging_count=10)
+@patch('urllib3.PoolManager.urlopen', patched_urlopen_room)
+def test_get_room_by_application():
+    messages = get_client().messages
 
+    #test get_room_by_applications
+    assert messages.get_room_by_application("testcompany", "1234") ==\
+	room_dict, messages.get_room_by_application("testcompany", "1234")
 
-thread_content_dict = {"thread": {"test": '1'}}
+@patch('urllib3.PoolManager.urlopen', patched_urlopen_room)
+def test_get_room_by_contract():
+    messages = get_client().messages
 
+    #test get_room_by_contract
+    assert messages.get_room_by_contract("testcompany", "1234") ==\
+	room_dict, messages.get_room_by_contract("testcompany", "1234")
 
-def patched_urlopen_thread_content(*args, **kwargs):
-    return MicroMock(data=json.dumps(thread_content_dict), status=200)
+read_room_content_dict = {"room": {"test": '1'}}
 
+def patched_urlopen_read_room_content(*args, **kwargs):
+    return MicroMock(data=json.dumps(read_room_content_dict), status=200)
 
-@patch('urllib3.PoolManager.urlopen', patched_urlopen_thread_content)
-def test_get_thread_content():
-    mc = get_client().mc
+@patch('urllib3.PoolManager.urlopen', patched_urlopen_read_room_content)
+def test_create_room():
+    messages = get_client().messages
 
-    #test get_provider
-    assert mc.get_thread_content(1, 1) ==\
-         thread_content_dict['thread'], mc.get_thread_content(1, 1)
-    assert mc.get_thread_content(1, 1, paging_offset=10, paging_count=10) ==\
-         thread_content_dict['thread'], \
-         mc.get_thread_content(1, 1, paging_offset=10, paging_count=10)
+    message = messages.create_room('testcompany', {'roomName': 'test room'})
+    assert message == read_room_content_dict, message
 
+@patch('urllib3.PoolManager.urlopen', patched_urlopen_read_room_content)
+def test_send_message_to_room():
+    messages = get_client().messages
 
-read_thread_content_dict = {"thread": {"test": '1'}}
+    message = messages.send_message_to_room('testcompany', 'room-id', {'message': 'test message'})
+    assert message == read_room_content_dict, message
 
+@patch('urllib3.PoolManager.urlopen', patched_urlopen_read_room_content)
+def test_update_room_settings():
+    messages = get_client().messages
 
-def patched_urlopen_read_thread_content(*args, **kwargs):
-    return MicroMock(data=json.dumps(read_thread_content_dict), status=200)
+    message = messages.update_room_settings('testcompany', 'room-id', 'userid', {'isFavorite': 'true'})
+    assert message == read_room_content_dict, message
 
+@patch('urllib3.PoolManager.urlopen', patched_urlopen_read_room_content)
+def test_update_room_metadata():
+    messages = get_client().messages
 
-@patch('urllib3.PoolManager.urlopen', patched_urlopen_read_thread_content)
-def test_put_threads_read_unread():
-    mc = get_client().mc
-
-    read = mc.put_threads_read('test', [1, 2, 3])
-    assert read == read_thread_content_dict, read
-
-    unread = mc.put_threads_read('test', [5, 6, 7])
-    assert unread == read_thread_content_dict, unread
-
-    read = mc.put_threads_unread('test', [1, 2, 3])
-    assert read == read_thread_content_dict, read
-
-
-@patch('urllib3.PoolManager.urlopen', patched_urlopen_read_thread_content)
-def test_put_threads_starred_unstarred():
-    mc = get_client().mc
-
-    starred = mc.put_threads_starred('test', [1, 2, 3])
-    assert starred == read_thread_content_dict, starred
-
-    unstarred = mc.put_threads_unstarred('test', [5, 6, 7])
-    assert unstarred == read_thread_content_dict, unstarred
-
-
-@patch('urllib3.PoolManager.urlopen', patched_urlopen_read_thread_content)
-def test_put_threads_deleted_undeleted():
-    mc = get_client().mc
-
-    deleted = mc.put_threads_deleted('test', [1, 2, 3])
-    assert deleted == read_thread_content_dict, deleted
-
-    undeleted = mc.put_threads_undeleted('test', [5, 6, 7])
-    assert undeleted == read_thread_content_dict, undeleted
-
-
-@patch('urllib3.PoolManager.urlopen', patched_urlopen_read_thread_content)
-def test_post_message():
-    mc = get_client().mc
-
-    message = mc.post_message('username', 'recepient1,recepient2', 'subject',
-                              'body')
-    assert message == read_thread_content_dict, message
-
-    message = mc.post_message('username', ('recepient1@sss',\
-        'recepient`іваівsss'), 'subject',
-                              'body')
-    assert message == read_thread_content_dict, message
-
-    message = mc.post_message('username',\
-        'recepient1@sss,1%&&|-!@#recepient`іваівsss', 'subject',
-                              'body')
-    assert message == read_thread_content_dict, message
-
-    reply = mc.post_message('username', 'recepient1,recepient2', 'subject',
-                              'body', 123)
-    assert reply == read_thread_content_dict, reply
+    message = messages.update_room_metadata('testcompany', 'room-id', {'isReadOnly': 'true'})
+    assert message == read_room_content_dict, message
 
 
 timereport_dict = {u'table':
