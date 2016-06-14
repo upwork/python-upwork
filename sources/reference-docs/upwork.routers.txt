@@ -36,10 +36,10 @@ upwork.routers.job module
     :undoc-members:
     :show-inheritance:
 
-upwork.routers.mc module
-------------------------
+upwork.routers.messages module
+------------------------------
 
-.. automodule:: upwork.routers.mc
+.. automodule:: upwork.routers.messages
     :members:
     :undoc-members:
     :show-inheritance:

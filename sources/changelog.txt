@@ -5,6 +5,28 @@
 Changelog
 ***************
 
+.. _1.2.0:
+
+Version 1.2.0
+-------------
+* Added Messages API (new)
+* Message API (V1) is now fully depricated
+
+.. _1.1.0:
+
+Version 1.1.0
+-------------
+* Get Categories (V1) is now fully depricated
+* Added new Activities API - :py:meth:`Assign to specific engagement the list of activities <upwork.routers.task.Task_V2.assign_to_engagement>`.
+
+.. _1.0.2:
+
+Version 1.0.2
+-------------
+* os.path.join changed to urlparse.urljoin for supporting Windows systems
+* added timeout option for configuring oauth client
+* added paging support for Activities API, (!) note: the changes are not backward compatible for get_team_tasks and get_company_tasks
+
 .. _1.0.1:
 
 Version 1.0.1

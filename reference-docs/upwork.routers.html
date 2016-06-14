@@ -6,24 +6,24 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>upwork.routers package &mdash; python-upwork 1.1.0 documentation</title>
+    <title>upwork.routers package &mdash; python-upwork 1.2.0 documentation</title>
     
-    <link rel="stylesheet" href="../_static/sphinxdoc.css" type="text/css" />
-    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../static/sphinxdoc.css" type="text/css" />
+    <link rel="stylesheet" href="../static/pygments.css" type="text/css" />
     
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../',
-        VERSION:     '1.1.0',
+        VERSION:     '1.2.0',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
       };
     </script>
-    <script type="text/javascript" src="../_static/jquery.js"></script>
-    <script type="text/javascript" src="../_static/underscore.js"></script>
-    <script type="text/javascript" src="../_static/doctools.js"></script>
-    <link rel="top" title="python-upwork 1.1.0 documentation" href="../index.html" />
+    <script type="text/javascript" src="../static/jquery.js"></script>
+    <script type="text/javascript" src="../static/underscore.js"></script>
+    <script type="text/javascript" src="../static/doctools.js"></script>
+    <link rel="top" title="python-upwork 1.2.0 documentation" href="../index.html" />
     <link rel="up" title="upwork package" href="upwork.html" />
     <link rel="next" title="Changelog" href="../changelog.html" />
     <link rel="prev" title="upwork package" href="upwork.html" /> 
@@ -44,7 +44,7 @@
         <li class="right" >
           <a href="upwork.html" title="upwork package"
              accesskey="P">previous</a> |</li>
-        <li class="nav-item nav-item-0"><a href="../index.html">python-upwork 1.1.0 documentation</a> &raquo;</li>
+        <li class="nav-item nav-item-0"><a href="../index.html">python-upwork 1.2.0 documentation</a> &raquo;</li>
           <li class="nav-item nav-item-1"><a href="../reference_docs.html" >Reference Documentation: Classes and Methods</a> &raquo;</li>
           <li class="nav-item nav-item-2"><a href="upwork.html" accesskey="U">upwork package</a> &raquo;</li> 
       </ul>
@@ -59,7 +59,7 @@
 <li><a class="reference internal" href="#module-upwork.routers.finreport">upwork.routers.finreport module</a></li>
 <li><a class="reference internal" href="#module-upwork.routers.hr">upwork.routers.hr module</a></li>
 <li><a class="reference internal" href="#module-upwork.routers.job">upwork.routers.job module</a></li>
-<li><a class="reference internal" href="#module-upwork.routers.mc">upwork.routers.mc module</a></li>
+<li><a class="reference internal" href="#module-upwork.routers.messages">upwork.routers.messages module</a></li>
 <li><a class="reference internal" href="#module-upwork.routers.offers">upwork.routers.offers module</a></li>
 <li><a class="reference internal" href="#module-upwork.routers.provider">upwork.routers.provider module</a></li>
 <li><a class="reference internal" href="#module-upwork.routers.task">upwork.routers.task module</a></li>
@@ -78,21 +78,18 @@
   <div role="note" aria-label="source link">
     <h3>This Page</h3>
     <ul class="this-page-menu">
-      <li><a href="../_sources/reference-docs/upwork.routers.txt"
+      <li><a href="../sources/reference-docs/upwork.routers.txt"
             rel="nofollow">Show Source</a></li>
     </ul>
    </div>
 <div id="searchbox" style="display: none" role="search">
   <h3>Quick search</h3>
     <form class="search" action="../search.html" method="get">
-      <input type="text" name="q" />
-      <input type="submit" value="Go" />
+      <div><input type="text" name="q" /></div>
+      <div><input type="submit" value="Go" /></div>
       <input type="hidden" name="check_keywords" value="yes" />
       <input type="hidden" name="area" value="default" />
     </form>
-    <p class="searchtip" style="font-size: 90%">
-    Enter search terms or a module, class or function name.
-    </p>
 </div>
 <script type="text/javascript">$('#searchbox').show(0);</script>
         </div>
@@ -1027,7 +1024,7 @@ they have access to.</p>
 
 <dl class="method">
 <dt id="upwork.routers.hr.HR.post_job">
-<code class="descname">post_job</code><span class="sig-paren">(</span><em>buyer_team_reference</em>, <em>title</em>, <em>job_type</em>, <em>description</em>, <em>visibility</em>, <em>category=None</em>, <em>subcategory=None</em>, <em>budget=None</em>, <em>duration=None</em>, <em>start_date=None</em>, <em>skills=None</em>, <em>subcategory2=None</em><span class="sig-paren">)</span><a class="headerlink" href="#upwork.routers.hr.HR.post_job" title="Permalink to this definition">¶</a></dt>
+<code class="descname">post_job</code><span class="sig-paren">(</span><em>buyer_team_reference</em>, <em>title</em>, <em>job_type</em>, <em>description</em>, <em>visibility</em>, <em>budget=None</em>, <em>duration=None</em>, <em>start_date=None</em>, <em>skills=None</em>, <em>category2=None</em>, <em>subcategory2=None</em><span class="sig-paren">)</span><a class="headerlink" href="#upwork.routers.hr.HR.post_job" title="Permalink to this definition">¶</a></dt>
 <dd><p>Post a job.</p>
 <dl class="docutils">
 <dt><em>Parameters:</em></dt>
@@ -1075,15 +1072,6 @@ the potential applicants</li>
 </div></blockquote>
 </td>
 </tr>
-<tr class="field-even field"><th class="field-name">category:</th><td class="field-body"><p class="first">(conditionally optional) The category of job, e.g. &#8216;Web Development&#8217;
-(where to get? - see Metadata API)</p>
-</td>
-</tr>
-<tr class="field-odd field"><th class="field-name">subcategory:</th><td class="field-body"><p class="first">(conditionally optional) The subcategory of job, e.g.
-&#8216;Web Programming&#8217;
-(where to get? - see Metadata API)</p>
-</td>
-</tr>
 <tr class="field-even field"><th class="field-name">budget:</th><td class="field-body"><p class="first">(conditionally optional) The budget of the
 Job, e.g. 100. Is used for &#8216;fixed-price&#8217;
 jobs only.</p>
@@ -1105,7 +1093,12 @@ Must be a list or tuple even of one item,
 e.g. <code class="docutils literal"><span class="pre">['python']</span></code></p>
 </td>
 </tr>
-<tr class="field-even field"><th class="field-name">subcategory2:</th><td class="field-body"><p class="first last">(conditionally optional) The subcategory (V2) of job, e.g.
+<tr class="field-even field"><th class="field-name">category2:</th><td class="field-body"><p class="first">(conditionally optional) The category (V2) of job, e.g.
+&#8216;Development&#8217;
+(where to get? - see Metadata API, List Categories (V2))</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">subcategory2:</th><td class="field-body"><p class="first last">(conditionally optional) The subcategory (V2) of job, e.g.
 &#8216;Web &amp; Mobile Programming&#8217;
 (where to get? - see Metadata API, List Categories (V2))</p>
 </td>
@@ -1279,7 +1272,7 @@ and start working or decline the offer.</p>
 
 <dl class="method">
 <dt id="upwork.routers.hr.HR.update_job">
-<code class="descname">update_job</code><span class="sig-paren">(</span><em>job_id</em>, <em>buyer_team_reference</em>, <em>title</em>, <em>description</em>, <em>visibility</em>, <em>category=None</em>, <em>subcategory=None</em>, <em>budget=None</em>, <em>duration=None</em>, <em>start_date=None</em>, <em>status=None</em><span class="sig-paren">)</span><a class="headerlink" href="#upwork.routers.hr.HR.update_job" title="Permalink to this definition">¶</a></dt>
+<code class="descname">update_job</code><span class="sig-paren">(</span><em>job_id</em>, <em>buyer_team_reference</em>, <em>title</em>, <em>description</em>, <em>visibility</em>, <em>budget=None</em>, <em>duration=None</em>, <em>start_date=None</em>, <em>status=None</em>, <em>category2=None</em>, <em>subcategory2=None</em><span class="sig-paren">)</span><a class="headerlink" href="#upwork.routers.hr.HR.update_job" title="Permalink to this definition">¶</a></dt>
 <dd><p>Update a job.</p>
 <dl class="docutils">
 <dt><em>Parameters:</em></dt>
@@ -1320,16 +1313,6 @@ the potential applicants</li>
 </div></blockquote>
 </td>
 </tr>
-<tr class="field-even field"><th class="field-name">category:</th><td class="field-body"><p class="first">(optional) The category of job, e.g.
-&#8216;Web Development&#8217;
-(where to get? - see Metadata API)</p>
-</td>
-</tr>
-<tr class="field-odd field"><th class="field-name">subcategory:</th><td class="field-body"><p class="first">(optional) The subcategory of job, e.g.
-&#8216;Web Programming&#8217;
-(where to get? - see Metadata API)</p>
-</td>
-</tr>
 <tr class="field-even field"><th class="field-name">budget:</th><td class="field-body"><p class="first">(conditionally optional) The budget of the
 Job, e.g. 100. Is used for &#8216;fixed-price&#8217;
 jobs only.</p>
@@ -1346,12 +1329,22 @@ included the job will default to
 starting immediately.</p>
 </td>
 </tr>
-<tr class="field-odd field"><th class="field-name">status:</th><td class="field-body"><p class="first last">(required) The status of the job,
+<tr class="field-odd field"><th class="field-name">status:</th><td class="field-body"><p class="first">(required) The status of the job,
 e.g. &#8216;filled&#8217;.
 Possible values are:
 - &#8216;open&#8217;
 - &#8216;filled&#8217;
 - &#8216;cancelled&#8217;</p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">category2:</th><td class="field-body"><p class="first">(conditionally optional) The category (V2) of job, e.g.
+&#8216;Development&#8217;
+(where to get? - see Metadata API, List Categories (V2))</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">subcategory2:</th><td class="field-body"><p class="first last">(conditionally optional) The subcategory (V2) of job, e.g.
+&#8216;Web &amp; Mobile Programming&#8217;
+(where to get? - see Metadata API, List Categories (V2))</p>
 </td>
 </tr>
 </tbody>
@@ -1810,40 +1803,30 @@ only one profile per request is available.</td>
 </dd></dl>
 
 </div>
-<div class="section" id="module-upwork.routers.mc">
-<span id="upwork-routers-mc-module"></span><h2>upwork.routers.mc module<a class="headerlink" href="#module-upwork.routers.mc" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="module-upwork.routers.messages">
+<span id="upwork-routers-messages-module"></span><h2>upwork.routers.messages module<a class="headerlink" href="#module-upwork.routers.messages" title="Permalink to this headline">¶</a></h2>
 <dl class="class">
-<dt id="upwork.routers.mc.MC">
-<em class="property">class </em><code class="descclassname">upwork.routers.mc.</code><code class="descname">MC</code><span class="sig-paren">(</span><em>client</em><span class="sig-paren">)</span><a class="headerlink" href="#upwork.routers.mc.MC" title="Permalink to this definition">¶</a></dt>
+<dt id="upwork.routers.messages.Messages">
+<em class="property">class </em><code class="descclassname">upwork.routers.messages.</code><code class="descname">Messages</code><span class="sig-paren">(</span><em>client</em><span class="sig-paren">)</span><a class="headerlink" href="#upwork.routers.messages.Messages" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="upwork.html#upwork.namespaces.Namespace" title="upwork.namespaces.Namespace"><code class="xref py py-class docutils literal"><span class="pre">upwork.namespaces.Namespace</span></code></a></p>
 <dl class="attribute">
-<dt id="upwork.routers.mc.MC.api_url">
-<code class="descname">api_url</code><em class="property"> = 'mc/'</em><a class="headerlink" href="#upwork.routers.mc.MC.api_url" title="Permalink to this definition">¶</a></dt>
+<dt id="upwork.routers.messages.Messages.api_url">
+<code class="descname">api_url</code><em class="property"> = 'messages/'</em><a class="headerlink" href="#upwork.routers.messages.Messages.api_url" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="method">
-<dt id="upwork.routers.mc.MC.get_thread_by_context">
-<code class="descname">get_thread_by_context</code><span class="sig-paren">(</span><em>username</em>, <em>job_key</em>, <em>application_id</em>, <em>context='Interviews'</em>, <em>last_posts=False</em><span class="sig-paren">)</span><a class="headerlink" href="#upwork.routers.mc.MC.get_thread_by_context" title="Permalink to this definition">¶</a></dt>
-<dd><p>List details on a thread given a specific context,
-job key and application ID.</p>
+<dt id="upwork.routers.messages.Messages.create_room">
+<code class="descname">create_room</code><span class="sig-paren">(</span><em>company</em>, <em>params={}</em><span class="sig-paren">)</span><a class="headerlink" href="#upwork.routers.messages.Messages.create_room" title="Permalink to this definition">¶</a></dt>
+<dd><p>Create a new room</p>
 <dl class="docutils">
 <dt><em>Parameters:</em></dt>
 <dd><table class="first last docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">username:</th><td class="field-body">User name</td>
+<tr class="field-odd field"><th class="field-name">company:</th><td class="field-body">Company ID</td>
 </tr>
-<tr class="field-even field"><th class="field-name">job_key:</th><td class="field-body">The context job key</td>
-</tr>
-<tr class="field-odd field"><th class="field-name">application_id:</th><td class="field-body">The context application ID.</td>
-</tr>
-<tr class="field-even field"><th class="field-name">context:</th><td class="field-body">Name of the context. Valid values: Interviews.
-Default: Interviews</td>
-</tr>
-<tr class="field-odd field"><th class="field-name">last_posts:</th><td class="field-body">If set to True, return the list of the threads
-for the given context with the content of the last
-message for each of the threads listed.</td>
+<tr class="field-even field"><th class="field-name">params:</th><td class="field-body">List of parameters</td>
 </tr>
 </tbody>
 </table>
@@ -1852,22 +1835,20 @@ message for each of the threads listed.</td>
 </dd></dl>
 
 <dl class="method">
-<dt id="upwork.routers.mc.MC.get_thread_content">
-<code class="descname">get_thread_content</code><span class="sig-paren">(</span><em>username</em>, <em>thread_id</em>, <em>paging_offset=0</em>, <em>paging_count=20</em><span class="sig-paren">)</span><a class="headerlink" href="#upwork.routers.mc.MC.get_thread_content" title="Permalink to this definition">¶</a></dt>
-<dd><p>List details of a specific thread.</p>
+<dt id="upwork.routers.messages.Messages.get_room_by_application">
+<code class="descname">get_room_by_application</code><span class="sig-paren">(</span><em>company</em>, <em>application_id</em>, <em>params={}</em><span class="sig-paren">)</span><a class="headerlink" href="#upwork.routers.messages.Messages.get_room_by_application" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get a specific room by application ID</p>
 <dl class="docutils">
 <dt><em>Parameters:</em></dt>
 <dd><table class="first last docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">username:</th><td class="field-body">User name</td>
+<tr class="field-odd field"><th class="field-name">company:</th><td class="field-body">Company ID</td>
 </tr>
-<tr class="field-even field"><th class="field-name">thread_id:</th><td class="field-body">Thread ID</td>
+<tr class="field-even field"><th class="field-name">application_id:</th><td class="field-body">Application ID</td>
 </tr>
-<tr class="field-odd field"><th class="field-name">paging_offset:</th><td class="field-body">Start of page (number of results to skip)</td>
-</tr>
-<tr class="field-even field"><th class="field-name">paging_count:</th><td class="field-body">Page size (number of results)</td>
+<tr class="field-odd field"><th class="field-name">params:</th><td class="field-body">List of parameters</td>
 </tr>
 </tbody>
 </table>
@@ -1876,22 +1857,20 @@ message for each of the threads listed.</td>
 </dd></dl>
 
 <dl class="method">
-<dt id="upwork.routers.mc.MC.get_tray_content">
-<code class="descname">get_tray_content</code><span class="sig-paren">(</span><em>username</em>, <em>tray</em>, <em>paging_offset=None</em>, <em>paging_count=None</em><span class="sig-paren">)</span><a class="headerlink" href="#upwork.routers.mc.MC.get_tray_content" title="Permalink to this definition">¶</a></dt>
-<dd><p>Retrieve message tray contents.</p>
+<dt id="upwork.routers.messages.Messages.get_room_by_contract">
+<code class="descname">get_room_by_contract</code><span class="sig-paren">(</span><em>company</em>, <em>contract_id</em>, <em>params={}</em><span class="sig-paren">)</span><a class="headerlink" href="#upwork.routers.messages.Messages.get_room_by_contract" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get a specific room by contract ID</p>
 <dl class="docutils">
 <dt><em>Parameters:</em></dt>
 <dd><table class="first last docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">username:</th><td class="field-body">User name</td>
+<tr class="field-odd field"><th class="field-name">company:</th><td class="field-body">Company ID</td>
 </tr>
-<tr class="field-even field"><th class="field-name">tray:</th><td class="field-body">Tray</td>
+<tr class="field-even field"><th class="field-name">contract_id:</th><td class="field-body">Contract ID</td>
 </tr>
-<tr class="field-odd field"><th class="field-name">paging_offset:</th><td class="field-body">Start of page (number of results to skip)</td>
-</tr>
-<tr class="field-even field"><th class="field-name">paging_count:</th><td class="field-body">Page size (number of results)</td>
+<tr class="field-odd field"><th class="field-name">params:</th><td class="field-body">List of parameters</td>
 </tr>
 </tbody>
 </table>
@@ -1900,16 +1879,20 @@ message for each of the threads listed.</td>
 </dd></dl>
 
 <dl class="method">
-<dt id="upwork.routers.mc.MC.get_trays">
-<code class="descname">get_trays</code><span class="sig-paren">(</span><em>username=None</em>, <em>paging_offset=0</em>, <em>paging_count=20</em><span class="sig-paren">)</span><a class="headerlink" href="#upwork.routers.mc.MC.get_trays" title="Permalink to this definition">¶</a></dt>
-<dd><p>Retrieve a list of all active trays and a message count for each.</p>
+<dt id="upwork.routers.messages.Messages.get_room_by_offer">
+<code class="descname">get_room_by_offer</code><span class="sig-paren">(</span><em>company</em>, <em>offer_id</em>, <em>params={}</em><span class="sig-paren">)</span><a class="headerlink" href="#upwork.routers.messages.Messages.get_room_by_offer" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get a specific room by offer ID</p>
 <dl class="docutils">
 <dt><em>Parameters:</em></dt>
 <dd><table class="first last docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">username:</th><td class="field-body">User name</td>
+<tr class="field-odd field"><th class="field-name">company:</th><td class="field-body">Company ID</td>
+</tr>
+<tr class="field-even field"><th class="field-name">offer_id:</th><td class="field-body">Offer ID</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">params:</th><td class="field-body">List of parameters</td>
 </tr>
 </tbody>
 </table>
@@ -1918,31 +1901,25 @@ message for each of the threads listed.</td>
 </dd></dl>
 
 <dl class="method">
-<dt id="upwork.routers.mc.MC.post_message">
-<code class="descname">post_message</code><span class="sig-paren">(</span><em>username</em>, <em>recipients</em>, <em>subject</em>, <em>body</em>, <em>thread_id=None</em>, <em>bcc=None</em>, <em>attachment_key=None</em><span class="sig-paren">)</span><a class="headerlink" href="#upwork.routers.mc.MC.post_message" title="Permalink to this definition">¶</a></dt>
-<dd><p>Send a new message (creating a new thread) or reply to an existing         thread.</p>
+<dt id="upwork.routers.messages.Messages.get_room_details">
+<code class="descname">get_room_details</code><span class="sig-paren">(</span><em>company</em>, <em>room_id</em>, <em>params={}</em><span class="sig-paren">)</span><a class="headerlink" href="#upwork.routers.messages.Messages.get_room_details" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get a specific room information</p>
 <dl class="docutils">
 <dt><em>Parameters:</em></dt>
-<dd><table class="first last docutils field-list" frame="void" rules="none">
+<dd><table class="first docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">username:</th><td class="field-body">User name (of sender)</td>
+<tr class="field-odd field"><th class="field-name">company:</th><td class="field-body">Company ID</td>
 </tr>
-<tr class="field-even field"><th class="field-name">recipients:</th><td class="field-body">Recipient(s)  (a single string or a list/tuple)</td>
-</tr>
-<tr class="field-odd field"><th class="field-name">subject:</th><td class="field-body">Message subject</td>
-</tr>
-<tr class="field-even field"><th class="field-name">body:</th><td class="field-body">Message text</td>
-</tr>
-<tr class="field-odd field"><th class="field-name">thread_id:</th><td class="field-body">(optional) The thread id if replying
-to an existing thread</td>
-</tr>
-<tr class="field-even field"><th class="field-name">bcc:</th><td class="field-body">(optional) List of BCC recipients,
-use comma (&#8221;,&#8221;) to separate ids in list</td>
-</tr>
-<tr class="field-odd field"><th class="field-name">attachment_key:</th><td class="field-body">(optional) The unique private key of any attachment
-associated with the thread</td>
+</tbody>
+</table>
+<p>:room_id           Room ID</p>
+<table class="last docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">params:</th><td class="field-body">List of parameters</td>
 </tr>
 </tbody>
 </table>
@@ -1951,18 +1928,18 @@ associated with the thread</td>
 </dd></dl>
 
 <dl class="method">
-<dt id="upwork.routers.mc.MC.put_threads_deleted">
-<code class="descname">put_threads_deleted</code><span class="sig-paren">(</span><em>username</em>, <em>thread_ids</em><span class="sig-paren">)</span><a class="headerlink" href="#upwork.routers.mc.MC.put_threads_deleted" title="Permalink to this definition">¶</a></dt>
-<dd><p>Marks threads as deleted.</p>
+<dt id="upwork.routers.messages.Messages.get_rooms">
+<code class="descname">get_rooms</code><span class="sig-paren">(</span><em>company</em>, <em>params={}</em><span class="sig-paren">)</span><a class="headerlink" href="#upwork.routers.messages.Messages.get_rooms" title="Permalink to this definition">¶</a></dt>
+<dd><p>Retrieve rooms information</p>
 <dl class="docutils">
 <dt><em>Parameters:</em></dt>
 <dd><table class="first last docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">username:</th><td class="field-body">User name</td>
+<tr class="field-odd field"><th class="field-name">company:</th><td class="field-body">Company ID</td>
 </tr>
-<tr class="field-even field"><th class="field-name">thread_ids:</th><td class="field-body">must be a list, even of 1 item</td>
+<tr class="field-even field"><th class="field-name">params:</th><td class="field-body">List of parameters</td>
 </tr>
 </tbody>
 </table>
@@ -1971,20 +1948,20 @@ associated with the thread</td>
 </dd></dl>
 
 <dl class="method">
-<dt id="upwork.routers.mc.MC.put_threads_deleted_or_undeleted">
-<code class="descname">put_threads_deleted_or_undeleted</code><span class="sig-paren">(</span><em>username</em>, <em>thread_ids</em>, <em>deleted=True</em><span class="sig-paren">)</span><a class="headerlink" href="#upwork.routers.mc.MC.put_threads_deleted_or_undeleted" title="Permalink to this definition">¶</a></dt>
-<dd><p>Marks threads as deleted/not deleted.</p>
+<dt id="upwork.routers.messages.Messages.send_message_to_room">
+<code class="descname">send_message_to_room</code><span class="sig-paren">(</span><em>company</em>, <em>room_id</em>, <em>params={}</em><span class="sig-paren">)</span><a class="headerlink" href="#upwork.routers.messages.Messages.send_message_to_room" title="Permalink to this definition">¶</a></dt>
+<dd><p>Send a message to a room</p>
 <dl class="docutils">
 <dt><em>Parameters:</em></dt>
 <dd><table class="first last docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">username:</th><td class="field-body">User name</td>
+<tr class="field-odd field"><th class="field-name">company:</th><td class="field-body">Company ID</td>
 </tr>
-<tr class="field-even field"><th class="field-name">thread_ids:</th><td class="field-body">must be a list, even of 1 item</td>
+<tr class="field-even field"><th class="field-name">room_id:</th><td class="field-body">Room ID</td>
 </tr>
-<tr class="field-odd field"><th class="field-name">deleted:</th><td class="field-body">True/False (optional: default True)</td>
+<tr class="field-odd field"><th class="field-name">params:</th><td class="field-body">List of parameters</td>
 </tr>
 </tbody>
 </table>
@@ -1993,18 +1970,20 @@ associated with the thread</td>
 </dd></dl>
 
 <dl class="method">
-<dt id="upwork.routers.mc.MC.put_threads_read">
-<code class="descname">put_threads_read</code><span class="sig-paren">(</span><em>username</em>, <em>thread_ids</em><span class="sig-paren">)</span><a class="headerlink" href="#upwork.routers.mc.MC.put_threads_read" title="Permalink to this definition">¶</a></dt>
-<dd><p>Marks threads as read.</p>
+<dt id="upwork.routers.messages.Messages.update_room_metadata">
+<code class="descname">update_room_metadata</code><span class="sig-paren">(</span><em>company</em>, <em>room_id</em>, <em>params={}</em><span class="sig-paren">)</span><a class="headerlink" href="#upwork.routers.messages.Messages.update_room_metadata" title="Permalink to this definition">¶</a></dt>
+<dd><p>Update the metadata of a room</p>
 <dl class="docutils">
 <dt><em>Parameters:</em></dt>
 <dd><table class="first last docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">username:</th><td class="field-body">User name</td>
+<tr class="field-odd field"><th class="field-name">company:</th><td class="field-body">Company ID</td>
 </tr>
-<tr class="field-even field"><th class="field-name">thread_ids:</th><td class="field-body">must be a list, even of 1 item</td>
+<tr class="field-even field"><th class="field-name">room_id:</th><td class="field-body">Room ID</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">params:</th><td class="field-body">List of parameters</td>
 </tr>
 </tbody>
 </table>
@@ -2013,122 +1992,20 @@ associated with the thread</td>
 </dd></dl>
 
 <dl class="method">
-<dt id="upwork.routers.mc.MC.put_threads_read_unread">
-<code class="descname">put_threads_read_unread</code><span class="sig-paren">(</span><em>username</em>, <em>thread_ids</em>, <em>read=True</em><span class="sig-paren">)</span><a class="headerlink" href="#upwork.routers.mc.MC.put_threads_read_unread" title="Permalink to this definition">¶</a></dt>
-<dd><p>Marks threads as read/unread.</p>
+<dt id="upwork.routers.messages.Messages.update_room_settings">
+<code class="descname">update_room_settings</code><span class="sig-paren">(</span><em>company</em>, <em>room_id</em>, <em>username</em>, <em>params={}</em><span class="sig-paren">)</span><a class="headerlink" href="#upwork.routers.messages.Messages.update_room_settings" title="Permalink to this definition">¶</a></dt>
+<dd><p>Update a room settings</p>
 <dl class="docutils">
 <dt><em>Parameters:</em></dt>
 <dd><table class="first last docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">username:</th><td class="field-body">User name</td>
+<tr class="field-odd field"><th class="field-name">company:</th><td class="field-body">Company ID</td>
 </tr>
-<tr class="field-even field"><th class="field-name">thread_ids:</th><td class="field-body">must be a list, even of 1 item</td>
+<tr class="field-even field"><th class="field-name">room_id:</th><td class="field-body">Room ID</td>
 </tr>
-<tr class="field-odd field"><th class="field-name">read:</th><td class="field-body">True/False (optional: default True)</td>
-</tr>
-</tbody>
-</table>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="method">
-<dt id="upwork.routers.mc.MC.put_threads_starred">
-<code class="descname">put_threads_starred</code><span class="sig-paren">(</span><em>username</em>, <em>thread_ids</em><span class="sig-paren">)</span><a class="headerlink" href="#upwork.routers.mc.MC.put_threads_starred" title="Permalink to this definition">¶</a></dt>
-<dd><p>Marks threads as starred.</p>
-<dl class="docutils">
-<dt><em>Parameters:</em></dt>
-<dd><table class="first last docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">username:</th><td class="field-body">User name</td>
-</tr>
-<tr class="field-even field"><th class="field-name">thread_ids:</th><td class="field-body">must be a list, even of 1 item</td>
-</tr>
-</tbody>
-</table>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="method">
-<dt id="upwork.routers.mc.MC.put_threads_starred_or_unstarred">
-<code class="descname">put_threads_starred_or_unstarred</code><span class="sig-paren">(</span><em>username</em>, <em>thread_ids</em>, <em>starred=True</em><span class="sig-paren">)</span><a class="headerlink" href="#upwork.routers.mc.MC.put_threads_starred_or_unstarred" title="Permalink to this definition">¶</a></dt>
-<dd><p>Marks threads as starred/not starred.</p>
-<dl class="docutils">
-<dt><em>Parameters:</em></dt>
-<dd><table class="first last docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">username:</th><td class="field-body">User name</td>
-</tr>
-<tr class="field-even field"><th class="field-name">thread_ids:</th><td class="field-body">must be a list, even of 1 item</td>
-</tr>
-<tr class="field-odd field"><th class="field-name">starred:</th><td class="field-body">True/False (optional: default True)</td>
-</tr>
-</tbody>
-</table>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="method">
-<dt id="upwork.routers.mc.MC.put_threads_undeleted">
-<code class="descname">put_threads_undeleted</code><span class="sig-paren">(</span><em>username</em>, <em>thread_ids</em><span class="sig-paren">)</span><a class="headerlink" href="#upwork.routers.mc.MC.put_threads_undeleted" title="Permalink to this definition">¶</a></dt>
-<dd><p>Marks threads as not deleted</p>
-<dl class="docutils">
-<dt><em>Parameters:</em></dt>
-<dd><table class="first last docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">username:</th><td class="field-body">User name</td>
-</tr>
-<tr class="field-even field"><th class="field-name">thread_ids:</th><td class="field-body">must be a list, even of 1 item</td>
-</tr>
-</tbody>
-</table>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="method">
-<dt id="upwork.routers.mc.MC.put_threads_unread">
-<code class="descname">put_threads_unread</code><span class="sig-paren">(</span><em>username</em>, <em>thread_ids</em><span class="sig-paren">)</span><a class="headerlink" href="#upwork.routers.mc.MC.put_threads_unread" title="Permalink to this definition">¶</a></dt>
-<dd><p>Marks threads as unread.</p>
-<dl class="docutils">
-<dt><em>Parameters:</em></dt>
-<dd><table class="first last docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">username:</th><td class="field-body">User name</td>
-</tr>
-<tr class="field-even field"><th class="field-name">thread_ids:</th><td class="field-body">must be a list, even of 1 item</td>
-</tr>
-</tbody>
-</table>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="method">
-<dt id="upwork.routers.mc.MC.put_threads_unstarred">
-<code class="descname">put_threads_unstarred</code><span class="sig-paren">(</span><em>username</em>, <em>thread_ids</em><span class="sig-paren">)</span><a class="headerlink" href="#upwork.routers.mc.MC.put_threads_unstarred" title="Permalink to this definition">¶</a></dt>
-<dd><p>Marks threads as unstarred.</p>
-<dl class="docutils">
-<dt><em>Parameters:</em></dt>
-<dd><table class="first last docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">username:</th><td class="field-body">User name</td>
-</tr>
-<tr class="field-even field"><th class="field-name">thread_ids:</th><td class="field-body">must be a list, even of 1 item</td>
+<tr class="field-odd field"><th class="field-name">params:</th><td class="field-body">List of parameters</td>
 </tr>
 </tbody>
 </table>
@@ -2137,8 +2014,8 @@ associated with the thread</td>
 </dd></dl>
 
 <dl class="attribute">
-<dt id="upwork.routers.mc.MC.version">
-<code class="descname">version</code><em class="property"> = 1</em><a class="headerlink" href="#upwork.routers.mc.MC.version" title="Permalink to this definition">¶</a></dt>
+<dt id="upwork.routers.messages.Messages.version">
+<code class="descname">version</code><em class="property"> = 3</em><a class="headerlink" href="#upwork.routers.messages.Messages.version" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 </dd></dl>
@@ -3899,14 +3776,14 @@ Default: <code class="docutils literal"><span class="pre">False</span></code></t
         <li class="right" >
           <a href="upwork.html" title="upwork package"
              >previous</a> |</li>
-        <li class="nav-item nav-item-0"><a href="../index.html">python-upwork 1.1.0 documentation</a> &raquo;</li>
+        <li class="nav-item nav-item-0"><a href="../index.html">python-upwork 1.2.0 documentation</a> &raquo;</li>
           <li class="nav-item nav-item-1"><a href="../reference_docs.html" >Reference Documentation: Classes and Methods</a> &raquo;</li>
           <li class="nav-item nav-item-2"><a href="upwork.html" >upwork package</a> &raquo;</li> 
       </ul>
     </div>
     <div class="footer" role="contentinfo">
         &copy; Copyright 2010-2013, upwork.
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.3.1.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.4.4.
     </div>
   </body>
 </html>

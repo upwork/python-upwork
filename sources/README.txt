@@ -6,8 +6,12 @@
    :target: http://badge.fury.io/py/python-upwork
    :alt: PyPI version
 
-.. image:: https://travis-ci.org/upwork/php-upwork.svg
-   :target: http://travis-ci.org/upwork/php-upwork
+.. image:: https://img.shields.io/github/release/upwork/python-upwork.svg
+   :target: https://github.com/upwork/python-upwork/releases
+   :alt: GitHub release
+
+.. image:: https://travis-ci.org/upwork/python-upwork.svg
+   :target: http://travis-ci.org/upwork/python-upwork
    :alt: Build status
 
 Copyright (c) 2010-2015, Upwork http://www.upwork.com
@@ -15,7 +19,7 @@ All rights reserved.
 
 
 ============================
-Python bindings to Upwork API
+Upwork API
 ============================
 These are Python bindings for Upwork Public API https://developers.upwork.com/
 You can use the API to build apps that will help you:
@@ -23,7 +27,7 @@ You can use the API to build apps that will help you:
 * Manage your distributed team
 * Search for contractors and jobs
 * Send bulk invitations to interview and make offers
-* Send bulk messages to your team
+* Work with Messages workflow
 * Retrieve Time & Financial information for your company, team and contractors
 
 The API is the best way to communicate between apps.
@@ -72,11 +76,6 @@ So we really encourage you to install this shell: ``pip install ipython``
 To get started, look at the docs http://upwork.github.io/python-upwork/how_to.html
 and also look at the ``examples/`` folder to see examples how to
 obtain oauth access tokens for web application and desktop application.
-
-Also, threre's a list of opensource projects using ``python-upwork``:
-
-* Upwork Meter https://github.com/kipanshi/upwork_meter
-* Upwork Graphs https://github.com/demalexx/upwork-graphs
 
 
 Useful Links
