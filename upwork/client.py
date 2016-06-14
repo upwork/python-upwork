@@ -61,9 +61,9 @@ class Client(object):
                                   Whether to attach
                                   :py:mod:`upwork.routers.hr` router
 
-      :mc:                        (optional, default ``True``)
+      :messages:                  (optional, default ``True``)
                                   Whether to attach
-                                  :py:mod:`upwork.routers.mc` router
+                                  :py:mod:`upwork.routers.messages` router
 
       :offers:                    (optional, default ``True``)
                                   Whether to attach
@@ -95,7 +95,7 @@ class Client(object):
 
     def __init__(self, public_key, secret_key,
                  oauth_access_token=None, oauth_access_token_secret=None,
-                 fmt='json', finreport=True, hr=True, mc=True,
+                 fmt='json', finreport=True, hr=True, messages=True,
                  offers=True, provider=True, task=True, team=True,
                  timereport=True, job=True, timeout=3):
 
@@ -135,9 +135,9 @@ class Client(object):
             self.hr = HR(self)
             self.hr_v3 = HR_V3(self)
 
-        if mc:
-            from upwork.routers.mc import MC
-            self.mc = MC(self)
+        if messages:
+            from upwork.routers.messages import Messages
+            self.messages = Messages(self)
 
         if offers:
             from upwork.routers.offers import Offers

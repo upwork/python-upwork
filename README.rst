@@ -27,7 +27,7 @@ You can use the API to build apps that will help you:
 * Manage your distributed team
 * Search for contractors and jobs
 * Send bulk invitations to interview and make offers
-* Send bulk messages to your team
+* Work with Messages workflow
 * Retrieve Time & Financial information for your company, team and contractors
 
 The API is the best way to communicate between apps.

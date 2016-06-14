@@ -5,6 +5,13 @@
 Changelog
 ***************
 
+.. _1.2.0:
+
+Version 1.2.0
+-------------
+* Added Messages API (new)
+* Message API (V1) is now fully depricated
+
 .. _1.1.0:
 
 Version 1.1.0
