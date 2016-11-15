@@ -1,21 +1,23 @@
 # Python bindings to Upwork API
 # python-upwork version 0.5
 # (C) 2010-2015 Upwork
+import six
+
+from .config import BASE_URL
+from upwork.namespaces import Namespace
 
 import time
-import urlparse
-import urllib
 import oauth2 as oauth
 import logging
 
-from .config import BASE_URL
-
-
-from upwork.namespaces import Namespace
+if six.PY2:
+    from urlparse import urljoin
+    from urllib import urlencode, parse_qsl
+else:
+    from urllib.parse import urljoin, urlencode, parse_qsl
 
 
 class OAuth(Namespace):
-
     """Authorization router.
 
     Has methods for retrieving access tokens and
@@ -26,10 +28,10 @@ class OAuth(Namespace):
     api_url = 'auth/'
     version = 1
 
-    request_token_url = urlparse.urljoin(
+    request_token_url = urljoin(
         BASE_URL, 'api/auth/v1/oauth/token/request')
-    authorize_url = urlparse.urljoin(BASE_URL, 'services/api/auth')
-    access_token_url = urlparse.urljoin(BASE_URL, 'api/auth/v1/oauth/token/access')
+    authorize_url = urljoin(BASE_URL, 'services/api/auth')
+    access_token_url = urljoin(BASE_URL, 'api/auth/v1/oauth/token/access')
 
     def get_oauth_params(self, url, key, secret, data=None, method='GET',
                          to_header=False, to_dict=False):
@@ -90,22 +92,22 @@ class OAuth(Namespace):
         if response.get('status') != '200':
             raise Exception(
                 "Invalid request token response: {0}.".format(content))
-        request_token = dict(urlparse.parse_qsl(content))
-        self.request_token = request_token.get('oauth_token')
-        self.request_token_secret = request_token.get('oauth_token_secret')
+        request_token = dict(parse_qsl(content))
+        self.request_token = request_token.get(b'oauth_token' if six.PY3 else 'oauth_token')
+        self.request_token_secret = request_token.get(b'oauth_token_secret' if six.PY3 else 'oauth_token')
         return self.request_token, self.request_token_secret
 
     def get_authorize_url(self, callback_url=None):
         """
         Returns authentication URL to be used in a browser.
         """
-        oauth_token = getattr(self, 'request_token', None) or\
-            self.get_request_token()[0]
+        oauth_token = getattr(self, 'request_token', None) or \
+                      self.get_request_token()[0]
         if callback_url:
-            params = urllib.urlencode({'oauth_token': oauth_token,\
-                'oauth_callback': callback_url})
+            params = urlencode({'oauth_token': oauth_token, \
+                                'oauth_callback': callback_url})
         else:
-            params = urllib.urlencode({'oauth_token': oauth_token})
+            params = urlencode({'oauth_token': oauth_token})
         return '{0}?{1}'.format(self.authorize_url, params)
 
     def get_access_token(self, verifier):
@@ -115,7 +117,7 @@ class OAuth(Namespace):
         try:
             request_token = self.request_token
             request_token_secret = self.request_token_secret
-        except AttributeError, e:
+        except AttributeError as e:
             logger = logging.getLogger('python-upwork')
             logger.debug(e)
             raise Exception("At first you need to call get_authorize_url")
@@ -126,9 +128,9 @@ class OAuth(Namespace):
         if response.get('status') != '200':
             raise Exception(
                 "Invalid access token response: {0}.".format(content))
-        access_token = dict(urlparse.parse_qsl(content))
-        self.access_token = access_token.get('oauth_token')
-        self.access_token_secret = access_token.get('oauth_token_secret')
+        access_token = dict(parse_qsl(content))
+        self.access_token = access_token.get(b'oauth_token' if six.PY3 else 'oauth_token')
+        self.access_token_secret = access_token.get(b'oauth_token_secret' if six.PY3 else 'oauth_token')
         return self.access_token, self.access_token_secret
 
     def get_info(self):

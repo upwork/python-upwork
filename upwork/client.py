@@ -5,9 +5,10 @@
 import os
 import json
 import logging
-import urllib3
-import ca_certs_locater
 
+import six
+import ca_certs_locater
+import urllib3
 from urllib3 import Retry
 
 from upwork.oauth import OAuth
@@ -15,16 +16,14 @@ from upwork.http import raise_http_error
 from upwork.utils import decimal_default
 from upwork.exceptions import IncorrectJsonResponseError
 
-
 __all__ = ["Client"]
-
 
 logger = logging.getLogger('python-upwork')
 
 if os.environ.get("PYTHON_UPWORK_DEBUG", False):
     if os.environ.get("PYTHON_UPWORK_DEBUG_FILE", False):
         fh = logging.FileHandler(filename=os.environ["PYTHON_UPWORK_DEBUG_FILE"]
-            )
+                                 )
         fh.setLevel(logging.DEBUG)
         logger.addHandler(fh)
     else:
@@ -124,7 +123,7 @@ class Client(object):
         self.oauth_access_token = oauth_access_token
         self.oauth_access_token_secret = oauth_access_token_secret
 
-        #Namespaces
+        # Namespaces
         self.auth = OAuth(self)
 
         if finreport:
@@ -168,7 +167,7 @@ class Client(object):
             from upwork.routers.job import Job
             self.job = Job(self)
 
-    #Shortcuts for HTTP methods
+    # Shortcuts for HTTP methods
     def get(self, url, data=None):
         return self.read(url, data, method='GET', fmt=self.fmt)
 
@@ -231,7 +230,7 @@ class Client(object):
             return self.http.urlopen(
                 method, url, body=post_data,
                 headers={'Content-Type':
-                         'application/x-www-form-urlencoded;charset=UTF-8'})
+                             'application/x-www-form-urlencoded;charset=UTF-8'})
         elif method in ('PUT', 'DELETE'):
             url = '{0}?{1}'.format(url, post_data)
             headers['Content-Type'] = 'application/json'
@@ -289,7 +288,7 @@ class Client(object):
             logger.debug('Error: {0}'.format(response))
             raise_http_error(url, response)
 
-        result = response.data
+        result = response.data if six.PY2 else response.data.decode('utf-8')
         logger.debug('Response: {0}'.format(result))
 
         if fmt == 'json':
@@ -307,4 +306,5 @@ class Client(object):
 
 if __name__ == "__main__":
     import doctest
+
     doctest.testmod()

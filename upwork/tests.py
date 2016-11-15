@@ -6,15 +6,14 @@
 
 from decimal import Decimal
 
-
 from upwork import Client
 from upwork import utils
 from upwork.exceptions import (HTTP400BadRequestError,
-                              HTTP401UnauthorizedError,
-                              HTTP403ForbiddenError,
-                              HTTP404NotFoundError,
-                              ApiValueError,
-                              IncorrectJsonResponseError)
+                               HTTP401UnauthorizedError,
+                               HTTP403ForbiddenError,
+                               HTTP404NotFoundError,
+                               ApiValueError,
+                               IncorrectJsonResponseError)
 
 from upwork.namespaces import Namespace
 from upwork.oauth import OAuth
@@ -23,9 +22,12 @@ from upwork.http import UPWORK_ERROR_CODE, UPWORK_ERROR_MESSAGE
 
 from nose.tools import eq_, ok_
 from mock import Mock, patch
-import urlparse
-import urllib2
-import httplib
+
+from six.moves.urllib.parse import urlparse, urlencode
+from six.moves.urllib.request import urlopen
+from six.moves.urllib.error import HTTPError
+
+from six.moves import http_client
 
 try:
     import json
@@ -39,19 +41,19 @@ class MicroMock(object):
 
 
 sample_json_dict = {u'glossary':
-                    {u'GlossDiv':
-                     {u'GlossList':
-                      {u'GlossEntry':
-                       {u'GlossDef':
-                        {u'GlossSeeAlso': [u'GML', u'XML'],
-                         u'para': u'A meta-markup language'},
-                         u'GlossSee': u'markup',
-                         u'Acronym': u'SGML',
-                         u'GlossTerm': u'Standard Generalized Markup Language',
-                         u'Abbrev': u'ISO 8879:1986',
-                         u'SortAs': u'SGML',
-                         u'ID': u'SGML'}},
-                         u'title': u'S'},
+                        {u'GlossDiv':
+                             {u'GlossList':
+                                  {u'GlossEntry':
+                                       {u'GlossDef':
+                                            {u'GlossSeeAlso': [u'GML', u'XML'],
+                                             u'para': u'A meta-markup language'},
+                                        u'GlossSee': u'markup',
+                                        u'Acronym': u'SGML',
+                                        u'GlossTerm': u'Standard Generalized Markup Language',
+                                        u'Abbrev': u'ISO 8879:1986',
+                                        u'SortAs': u'SGML',
+                                        u'ID': u'SGML'}},
+                              u'title': u'S'},
                          u'title': u'example glossary'}}
 
 
@@ -65,46 +67,46 @@ def test_client_urlopen():
     secret_key = 'secret'
 
     client = Client(public_key, secret_key,
-                oauth_access_token='some access token',
-                oauth_access_token_secret='some access token secret')
+                    oauth_access_token='some access token',
+                    oauth_access_token_secret='some access token secret')
 
-    #test urlopen
+    # test urlopen
     data = [{'url': 'http://test.url',
              'data': {'foo': 'bar'},
              'method': 'GET',
              'result_data': None,
              'result_url': 'http://test.url?api_sig=ddbf4b10a47ca8300554441dc7c9042b&api_key=public&foo=bar',
              'result_method': 'GET'},
-             {'url': 'http://test.url',
+            {'url': 'http://test.url',
              'data': {},
              'method': 'POST',
              'result_data': 'api_sig=ba343f176db8166c4b7e88911e7e46ec&api_key=public',
              'result_url': 'http://test.url',
              'result_method': 'POST'},
-             {'url': 'http://test.url',
+            {'url': 'http://test.url',
              'data': {},
              'method': 'PUT',
              'result_data': 'api_sig=52cbaea073a5d47abdffc7fc8ccd839b&api_key=public&http_method=put',
              'result_url': 'http://test.url',
              'result_method': 'POST'},
-             {'url': 'http://test.url',
+            {'url': 'http://test.url',
              'data': {},
              'method': 'DELETE',
              'result_data': 'api_sig=8621f072b1492fbd164d808307ba72b9&api_key=public&http_method=delete',
              'result_url': 'http://test.url',
              'result_method': 'POST'},
-             ]
+            ]
 
     result_json = json.dumps(sample_json_dict)
 
     for params in data:
         result = client.urlopen(url=params['url'],
-                            data=params['data'],
-                            method=params['method'])
+                                data=params['data'],
+                                method=params['method'])
         assert result.data == result_json, (result.data, result_json)
 
 
-def patched_urlopen_error(method, url, code=httplib.BAD_REQUEST,
+def patched_urlopen_error(method, url, code=http_client.BAD_REQUEST,
                           message=None, data=None, **kwargs):
     getheaders = Mock()
     getheaders.return_value = {UPWORK_ERROR_CODE: code,
@@ -114,36 +116,36 @@ def patched_urlopen_error(method, url, code=httplib.BAD_REQUEST,
 
 def patched_urlopen_incorrect_json(self, method, url, **kwargs):
     return patched_urlopen_error(
-        method, url, code=httplib.OK, data='Service temporarily unavailable')
+        method, url, code=http_client.OK, data='Service temporarily unavailable')
 
 
 def patched_urlopen_400(self, method, url, **kwargs):
     return patched_urlopen_error(
-        method, url, code=httplib.BAD_REQUEST,
+        method, url, code=http_client.BAD_REQUEST,
         message='Limit exceeded', **kwargs)
 
 
 def patched_urlopen_401(self, method, url, **kwargs):
     return patched_urlopen_error(
-        method, url, code=httplib.UNAUTHORIZED,
+        method, url, code=http_client.UNAUTHORIZED,
         message='Not authorized', **kwargs)
 
 
 def patched_urlopen_403(self, method, url, **kwargs):
     return patched_urlopen_error(
-        method, url, code=httplib.FORBIDDEN,
+        method, url, code=http_client.FORBIDDEN,
         message='Forbidden', **kwargs)
 
 
 def patched_urlopen_404(self, method, url, **kwargs):
     return patched_urlopen_error(
-        method, url, code=httplib.NOT_FOUND,
+        method, url, code=http_client.NOT_FOUND,
         message='Not found', **kwargs)
 
 
 def patched_urlopen_500(self, method, url, **kwargs):
     return patched_urlopen_error(
-        method, url, code=httplib.INTERNAL_SERVER_ERROR,
+        method, url, code=http_client.INTERNAL_SERVER_ERROR,
         message='Internal server error', **kwargs)
 
 
@@ -193,8 +195,8 @@ def test_client_read():
     secret_key = 'secret'
 
     client = Client(public_key, secret_key,
-                oauth_access_token='some access token',
-                oauth_access_token_secret='some access token secret')
+                    oauth_access_token='some access token',
+                    oauth_access_token_secret='some access token secret')
     test_url = 'http://test.url'
 
     # Produce error on format other then json
@@ -202,10 +204,10 @@ def test_client_read():
         pass
 
     try:
-        client.read(url=test_url, format='yaml')
+        client.read(url=test_url, fmt='yaml')
         raise NotJsonException("Client.read() doesn't produce error on "
                                "yaml format")
-    except NotJsonException, e:
+    except NotJsonException as e:
         raise e
     except Exception:
         pass
@@ -222,51 +224,51 @@ def test_client_read():
                "incorrect json response: {0}".format(result))
     except IncorrectJsonResponseError:
         pass
-    except Exception, e:
+    except Exception as e:
         assert 0, "Incorrect exception raised for 200 code " \
-            "and incorrect json response: " + str(e)
+                  "and incorrect json response: " + str(e)
 
     # Test get, 400 error
     try:
         result = client_read_400(client=client, url=test_url)
-    except HTTP400BadRequestError, e:
+    except HTTP400BadRequestError as e:
         pass
-    except Exception, e:
+    except Exception as e:
         assert 0, "Incorrect exception raised for 400 code: " + str(e)
 
     # Test get, 401 error
     try:
         result = client_read_401(client=client, url=test_url)
-    except HTTP401UnauthorizedError, e:
+    except HTTP401UnauthorizedError as e:
         pass
-    except Exception, e:
+    except Exception as e:
         assert 0, "Incorrect exception raised for 401 code: " + str(e)
 
     # Test get, 403 error
     try:
         result = client_read_403(client=client, url=test_url)
-    except HTTP403ForbiddenError, e:
+    except HTTP403ForbiddenError as e:
         pass
-    except Exception, e:
+    except Exception as e:
         assert 0, "Incorrect exception raised for 403 code: " + str(e)
 
     # Test get, 404 error
     try:
         result = client_read_404(client=client, url=test_url)
-    except HTTP404NotFoundError, e:
+    except HTTP404NotFoundError as e:
         pass
-    except Exception, e:
+    except Exception as e:
         assert 0, "Incorrect exception raised for 404 code: " + str(e)
 
     # Test get, 500 error
     try:
         result = client_read_500(client=client, url=test_url)
-    except urllib2.HTTPError, e:
-        if e.code == httplib.INTERNAL_SERVER_ERROR:
+    except HTTPError as e:
+        if e.code == http_client.INTERNAL_SERVER_ERROR:
             pass
         else:
             assert 0, "Incorrect exception raised for 500 code: " + str(e)
-    except Exception, e:
+    except Exception as e:
         assert 0, "Incorrect exception raised for 500 code: " + str(e)
 
 
@@ -303,7 +305,7 @@ def test_namespace():
     ns = Namespace(get_client())
     test_url = "http://test.url"
 
-    #test full_url
+    # test full_url
     full_url = ns.full_url('test')
     assert full_url == 'https://www.upwork.com/api/Nonev1/test', full_url
 
@@ -321,19 +323,19 @@ def test_namespace():
 
 
 teamrooms_dict = {'teamrooms':
-                  {'teamroom':
-                   {u'team_ref': u'1',
-                    u'name': u'Upwork',
-                    u'recno': u'1',
-                    u'parent_team_ref': u'1',
-                    u'company_name': u'Upwork',
-                    u'company_recno': u'1',
-                    u'teamroom_api': u'/api/team/v1/teamrooms/upwork:some.json',
-                    u'id': u'upwork:some'}},
+                      {'teamroom':
+                           {u'team_ref': u'1',
+                            u'name': u'Upwork',
+                            u'recno': u'1',
+                            u'parent_team_ref': u'1',
+                            u'company_name': u'Upwork',
+                            u'company_recno': u'1',
+                            u'teamroom_api': u'/api/team/v1/teamrooms/upwork:some.json',
+                            u'id': u'upwork:some'}},
                   'teamroom': {'snapshot': 'test snapshot'},
                   'snapshots': {'user': 'test', 'snapshot': 'test'},
                   'snapshot': {'status': 'private'}
-                 }
+                  }
 
 
 def patched_urlopen_teamrooms(*args, **kwargs):
@@ -345,56 +347,56 @@ def test_team():
     te = Team(get_client())
     te_v2 = Team_V2(get_client())
 
-    #test full_url
+    # test full_url
     full_url = te.full_url('test')
     assert full_url == 'https://www.upwork.com/api/team/v1/test', full_url
 
-    #test get_teamrooms
+    # test get_teamrooms
     assert te_v2.get_teamrooms() == \
-        [teamrooms_dict['teamrooms']['teamroom']], te_v2.get_teamrooms()
+           [teamrooms_dict['teamrooms']['teamroom']], te_v2.get_teamrooms()
 
-    #test get_snapshots
+    # test get_snapshots
     assert te_v2.get_snapshots(1) == \
-        [teamrooms_dict['teamroom']['snapshot']], te_v2.get_snapshots(1)
+           [teamrooms_dict['teamroom']['snapshot']], te_v2.get_snapshots(1)
 
-    #test get_snapshot by contract
+    # test get_snapshot by contract
     assert te_v2.get_snapshot_by_contract(1) == teamrooms_dict['snapshot'], \
         te_v2.get_snapshot_by_contract(1)
 
-    #test update_snapshot by contract
+    # test update_snapshot by contract
     assert te_v2.update_snapshot_by_contract(1, memo='memo') == teamrooms_dict, \
         te_v2.update_snapshot_by_contract(1, memo='memo')
 
-    #test update_snapshot by contract
+    # test update_snapshot by contract
     assert te_v2.delete_snapshot_by_contract(1) == teamrooms_dict, te_v2.delete_snapshot_by_contract(1)
 
-    #test get_snapshot
+    # test get_snapshot
     assert te.get_snapshot(1, 1) == teamrooms_dict['snapshot'], \
         te.get_snapshot(1, 1)
 
-    #test update_snapshot
+    # test update_snapshot
     assert te.update_snapshot(1, 1, memo='memo') == teamrooms_dict, \
         te.update_snapshot(1, 1, memo='memo')
 
-    #test update_snapshot
+    # test update_snapshot
     assert te.delete_snapshot(1, 1) == teamrooms_dict, te.delete_snapshot(1, 1)
 
-    #test get_workdiaries
+    # test get_workdiaries
     eq_(te.get_workdiaries(1, 1, 1), (teamrooms_dict['snapshots']['user'],
-        [teamrooms_dict['snapshots']['snapshot']]))
+                                      [teamrooms_dict['snapshots']['snapshot']]))
 
-    #test get_workdiaries_by_contract
+    # test get_workdiaries_by_contract
     eq_(te_v2.get_workdiaries_by_contract(1, 1), (teamrooms_dict['snapshots']['user'],
-        [teamrooms_dict['snapshots']['snapshot']]))
+                                                  [teamrooms_dict['snapshots']['snapshot']]))
 
-    #test get_workdays
+    # test get_workdays
     eq_(te_v2.get_workdays_by_company(1, 1, 1), {})
 
-    #test get_workdays_by_contract
+    # test get_workdays_by_contract
     eq_(te_v2.get_workdays_by_contract(1, 1, 1), {})
 
-    #test get_snapshot_by_contract
-    eq_(te_v2.get_snapshot_by_contract(1), {'status':'private'})
+    # test get_snapshot_by_contract
+    eq_(te_v2.get_snapshot_by_contract(1), {'status': 'private'})
 
 
 teamrooms_dict_none = {'teamrooms': '',
@@ -413,35 +415,35 @@ def test_teamrooms_none():
     te = Team(get_client())
     te_v2 = Team_V2(get_client())
 
-    #test full_url
+    # test full_url
     full_url = te.full_url('test')
     assert full_url == 'https://www.upwork.com/api/team/v1/test', full_url
 
-    #test get_teamrooms
+    # test get_teamrooms
     assert te_v2.get_teamrooms() == [], te_v2.get_teamrooms()
 
-    #test get_snapshots
+    # test get_snapshots
     assert te_v2.get_snapshots(1) == [], te_v2.get_snapshots(1)
 
-    #test get_snapshot
+    # test get_snapshot
     eq_(te.get_snapshot(1, 1), teamrooms_dict_none['snapshot'])
 
 
 userroles = {u'userrole':
-             [{u'parent_team__reference': u'1',
-              u'user__id': u'testuser', u'team__id': u'test:t',
-              u'reference': u'1', u'team__name': u'te',
-              u'company__reference': u'1',
-              u'user__reference': u'1',
-              u'user__first_name': u'Test',
-              u'user__last_name': u'Development',
-              u'parent_team__id': u'testdev',
-              u'team__reference': u'1', u'role': u'manager',
-              u'affiliation_status': u'none', u'engagement__reference': u'',
-              u'parent_team__name': u'TestDev', u'has_team_room_access': u'1',
-              u'company__name': u'Test Dev',
-              u'permissions':
-                {u'permission': [u'manage_employment', u'manage_recruiting']}}]}
+                 [{u'parent_team__reference': u'1',
+                   u'user__id': u'testuser', u'team__id': u'test:t',
+                   u'reference': u'1', u'team__name': u'te',
+                   u'company__reference': u'1',
+                   u'user__reference': u'1',
+                   u'user__first_name': u'Test',
+                   u'user__last_name': u'Development',
+                   u'parent_team__id': u'testdev',
+                   u'team__reference': u'1', u'role': u'manager',
+                   u'affiliation_status': u'none', u'engagement__reference': u'',
+                   u'parent_team__name': u'TestDev', u'has_team_room_access': u'1',
+                   u'company__name': u'Test Dev',
+                   u'permissions':
+                       {u'permission': [u'manage_employment', u'manage_recruiting']}}]}
 
 engagement = {u'status': u'active',
               u'buyer_team__reference': u'1', u'provider__reference': u'2',
@@ -460,8 +462,8 @@ engagement = {u'status': u'active',
               u'engagement_start_date': u'000', u'description': u''}
 
 engagements = {u'lister':
-               {u'total_items': u'10', u'query': u'',
-                u'paging': {u'count': u'10', u'offset': u'0'}, u'sort': u''},
+                   {u'total_items': u'10', u'query': u'',
+                    u'paging': {u'count': u'10', u'offset': u'0'}, u'sort': u''},
                u'engagement': [engagement, engagement],
                }
 
@@ -489,9 +491,9 @@ offer = {u'provider__reference': u'1',
          u'engagement__reference': u''}
 
 offers = {u'lister':
-          {u'total_items': u'10', u'query': u'', u'paging':
-           {u'count': u'10', u'offset': u'0'}, u'sort': u''},
-           u'offer': [offer, offer]}
+              {u'total_items': u'10', u'query': u'', u'paging':
+                  {u'count': u'10', u'offset': u'0'}, u'sort': u''},
+          u'offer': [offer, offer]}
 
 job = {u'subcategory2': u'Development', u'reference': u'1',
        u'buyer_company__name': u'Python community',
@@ -512,9 +514,9 @@ job = {u'subcategory2': u'Development', u'reference': u'1',
 jobs = [job, job]
 
 task = {u'reference': u'test', u'company_reference': u'1',
-          u'team__reference': u'1', u'user__reference': u'1',
-          u'code': u'1', u'description': u'test task',
-          u'url': u'http://url.upwork.com/task', u'level': u'1'}
+        u'team__reference': u'1', u'user__reference': u'1',
+        u'code': u'1', u'description': u'test task',
+        u'url': u'http://url.upwork.com/task', u'level': u'1'}
 
 tasks = [task, task]
 
@@ -532,36 +534,36 @@ user = {u'status': u'active', u'first_name': u'TestF',
         u'id': u'testuser'}
 
 team = {u'status': u'active', u'parent_team__reference': u'0',
-         u'name': u'Test',
-         u'reference': u'1',
-         u'company__reference': u'1',
-         u'id': u'test',
-         u'parent_team__id': u'test_parent',
-         u'company_name': u'Test', u'is_hidden': u'',
-         u'parent_team__name': u'Test parent'}
+        u'name': u'Test',
+        u'reference': u'1',
+        u'company__reference': u'1',
+        u'id': u'test',
+        u'parent_team__id': u'test_parent',
+        u'company_name': u'Test', u'is_hidden': u'',
+        u'parent_team__name': u'Test parent'}
 
 company = {u'status': u'active',
-             u'name': u'Test',
-             u'reference': u'1',
-             u'company_id': u'1',
-             u'owner_user_id': u'1', }
+           u'name': u'Test',
+           u'reference': u'1',
+           u'company_id': u'1',
+           u'owner_user_id': u'1', }
 
 hr_dict = {u'auth_user': auth_user,
            u'server_time': u'0000',
            u'user': user,
            u'team': team,
            u'company': company,
-            u'teams': [team, team],
-            u'companies': [company, company],
-            u'users': [user, user],
-            u'tasks': task,
-            u'userroles': userroles,
-            u'engagements': engagements,
-            u'engagement': engagement,
-            u'offer': offer,
-            u'offers': offers,
-            u'job': job,
-            u'jobs': jobs}
+           u'teams': [team, team],
+           u'companies': [company, company],
+           u'users': [user, user],
+           u'tasks': task,
+           u'userroles': userroles,
+           u'engagements': engagements,
+           u'engagement': engagement,
+           u'offer': offer,
+           u'offers': offers,
+           u'job': job,
+           u'jobs': jobs}
 
 
 def patched_urlopen_hr(*args, **kwargs):
@@ -572,31 +574,31 @@ def patched_urlopen_hr(*args, **kwargs):
 def test_get_hrv2_user():
     hr = get_client().hr
 
-    #test get_user
+    # test get_user
     assert hr.get_user(1) == hr_dict[u'user'], hr.get_user(1)
 
 
 @patch('urllib3.PoolManager.urlopen', patched_urlopen_hr)
 def test_get_hrv2_companies():
     hr = get_client().hr
-    #test get_companies
+    # test get_companies
     assert hr.get_companies() == hr_dict[u'companies'], hr.get_companies()
 
-    #test get_company
+    # test get_company
     assert hr.get_company(1) == hr_dict[u'company'], hr.get_company(1)
 
 
 @patch('urllib3.PoolManager.urlopen', patched_urlopen_hr)
 def test_get_hrv2_company_teams():
     hr = get_client().hr
-    #test get_company_teams
+    # test get_company_teams
     assert hr.get_company_teams(1) == hr_dict['teams'], hr.get_company_teams(1)
 
 
 @patch('urllib3.PoolManager.urlopen', patched_urlopen_hr)
 def test_get_hrv2_company_users():
     hr = get_client().hr
-    #test get_company_users
+    # test get_company_users
     assert hr.get_company_users(1) == hr_dict['users'], hr.get_company_users(1)
     assert hr.get_company_users(1, False) == hr_dict['users'], \
         hr.get_company_users(1, False)
@@ -605,17 +607,17 @@ def test_get_hrv2_company_users():
 @patch('urllib3.PoolManager.urlopen', patched_urlopen_hr)
 def test_get_hrv2_teams():
     hr = get_client().hr
-    #test get_teams
+    # test get_teams
     assert hr.get_teams() == hr_dict[u'teams'], hr.get_teams()
 
-    #test get_team
+    # test get_team
     assert hr.get_team(1) == hr_dict[u'team'], hr.get_team(1)
 
 
 @patch('urllib3.PoolManager.urlopen', patched_urlopen_hr)
 def test_get_hrv2_team_users():
     hr = get_client().hr
-    #test get_team_users
+    # test get_team_users
     assert hr.get_team_users(1) == hr_dict[u'users'], hr.get_team_users(1)
     assert hr.get_team_users(1, False) == hr_dict[u'users'], \
         hr.get_team_users(1, False)
@@ -624,14 +626,14 @@ def test_get_hrv2_team_users():
 @patch('urllib3.PoolManager.urlopen', patched_urlopen_hr)
 def test_get_hrv2_userroles():
     hr = get_client().hr
-    #test get_user_roles
+    # test get_user_roles
     assert hr.get_user_roles() == hr_dict['userroles'], hr.get_user_role()
 
 
 @patch('urllib3.PoolManager.urlopen', patched_urlopen_hr)
 def test_get_hrv2_jobs():
     hr = get_client().hr
-    #test get_jobs
+    # test get_jobs
     assert hr.get_jobs(1) == hr_dict[u'jobs'], hr.get_jobs()
     assert hr.get_job(1) == hr_dict[u'job'], hr.get_job(1)
     result = hr.update_job(1, 2, 'title', 'desc', 'public', budget=100,
@@ -643,7 +645,7 @@ def test_get_hrv2_jobs():
 @patch('urllib3.PoolManager.urlopen', patched_urlopen_hr)
 def test_get_hrv2_offers():
     hr = get_client().hr
-    #test get_offers
+    # test get_offers
     assert hr.get_offers(1) == hr_dict[u'offers'], hr.get_offers()
     assert hr.get_offer(1) == hr_dict[u'offer'], hr.get_offer(1)
 
@@ -791,44 +793,46 @@ def test_job_data_no_category():
     except ApiValueError:
         pass
 
+
 provider_dict = {'profile':
-                 {u'response_time': u'31.0000000000000000',
-                  u'dev_agency_ref': u'',
-                  u'dev_adj_score_recent': u'0',
-                  u'dev_ui_profile_access': u'Public',
-                  u'dev_portrait': u'',
-                  u'dev_ic': u'Freelance Provider',
-                  u'certification': u'',
-                  u'dev_usr_score': u'0',
-                  u'dev_country': u'Ukraine',
-                  u'dev_recent_rank_percentile': u'0',
-                  u'dev_profile_title': u'Python developer',
-                  u'dev_groups': u'',
-                  u'dev_scores':
-                  {u'dev_score':
-                   [{u'description': u'competency and skills for the job, understanding of specifications/instructions',
-                     u'avg_category_score_recent': u'',
-                     u'avg_category_score': u'',
-                     u'order': u'1', u'label': u'Skills'},
-                     {u'description': u'quality of work deliverables',
-                      u'avg_category_score_recent': u'',
-                      u'avg_category_score': u'', u'order': u'2', u'label': u'Quality'},
-                      ]
-                   }},
-                   'providers': {'test': 'test'},
-                   'jobs': {'test': 'test'},
-                   'otherexp': 'experiences',
-                   'skills': 'skills',
-                   'tests': 'tests',
-                   'certificates': 'certificates',
-                   'employments': 'employments',
-                   'educations': 'employments',
-                   'projects': 'projects',
-                   'quick_info': 'quick_info',
-                   'categories': 'category 1',
-                   'regions': 'region 1',
-                   'tests': 'test 1',
-                   }
+                     {u'response_time': u'31.0000000000000000',
+                      u'dev_agency_ref': u'',
+                      u'dev_adj_score_recent': u'0',
+                      u'dev_ui_profile_access': u'Public',
+                      u'dev_portrait': u'',
+                      u'dev_ic': u'Freelance Provider',
+                      u'certification': u'',
+                      u'dev_usr_score': u'0',
+                      u'dev_country': u'Ukraine',
+                      u'dev_recent_rank_percentile': u'0',
+                      u'dev_profile_title': u'Python developer',
+                      u'dev_groups': u'',
+                      u'dev_scores':
+                          {u'dev_score':
+                              [{
+                                  u'description': u'competency and skills for the job, understanding of specifications/instructions',
+                                  u'avg_category_score_recent': u'',
+                                  u'avg_category_score': u'',
+                                  u'order': u'1', u'label': u'Skills'},
+                                  {u'description': u'quality of work deliverables',
+                                   u'avg_category_score_recent': u'',
+                                   u'avg_category_score': u'', u'order': u'2', u'label': u'Quality'},
+                              ]
+                          }},
+                 'providers': {'test': 'test'},
+                 'jobs': {'test': 'test'},
+                 'otherexp': 'experiences',
+                 'skills': 'skills',
+                 'tests': 'tests',
+                 'certificates': 'certificates',
+                 'employments': 'employments',
+                 'educations': 'employments',
+                 'projects': 'projects',
+                 'quick_info': 'quick_info',
+                 'categories': 'category 1',
+                 'regions': 'region 1',
+                 'tests': 'test 1',
+                 }
 
 
 def patched_urlopen_provider(*args, **kwargs):
@@ -839,14 +843,14 @@ def patched_urlopen_provider(*args, **kwargs):
 def test_provider():
     pr = get_client().provider
 
-    #test full_url
+    # test full_url
     full_url = pr.full_url('test')
     assert full_url == 'https://www.upwork.com/api/profiles/v1/test', full_url
 
-    #test get_provider
+    # test get_provider
     assert pr.get_provider(1) == provider_dict['profile'], pr.get_provider(1)
 
-    #test get_provider_brief
+    # test get_provider_brief
     assert pr.get_provider_brief(1) == provider_dict['profile'], \
         pr.get_provider_brief(1)
 
@@ -862,61 +866,72 @@ def test_provider():
 
 rooms_dict = {u'rooms': []}
 
+
 def patched_urlopen_rooms(*args, **kwargs):
     return MicroMock(data=json.dumps(rooms_dict), status=200)
+
 
 @patch('urllib3.PoolManager.urlopen', patched_urlopen_rooms)
 def test_get_rooms():
     messages = get_client().messages
 
-    #test full_url
+    # test full_url
     full_url = messages.full_url('testcompany/rooms')
     assert full_url == 'https://www.upwork.com/api/messages/v3/testcompany/rooms', full_url
 
-    #test get_rooms
+    # test get_rooms
     assert messages.get_rooms("testcompany") == rooms_dict, messages.get_rooms("testcompany")
+
 
 room_dict = {u'room': {}}
 
+
 def patched_urlopen_room(*args, **kwargs):
     return MicroMock(data=json.dumps(room_dict), status=200)
+
 
 @patch('urllib3.PoolManager.urlopen', patched_urlopen_room)
 def test_get_room_details():
     messages = get_client().messages
 
-    #test get_room_details
-    assert messages.get_room_details("testcompany", "room-id") ==\
-	room_dict, messages.get_room_details("testcompany", "room-id")
+    # test get_room_details
+    assert messages.get_room_details("testcompany", "room-id") == \
+           room_dict, messages.get_room_details("testcompany", "room-id")
+
 
 @patch('urllib3.PoolManager.urlopen', patched_urlopen_room)
 def test_get_room_by_offer():
     messages = get_client().messages
 
-    #test get_room_by_offer
-    assert messages.get_room_by_offer("testcompany", "1234") ==\
-	room_dict, messages.get_room_by_offer("testcompany", "1234")
+    # test get_room_by_offer
+    assert messages.get_room_by_offer("testcompany", "1234") == \
+           room_dict, messages.get_room_by_offer("testcompany", "1234")
+
 
 @patch('urllib3.PoolManager.urlopen', patched_urlopen_room)
 def test_get_room_by_application():
     messages = get_client().messages
 
-    #test get_room_by_applications
-    assert messages.get_room_by_application("testcompany", "1234") ==\
-	room_dict, messages.get_room_by_application("testcompany", "1234")
+    # test get_room_by_applications
+    assert messages.get_room_by_application("testcompany", "1234") == \
+           room_dict, messages.get_room_by_application("testcompany", "1234")
+
 
 @patch('urllib3.PoolManager.urlopen', patched_urlopen_room)
 def test_get_room_by_contract():
     messages = get_client().messages
 
-    #test get_room_by_contract
-    assert messages.get_room_by_contract("testcompany", "1234") ==\
-	room_dict, messages.get_room_by_contract("testcompany", "1234")
+    # test get_room_by_contract
+    assert messages.get_room_by_contract("testcompany", "1234") == \
+           room_dict, messages.get_room_by_contract("testcompany", "1234")
+
 
 read_room_content_dict = {"room": {"test": '1'}}
 
+
 def patched_urlopen_read_room_content(*args, **kwargs):
     return MicroMock(data=json.dumps(read_room_content_dict), status=200)
+
 
 @patch('urllib3.PoolManager.urlopen', patched_urlopen_read_room_content)
 def test_create_room():
@@ -925,6 +940,7 @@ def test_create_room():
     message = messages.create_room('testcompany', {'roomName': 'test room'})
     assert message == read_room_content_dict, message
 
+
 @patch('urllib3.PoolManager.urlopen', patched_urlopen_read_room_content)
 def test_send_message_to_room():
     messages = get_client().messages
@@ -932,12 +948,14 @@ def test_send_message_to_room():
     message = messages.send_message_to_room('testcompany', 'room-id', {'message': 'test message'})
     assert message == read_room_content_dict, message
 
+
 @patch('urllib3.PoolManager.urlopen', patched_urlopen_read_room_content)
 def test_update_room_settings():
     messages = get_client().messages
 
     message = messages.update_room_settings('testcompany', 'room-id', 'userid', {'isFavorite': 'true'})
     assert message == read_room_content_dict, message
+
 
 @patch('urllib3.PoolManager.urlopen', patched_urlopen_read_room_content)
 def test_update_room_metadata():
@@ -948,23 +966,23 @@ def test_update_room_metadata():
 
 
 timereport_dict = {u'table':
-     {u'rows':
-      [{u'c':
-        [{u'v': u'20100513'},
-         {u'v': u'company1:team1'},
-         {u'v': u'1'},
-         {u'v': u'1'},
-         {u'v': u'0'},
-         {u'v': u'1'},
-         {u'v': u'Bug 1: Test'}]}],
-         u'cols':
-         [{u'type': u'date', u'label': u'worked_on'},
-          {u'type': u'string', u'label': u'assignment_team_id'},
-          {u'type': u'number', u'label': u'hours'},
-          {u'type': u'number', u'label': u'earnings'},
-          {u'type': u'number', u'label': u'earnings_offline'},
-          {u'type': u'string', u'label': u'task'},
-          {u'type': u'string', u'label': u'memo'}]}}
+                       {u'rows':
+                            [{u'c':
+                                  [{u'v': u'20100513'},
+                                   {u'v': u'company1:team1'},
+                                   {u'v': u'1'},
+                                   {u'v': u'1'},
+                                   {u'v': u'0'},
+                                   {u'v': u'1'},
+                                   {u'v': u'Bug 1: Test'}]}],
+                        u'cols':
+                            [{u'type': u'date', u'label': u'worked_on'},
+                             {u'type': u'string', u'label': u'assignment_team_id'},
+                             {u'type': u'number', u'label': u'hours'},
+                             {u'type': u'number', u'label': u'earnings'},
+                             {u'type': u'number', u'label': u'earnings_offline'},
+                             {u'type': u'string', u'label': u'task'},
+                             {u'type': u'string', u'label': u'memo'}]}}
 
 
 def patched_urlopen_timereport_content(*args, **kwargs):
@@ -975,13 +993,13 @@ def patched_urlopen_timereport_content(*args, **kwargs):
 def test_get_provider_timereport():
     tc = get_client().timereport
 
-    read = tc.get_provider_report('test',\
-        utils.Query(select=['1', '2', '3'], where=(utils.Q('2') > 1)))
+    read = tc.get_provider_report('test', \
+                                  utils.Query(select=['1', '2', '3'], where=(utils.Q('2') > 1)))
     assert read == timereport_dict, read
 
-    read = tc.get_provider_report('test',\
-        utils.Query(select=['1', '2', '3'], where=(utils.Q('2') > 1)),
-                                                hours=True)
+    read = tc.get_provider_report('test', \
+                                  utils.Query(select=['1', '2', '3'], where=(utils.Q('2') > 1)),
+                                  hours=True)
     assert read == timereport_dict, read
 
 
@@ -989,13 +1007,13 @@ def test_get_provider_timereport():
 def test_get_company_timereport():
     tc = get_client().timereport
 
-    read = tc.get_company_report('test',\
-        utils.Query(select=['1', '2', '3'], where=(utils.Q('2') > 1)))
+    read = tc.get_company_report('test', \
+                                 utils.Query(select=['1', '2', '3'], where=(utils.Q('2') > 1)))
     assert read == timereport_dict, read
 
-    read = tc.get_company_report('test',\
-        utils.Query(select=['1', '2', '3'], where=(utils.Q('2') > 1)),
-                                  hours=True)
+    read = tc.get_company_report('test', \
+                                 utils.Query(select=['1', '2', '3'], where=(utils.Q('2') > 1)),
+                                 hours=True)
     assert read == timereport_dict, read
 
 
@@ -1003,33 +1021,34 @@ def test_get_company_timereport():
 def test_get_agency_timereport():
     tc = get_client().timereport
 
-    read = tc.get_agency_report('test', 'test',\
-        utils.Query(select=['1', '2', '3'], where=(utils.Q('2') > 1)))
+    read = tc.get_agency_report('test', 'test', \
+                                utils.Query(select=['1', '2', '3'], where=(utils.Q('2') > 1)))
     assert read == timereport_dict, read
 
-    read = tc.get_agency_report('test', 'test',\
-        utils.Query(select=['1', '2', '3'], where=(utils.Q('2') > 1)),
-                                  hours=True)
+    read = tc.get_agency_report('test', 'test', \
+                                utils.Query(select=['1', '2', '3'], where=(utils.Q('2') > 1)),
+                                hours=True)
     assert read == timereport_dict, read
+
 
 fin_report_dict = {u'table':
-     {u'rows':
-      [{u'c':
-        [{u'v': u'20100513'},
-         {u'v': u'upwork:upworkps'},
-         {u'v': u'1'},
-         {u'v': u'1'},
-         {u'v': u'0'},
-         {u'v': u'1'},
-         {u'v': u'Bug 1: Test'}]}],
-         u'cols':
-         [{u'type': u'date', u'label': u'worked_on'},
-          {u'type': u'string', u'label': u'assignment_team_id'},
-          {u'type': u'number', u'label': u'hours'},
-          {u'type': u'number', u'label': u'earnings'},
-          {u'type': u'number', u'label': u'earnings_offline'},
-          {u'type': u'string', u'label': u'task'},
-          {u'type': u'string', u'label': u'memo'}]}}
+                       {u'rows':
+                            [{u'c':
+                                  [{u'v': u'20100513'},
+                                   {u'v': u'upwork:upworkps'},
+                                   {u'v': u'1'},
+                                   {u'v': u'1'},
+                                   {u'v': u'0'},
+                                   {u'v': u'1'},
+                                   {u'v': u'Bug 1: Test'}]}],
+                        u'cols':
+                            [{u'type': u'date', u'label': u'worked_on'},
+                             {u'type': u'string', u'label': u'assignment_team_id'},
+                             {u'type': u'number', u'label': u'hours'},
+                             {u'type': u'number', u'label': u'earnings'},
+                             {u'type': u'number', u'label': u'earnings_offline'},
+                             {u'type': u'string', u'label': u'task'},
+                             {u'type': u'string', u'label': u'memo'}]}}
 
 
 def patched_urlopen_fin_report_content(*args, **kwargs):
@@ -1134,6 +1153,7 @@ def test_get_financial_entities_provider():
 
 task_dict = {u'tasks': 'task1'}
 
+
 def patched_urlopen_task(*args, **kwargs):
     return MicroMock(data=json.dumps(task_dict), status=200)
 
@@ -1210,6 +1230,7 @@ def test_put_company_task():
                                  all_in_company=True) == task_dict, \
         task.put_company_task(1, 1, '1', 'ttt', engagements=[1, 2],
                               all_in_company=True)
+
 
 @patch('urllib3.PoolManager.urlopen', patched_urlopen_task)
 def test_assign_to_engagement():
@@ -1292,7 +1313,7 @@ def test_gds_namespace_get():
     from upwork.namespaces import GdsNamespace
     gds = GdsNamespace(get_client())
     result = gds.get('http://test.url')
-    assert isinstance(result, dict), type(res)
+    assert isinstance(result, dict), type(result)
     assert result == sample_json_dict, (result, sample_json_dict)
 
 
@@ -1309,27 +1330,29 @@ def test_oauth_full_url():
 
 
 def patched_httplib2_request(*args, **kwargs):
-    return {'status': '200'},\
-        'oauth_callback_confirmed=1&oauth_token=709d434e6b37a25c50e95b0e57d24c46&oauth_token_secret=193ef27f57ab4e37'
+    return {'status': '200'}, \
+           'oauth_callback_confirmed=1&oauth_token=709d434e6b37a25c50e95b0e57d24c46&oauth_token_secret=193ef27f57ab4e37'
+
 
 @patch('httplib2.Http.request', patched_httplib2_request)
 def test_oauth_get_request_token():
     oa = setup_oauth()
-    assert oa.get_request_token() == ('709d434e6b37a25c50e95b0e57d24c46',\
-                                    '193ef27f57ab4e37')
+    assert oa.get_request_token() == ('709d434e6b37a25c50e95b0e57d24c46', \
+                                      '193ef27f57ab4e37')
 
 
 @patch('httplib2.Http.request', patched_httplib2_request)
 def test_oauth_get_authorize_url():
     oa = setup_oauth()
-    assert oa.get_authorize_url() ==\
-        'https://www.upwork.com/services/api/auth?oauth_token=709d434e6b37a25c50e95b0e57d24c46'
-    assert oa.get_authorize_url('http://example.com/oauth/complete') ==\
-        'https://www.upwork.com/services/api/auth?oauth_token=709d434e6b37a25c50e95b0e57d24c46&oauth_callback=http%3A%2F%2Fexample.com%2Foauth%2Fcomplete'
+    assert oa.get_authorize_url() == \
+           'https://www.upwork.com/services/api/auth?oauth_token=709d434e6b37a25c50e95b0e57d24c46'
+    assert oa.get_authorize_url('http://example.com/oauth/complete') == \
+           'https://www.upwork.com/services/api/auth?oauth_token=709d434e6b37a25c50e95b0e57d24c46&oauth_callback=http%3A%2F%2Fexample.com%2Foauth%2Fcomplete'
+
 
 def patched_httplib2_access(*args, **kwargs):
-    return {'status': '200'},\
-        'oauth_token=aedec833d41732a584d1a5b4959f9cd6&oauth_token_secret=9d9cccb363d2b13e'
+    return {'status': '200'}, \
+           'oauth_token=aedec833d41732a584d1a5b4959f9cd6&oauth_token_secret=9d9cccb363d2b13e'
 
 
 @patch('httplib2.Http.request', patched_httplib2_access)
@@ -1337,8 +1360,8 @@ def test_oauth_get_access_token():
     oa = setup_oauth()
     oa.request_token = '709d434e6b37a25c50e95b0e57d24c46'
     oa.request_token_secret = '193ef27f57ab4e37'
-    assert oa.get_access_token('9cbcbc19f8acc2d85a013e377ddd4118') ==\
-     ('aedec833d41732a584d1a5b4959f9cd6', '9d9cccb363d2b13e')
+    assert oa.get_access_token('9cbcbc19f8acc2d85a013e377ddd4118') == \
+           ('aedec833d41732a584d1a5b4959f9cd6', '9d9cccb363d2b13e')
 
 
 job_profiles_dict = {'profiles': {'profile': [
@@ -1441,17 +1464,17 @@ def test_single_job_profile():
     try:
         job.get_job_profile({})
         raise Exception('Request should raise ValueError exception.')
-    except ValueError, e:
+    except ValueError as e:
         assert 'Invalid job key' in str(e)
     try:
         job.get_job_profile(['~~{0}'.format(x) for x in range(21)])
         raise Exception('Request should raise ValueError exception.')
-    except ValueError, e:
+    except ValueError as e:
         assert 'Number of keys per request is limited' in str(e)
     try:
         job.get_job_profile(['~~111111', 123456])
         raise Exception('Request should raise ValueError exception.')
-    except ValueError, e:
+    except ValueError as e:
         assert 'List should contain only job keys not recno' in str(e)
 
     # Get single job profile test
@@ -1466,17 +1489,17 @@ def test_multiple_job_profiles():
     # Test full_url
     full_url = job.full_url('jobs/~~111;~~222')
     assert full_url == \
-        'https://www.upwork.com/api/profiles/v1/jobs/~~111;~~222', full_url
+           'https://www.upwork.com/api/profiles/v1/jobs/~~111;~~222', full_url
 
     # Get multiple job profiles test
     assert job.get_job_profile(['~~111111111', '~~222222222']) == \
-        job_profiles_dict['profiles']['profile'], \
+           job_profiles_dict['profiles']['profile'], \
         job.get_job_profile(['~~111111111', '~~222222222'])
 
 
-#======================
+# ======================
 # UTILS TESTS
-#======================
+# ======================
 def test_decimal_default():
     from upwork.utils import decimal_default
 

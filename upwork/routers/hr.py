@@ -1,6 +1,7 @@
 # Python bindings to Upwork API
 # python-upwork version 0.5
 # (C) 2010-2015 Upwork
+import six
 
 from upwork.namespaces import Namespace
 from upwork.utils import assert_parameter, ApiValueError
@@ -1012,7 +1013,7 @@ class HR(Namespace):
         data['would_hire_again'] = would_hire_again
 
         if fb_scores:
-            for key, value in fb_scores.items():
+            for key, value in six.iteritems(fb_scores):
                 data[key] = value
 
         if fb_comment:

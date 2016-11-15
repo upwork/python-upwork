@@ -1,5 +1,9 @@
+from __future__ import print_function
+
 import upwork
 from pprint import pprint
+
+from six.moves import input
 
 
 def web_based_app():
@@ -9,20 +13,20 @@ def web_based_app():
     Returns: ``upwork.Client`` instance ready to work.
 
     """
-    print "Emulating web-based app"
+    print("Emulating web-based app")
 
-    public_key = raw_input('Please enter public key: > ')
-    secret_key = raw_input('Please enter secret key: > ')
+    public_key = input('Please enter public key: > ')
+    secret_key = input('Please enter secret key: > ')
 
     #Instantiating a client without an auth token
     client = upwork.Client(public_key, secret_key)
 
-    print "Please to this URL (authorize the app if necessary):"
-    print client.auth.get_authorize_url()
-    print "After that you should be redirected back to your app URL with " + \
-          "additional ?oauth_verifier= parameter"
+    print("Please to this URL (authorize the app if necessary):")
+    print(client.auth.get_authorize_url())
+    print("After that you should be redirected back to your app URL with " +
+          "additional ?oauth_verifier= parameter")
 
-    verifier = raw_input('Enter oauth_verifier: ')
+    verifier = input('Enter oauth_verifier: ')
 
     oauth_access_token, oauth_access_token_secret = \
         client.auth.get_access_token(verifier)
@@ -42,19 +46,19 @@ if __name__ == '__main__':
     client = web_based_app()
 
     try:
-        print "My info"
+        print("My info")
         pprint(client.auth.get_info())
-        print "Team rooms:"
+        print("Team rooms:")
         pprint(client.team.get_teamrooms())
         #HRv2 API
-        print "HR: companies"
+        print("HR: companies")
         pprint(client.hr.get_companies())
-        print "HR: teams"
+        print("HR: teams")
         pprint(client.hr.get_teams())
-        print "HR: userroles"
+        print("HR: userroles")
         pprint(client.hr.get_user_roles())
-        print "Get jobs"
+        print("Get jobs")
         pprint(client.provider.search_jobs({'q': 'python'}))
-    except Exception, e:
-        print "Exception at %s %s" % (client.last_method, client.last_url)
+    except Exception as e:
+        print("Exception at %s %s" % (client.last_method, client.last_url))
         raise e
