@@ -6,3 +6,4 @@ urllib3==1.19
 httplib2==0.9.2
 six
 future
+ca-certs-locater==1.0
