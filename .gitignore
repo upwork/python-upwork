@@ -3,7 +3,7 @@
 *.swo
 *.swp
 *.vim
-*.idea
+*.idea/*
 .project
 docs/*
 .coverage
