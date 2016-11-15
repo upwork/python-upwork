@@ -1,3 +1,4 @@
+from future.utils import lmap
 # Python bindings to Upwork API
 # python-upwork version 0.5
 # (C) 2010-2015 Upwork
@@ -19,7 +20,7 @@ class Provider(Namespace):
 
         """
         if isinstance(provider_ciphertext, (list, tuple)):
-            provider_ciphertext = map(str, provider_ciphertext)
+            provider_ciphertext = lmap(str, provider_ciphertext)
             provider_ciphertext = ';'.join(provider_ciphertext[:20])
 
         url = 'providers/{0}'.format(provider_ciphertext)

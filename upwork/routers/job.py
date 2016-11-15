@@ -35,7 +35,7 @@ class Job(Namespace):
                 raise ValueError(
                     'Number of keys per request is limited by {0}'.format(
                         max_keys))
-            elif filter(lambda x: not str(x).startswith('~~'), job_key):
+            elif [x for x in job_key if not str(x).startswith('~~')]:
                 raise ValueError(
                     'List should contain only job keys not recno.')
             else:

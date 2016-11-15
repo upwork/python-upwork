@@ -102,6 +102,7 @@ class Query(object):
                                  'task',
                                  'memo',
                                  'hours']
+
     DEFAULT_FINREPORT_FIELDS = ['reference',
                                 'date',
                                 'buyer_company__id',
@@ -156,9 +157,9 @@ class Table(object):
         if not isinstance(key, (slice, int)):
             raise TypeError
         if isinstance(key, slice):
-            return [dict(zip(self.cols, row)) for row in self.rows[key]]
+            return [dict(list(zip(self.cols, row))) for row in self.rows[key]]
         else:
-            return dict(zip(self.cols, self.rows[key]))
+            return dict(list(zip(self.cols, self.rows[key])))
 
     def __len__(self):
         return len(self.rows)

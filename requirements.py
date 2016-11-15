@@ -1,6 +1,9 @@
 nose
 mock
 ipython
-oauth2==1.5.211
-urllib3==1.10
-httplib2.system-ca-certs-locater==0.1.2
+oauth2==1.9.0.post1
+urllib3==1.19
+httplib2==0.9.2
+six
+future
+ca-certs-locater==1.0

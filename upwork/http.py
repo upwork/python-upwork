@@ -3,15 +3,17 @@
 # (C) 2010-2015 Upwork
 
 import logging
-import urllib2
-import httplib
+from six.moves.urllib.parse import urlparse, urlencode
+from six.moves.urllib.request import urlopen
+from six.moves.urllib.error import HTTPError
 
-from upwork.exceptions import HTTP400BadRequestError, HTTP401UnauthorizedError,\
+from six.moves import http_client
+
+from upwork.exceptions import HTTP400BadRequestError, HTTP401UnauthorizedError, \
     HTTP403ForbiddenError, HTTP404NotFoundError
 
 UPWORK_ERROR_CODE = 'x-upwork-error-code'
 UPWORK_ERROR_MESSAGE = 'x-upwork-error-message'
-
 
 __all__ = ['raise_http_error']
 
@@ -34,21 +36,21 @@ def raise_http_error(url, response):
     formatted_msg = 'Code {0}: {1}'.format(upwork_error_code,
                                            upwork_error_message)
 
-    if status_code == httplib.BAD_REQUEST:
+    if status_code == http_client.BAD_REQUEST:
         raise HTTP400BadRequestError(url, status_code, formatted_msg,
                                      headers, None)
-    elif status_code == httplib.UNAUTHORIZED:
+    elif status_code == http_client.UNAUTHORIZED:
         raise HTTP401UnauthorizedError(url, status_code, formatted_msg,
                                        headers, None)
-    elif status_code == httplib.FORBIDDEN:
+    elif status_code == http_client.FORBIDDEN:
         raise HTTP403ForbiddenError(url, status_code, formatted_msg,
                                     headers, None)
-    elif status_code == httplib.NOT_FOUND:
+    elif status_code == http_client.NOT_FOUND:
         raise HTTP404NotFoundError(url, status_code, formatted_msg,
                                    headers, None)
     else:
-        error = urllib2.HTTPError(url, status_code, formatted_msg,
-                                  headers, None)
+        error = HTTPError(url, status_code, formatted_msg,
+                          headers, None)
         logger = logging.getLogger('python-upwork')
         logger.debug(str(error))
         raise error
