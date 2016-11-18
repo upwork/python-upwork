@@ -100,7 +100,7 @@ class Messages(Namespace):
 
         """
         url = '{0}/rooms'.format(company)
-	result = self.get(url, data=params)
+	result = self.post(url, data=params)
         return result.get(url, result)
 
     def send_message_to_room(self, company, room_id, params = {}):
@@ -116,7 +116,7 @@ class Messages(Namespace):
 
         """
         url = '{0}/rooms/{1}/stories'.format(company, room_id)
-	result = self.get(url, data=params)
+	result = self.post(url, data=params)
         return result.get(url, result)
 
     def update_room_settings(self, company, room_id, username, params = {}):
@@ -132,7 +132,7 @@ class Messages(Namespace):
 
         """
         url = '{0}/rooms/{1}/users/{2}'.format(company, room_id, username)
-	result = self.get(url, data=params)
+	result = self.put(url, data=params)
         return result.get(url, result)
 
     def update_room_metadata(self, company, room_id, params = {}):
@@ -148,5 +148,5 @@ class Messages(Namespace):
 
         """
         url = '{0}/rooms/{1}'.format(company, room_id)
-	result = self.get(url, data=params)
+	result = self.put(url, data=params)
         return result.get(url, result)
