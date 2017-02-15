@@ -132,10 +132,11 @@ class Client(object):
             self.finreport = Finreports(self)
 
         if hr:
-            from upwork.routers.hr import HR_V1, HR, HR_V3
+            from upwork.routers.hr import HR_V1, HR, HR_V3, HR_V4
             self.hr_v1 = HR_V1(self)
             self.hr = HR(self)
             self.hr_v3 = HR_V3(self)
+            self.hr_v4 = HR_V4(self)
 
         if messages:
             from upwork.routers.messages import Messages
