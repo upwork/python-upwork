@@ -6,7 +6,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>upwork.routers package &mdash; python-upwork 1.2.0 documentation</title>
+    <title>upwork.routers package &mdash; python-upwork 1.2.1 documentation</title>
     
     <link rel="stylesheet" href="../static/sphinxdoc.css" type="text/css" />
     <link rel="stylesheet" href="../static/pygments.css" type="text/css" />
@@ -14,7 +14,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../',
-        VERSION:     '1.2.0',
+        VERSION:     '1.2.1',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -23,7 +23,7 @@
     <script type="text/javascript" src="../static/jquery.js"></script>
     <script type="text/javascript" src="../static/underscore.js"></script>
     <script type="text/javascript" src="../static/doctools.js"></script>
-    <link rel="top" title="python-upwork 1.2.0 documentation" href="../index.html" />
+    <link rel="top" title="python-upwork 1.2.1 documentation" href="../index.html" />
     <link rel="up" title="upwork package" href="upwork.html" />
     <link rel="next" title="Changelog" href="../changelog.html" />
     <link rel="prev" title="upwork package" href="upwork.html" /> 
@@ -44,7 +44,7 @@
         <li class="right" >
           <a href="upwork.html" title="upwork package"
              accesskey="P">previous</a> |</li>
-        <li class="nav-item nav-item-0"><a href="../index.html">python-upwork 1.2.0 documentation</a> &raquo;</li>
+        <li class="nav-item nav-item-0"><a href="../index.html">python-upwork 1.2.1 documentation</a> &raquo;</li>
           <li class="nav-item nav-item-1"><a href="../reference_docs.html" >Reference Documentation: Classes and Methods</a> &raquo;</li>
           <li class="nav-item nav-item-2"><a href="upwork.html" accesskey="U">upwork package</a> &raquo;</li> 
       </ul>
@@ -1589,48 +1589,6 @@ Valid values: <cite>329</cite>, <cite>330</cite>, <cite>331</cite>, <cite>332</c
 </dd></dl>
 
 <dl class="method">
-<dt id="upwork.routers.hr.HR_V3.get_client_application">
-<code class="descname">get_client_application</code><span class="sig-paren">(</span><em>application_id</em>, <em>buyer_team__reference</em><span class="sig-paren">)</span><a class="headerlink" href="#upwork.routers.hr.HR_V3.get_client_application" title="Permalink to this definition">¶</a></dt>
-<dd><p>Get specific job application as a client.</p>
-<dl class="docutils">
-<dt><em>Parameters:</em></dt>
-<dd><table class="first last docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">application_id:</th><td class="field-body">Job application reference ID.</td>
-</tr>
-<tr class="field-even field"><th class="field-name" colspan="2">buyer_team__reference:</th></tr>
-<tr class="field-even field"><td>&nbsp;</td><td class="field-body">The reference ID of the client&#8217;s team.
-It allows getting applications for a
-specific team. Example: <code class="docutils literal"><span class="pre">34567</span></code>.
-Use &#8216;List Teams&#8217; API call to get it.</td>
-</tr>
-</tbody>
-</table>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="method">
-<dt id="upwork.routers.hr.HR_V3.get_freelancer_application">
-<code class="descname">get_freelancer_application</code><span class="sig-paren">(</span><em>application_id</em><span class="sig-paren">)</span><a class="headerlink" href="#upwork.routers.hr.HR_V3.get_freelancer_application" title="Permalink to this definition">¶</a></dt>
-<dd><p>Get specific job application as a freelancer.</p>
-<dl class="docutils">
-<dt><em>Parameters:</em></dt>
-<dd><table class="first last docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">application_id:</th><td class="field-body">Job application reference ID.</td>
-</tr>
-</tbody>
-</table>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="method">
 <dt id="upwork.routers.hr.HR_V3.get_milestone_submissions">
 <code class="descname">get_milestone_submissions</code><span class="sig-paren">(</span><em>milestone_id</em><span class="sig-paren">)</span><a class="headerlink" href="#upwork.routers.hr.HR_V3.get_milestone_submissions" title="Permalink to this definition">¶</a></dt>
 <dd><p>Get all submissions for specific milestone.</p>
@@ -1641,67 +1599,6 @@ Use &#8216;List Teams&#8217; API call to get it.</td>
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">milestone_id:</th><td class="field-body">Milestone reference ID.</td>
-</tr>
-</tbody>
-</table>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="method">
-<dt id="upwork.routers.hr.HR_V3.list_client_applications">
-<code class="descname">list_client_applications</code><span class="sig-paren">(</span><em>buyer_team__reference</em>, <em>job_key</em>, <em>status=None</em>, <em>profile_key=None</em>, <em>agency_team__reference=None</em>, <em>order_by=None</em>, <em>page_offset=None</em>, <em>page_size=None</em><span class="sig-paren">)</span><a class="headerlink" href="#upwork.routers.hr.HR_V3.list_client_applications" title="Permalink to this definition">¶</a></dt>
-<dd><p>List job applications as a client.</p>
-<dl class="docutils">
-<dt><em>Parameters:</em></dt>
-<dd><table class="first last docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name" colspan="2">buyer_team__reference:</th></tr>
-<tr class="field-odd field"><td>&nbsp;</td><td class="field-body">The reference ID of the client&#8217;s team.
-It allows getting applications for a
-specific team. Example: <code class="docutils literal"><span class="pre">34567</span></code>.
-Use &#8216;List Teams&#8217; API call to get it.</td>
-</tr>
-<tr class="field-even field"><th class="field-name">job_key:</th><td class="field-body">The job key. It allows getting applications
-for a specific job. Example: <code class="docutils literal"><span class="pre">~01d54a7xxxxx125731</span></code>.</td>
-</tr>
-<tr class="field-odd field"><th class="field-name">status:</th><td class="field-body">(optional) The current status of the job application.
-Valid values: <code class="docutils literal"><span class="pre">shortlisted</span></code>, <code class="docutils literal"><span class="pre">messaged</span></code>,
-<code class="docutils literal"><span class="pre">hired</span></code>, <code class="docutils literal"><span class="pre">offered</span></code>, <code class="docutils literal"><span class="pre">declined</span></code>, <code class="docutils literal"><span class="pre">hidden</span></code>.</td>
-</tr>
-<tr class="field-even field"><th class="field-name">profile_key:</th><td class="field-body">(optional) Filters by a specific freelancer&#8217;s profile key.</td>
-</tr>
-<tr class="field-odd field"><th class="field-name" colspan="2">agency_team__reference:</th></tr>
-<tr class="field-odd field"><td>&nbsp;</td><td class="field-body">(optional) The reference ID of the agency.</td>
-</tr>
-<tr class="field-even field"><th class="field-name">order_by:</th><td class="field-body">(optional) Sorts results in format <code class="docutils literal"><span class="pre">$field_name1;$field_name2;..$field_nameN;AD...A</span></code>.
-Here <code class="docutils literal"><span class="pre">A</span></code> resebles ascending order, <code class="docutils literal"><span class="pre">D</span></code> - descending order. Example: <code class="docutils literal"><span class="pre">order_by=created_time;D</span></code>.</td>
-</tr>
-<tr class="field-odd field"><th class="field-name">page_offset:</th><td class="field-body">(optional) Number of entries to skip</td>
-</tr>
-<tr class="field-even field"><th class="field-name">page_size:</th><td class="field-body">(optional: default 20) Page size
-in number of entries</td>
-</tr>
-</tbody>
-</table>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="method">
-<dt id="upwork.routers.hr.HR_V3.list_freelancer_applications">
-<code class="descname">list_freelancer_applications</code><span class="sig-paren">(</span><em>status=None</em><span class="sig-paren">)</span><a class="headerlink" href="#upwork.routers.hr.HR_V3.list_freelancer_applications" title="Permalink to this definition">¶</a></dt>
-<dd><p>List job applications as a freelancer.</p>
-<dl class="docutils">
-<dt><em>Parameters:</em></dt>
-<dd><table class="first last docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">status:</th><td class="field-body">(optional) The current status of the job application.
-Valid values: <code class="docutils literal"><span class="pre">interviews</span></code>, <code class="docutils literal"><span class="pre">invites</span></code>, <code class="docutils literal"><span class="pre">active</span></code>.</td>
 </tr>
 </tbody>
 </table>
@@ -1755,6 +1652,126 @@ Valid values: <code class="docutils literal"><span class="pre">interviews</span>
 <dl class="attribute">
 <dt id="upwork.routers.hr.HR_V3.version">
 <code class="descname">version</code><em class="property"> = 3</em><a class="headerlink" href="#upwork.routers.hr.HR_V3.version" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="upwork.routers.hr.HR_V4">
+<em class="property">class </em><code class="descclassname">upwork.routers.hr.</code><code class="descname">HR_V4</code><span class="sig-paren">(</span><em>client</em><span class="sig-paren">)</span><a class="headerlink" href="#upwork.routers.hr.HR_V4" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="upwork.html#upwork.namespaces.Namespace" title="upwork.namespaces.Namespace"><code class="xref py py-class docutils literal"><span class="pre">upwork.namespaces.Namespace</span></code></a></p>
+<p>HR API version 4.</p>
+<dl class="attribute">
+<dt id="upwork.routers.hr.HR_V4.api_url">
+<code class="descname">api_url</code><em class="property"> = 'hr/'</em><a class="headerlink" href="#upwork.routers.hr.HR_V4.api_url" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="upwork.routers.hr.HR_V4.get_client_application">
+<code class="descname">get_client_application</code><span class="sig-paren">(</span><em>application_id</em>, <em>buyer_team__reference</em><span class="sig-paren">)</span><a class="headerlink" href="#upwork.routers.hr.HR_V4.get_client_application" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get specific job application as a client.</p>
+<dl class="docutils">
+<dt><em>Parameters:</em></dt>
+<dd><table class="first last docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">application_id:</th><td class="field-body">Job application reference ID.</td>
+</tr>
+<tr class="field-even field"><th class="field-name" colspan="2">buyer_team__reference:</th></tr>
+<tr class="field-even field"><td>&nbsp;</td><td class="field-body">The reference ID of the client&#8217;s team.
+It allows getting applications for a
+specific team. Example: <code class="docutils literal"><span class="pre">34567</span></code>.
+Use &#8216;List Teams&#8217; API call to get it.</td>
+</tr>
+</tbody>
+</table>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="upwork.routers.hr.HR_V4.get_freelancer_application">
+<code class="descname">get_freelancer_application</code><span class="sig-paren">(</span><em>application_id</em><span class="sig-paren">)</span><a class="headerlink" href="#upwork.routers.hr.HR_V4.get_freelancer_application" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get specific job application as a freelancer.</p>
+<dl class="docutils">
+<dt><em>Parameters:</em></dt>
+<dd><table class="first last docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">application_id:</th><td class="field-body">Job application reference ID.</td>
+</tr>
+</tbody>
+</table>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="upwork.routers.hr.HR_V4.list_client_applications">
+<code class="descname">list_client_applications</code><span class="sig-paren">(</span><em>buyer_team__reference</em>, <em>job_key</em>, <em>status=None</em>, <em>profile_key=None</em>, <em>agency_team__reference=None</em>, <em>order_by=None</em>, <em>page_offset=None</em>, <em>page_size=None</em><span class="sig-paren">)</span><a class="headerlink" href="#upwork.routers.hr.HR_V4.list_client_applications" title="Permalink to this definition">¶</a></dt>
+<dd><p>List job applications as a client.</p>
+<dl class="docutils">
+<dt><em>Parameters:</em></dt>
+<dd><table class="first last docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name" colspan="2">buyer_team__reference:</th></tr>
+<tr class="field-odd field"><td>&nbsp;</td><td class="field-body">The reference ID of the client&#8217;s team.
+It allows getting applications for a
+specific team. Example: <code class="docutils literal"><span class="pre">34567</span></code>.
+Use &#8216;List Teams&#8217; API call to get it.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">job_key:</th><td class="field-body">The job key. It allows getting applications
+for a specific job. Example: <code class="docutils literal"><span class="pre">~01d54a7xxxxx125731</span></code>.</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">status:</th><td class="field-body">(optional) The current status of the job application.
+Valid values: <code class="docutils literal"><span class="pre">shortlisted</span></code>, <code class="docutils literal"><span class="pre">messaged</span></code>,
+<code class="docutils literal"><span class="pre">hired</span></code>, <code class="docutils literal"><span class="pre">offered</span></code>, <code class="docutils literal"><span class="pre">declined</span></code>, <code class="docutils literal"><span class="pre">hidden</span></code>.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">profile_key:</th><td class="field-body">(optional) Filters by a specific freelancer&#8217;s profile key.</td>
+</tr>
+<tr class="field-odd field"><th class="field-name" colspan="2">agency_team__reference:</th></tr>
+<tr class="field-odd field"><td>&nbsp;</td><td class="field-body">(optional) The reference ID of the agency.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">order_by:</th><td class="field-body">(optional) Sorts results in format <code class="docutils literal"><span class="pre">$field_name1;$field_name2;..$field_nameN;AD...A</span></code>.
+Here <code class="docutils literal"><span class="pre">A</span></code> resebles ascending order, <code class="docutils literal"><span class="pre">D</span></code> - descending order. Example: <code class="docutils literal"><span class="pre">order_by=created_time;D</span></code>.</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">page_offset:</th><td class="field-body">(optional) Number of entries to skip</td>
+</tr>
+<tr class="field-even field"><th class="field-name">page_size:</th><td class="field-body">(optional: default 20) Page size
+in number of entries</td>
+</tr>
+</tbody>
+</table>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="upwork.routers.hr.HR_V4.list_freelancer_applications">
+<code class="descname">list_freelancer_applications</code><span class="sig-paren">(</span><em>status=None</em><span class="sig-paren">)</span><a class="headerlink" href="#upwork.routers.hr.HR_V4.list_freelancer_applications" title="Permalink to this definition">¶</a></dt>
+<dd><p>List job applications as a freelancer.</p>
+<dl class="docutils">
+<dt><em>Parameters:</em></dt>
+<dd><table class="first last docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">status:</th><td class="field-body">(optional) The current status of the job application.
+Valid values: <code class="docutils literal"><span class="pre">interviews</span></code>, <code class="docutils literal"><span class="pre">invites</span></code>, <code class="docutils literal"><span class="pre">active</span></code>.</td>
+</tr>
+</tbody>
+</table>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="upwork.routers.hr.HR_V4.version">
+<code class="descname">version</code><em class="property"> = 4</em><a class="headerlink" href="#upwork.routers.hr.HR_V4.version" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 </dd></dl>
@@ -3776,7 +3793,7 @@ Default: <code class="docutils literal"><span class="pre">False</span></code></t
         <li class="right" >
           <a href="upwork.html" title="upwork package"
              >previous</a> |</li>
-        <li class="nav-item nav-item-0"><a href="../index.html">python-upwork 1.2.0 documentation</a> &raquo;</li>
+        <li class="nav-item nav-item-0"><a href="../index.html">python-upwork 1.2.1 documentation</a> &raquo;</li>
           <li class="nav-item nav-item-1"><a href="../reference_docs.html" >Reference Documentation: Classes and Methods</a> &raquo;</li>
           <li class="nav-item nav-item-2"><a href="upwork.html" >upwork package</a> &raquo;</li> 
       </ul>

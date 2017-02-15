@@ -74,12 +74,3 @@ upwork.utils module
     :members:
     :undoc-members:
     :show-inheritance:
-
-
-Module contents
----------------
-
-.. automodule:: upwork
-    :members:
-    :undoc-members:
-    :show-inheritance:

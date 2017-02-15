@@ -6,7 +6,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>upwork package &mdash; python-upwork 1.2.0 documentation</title>
+    <title>upwork package &mdash; python-upwork 1.2.1 documentation</title>
     
     <link rel="stylesheet" href="../static/sphinxdoc.css" type="text/css" />
     <link rel="stylesheet" href="../static/pygments.css" type="text/css" />
@@ -14,7 +14,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../',
-        VERSION:     '1.2.0',
+        VERSION:     '1.2.1',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -23,7 +23,7 @@
     <script type="text/javascript" src="../static/jquery.js"></script>
     <script type="text/javascript" src="../static/underscore.js"></script>
     <script type="text/javascript" src="../static/doctools.js"></script>
-    <link rel="top" title="python-upwork 1.2.0 documentation" href="../index.html" />
+    <link rel="top" title="python-upwork 1.2.1 documentation" href="../index.html" />
     <link rel="up" title="Reference Documentation: Classes and Methods" href="../reference_docs.html" />
     <link rel="next" title="upwork.routers package" href="upwork.routers.html" />
     <link rel="prev" title="Reference Documentation: Classes and Methods" href="../reference_docs.html" /> 
@@ -44,7 +44,7 @@
         <li class="right" >
           <a href="../reference_docs.html" title="Reference Documentation: Classes and Methods"
              accesskey="P">previous</a> |</li>
-        <li class="nav-item nav-item-0"><a href="../index.html">python-upwork 1.2.0 documentation</a> &raquo;</li>
+        <li class="nav-item nav-item-0"><a href="../index.html">python-upwork 1.2.1 documentation</a> &raquo;</li>
           <li class="nav-item nav-item-1"><a href="../reference_docs.html" accesskey="U">Reference Documentation: Classes and Methods</a> &raquo;</li> 
       </ul>
     </div>
@@ -63,7 +63,6 @@
 <li><a class="reference internal" href="#module-upwork.namespaces">upwork.namespaces module</a></li>
 <li><a class="reference internal" href="#module-upwork.oauth">upwork.oauth module</a></li>
 <li><a class="reference internal" href="#module-upwork.utils">upwork.utils module</a></li>
-<li><a class="reference internal" href="#id1">Module contents</a></li>
 </ul>
 </li>
 </ul>
@@ -847,208 +846,6 @@ headers</td>
 </dd></dl>
 
 </div>
-<div class="section" id="id1">
-<h2>Module contents<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
-<span class="target" id="module-upwork"></span><p>Main package of the python bindings for Upwork API.</p>
-<p>For convenience some most commonly used functionalities are imported here,
-so you can use:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">upwork</span> <span class="k">import</span> <span class="n">Client</span>
-<span class="kn">from</span> <span class="nn">upwork</span> <span class="k">import</span> <span class="n">raise_http_error</span>
-</pre></div>
-</div>
-<dl class="function">
-<dt>
-<code class="descclassname">upwork.</code><code class="descname">get_version</code><span class="sig-paren">(</span><span class="sig-paren">)</span></dt>
-<dd></dd></dl>
-
-<dl class="class">
-<dt>
-<em class="property">class </em><code class="descclassname">upwork.</code><code class="descname">Client</code><span class="sig-paren">(</span><em>public_key</em>, <em>secret_key</em>, <em>oauth_access_token=None</em>, <em>oauth_access_token_secret=None</em>, <em>fmt='json'</em>, <em>finreport=True</em>, <em>hr=True</em>, <em>messages=True</em>, <em>offers=True</em>, <em>provider=True</em>, <em>task=True</em>, <em>team=True</em>, <em>timereport=True</em>, <em>job=True</em>, <em>timeout=3</em><span class="sig-paren">)</span></dt>
-<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">object</span></code></p>
-<p>Main API client with oAuth v1 authorization.</p>
-<dl class="docutils">
-<dt><em>Parameters:</em></dt>
-<dd><table class="first last docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">public_key:</th><td class="field-body">Public API key</td>
-</tr>
-<tr class="field-even field"><th class="field-name">secret_key:</th><td class="field-body">API key secret</td>
-</tr>
-<tr class="field-odd field"><th class="field-name" colspan="2">oauth_access_token:</th></tr>
-<tr class="field-odd field"><td>&nbsp;</td><td class="field-body">oAuth access token public key</td>
-</tr>
-<tr class="field-even field"><th class="field-name" colspan="2">oauth_access_token_secret:</th></tr>
-<tr class="field-even field"><td>&nbsp;</td><td class="field-body">oAuth access token secret key</td>
-</tr>
-<tr class="field-odd field"><th class="field-name">fmt:</th><td class="field-body">(optional, default <code class="docutils literal"><span class="pre">json</span></code>)
-API response format.
-Currently only <code class="docutils literal"><span class="pre">'json'</span></code> is supported</td>
-</tr>
-<tr class="field-even field"><th class="field-name">finreport:</th><td class="field-body">(optional, default <code class="docutils literal"><span class="pre">True</span></code>)
-Whether to attach
-<a class="reference internal" href="upwork.routers.html#module-upwork.routers.finreport" title="upwork.routers.finreport"><code class="xref py py-mod docutils literal"><span class="pre">upwork.routers.finreport</span></code></a> router</td>
-</tr>
-<tr class="field-odd field"><th class="field-name">hr:</th><td class="field-body">(optional, default <code class="docutils literal"><span class="pre">True</span></code>)
-Whether to attach
-<a class="reference internal" href="upwork.routers.html#module-upwork.routers.hr" title="upwork.routers.hr"><code class="xref py py-mod docutils literal"><span class="pre">upwork.routers.hr</span></code></a> router</td>
-</tr>
-<tr class="field-even field"><th class="field-name">messages:</th><td class="field-body">(optional, default <code class="docutils literal"><span class="pre">True</span></code>)
-Whether to attach
-<a class="reference internal" href="upwork.routers.html#module-upwork.routers.messages" title="upwork.routers.messages"><code class="xref py py-mod docutils literal"><span class="pre">upwork.routers.messages</span></code></a> router</td>
-</tr>
-<tr class="field-odd field"><th class="field-name">offers:</th><td class="field-body">(optional, default <code class="docutils literal"><span class="pre">True</span></code>)
-Whether to attach
-<a class="reference internal" href="upwork.routers.html#module-upwork.routers.offers" title="upwork.routers.offers"><code class="xref py py-mod docutils literal"><span class="pre">upwork.routers.offers</span></code></a> router</td>
-</tr>
-<tr class="field-even field"><th class="field-name">provider:</th><td class="field-body">(optional, default <code class="docutils literal"><span class="pre">True</span></code>)
-Whether to attach
-<a class="reference internal" href="upwork.routers.html#module-upwork.routers.provider" title="upwork.routers.provider"><code class="xref py py-mod docutils literal"><span class="pre">upwork.routers.provider</span></code></a> router</td>
-</tr>
-<tr class="field-odd field"><th class="field-name">task:</th><td class="field-body">(optional, default <code class="docutils literal"><span class="pre">True</span></code>)
-Whether to attach
-<a class="reference internal" href="upwork.routers.html#module-upwork.routers.task" title="upwork.routers.task"><code class="xref py py-mod docutils literal"><span class="pre">upwork.routers.task</span></code></a> router</td>
-</tr>
-<tr class="field-even field"><th class="field-name">team:</th><td class="field-body">(optional, default <code class="docutils literal"><span class="pre">True</span></code>)
-Whether to attach
-<a class="reference internal" href="upwork.routers.html#module-upwork.routers.team" title="upwork.routers.team"><code class="xref py py-mod docutils literal"><span class="pre">upwork.routers.team</span></code></a> router</td>
-</tr>
-<tr class="field-odd field"><th class="field-name">timereport:</th><td class="field-body">(optional, default <code class="docutils literal"><span class="pre">True</span></code>)
-Whether to attach
-<a class="reference internal" href="upwork.routers.html#module-upwork.routers.timereport" title="upwork.routers.timereport"><code class="xref py py-mod docutils literal"><span class="pre">upwork.routers.timereport</span></code></a> router</td>
-</tr>
-<tr class="field-even field"><th class="field-name">job:</th><td class="field-body">(optional, default <code class="docutils literal"><span class="pre">True</span></code>)
-Whether to attach
-<a class="reference internal" href="upwork.routers.html#module-upwork.routers.job" title="upwork.routers.job"><code class="xref py py-mod docutils literal"><span class="pre">upwork.routers.job</span></code></a> router</td>
-</tr>
-<tr class="field-odd field"><th class="field-name">timeout:</th><td class="field-body">(optional, default <code class="docutils literal"><span class="pre">3</span> <span class="pre">secs</span></code>)
-Socket operations timeout.</td>
-</tr>
-</tbody>
-</table>
-</dd>
-</dl>
-<dl class="method">
-<dt>
-<code class="descname">delete</code><span class="sig-paren">(</span><em>url</em>, <em>data=None</em><span class="sig-paren">)</span></dt>
-<dd></dd></dl>
-
-<dl class="method">
-<dt>
-<code class="descname">get</code><span class="sig-paren">(</span><em>url</em>, <em>data=None</em><span class="sig-paren">)</span></dt>
-<dd></dd></dl>
-
-<dl class="method">
-<dt>
-<code class="descname">post</code><span class="sig-paren">(</span><em>url</em>, <em>data=None</em><span class="sig-paren">)</span></dt>
-<dd></dd></dl>
-
-<dl class="method">
-<dt>
-<code class="descname">put</code><span class="sig-paren">(</span><em>url</em>, <em>data=None</em><span class="sig-paren">)</span></dt>
-<dd></dd></dl>
-
-<dl class="method">
-<dt>
-<code class="descname">read</code><span class="sig-paren">(</span><em>url</em>, <em>data=None</em>, <em>method='GET'</em>, <em>fmt='json'</em><span class="sig-paren">)</span></dt>
-<dd><p>Returns parsed Python object or raises an error.</p>
-<dl class="docutils">
-<dt><em>Parameters:</em></dt>
-<dd><table class="first last docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">url:</th><td class="field-body"><p class="first">Target url</p>
-</td>
-</tr>
-<tr class="field-even field"><th class="field-name">data:</th><td class="field-body"><p class="first">Dictionary with parameters</p>
-</td>
-</tr>
-<tr class="field-odd field"><th class="field-name">method:</th><td class="field-body"><p class="first">(optional, default <code class="docutils literal"><span class="pre">GET</span></code>)
-HTTP method, possible values:</p>
-<blockquote>
-<div><ul class="simple">
-<li><code class="docutils literal"><span class="pre">GET</span></code></li>
-<li><code class="docutils literal"><span class="pre">POST</span></code></li>
-<li><code class="docutils literal"><span class="pre">PUT</span></code></li>
-<li><code class="docutils literal"><span class="pre">DELETE</span></code></li>
-</ul>
-</div></blockquote>
-</td>
-</tr>
-<tr class="field-even field"><th class="field-name">fmt:</th><td class="field-body"><p class="first last">(optional, default <code class="docutils literal"><span class="pre">json</span></code>)
-API response format.
-Currently only <code class="docutils literal"><span class="pre">'json'</span></code> is supported</p>
-</td>
-</tr>
-</tbody>
-</table>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="method">
-<dt>
-<code class="descname">urlopen</code><span class="sig-paren">(</span><em>url</em>, <em>data=None</em>, <em>method='GET'</em>, <em>headers=None</em><span class="sig-paren">)</span></dt>
-<dd><p>Perform oAuth v1 signed HTTP request.</p>
-<dl class="docutils">
-<dt><em>Parameters:</em></dt>
-<dd><table class="first last docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">url:</th><td class="field-body"><p class="first">Target url</p>
-</td>
-</tr>
-<tr class="field-even field"><th class="field-name">data:</th><td class="field-body"><p class="first">Dictionary with parameters</p>
-</td>
-</tr>
-<tr class="field-odd field"><th class="field-name">method:</th><td class="field-body"><p class="first">(optional, default <code class="docutils literal"><span class="pre">GET</span></code>)
-HTTP method, possible values:</p>
-<blockquote>
-<div><ul class="simple">
-<li><code class="docutils literal"><span class="pre">GET</span></code></li>
-<li><code class="docutils literal"><span class="pre">POST</span></code></li>
-<li><code class="docutils literal"><span class="pre">PUT</span></code></li>
-<li><code class="docutils literal"><span class="pre">DELETE</span></code></li>
-</ul>
-</div></blockquote>
-</td>
-</tr>
-<tr class="field-even field"><th class="field-name">headers:</th><td class="field-body"><p class="first last">(optional, default <code class="docutils literal"><span class="pre">{}</span></code>)
-Dictionary with header values</p>
-</td>
-</tr>
-</tbody>
-</table>
-</dd>
-</dl>
-</dd></dl>
-
-</dd></dl>
-
-<dl class="function">
-<dt>
-<code class="descclassname">upwork.</code><code class="descname">raise_http_error</code><span class="sig-paren">(</span><em>url</em>, <em>response</em><span class="sig-paren">)</span></dt>
-<dd><p>Raise custom <code class="docutils literal"><span class="pre">urllib2.HTTPError</span></code> exception.</p>
-<dl class="docutils">
-<dt><em>Parameters:</em></dt>
-<dd><table class="first last docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">url:</th><td class="field-body">Url that caused an error</td>
-</tr>
-<tr class="field-even field"><th class="field-name">response:</th><td class="field-body"><code class="docutils literal"><span class="pre">urllib3</span></code> response object</td>
-</tr>
-</tbody>
-</table>
-</dd>
-</dl>
-</dd></dl>
-
-</div>
 </div>
 
 
@@ -1072,7 +869,7 @@ Dictionary with header values</p>
         <li class="right" >
           <a href="../reference_docs.html" title="Reference Documentation: Classes and Methods"
              >previous</a> |</li>
-        <li class="nav-item nav-item-0"><a href="../index.html">python-upwork 1.2.0 documentation</a> &raquo;</li>
+        <li class="nav-item nav-item-0"><a href="../index.html">python-upwork 1.2.1 documentation</a> &raquo;</li>
           <li class="nav-item nav-item-1"><a href="../reference_docs.html" >Reference Documentation: Classes and Methods</a> &raquo;</li> 
       </ul>
     </div>
