@@ -1029,112 +1029,6 @@ class HR_V3(Namespace):
     api_url = 'hr/'
     version = 3
 
-    def list_client_applications(self, buyer_team__reference, job_key,
-                                 status=None, profile_key=None,
-                                 agency_team__reference=None,
-                                 order_by=None, page_offset=None,
-                                 page_size=None):
-        """
-        List job applications as a client.
-
-        *Parameters:*
-          :buyer_team__reference:  The reference ID of the client's team.
-                                   It allows getting applications for a
-                                   specific team. Example: ``34567``.
-                                   Use 'List Teams' API call to get it.
-
-          :job_key:                The job key. It allows getting applications
-                                   for a specific job. Example: ``~01d54a7xxxxx125731``.
-
-          :status:                 (optional) The current status of the job application.
-                                   Valid values: ``shortlisted``, ``messaged``,
-                                   ``hired``, ``offered``, ``declined``, ``hidden``.
-
-          :profile_key:            (optional) Filters by a specific freelancer's profile key.
-
-          :agency_team__reference: (optional) The reference ID of the agency.
-
-          :order_by:               (optional) Sorts results in format ``$field_name1;$field_name2;..$field_nameN;AD...A``.
-                                    Here ``A`` resebles ascending order, ``D`` - descending order. Example: ``order_by=created_time;D``.
-
-          :page_offset:            (optional) Number of entries to skip
-
-          :page_size:              (optional: default 20) Page size
-                                   in number of entries
-
-        """
-        data = {}
-
-        data['buyer_team__reference'] = buyer_team__reference
-        data['job_key'] = job_key
-
-        if status:
-            data['status'] = status
-
-        if profile_key:
-            data['profile_key'] = profile_key
-
-        if agency_team__reference:
-            data['agency_team__reference'] = agency_team__reference
-
-        if order_by:
-            data['order_by'] = order_by
-
-        data['page'] = '{0};{1}'.format(page_offset, page_size)
-
-        url = 'clients/applications'
-        return self.get(url, data)
-
-    def get_client_application(self, application_id, buyer_team__reference):
-        """
-        Get specific job application as a client.
-
-        *Parameters:*
-          :application_id:    Job application reference ID.
-
-          :buyer_team__reference:  The reference ID of the client's team.
-                                   It allows getting applications for a
-                                   specific team. Example: ``34567``.
-                                   Use 'List Teams' API call to get it.
-
-        """
-        data = {}
-
-        data['buyer_team__reference'] = buyer_team__reference
-
-        url = 'clients/applications/{0}'.format(application_id)
-        return self.get(url, data)
-
-    def list_freelancer_applications(self, status=None):
-        """
-        List job applications as a freelancer.
-
-        *Parameters:*
-          :status:                 (optional) The current status of the job application.
-                                   Valid values: ``interviews``, ``invites``, ``active``.
-
-        """
-        data = {}
-
-        if status:
-            data['status'] = status
-
-        url = 'contractors/applications'
-        return self.get(url, data)
-
-    def get_freelancer_application(self, application_id):
-        """
-        Get specific job application as a freelancer.
-
-        *Parameters:*
-          :application_id:    Job application reference ID.
-
-        """
-        data = {}
-
-        url = 'contractors/applications/{0}'.format(application_id)
-        return self.get(url, data)
-
     def create_milestone(self, contract_reference, milestone_description, deposit_amount, due_date=None):
         """
         Create a milestone.
@@ -1344,4 +1238,118 @@ class HR_V3(Namespace):
         data = {}
 
         url = 'fp/milestones/statuses/active/contracts/{0}'.format(contract_reference)
+        return self.get(url, data)
+
+
+class HR_V4(Namespace):
+    """
+    HR API version 4.
+    """
+    api_url = 'hr/'
+    version = 4
+
+    def list_client_applications(self, buyer_team__reference, job_key,
+                                 status=None, profile_key=None,
+                                 agency_team__reference=None,
+                                 order_by=None, page_offset=None,
+                                 page_size=None):
+        """
+        List job applications as a client.
+
+        *Parameters:*
+          :buyer_team__reference:  The reference ID of the client's team.
+                                   It allows getting applications for a
+                                   specific team. Example: ``34567``.
+                                   Use 'List Teams' API call to get it.
+
+          :job_key:                The job key. It allows getting applications
+                                   for a specific job. Example: ``~01d54a7xxxxx125731``.
+
+          :status:                 (optional) The current status of the job application.
+                                   Valid values: ``shortlisted``, ``messaged``,
+                                   ``hired``, ``offered``, ``declined``, ``hidden``.
+
+          :profile_key:            (optional) Filters by a specific freelancer's profile key.
+
+          :agency_team__reference: (optional) The reference ID of the agency.
+
+          :order_by:               (optional) Sorts results in format ``$field_name1;$field_name2;..$field_nameN;AD...A``.
+                                    Here ``A`` resebles ascending order, ``D`` - descending order. Example: ``order_by=created_time;D``.
+
+          :page_offset:            (optional) Number of entries to skip
+
+          :page_size:              (optional: default 20) Page size
+                                   in number of entries
+
+        """
+        data = {}
+
+        data['buyer_team__reference'] = buyer_team__reference
+        data['job_key'] = job_key
+
+        if status:
+            data['status'] = status
+
+        if profile_key:
+            data['profile_key'] = profile_key
+
+        if agency_team__reference:
+            data['agency_team__reference'] = agency_team__reference
+
+        if order_by:
+            data['order_by'] = order_by
+
+        data['page'] = '{0};{1}'.format(page_offset, page_size)
+
+        url = 'clients/applications'
+        return self.get(url, data)
+
+    def get_client_application(self, application_id, buyer_team__reference):
+        """
+        Get specific job application as a client.
+
+        *Parameters:*
+          :application_id:    Job application reference ID.
+
+          :buyer_team__reference:  The reference ID of the client's team.
+                                   It allows getting applications for a
+                                   specific team. Example: ``34567``.
+                                   Use 'List Teams' API call to get it.
+
+        """
+        data = {}
+
+        data['buyer_team__reference'] = buyer_team__reference
+
+        url = 'clients/applications/{0}'.format(application_id)
+        return self.get(url, data)
+
+    def list_freelancer_applications(self, status=None):
+        """
+        List job applications as a freelancer.
+
+        *Parameters:*
+          :status:                 (optional) The current status of the job application.
+                                   Valid values: ``interviews``, ``invites``, ``active``.
+
+        """
+        data = {}
+
+        if status:
+            data['status'] = status
+
+        url = 'contractors/applications'
+        return self.get(url, data)
+
+    def get_freelancer_application(self, application_id):
+        """
+        Get specific job application as a freelancer.
+
+        *Parameters:*
+          :application_id:    Job application reference ID.
+
+        """
+        data = {}
+
+        url = 'contractors/applications/{0}'.format(application_id)
         return self.get(url, data)

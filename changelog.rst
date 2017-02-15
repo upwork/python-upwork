@@ -5,6 +5,12 @@
 Changelog
 ***************
 
+.. _1.2.2:
+
+Version 1.2.2
+-------------
+* Applications API has moved from v3 to v4
+
 .. _1.2.1:
 
 Version 1.2.1
