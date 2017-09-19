@@ -1324,7 +1324,7 @@ class HR_V4(Namespace):
         url = 'clients/applications/{0}'.format(application_id)
         return self.get(url, data)
 
-    def list_freelancer_applications(self, status=None):
+    def list_freelancer_applications(self, status=None, page_offset=None, page_size=None):
         """
         List job applications as a freelancer.
 
@@ -1332,11 +1332,19 @@ class HR_V4(Namespace):
           :status:                 (optional) The current status of the job application.
                                    Valid values: ``interviews``, ``invites``, ``active``.
 
+          :page_offset:            (optional) Number of entries to skip
+
+          :page_size:              (optional: default 20) Page size
+                                   in number of entries
+
         """
         data = {}
 
         if status:
             data['status'] = status
+
+        if page_offset and page_size:
+            data['page'] = '{0};{1}'.format(page_offset, page_size)
 
         url = 'contractors/applications'
         return self.get(url, data)

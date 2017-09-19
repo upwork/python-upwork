@@ -13,7 +13,7 @@ so you can use::
 
 """
 
-VERSION = '1.2.1'
+VERSION = '1.2.3'
 
 
 def get_version():
