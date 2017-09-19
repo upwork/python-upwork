@@ -1,14 +1,6 @@
 upwork.routers package
 ======================
 
-Module contents
----------------
-
-.. automodule:: upwork.routers
-    :members:
-    :undoc-members:
-    :show-inheritance:
-
 Submodules
 ----------
 
@@ -80,6 +72,15 @@ upwork.routers.timereport module
 --------------------------------
 
 .. automodule:: upwork.routers.timereport
+    :members:
+    :undoc-members:
+    :show-inheritance:
+
+
+Module contents
+---------------
+
+.. automodule:: upwork.routers
     :members:
     :undoc-members:
     :show-inheritance:

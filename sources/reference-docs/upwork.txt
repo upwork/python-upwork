@@ -1,14 +1,6 @@
 upwork package
 ==============
 
-Module contents
----------------
-
-.. automodule:: upwork
-    :members:
-    :undoc-members:
-    :show-inheritance:
-
 Subpackages
 -----------
 
@@ -67,10 +59,27 @@ upwork.oauth module
     :undoc-members:
     :show-inheritance:
 
+upwork.tests module
+-------------------
+
+.. automodule:: upwork.tests
+    :members:
+    :undoc-members:
+    :show-inheritance:
+
 upwork.utils module
 -------------------
 
 .. automodule:: upwork.utils
+    :members:
+    :undoc-members:
+    :show-inheritance:
+
+
+Module contents
+---------------
+
+.. automodule:: upwork
     :members:
     :undoc-members:
     :show-inheritance:

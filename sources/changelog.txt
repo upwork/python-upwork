@@ -5,6 +5,13 @@
 Changelog
 ***************
 
+.. _1.2.3:
+
+Version 1.2.3
+-------------
+* Added support for ``page`` parameter in `List freelancer applications <upwork.routers.hr.HR_V4.list_freelancer_applications>`
+* Fixed issue #20 in :py:meth:` <upwork.routers.provider.Provider.get_provider>`.
+
 .. _1.2.2:
 
 Version 1.2.2

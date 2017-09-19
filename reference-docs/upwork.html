@@ -6,24 +6,24 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>upwork package &mdash; python-upwork 1.2.1 documentation</title>
+    <title>upwork package &mdash; python-upwork 1.2.3 documentation</title>
     
-    <link rel="stylesheet" href="../static/sphinxdoc.css" type="text/css" />
-    <link rel="stylesheet" href="../static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/sphinxdoc.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
     
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../',
-        VERSION:     '1.2.1',
+        VERSION:     '1.2.3',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
       };
     </script>
-    <script type="text/javascript" src="../static/jquery.js"></script>
-    <script type="text/javascript" src="../static/underscore.js"></script>
-    <script type="text/javascript" src="../static/doctools.js"></script>
-    <link rel="top" title="python-upwork 1.2.1 documentation" href="../index.html" />
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <link rel="top" title="python-upwork 1.2.3 documentation" href="../index.html" />
     <link rel="up" title="Reference Documentation: Classes and Methods" href="../reference_docs.html" />
     <link rel="next" title="upwork.routers package" href="upwork.routers.html" />
     <link rel="prev" title="Reference Documentation: Classes and Methods" href="../reference_docs.html" /> 
@@ -44,7 +44,7 @@
         <li class="right" >
           <a href="../reference_docs.html" title="Reference Documentation: Classes and Methods"
              accesskey="P">previous</a> |</li>
-        <li class="nav-item nav-item-0"><a href="../index.html">python-upwork 1.2.1 documentation</a> &raquo;</li>
+        <li class="nav-item nav-item-0"><a href="../index.html">python-upwork 1.2.3 documentation</a> &raquo;</li>
           <li class="nav-item nav-item-1"><a href="../reference_docs.html" accesskey="U">Reference Documentation: Classes and Methods</a> &raquo;</li> 
       </ul>
     </div>
@@ -53,7 +53,6 @@
   <h3><a href="../index.html">Table Of Contents</a></h3>
   <ul>
 <li><a class="reference internal" href="#">upwork package</a><ul>
-<li><a class="reference internal" href="#module-upwork">Module contents</a></li>
 <li><a class="reference internal" href="#subpackages">Subpackages</a></li>
 <li><a class="reference internal" href="#submodules">Submodules</a></li>
 <li><a class="reference internal" href="#module-upwork.client">upwork.client module</a></li>
@@ -62,7 +61,9 @@
 <li><a class="reference internal" href="#module-upwork.http">upwork.http module</a></li>
 <li><a class="reference internal" href="#module-upwork.namespaces">upwork.namespaces module</a></li>
 <li><a class="reference internal" href="#module-upwork.oauth">upwork.oauth module</a></li>
+<li><a class="reference internal" href="#module-upwork.tests">upwork.tests module</a></li>
 <li><a class="reference internal" href="#module-upwork.utils">upwork.utils module</a></li>
+<li><a class="reference internal" href="#module-upwork">Module contents</a></li>
 </ul>
 </li>
 </ul>
@@ -76,7 +77,7 @@
   <div role="note" aria-label="source link">
     <h3>This Page</h3>
     <ul class="this-page-menu">
-      <li><a href="../sources/reference-docs/upwork.txt"
+      <li><a href="../_sources/reference-docs/upwork.txt"
             rel="nofollow">Show Source</a></li>
     </ul>
    </div>
@@ -100,214 +101,11 @@
             
   <div class="section" id="upwork-package">
 <h1>upwork package<a class="headerlink" href="#upwork-package" title="Permalink to this headline">¶</a></h1>
-<div class="section" id="module-upwork">
-<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-upwork" title="Permalink to this headline">¶</a></h2>
-<p>Main package of the python bindings for Upwork API.</p>
-<p>For convenience some most commonly used functionalities are imported here,
-so you can use:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">upwork</span> <span class="k">import</span> <span class="n">Client</span>
-<span class="kn">from</span> <span class="nn">upwork</span> <span class="k">import</span> <span class="n">raise_http_error</span>
-</pre></div>
-</div>
-<dl class="function">
-<dt id="upwork.get_version">
-<code class="descclassname">upwork.</code><code class="descname">get_version</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#upwork.get_version" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="class">
-<dt id="upwork.Client">
-<em class="property">class </em><code class="descclassname">upwork.</code><code class="descname">Client</code><span class="sig-paren">(</span><em>public_key</em>, <em>secret_key</em>, <em>oauth_access_token=None</em>, <em>oauth_access_token_secret=None</em>, <em>fmt='json'</em>, <em>finreport=True</em>, <em>hr=True</em>, <em>messages=True</em>, <em>offers=True</em>, <em>provider=True</em>, <em>task=True</em>, <em>team=True</em>, <em>timereport=True</em>, <em>job=True</em>, <em>timeout=3</em><span class="sig-paren">)</span><a class="headerlink" href="#upwork.Client" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">object</span></code></p>
-<p>Main API client with oAuth v1 authorization.</p>
-<dl class="docutils">
-<dt><em>Parameters:</em></dt>
-<dd><table class="first last docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">public_key:</th><td class="field-body">Public API key</td>
-</tr>
-<tr class="field-even field"><th class="field-name">secret_key:</th><td class="field-body">API key secret</td>
-</tr>
-<tr class="field-odd field"><th class="field-name" colspan="2">oauth_access_token:</th></tr>
-<tr class="field-odd field"><td>&nbsp;</td><td class="field-body">oAuth access token public key</td>
-</tr>
-<tr class="field-even field"><th class="field-name" colspan="2">oauth_access_token_secret:</th></tr>
-<tr class="field-even field"><td>&nbsp;</td><td class="field-body">oAuth access token secret key</td>
-</tr>
-<tr class="field-odd field"><th class="field-name">fmt:</th><td class="field-body">(optional, default <code class="docutils literal"><span class="pre">json</span></code>)
-API response format.
-Currently only <code class="docutils literal"><span class="pre">'json'</span></code> is supported</td>
-</tr>
-<tr class="field-even field"><th class="field-name">finreport:</th><td class="field-body">(optional, default <code class="docutils literal"><span class="pre">True</span></code>)
-Whether to attach
-<a class="reference internal" href="upwork.routers.html#module-upwork.routers.finreport" title="upwork.routers.finreport"><code class="xref py py-mod docutils literal"><span class="pre">upwork.routers.finreport</span></code></a> router</td>
-</tr>
-<tr class="field-odd field"><th class="field-name">hr:</th><td class="field-body">(optional, default <code class="docutils literal"><span class="pre">True</span></code>)
-Whether to attach
-<a class="reference internal" href="upwork.routers.html#module-upwork.routers.hr" title="upwork.routers.hr"><code class="xref py py-mod docutils literal"><span class="pre">upwork.routers.hr</span></code></a> router</td>
-</tr>
-<tr class="field-even field"><th class="field-name">messages:</th><td class="field-body">(optional, default <code class="docutils literal"><span class="pre">True</span></code>)
-Whether to attach
-<a class="reference internal" href="upwork.routers.html#module-upwork.routers.messages" title="upwork.routers.messages"><code class="xref py py-mod docutils literal"><span class="pre">upwork.routers.messages</span></code></a> router</td>
-</tr>
-<tr class="field-odd field"><th class="field-name">offers:</th><td class="field-body">(optional, default <code class="docutils literal"><span class="pre">True</span></code>)
-Whether to attach
-<a class="reference internal" href="upwork.routers.html#module-upwork.routers.offers" title="upwork.routers.offers"><code class="xref py py-mod docutils literal"><span class="pre">upwork.routers.offers</span></code></a> router</td>
-</tr>
-<tr class="field-even field"><th class="field-name">provider:</th><td class="field-body">(optional, default <code class="docutils literal"><span class="pre">True</span></code>)
-Whether to attach
-<a class="reference internal" href="upwork.routers.html#module-upwork.routers.provider" title="upwork.routers.provider"><code class="xref py py-mod docutils literal"><span class="pre">upwork.routers.provider</span></code></a> router</td>
-</tr>
-<tr class="field-odd field"><th class="field-name">task:</th><td class="field-body">(optional, default <code class="docutils literal"><span class="pre">True</span></code>)
-Whether to attach
-<a class="reference internal" href="upwork.routers.html#module-upwork.routers.task" title="upwork.routers.task"><code class="xref py py-mod docutils literal"><span class="pre">upwork.routers.task</span></code></a> router</td>
-</tr>
-<tr class="field-even field"><th class="field-name">team:</th><td class="field-body">(optional, default <code class="docutils literal"><span class="pre">True</span></code>)
-Whether to attach
-<a class="reference internal" href="upwork.routers.html#module-upwork.routers.team" title="upwork.routers.team"><code class="xref py py-mod docutils literal"><span class="pre">upwork.routers.team</span></code></a> router</td>
-</tr>
-<tr class="field-odd field"><th class="field-name">timereport:</th><td class="field-body">(optional, default <code class="docutils literal"><span class="pre">True</span></code>)
-Whether to attach
-<a class="reference internal" href="upwork.routers.html#module-upwork.routers.timereport" title="upwork.routers.timereport"><code class="xref py py-mod docutils literal"><span class="pre">upwork.routers.timereport</span></code></a> router</td>
-</tr>
-<tr class="field-even field"><th class="field-name">job:</th><td class="field-body">(optional, default <code class="docutils literal"><span class="pre">True</span></code>)
-Whether to attach
-<a class="reference internal" href="upwork.routers.html#module-upwork.routers.job" title="upwork.routers.job"><code class="xref py py-mod docutils literal"><span class="pre">upwork.routers.job</span></code></a> router</td>
-</tr>
-<tr class="field-odd field"><th class="field-name">timeout:</th><td class="field-body">(optional, default <code class="docutils literal"><span class="pre">3</span> <span class="pre">secs</span></code>)
-Socket operations timeout.</td>
-</tr>
-</tbody>
-</table>
-</dd>
-</dl>
-<dl class="method">
-<dt id="upwork.Client.delete">
-<code class="descname">delete</code><span class="sig-paren">(</span><em>url</em>, <em>data=None</em><span class="sig-paren">)</span><a class="headerlink" href="#upwork.Client.delete" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="method">
-<dt id="upwork.Client.get">
-<code class="descname">get</code><span class="sig-paren">(</span><em>url</em>, <em>data=None</em><span class="sig-paren">)</span><a class="headerlink" href="#upwork.Client.get" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="method">
-<dt id="upwork.Client.post">
-<code class="descname">post</code><span class="sig-paren">(</span><em>url</em>, <em>data=None</em><span class="sig-paren">)</span><a class="headerlink" href="#upwork.Client.post" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="method">
-<dt id="upwork.Client.put">
-<code class="descname">put</code><span class="sig-paren">(</span><em>url</em>, <em>data=None</em><span class="sig-paren">)</span><a class="headerlink" href="#upwork.Client.put" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="method">
-<dt id="upwork.Client.read">
-<code class="descname">read</code><span class="sig-paren">(</span><em>url</em>, <em>data=None</em>, <em>method='GET'</em>, <em>fmt='json'</em><span class="sig-paren">)</span><a class="headerlink" href="#upwork.Client.read" title="Permalink to this definition">¶</a></dt>
-<dd><p>Returns parsed Python object or raises an error.</p>
-<dl class="docutils">
-<dt><em>Parameters:</em></dt>
-<dd><table class="first last docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">url:</th><td class="field-body"><p class="first">Target url</p>
-</td>
-</tr>
-<tr class="field-even field"><th class="field-name">data:</th><td class="field-body"><p class="first">Dictionary with parameters</p>
-</td>
-</tr>
-<tr class="field-odd field"><th class="field-name">method:</th><td class="field-body"><p class="first">(optional, default <code class="docutils literal"><span class="pre">GET</span></code>)
-HTTP method, possible values:</p>
-<blockquote>
-<div><ul class="simple">
-<li><code class="docutils literal"><span class="pre">GET</span></code></li>
-<li><code class="docutils literal"><span class="pre">POST</span></code></li>
-<li><code class="docutils literal"><span class="pre">PUT</span></code></li>
-<li><code class="docutils literal"><span class="pre">DELETE</span></code></li>
-</ul>
-</div></blockquote>
-</td>
-</tr>
-<tr class="field-even field"><th class="field-name">fmt:</th><td class="field-body"><p class="first last">(optional, default <code class="docutils literal"><span class="pre">json</span></code>)
-API response format.
-Currently only <code class="docutils literal"><span class="pre">'json'</span></code> is supported</p>
-</td>
-</tr>
-</tbody>
-</table>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="method">
-<dt id="upwork.Client.urlopen">
-<code class="descname">urlopen</code><span class="sig-paren">(</span><em>url</em>, <em>data=None</em>, <em>method='GET'</em>, <em>headers=None</em><span class="sig-paren">)</span><a class="headerlink" href="#upwork.Client.urlopen" title="Permalink to this definition">¶</a></dt>
-<dd><p>Perform oAuth v1 signed HTTP request.</p>
-<dl class="docutils">
-<dt><em>Parameters:</em></dt>
-<dd><table class="first last docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">url:</th><td class="field-body"><p class="first">Target url</p>
-</td>
-</tr>
-<tr class="field-even field"><th class="field-name">data:</th><td class="field-body"><p class="first">Dictionary with parameters</p>
-</td>
-</tr>
-<tr class="field-odd field"><th class="field-name">method:</th><td class="field-body"><p class="first">(optional, default <code class="docutils literal"><span class="pre">GET</span></code>)
-HTTP method, possible values:</p>
-<blockquote>
-<div><ul class="simple">
-<li><code class="docutils literal"><span class="pre">GET</span></code></li>
-<li><code class="docutils literal"><span class="pre">POST</span></code></li>
-<li><code class="docutils literal"><span class="pre">PUT</span></code></li>
-<li><code class="docutils literal"><span class="pre">DELETE</span></code></li>
-</ul>
-</div></blockquote>
-</td>
-</tr>
-<tr class="field-even field"><th class="field-name">headers:</th><td class="field-body"><p class="first last">(optional, default <code class="docutils literal"><span class="pre">{}</span></code>)
-Dictionary with header values</p>
-</td>
-</tr>
-</tbody>
-</table>
-</dd>
-</dl>
-</dd></dl>
-
-</dd></dl>
-
-<dl class="function">
-<dt id="upwork.raise_http_error">
-<code class="descclassname">upwork.</code><code class="descname">raise_http_error</code><span class="sig-paren">(</span><em>url</em>, <em>response</em><span class="sig-paren">)</span><a class="headerlink" href="#upwork.raise_http_error" title="Permalink to this definition">¶</a></dt>
-<dd><p>Raise custom <code class="docutils literal"><span class="pre">urllib2.HTTPError</span></code> exception.</p>
-<dl class="docutils">
-<dt><em>Parameters:</em></dt>
-<dd><table class="first last docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">url:</th><td class="field-body">Url that caused an error</td>
-</tr>
-<tr class="field-even field"><th class="field-name">response:</th><td class="field-body"><code class="docutils literal"><span class="pre">urllib3</span></code> response object</td>
-</tr>
-</tbody>
-</table>
-</dd>
-</dl>
-</dd></dl>
-
-</div>
 <div class="section" id="subpackages">
 <h2>Subpackages<a class="headerlink" href="#subpackages" title="Permalink to this headline">¶</a></h2>
 <div class="toctree-wrapper compound">
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="upwork.routers.html">upwork.routers package</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="upwork.routers.html#module-upwork.routers">Module contents</a></li>
 <li class="toctree-l2"><a class="reference internal" href="upwork.routers.html#submodules">Submodules</a></li>
 <li class="toctree-l2"><a class="reference internal" href="upwork.routers.html#module-upwork.routers.finreport">upwork.routers.finreport module</a></li>
 <li class="toctree-l2"><a class="reference internal" href="upwork.routers.html#module-upwork.routers.hr">upwork.routers.hr module</a></li>
@@ -318,6 +116,7 @@ Dictionary with header values</p>
 <li class="toctree-l2"><a class="reference internal" href="upwork.routers.html#module-upwork.routers.task">upwork.routers.task module</a></li>
 <li class="toctree-l2"><a class="reference internal" href="upwork.routers.html#module-upwork.routers.team">upwork.routers.team module</a></li>
 <li class="toctree-l2"><a class="reference internal" href="upwork.routers.html#module-upwork.routers.timereport">upwork.routers.timereport module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="upwork.routers.html#module-upwork.routers">Module contents</a></li>
 </ul>
 </li>
 </ul>
@@ -782,6 +581,538 @@ headers</td>
 </dd></dl>
 
 </div>
+<div class="section" id="module-upwork.tests">
+<span id="upwork-tests-module"></span><h2>upwork.tests module<a class="headerlink" href="#module-upwork.tests" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="upwork.tests.MicroMock">
+<em class="property">class </em><code class="descclassname">upwork.tests.</code><code class="descname">MicroMock</code><span class="sig-paren">(</span><em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#upwork.tests.MicroMock" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">object</span></code></p>
+</dd></dl>
+
+<dl class="function">
+<dt id="upwork.tests.client_read_400">
+<code class="descclassname">upwork.tests.</code><code class="descname">client_read_400</code><span class="sig-paren">(</span><em>*args</em>, <em>**keywargs</em><span class="sig-paren">)</span><a class="headerlink" href="#upwork.tests.client_read_400" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="upwork.tests.client_read_401">
+<code class="descclassname">upwork.tests.</code><code class="descname">client_read_401</code><span class="sig-paren">(</span><em>*args</em>, <em>**keywargs</em><span class="sig-paren">)</span><a class="headerlink" href="#upwork.tests.client_read_401" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="upwork.tests.client_read_403">
+<code class="descclassname">upwork.tests.</code><code class="descname">client_read_403</code><span class="sig-paren">(</span><em>*args</em>, <em>**keywargs</em><span class="sig-paren">)</span><a class="headerlink" href="#upwork.tests.client_read_403" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="upwork.tests.client_read_404">
+<code class="descclassname">upwork.tests.</code><code class="descname">client_read_404</code><span class="sig-paren">(</span><em>*args</em>, <em>**keywargs</em><span class="sig-paren">)</span><a class="headerlink" href="#upwork.tests.client_read_404" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="upwork.tests.client_read_500">
+<code class="descclassname">upwork.tests.</code><code class="descname">client_read_500</code><span class="sig-paren">(</span><em>*args</em>, <em>**keywargs</em><span class="sig-paren">)</span><a class="headerlink" href="#upwork.tests.client_read_500" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="upwork.tests.client_read_incorrect_json">
+<code class="descclassname">upwork.tests.</code><code class="descname">client_read_incorrect_json</code><span class="sig-paren">(</span><em>*args</em>, <em>**keywargs</em><span class="sig-paren">)</span><a class="headerlink" href="#upwork.tests.client_read_incorrect_json" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="upwork.tests.get_client">
+<code class="descclassname">upwork.tests.</code><code class="descname">get_client</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#upwork.tests.get_client" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="upwork.tests.patched_httplib2_access">
+<code class="descclassname">upwork.tests.</code><code class="descname">patched_httplib2_access</code><span class="sig-paren">(</span><em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#upwork.tests.patched_httplib2_access" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="upwork.tests.patched_httplib2_request">
+<code class="descclassname">upwork.tests.</code><code class="descname">patched_httplib2_request</code><span class="sig-paren">(</span><em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#upwork.tests.patched_httplib2_request" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="upwork.tests.patched_urlopen">
+<code class="descclassname">upwork.tests.</code><code class="descname">patched_urlopen</code><span class="sig-paren">(</span><em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#upwork.tests.patched_urlopen" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="upwork.tests.patched_urlopen_400">
+<code class="descclassname">upwork.tests.</code><code class="descname">patched_urlopen_400</code><span class="sig-paren">(</span><em>self</em>, <em>method</em>, <em>url</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#upwork.tests.patched_urlopen_400" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="upwork.tests.patched_urlopen_401">
+<code class="descclassname">upwork.tests.</code><code class="descname">patched_urlopen_401</code><span class="sig-paren">(</span><em>self</em>, <em>method</em>, <em>url</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#upwork.tests.patched_urlopen_401" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="upwork.tests.patched_urlopen_403">
+<code class="descclassname">upwork.tests.</code><code class="descname">patched_urlopen_403</code><span class="sig-paren">(</span><em>self</em>, <em>method</em>, <em>url</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#upwork.tests.patched_urlopen_403" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="upwork.tests.patched_urlopen_404">
+<code class="descclassname">upwork.tests.</code><code class="descname">patched_urlopen_404</code><span class="sig-paren">(</span><em>self</em>, <em>method</em>, <em>url</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#upwork.tests.patched_urlopen_404" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="upwork.tests.patched_urlopen_500">
+<code class="descclassname">upwork.tests.</code><code class="descname">patched_urlopen_500</code><span class="sig-paren">(</span><em>self</em>, <em>method</em>, <em>url</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#upwork.tests.patched_urlopen_500" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="upwork.tests.patched_urlopen_error">
+<code class="descclassname">upwork.tests.</code><code class="descname">patched_urlopen_error</code><span class="sig-paren">(</span><em>method</em>, <em>url</em>, <em>code=400</em>, <em>message=None</em>, <em>data=None</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#upwork.tests.patched_urlopen_error" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="upwork.tests.patched_urlopen_fin_report_content">
+<code class="descclassname">upwork.tests.</code><code class="descname">patched_urlopen_fin_report_content</code><span class="sig-paren">(</span><em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#upwork.tests.patched_urlopen_fin_report_content" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="upwork.tests.patched_urlopen_hr">
+<code class="descclassname">upwork.tests.</code><code class="descname">patched_urlopen_hr</code><span class="sig-paren">(</span><em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#upwork.tests.patched_urlopen_hr" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="upwork.tests.patched_urlopen_hradjustment">
+<code class="descclassname">upwork.tests.</code><code class="descname">patched_urlopen_hradjustment</code><span class="sig-paren">(</span><em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#upwork.tests.patched_urlopen_hradjustment" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="upwork.tests.patched_urlopen_incorrect_json">
+<code class="descclassname">upwork.tests.</code><code class="descname">patched_urlopen_incorrect_json</code><span class="sig-paren">(</span><em>self</em>, <em>method</em>, <em>url</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#upwork.tests.patched_urlopen_incorrect_json" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="upwork.tests.patched_urlopen_job_data_parameters">
+<code class="descclassname">upwork.tests.</code><code class="descname">patched_urlopen_job_data_parameters</code><span class="sig-paren">(</span><em>self</em>, <em>method</em>, <em>url</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#upwork.tests.patched_urlopen_job_data_parameters" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="upwork.tests.patched_urlopen_job_data_parameters2">
+<code class="descclassname">upwork.tests.</code><code class="descname">patched_urlopen_job_data_parameters2</code><span class="sig-paren">(</span><em>self</em>, <em>method</em>, <em>url</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#upwork.tests.patched_urlopen_job_data_parameters2" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="upwork.tests.patched_urlopen_multiple_jobs">
+<code class="descclassname">upwork.tests.</code><code class="descname">patched_urlopen_multiple_jobs</code><span class="sig-paren">(</span><em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#upwork.tests.patched_urlopen_multiple_jobs" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="upwork.tests.patched_urlopen_provider">
+<code class="descclassname">upwork.tests.</code><code class="descname">patched_urlopen_provider</code><span class="sig-paren">(</span><em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#upwork.tests.patched_urlopen_provider" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="upwork.tests.patched_urlopen_read_room_content">
+<code class="descclassname">upwork.tests.</code><code class="descname">patched_urlopen_read_room_content</code><span class="sig-paren">(</span><em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#upwork.tests.patched_urlopen_read_room_content" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="upwork.tests.patched_urlopen_room">
+<code class="descclassname">upwork.tests.</code><code class="descname">patched_urlopen_room</code><span class="sig-paren">(</span><em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#upwork.tests.patched_urlopen_room" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="upwork.tests.patched_urlopen_rooms">
+<code class="descclassname">upwork.tests.</code><code class="descname">patched_urlopen_rooms</code><span class="sig-paren">(</span><em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#upwork.tests.patched_urlopen_rooms" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="upwork.tests.patched_urlopen_single_job">
+<code class="descclassname">upwork.tests.</code><code class="descname">patched_urlopen_single_job</code><span class="sig-paren">(</span><em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#upwork.tests.patched_urlopen_single_job" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="upwork.tests.patched_urlopen_task">
+<code class="descclassname">upwork.tests.</code><code class="descname">patched_urlopen_task</code><span class="sig-paren">(</span><em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#upwork.tests.patched_urlopen_task" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="upwork.tests.patched_urlopen_teamrooms">
+<code class="descclassname">upwork.tests.</code><code class="descname">patched_urlopen_teamrooms</code><span class="sig-paren">(</span><em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#upwork.tests.patched_urlopen_teamrooms" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="upwork.tests.patched_urlopen_teamrooms_none">
+<code class="descclassname">upwork.tests.</code><code class="descname">patched_urlopen_teamrooms_none</code><span class="sig-paren">(</span><em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#upwork.tests.patched_urlopen_teamrooms_none" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="upwork.tests.patched_urlopen_timereport_content">
+<code class="descclassname">upwork.tests.</code><code class="descname">patched_urlopen_timereport_content</code><span class="sig-paren">(</span><em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#upwork.tests.patched_urlopen_timereport_content" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="upwork.tests.setup_oauth">
+<code class="descclassname">upwork.tests.</code><code class="descname">setup_oauth</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#upwork.tests.setup_oauth" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="upwork.tests.test_archive_company_task">
+<code class="descclassname">upwork.tests.</code><code class="descname">test_archive_company_task</code><span class="sig-paren">(</span><em>*args</em>, <em>**keywargs</em><span class="sig-paren">)</span><a class="headerlink" href="#upwork.tests.test_archive_company_task" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="upwork.tests.test_archive_team_task">
+<code class="descclassname">upwork.tests.</code><code class="descname">test_archive_team_task</code><span class="sig-paren">(</span><em>*args</em>, <em>**keywargs</em><span class="sig-paren">)</span><a class="headerlink" href="#upwork.tests.test_archive_team_task" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="upwork.tests.test_assign_to_engagement">
+<code class="descclassname">upwork.tests.</code><code class="descname">test_assign_to_engagement</code><span class="sig-paren">(</span><em>*args</em>, <em>**keywargs</em><span class="sig-paren">)</span><a class="headerlink" href="#upwork.tests.test_assign_to_engagement" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="upwork.tests.test_client">
+<code class="descclassname">upwork.tests.</code><code class="descname">test_client</code><span class="sig-paren">(</span><em>*args</em>, <em>**keywargs</em><span class="sig-paren">)</span><a class="headerlink" href="#upwork.tests.test_client" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="upwork.tests.test_client_read">
+<code class="descclassname">upwork.tests.</code><code class="descname">test_client_read</code><span class="sig-paren">(</span><em>*args</em>, <em>**keywargs</em><span class="sig-paren">)</span><a class="headerlink" href="#upwork.tests.test_client_read" title="Permalink to this definition">¶</a></dt>
+<dd><p>Test client read() method.</p>
+<dl class="docutils">
+<dt>Test cases:</dt>
+<dd><p class="first">method default (get) - other we already tested</p>
+<p>format json|yaml ( should produce error)</p>
+<p class="last">codes 200|400|401|403|404|500</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="upwork.tests.test_client_urlopen">
+<code class="descclassname">upwork.tests.</code><code class="descname">test_client_urlopen</code><span class="sig-paren">(</span><em>*args</em>, <em>**keywargs</em><span class="sig-paren">)</span><a class="headerlink" href="#upwork.tests.test_client_urlopen" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="upwork.tests.test_create_room">
+<code class="descclassname">upwork.tests.</code><code class="descname">test_create_room</code><span class="sig-paren">(</span><em>*args</em>, <em>**keywargs</em><span class="sig-paren">)</span><a class="headerlink" href="#upwork.tests.test_create_room" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="upwork.tests.test_decimal_default">
+<code class="descclassname">upwork.tests.</code><code class="descname">test_decimal_default</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#upwork.tests.test_decimal_default" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="upwork.tests.test_gds_namespace">
+<code class="descclassname">upwork.tests.</code><code class="descname">test_gds_namespace</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#upwork.tests.test_gds_namespace" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="upwork.tests.test_gds_namespace_get">
+<code class="descclassname">upwork.tests.</code><code class="descname">test_gds_namespace_get</code><span class="sig-paren">(</span><em>*args</em>, <em>**keywargs</em><span class="sig-paren">)</span><a class="headerlink" href="#upwork.tests.test_gds_namespace_get" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="upwork.tests.test_get_agency_timereport">
+<code class="descclassname">upwork.tests.</code><code class="descname">test_get_agency_timereport</code><span class="sig-paren">(</span><em>*args</em>, <em>**keywargs</em><span class="sig-paren">)</span><a class="headerlink" href="#upwork.tests.test_get_agency_timereport" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="upwork.tests.test_get_buyer_companies_billings">
+<code class="descclassname">upwork.tests.</code><code class="descname">test_get_buyer_companies_billings</code><span class="sig-paren">(</span><em>*args</em>, <em>**keywargs</em><span class="sig-paren">)</span><a class="headerlink" href="#upwork.tests.test_get_buyer_companies_billings" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="upwork.tests.test_get_buyer_companies_earnings">
+<code class="descclassname">upwork.tests.</code><code class="descname">test_get_buyer_companies_earnings</code><span class="sig-paren">(</span><em>*args</em>, <em>**keywargs</em><span class="sig-paren">)</span><a class="headerlink" href="#upwork.tests.test_get_buyer_companies_earnings" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="upwork.tests.test_get_buyer_teams_billings">
+<code class="descclassname">upwork.tests.</code><code class="descname">test_get_buyer_teams_billings</code><span class="sig-paren">(</span><em>*args</em>, <em>**keywargs</em><span class="sig-paren">)</span><a class="headerlink" href="#upwork.tests.test_get_buyer_teams_billings" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="upwork.tests.test_get_buyer_teams_earnings">
+<code class="descclassname">upwork.tests.</code><code class="descname">test_get_buyer_teams_earnings</code><span class="sig-paren">(</span><em>*args</em>, <em>**keywargs</em><span class="sig-paren">)</span><a class="headerlink" href="#upwork.tests.test_get_buyer_teams_earnings" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="upwork.tests.test_get_company_specific_tasks">
+<code class="descclassname">upwork.tests.</code><code class="descname">test_get_company_specific_tasks</code><span class="sig-paren">(</span><em>*args</em>, <em>**keywargs</em><span class="sig-paren">)</span><a class="headerlink" href="#upwork.tests.test_get_company_specific_tasks" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="upwork.tests.test_get_company_tasks">
+<code class="descclassname">upwork.tests.</code><code class="descname">test_get_company_tasks</code><span class="sig-paren">(</span><em>*args</em>, <em>**keywargs</em><span class="sig-paren">)</span><a class="headerlink" href="#upwork.tests.test_get_company_tasks" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="upwork.tests.test_get_company_timereport">
+<code class="descclassname">upwork.tests.</code><code class="descname">test_get_company_timereport</code><span class="sig-paren">(</span><em>*args</em>, <em>**keywargs</em><span class="sig-paren">)</span><a class="headerlink" href="#upwork.tests.test_get_company_timereport" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="upwork.tests.test_get_financial_entities">
+<code class="descclassname">upwork.tests.</code><code class="descname">test_get_financial_entities</code><span class="sig-paren">(</span><em>*args</em>, <em>**keywargs</em><span class="sig-paren">)</span><a class="headerlink" href="#upwork.tests.test_get_financial_entities" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="upwork.tests.test_get_financial_entities_provider">
+<code class="descclassname">upwork.tests.</code><code class="descname">test_get_financial_entities_provider</code><span class="sig-paren">(</span><em>*args</em>, <em>**keywargs</em><span class="sig-paren">)</span><a class="headerlink" href="#upwork.tests.test_get_financial_entities_provider" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="upwork.tests.test_get_hrv2_companies">
+<code class="descclassname">upwork.tests.</code><code class="descname">test_get_hrv2_companies</code><span class="sig-paren">(</span><em>*args</em>, <em>**keywargs</em><span class="sig-paren">)</span><a class="headerlink" href="#upwork.tests.test_get_hrv2_companies" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="upwork.tests.test_get_hrv2_company_teams">
+<code class="descclassname">upwork.tests.</code><code class="descname">test_get_hrv2_company_teams</code><span class="sig-paren">(</span><em>*args</em>, <em>**keywargs</em><span class="sig-paren">)</span><a class="headerlink" href="#upwork.tests.test_get_hrv2_company_teams" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="upwork.tests.test_get_hrv2_company_users">
+<code class="descclassname">upwork.tests.</code><code class="descname">test_get_hrv2_company_users</code><span class="sig-paren">(</span><em>*args</em>, <em>**keywargs</em><span class="sig-paren">)</span><a class="headerlink" href="#upwork.tests.test_get_hrv2_company_users" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="upwork.tests.test_get_hrv2_engagements">
+<code class="descclassname">upwork.tests.</code><code class="descname">test_get_hrv2_engagements</code><span class="sig-paren">(</span><em>*args</em>, <em>**keywargs</em><span class="sig-paren">)</span><a class="headerlink" href="#upwork.tests.test_get_hrv2_engagements" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="upwork.tests.test_get_hrv2_jobs">
+<code class="descclassname">upwork.tests.</code><code class="descname">test_get_hrv2_jobs</code><span class="sig-paren">(</span><em>*args</em>, <em>**keywargs</em><span class="sig-paren">)</span><a class="headerlink" href="#upwork.tests.test_get_hrv2_jobs" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="upwork.tests.test_get_hrv2_offers">
+<code class="descclassname">upwork.tests.</code><code class="descname">test_get_hrv2_offers</code><span class="sig-paren">(</span><em>*args</em>, <em>**keywargs</em><span class="sig-paren">)</span><a class="headerlink" href="#upwork.tests.test_get_hrv2_offers" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="upwork.tests.test_get_hrv2_team_users">
+<code class="descclassname">upwork.tests.</code><code class="descname">test_get_hrv2_team_users</code><span class="sig-paren">(</span><em>*args</em>, <em>**keywargs</em><span class="sig-paren">)</span><a class="headerlink" href="#upwork.tests.test_get_hrv2_team_users" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="upwork.tests.test_get_hrv2_teams">
+<code class="descclassname">upwork.tests.</code><code class="descname">test_get_hrv2_teams</code><span class="sig-paren">(</span><em>*args</em>, <em>**keywargs</em><span class="sig-paren">)</span><a class="headerlink" href="#upwork.tests.test_get_hrv2_teams" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="upwork.tests.test_get_hrv2_user">
+<code class="descclassname">upwork.tests.</code><code class="descname">test_get_hrv2_user</code><span class="sig-paren">(</span><em>*args</em>, <em>**keywargs</em><span class="sig-paren">)</span><a class="headerlink" href="#upwork.tests.test_get_hrv2_user" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="upwork.tests.test_get_hrv2_userroles">
+<code class="descclassname">upwork.tests.</code><code class="descname">test_get_hrv2_userroles</code><span class="sig-paren">(</span><em>*args</em>, <em>**keywargs</em><span class="sig-paren">)</span><a class="headerlink" href="#upwork.tests.test_get_hrv2_userroles" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="upwork.tests.test_get_provider_billings">
+<code class="descclassname">upwork.tests.</code><code class="descname">test_get_provider_billings</code><span class="sig-paren">(</span><em>*args</em>, <em>**keywargs</em><span class="sig-paren">)</span><a class="headerlink" href="#upwork.tests.test_get_provider_billings" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="upwork.tests.test_get_provider_companies_billings">
+<code class="descclassname">upwork.tests.</code><code class="descname">test_get_provider_companies_billings</code><span class="sig-paren">(</span><em>*args</em>, <em>**keywargs</em><span class="sig-paren">)</span><a class="headerlink" href="#upwork.tests.test_get_provider_companies_billings" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="upwork.tests.test_get_provider_companies_earnings">
+<code class="descclassname">upwork.tests.</code><code class="descname">test_get_provider_companies_earnings</code><span class="sig-paren">(</span><em>*args</em>, <em>**keywargs</em><span class="sig-paren">)</span><a class="headerlink" href="#upwork.tests.test_get_provider_companies_earnings" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="upwork.tests.test_get_provider_earnings">
+<code class="descclassname">upwork.tests.</code><code class="descname">test_get_provider_earnings</code><span class="sig-paren">(</span><em>*args</em>, <em>**keywargs</em><span class="sig-paren">)</span><a class="headerlink" href="#upwork.tests.test_get_provider_earnings" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="upwork.tests.test_get_provider_teams_billings">
+<code class="descclassname">upwork.tests.</code><code class="descname">test_get_provider_teams_billings</code><span class="sig-paren">(</span><em>*args</em>, <em>**keywargs</em><span class="sig-paren">)</span><a class="headerlink" href="#upwork.tests.test_get_provider_teams_billings" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="upwork.tests.test_get_provider_teams_earnings">
+<code class="descclassname">upwork.tests.</code><code class="descname">test_get_provider_teams_earnings</code><span class="sig-paren">(</span><em>*args</em>, <em>**keywargs</em><span class="sig-paren">)</span><a class="headerlink" href="#upwork.tests.test_get_provider_teams_earnings" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="upwork.tests.test_get_provider_timereport">
+<code class="descclassname">upwork.tests.</code><code class="descname">test_get_provider_timereport</code><span class="sig-paren">(</span><em>*args</em>, <em>**keywargs</em><span class="sig-paren">)</span><a class="headerlink" href="#upwork.tests.test_get_provider_timereport" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="upwork.tests.test_get_room_by_application">
+<code class="descclassname">upwork.tests.</code><code class="descname">test_get_room_by_application</code><span class="sig-paren">(</span><em>*args</em>, <em>**keywargs</em><span class="sig-paren">)</span><a class="headerlink" href="#upwork.tests.test_get_room_by_application" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="upwork.tests.test_get_room_by_contract">
+<code class="descclassname">upwork.tests.</code><code class="descname">test_get_room_by_contract</code><span class="sig-paren">(</span><em>*args</em>, <em>**keywargs</em><span class="sig-paren">)</span><a class="headerlink" href="#upwork.tests.test_get_room_by_contract" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="upwork.tests.test_get_room_by_offer">
+<code class="descclassname">upwork.tests.</code><code class="descname">test_get_room_by_offer</code><span class="sig-paren">(</span><em>*args</em>, <em>**keywargs</em><span class="sig-paren">)</span><a class="headerlink" href="#upwork.tests.test_get_room_by_offer" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="upwork.tests.test_get_room_details">
+<code class="descclassname">upwork.tests.</code><code class="descname">test_get_room_details</code><span class="sig-paren">(</span><em>*args</em>, <em>**keywargs</em><span class="sig-paren">)</span><a class="headerlink" href="#upwork.tests.test_get_room_details" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="upwork.tests.test_get_rooms">
+<code class="descclassname">upwork.tests.</code><code class="descname">test_get_rooms</code><span class="sig-paren">(</span><em>*args</em>, <em>**keywargs</em><span class="sig-paren">)</span><a class="headerlink" href="#upwork.tests.test_get_rooms" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="upwork.tests.test_get_team_specific_tasks">
+<code class="descclassname">upwork.tests.</code><code class="descname">test_get_team_specific_tasks</code><span class="sig-paren">(</span><em>*args</em>, <em>**keywargs</em><span class="sig-paren">)</span><a class="headerlink" href="#upwork.tests.test_get_team_specific_tasks" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="upwork.tests.test_get_team_tasks">
+<code class="descclassname">upwork.tests.</code><code class="descname">test_get_team_tasks</code><span class="sig-paren">(</span><em>*args</em>, <em>**keywargs</em><span class="sig-paren">)</span><a class="headerlink" href="#upwork.tests.test_get_team_tasks" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="upwork.tests.test_hr_end_contract">
+<code class="descclassname">upwork.tests.</code><code class="descname">test_hr_end_contract</code><span class="sig-paren">(</span><em>*args</em>, <em>**keywargs</em><span class="sig-paren">)</span><a class="headerlink" href="#upwork.tests.test_hr_end_contract" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="upwork.tests.test_hr_restart_contract">
+<code class="descclassname">upwork.tests.</code><code class="descname">test_hr_restart_contract</code><span class="sig-paren">(</span><em>*args</em>, <em>**keywargs</em><span class="sig-paren">)</span><a class="headerlink" href="#upwork.tests.test_hr_restart_contract" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="upwork.tests.test_hr_suspend_contract">
+<code class="descclassname">upwork.tests.</code><code class="descname">test_hr_suspend_contract</code><span class="sig-paren">(</span><em>*args</em>, <em>**keywargs</em><span class="sig-paren">)</span><a class="headerlink" href="#upwork.tests.test_hr_suspend_contract" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="upwork.tests.test_hrv2_post_adjustment">
+<code class="descclassname">upwork.tests.</code><code class="descname">test_hrv2_post_adjustment</code><span class="sig-paren">(</span><em>*args</em>, <em>**keywargs</em><span class="sig-paren">)</span><a class="headerlink" href="#upwork.tests.test_hrv2_post_adjustment" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="upwork.tests.test_job_data_no_category">
+<code class="descclassname">upwork.tests.</code><code class="descname">test_job_data_no_category</code><span class="sig-paren">(</span><em>*args</em>, <em>**keywargs</em><span class="sig-paren">)</span><a class="headerlink" href="#upwork.tests.test_job_data_no_category" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="upwork.tests.test_job_data_parameters_subcategory2">
+<code class="descclassname">upwork.tests.</code><code class="descname">test_job_data_parameters_subcategory2</code><span class="sig-paren">(</span><em>*args</em>, <em>**keywargs</em><span class="sig-paren">)</span><a class="headerlink" href="#upwork.tests.test_job_data_parameters_subcategory2" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="upwork.tests.test_multiple_job_profiles">
+<code class="descclassname">upwork.tests.</code><code class="descname">test_multiple_job_profiles</code><span class="sig-paren">(</span><em>*args</em>, <em>**keywargs</em><span class="sig-paren">)</span><a class="headerlink" href="#upwork.tests.test_multiple_job_profiles" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="upwork.tests.test_namespace">
+<code class="descclassname">upwork.tests.</code><code class="descname">test_namespace</code><span class="sig-paren">(</span><em>*args</em>, <em>**keywargs</em><span class="sig-paren">)</span><a class="headerlink" href="#upwork.tests.test_namespace" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="upwork.tests.test_oauth_full_url">
+<code class="descclassname">upwork.tests.</code><code class="descname">test_oauth_full_url</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#upwork.tests.test_oauth_full_url" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="upwork.tests.test_oauth_get_access_token">
+<code class="descclassname">upwork.tests.</code><code class="descname">test_oauth_get_access_token</code><span class="sig-paren">(</span><em>*args</em>, <em>**keywargs</em><span class="sig-paren">)</span><a class="headerlink" href="#upwork.tests.test_oauth_get_access_token" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="upwork.tests.test_oauth_get_authorize_url">
+<code class="descclassname">upwork.tests.</code><code class="descname">test_oauth_get_authorize_url</code><span class="sig-paren">(</span><em>*args</em>, <em>**keywargs</em><span class="sig-paren">)</span><a class="headerlink" href="#upwork.tests.test_oauth_get_authorize_url" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="upwork.tests.test_oauth_get_request_token">
+<code class="descclassname">upwork.tests.</code><code class="descname">test_oauth_get_request_token</code><span class="sig-paren">(</span><em>*args</em>, <em>**keywargs</em><span class="sig-paren">)</span><a class="headerlink" href="#upwork.tests.test_oauth_get_request_token" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="upwork.tests.test_post_company_task">
+<code class="descclassname">upwork.tests.</code><code class="descname">test_post_company_task</code><span class="sig-paren">(</span><em>*args</em>, <em>**keywargs</em><span class="sig-paren">)</span><a class="headerlink" href="#upwork.tests.test_post_company_task" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="upwork.tests.test_post_team_task">
+<code class="descclassname">upwork.tests.</code><code class="descname">test_post_team_task</code><span class="sig-paren">(</span><em>*args</em>, <em>**keywargs</em><span class="sig-paren">)</span><a class="headerlink" href="#upwork.tests.test_post_team_task" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="upwork.tests.test_provider">
+<code class="descclassname">upwork.tests.</code><code class="descname">test_provider</code><span class="sig-paren">(</span><em>*args</em>, <em>**keywargs</em><span class="sig-paren">)</span><a class="headerlink" href="#upwork.tests.test_provider" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="upwork.tests.test_put_company_task">
+<code class="descclassname">upwork.tests.</code><code class="descname">test_put_company_task</code><span class="sig-paren">(</span><em>*args</em>, <em>**keywargs</em><span class="sig-paren">)</span><a class="headerlink" href="#upwork.tests.test_put_company_task" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="upwork.tests.test_put_team_task">
+<code class="descclassname">upwork.tests.</code><code class="descname">test_put_team_task</code><span class="sig-paren">(</span><em>*args</em>, <em>**keywargs</em><span class="sig-paren">)</span><a class="headerlink" href="#upwork.tests.test_put_team_task" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="upwork.tests.test_send_message_to_room">
+<code class="descclassname">upwork.tests.</code><code class="descname">test_send_message_to_room</code><span class="sig-paren">(</span><em>*args</em>, <em>**keywargs</em><span class="sig-paren">)</span><a class="headerlink" href="#upwork.tests.test_send_message_to_room" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="upwork.tests.test_single_job_profile">
+<code class="descclassname">upwork.tests.</code><code class="descname">test_single_job_profile</code><span class="sig-paren">(</span><em>*args</em>, <em>**keywargs</em><span class="sig-paren">)</span><a class="headerlink" href="#upwork.tests.test_single_job_profile" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="upwork.tests.test_team">
+<code class="descclassname">upwork.tests.</code><code class="descname">test_team</code><span class="sig-paren">(</span><em>*args</em>, <em>**keywargs</em><span class="sig-paren">)</span><a class="headerlink" href="#upwork.tests.test_team" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="upwork.tests.test_teamrooms_none">
+<code class="descclassname">upwork.tests.</code><code class="descname">test_teamrooms_none</code><span class="sig-paren">(</span><em>*args</em>, <em>**keywargs</em><span class="sig-paren">)</span><a class="headerlink" href="#upwork.tests.test_teamrooms_none" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="upwork.tests.test_unarchive_company_task">
+<code class="descclassname">upwork.tests.</code><code class="descname">test_unarchive_company_task</code><span class="sig-paren">(</span><em>*args</em>, <em>**keywargs</em><span class="sig-paren">)</span><a class="headerlink" href="#upwork.tests.test_unarchive_company_task" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="upwork.tests.test_unarchive_team_task">
+<code class="descclassname">upwork.tests.</code><code class="descname">test_unarchive_team_task</code><span class="sig-paren">(</span><em>*args</em>, <em>**keywargs</em><span class="sig-paren">)</span><a class="headerlink" href="#upwork.tests.test_unarchive_team_task" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="upwork.tests.test_update_batch_tasks">
+<code class="descclassname">upwork.tests.</code><code class="descname">test_update_batch_tasks</code><span class="sig-paren">(</span><em>*args</em>, <em>**keywargs</em><span class="sig-paren">)</span><a class="headerlink" href="#upwork.tests.test_update_batch_tasks" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="upwork.tests.test_update_room_metadata">
+<code class="descclassname">upwork.tests.</code><code class="descname">test_update_room_metadata</code><span class="sig-paren">(</span><em>*args</em>, <em>**keywargs</em><span class="sig-paren">)</span><a class="headerlink" href="#upwork.tests.test_update_room_metadata" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="upwork.tests.test_update_room_settings">
+<code class="descclassname">upwork.tests.</code><code class="descname">test_update_room_settings</code><span class="sig-paren">(</span><em>*args</em>, <em>**keywargs</em><span class="sig-paren">)</span><a class="headerlink" href="#upwork.tests.test_update_room_settings" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</div>
 <div class="section" id="module-upwork.utils">
 <span id="upwork-utils-module"></span><h2>upwork.utils module<a class="headerlink" href="#module-upwork.utils" title="Permalink to this headline">¶</a></h2>
 <dl class="class">
@@ -846,6 +1177,208 @@ headers</td>
 </dd></dl>
 
 </div>
+<div class="section" id="module-upwork">
+<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-upwork" title="Permalink to this headline">¶</a></h2>
+<p>Main package of the python bindings for Upwork API.</p>
+<p>For convenience some most commonly used functionalities are imported here,
+so you can use:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">upwork</span> <span class="k">import</span> <span class="n">Client</span>
+<span class="kn">from</span> <span class="nn">upwork</span> <span class="k">import</span> <span class="n">raise_http_error</span>
+</pre></div>
+</div>
+<dl class="function">
+<dt id="upwork.get_version">
+<code class="descclassname">upwork.</code><code class="descname">get_version</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#upwork.get_version" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="class">
+<dt id="upwork.Client">
+<em class="property">class </em><code class="descclassname">upwork.</code><code class="descname">Client</code><span class="sig-paren">(</span><em>public_key</em>, <em>secret_key</em>, <em>oauth_access_token=None</em>, <em>oauth_access_token_secret=None</em>, <em>fmt='json'</em>, <em>finreport=True</em>, <em>hr=True</em>, <em>messages=True</em>, <em>offers=True</em>, <em>provider=True</em>, <em>task=True</em>, <em>team=True</em>, <em>timereport=True</em>, <em>job=True</em>, <em>timeout=3</em><span class="sig-paren">)</span><a class="headerlink" href="#upwork.Client" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">object</span></code></p>
+<p>Main API client with oAuth v1 authorization.</p>
+<dl class="docutils">
+<dt><em>Parameters:</em></dt>
+<dd><table class="first last docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">public_key:</th><td class="field-body">Public API key</td>
+</tr>
+<tr class="field-even field"><th class="field-name">secret_key:</th><td class="field-body">API key secret</td>
+</tr>
+<tr class="field-odd field"><th class="field-name" colspan="2">oauth_access_token:</th></tr>
+<tr class="field-odd field"><td>&nbsp;</td><td class="field-body">oAuth access token public key</td>
+</tr>
+<tr class="field-even field"><th class="field-name" colspan="2">oauth_access_token_secret:</th></tr>
+<tr class="field-even field"><td>&nbsp;</td><td class="field-body">oAuth access token secret key</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">fmt:</th><td class="field-body">(optional, default <code class="docutils literal"><span class="pre">json</span></code>)
+API response format.
+Currently only <code class="docutils literal"><span class="pre">'json'</span></code> is supported</td>
+</tr>
+<tr class="field-even field"><th class="field-name">finreport:</th><td class="field-body">(optional, default <code class="docutils literal"><span class="pre">True</span></code>)
+Whether to attach
+<a class="reference internal" href="upwork.routers.html#module-upwork.routers.finreport" title="upwork.routers.finreport"><code class="xref py py-mod docutils literal"><span class="pre">upwork.routers.finreport</span></code></a> router</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">hr:</th><td class="field-body">(optional, default <code class="docutils literal"><span class="pre">True</span></code>)
+Whether to attach
+<a class="reference internal" href="upwork.routers.html#module-upwork.routers.hr" title="upwork.routers.hr"><code class="xref py py-mod docutils literal"><span class="pre">upwork.routers.hr</span></code></a> router</td>
+</tr>
+<tr class="field-even field"><th class="field-name">messages:</th><td class="field-body">(optional, default <code class="docutils literal"><span class="pre">True</span></code>)
+Whether to attach
+<a class="reference internal" href="upwork.routers.html#module-upwork.routers.messages" title="upwork.routers.messages"><code class="xref py py-mod docutils literal"><span class="pre">upwork.routers.messages</span></code></a> router</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">offers:</th><td class="field-body">(optional, default <code class="docutils literal"><span class="pre">True</span></code>)
+Whether to attach
+<a class="reference internal" href="upwork.routers.html#module-upwork.routers.offers" title="upwork.routers.offers"><code class="xref py py-mod docutils literal"><span class="pre">upwork.routers.offers</span></code></a> router</td>
+</tr>
+<tr class="field-even field"><th class="field-name">provider:</th><td class="field-body">(optional, default <code class="docutils literal"><span class="pre">True</span></code>)
+Whether to attach
+<a class="reference internal" href="upwork.routers.html#module-upwork.routers.provider" title="upwork.routers.provider"><code class="xref py py-mod docutils literal"><span class="pre">upwork.routers.provider</span></code></a> router</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">task:</th><td class="field-body">(optional, default <code class="docutils literal"><span class="pre">True</span></code>)
+Whether to attach
+<a class="reference internal" href="upwork.routers.html#module-upwork.routers.task" title="upwork.routers.task"><code class="xref py py-mod docutils literal"><span class="pre">upwork.routers.task</span></code></a> router</td>
+</tr>
+<tr class="field-even field"><th class="field-name">team:</th><td class="field-body">(optional, default <code class="docutils literal"><span class="pre">True</span></code>)
+Whether to attach
+<a class="reference internal" href="upwork.routers.html#module-upwork.routers.team" title="upwork.routers.team"><code class="xref py py-mod docutils literal"><span class="pre">upwork.routers.team</span></code></a> router</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">timereport:</th><td class="field-body">(optional, default <code class="docutils literal"><span class="pre">True</span></code>)
+Whether to attach
+<a class="reference internal" href="upwork.routers.html#module-upwork.routers.timereport" title="upwork.routers.timereport"><code class="xref py py-mod docutils literal"><span class="pre">upwork.routers.timereport</span></code></a> router</td>
+</tr>
+<tr class="field-even field"><th class="field-name">job:</th><td class="field-body">(optional, default <code class="docutils literal"><span class="pre">True</span></code>)
+Whether to attach
+<a class="reference internal" href="upwork.routers.html#module-upwork.routers.job" title="upwork.routers.job"><code class="xref py py-mod docutils literal"><span class="pre">upwork.routers.job</span></code></a> router</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">timeout:</th><td class="field-body">(optional, default <code class="docutils literal"><span class="pre">3</span> <span class="pre">secs</span></code>)
+Socket operations timeout.</td>
+</tr>
+</tbody>
+</table>
+</dd>
+</dl>
+<dl class="method">
+<dt id="upwork.Client.delete">
+<code class="descname">delete</code><span class="sig-paren">(</span><em>url</em>, <em>data=None</em><span class="sig-paren">)</span><a class="headerlink" href="#upwork.Client.delete" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="upwork.Client.get">
+<code class="descname">get</code><span class="sig-paren">(</span><em>url</em>, <em>data=None</em><span class="sig-paren">)</span><a class="headerlink" href="#upwork.Client.get" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="upwork.Client.post">
+<code class="descname">post</code><span class="sig-paren">(</span><em>url</em>, <em>data=None</em><span class="sig-paren">)</span><a class="headerlink" href="#upwork.Client.post" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="upwork.Client.put">
+<code class="descname">put</code><span class="sig-paren">(</span><em>url</em>, <em>data=None</em><span class="sig-paren">)</span><a class="headerlink" href="#upwork.Client.put" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="upwork.Client.read">
+<code class="descname">read</code><span class="sig-paren">(</span><em>url</em>, <em>data=None</em>, <em>method='GET'</em>, <em>fmt='json'</em><span class="sig-paren">)</span><a class="headerlink" href="#upwork.Client.read" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns parsed Python object or raises an error.</p>
+<dl class="docutils">
+<dt><em>Parameters:</em></dt>
+<dd><table class="first last docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">url:</th><td class="field-body"><p class="first">Target url</p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">data:</th><td class="field-body"><p class="first">Dictionary with parameters</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">method:</th><td class="field-body"><p class="first">(optional, default <code class="docutils literal"><span class="pre">GET</span></code>)
+HTTP method, possible values:</p>
+<blockquote>
+<div><ul class="simple">
+<li><code class="docutils literal"><span class="pre">GET</span></code></li>
+<li><code class="docutils literal"><span class="pre">POST</span></code></li>
+<li><code class="docutils literal"><span class="pre">PUT</span></code></li>
+<li><code class="docutils literal"><span class="pre">DELETE</span></code></li>
+</ul>
+</div></blockquote>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">fmt:</th><td class="field-body"><p class="first last">(optional, default <code class="docutils literal"><span class="pre">json</span></code>)
+API response format.
+Currently only <code class="docutils literal"><span class="pre">'json'</span></code> is supported</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="upwork.Client.urlopen">
+<code class="descname">urlopen</code><span class="sig-paren">(</span><em>url</em>, <em>data=None</em>, <em>method='GET'</em>, <em>headers=None</em><span class="sig-paren">)</span><a class="headerlink" href="#upwork.Client.urlopen" title="Permalink to this definition">¶</a></dt>
+<dd><p>Perform oAuth v1 signed HTTP request.</p>
+<dl class="docutils">
+<dt><em>Parameters:</em></dt>
+<dd><table class="first last docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">url:</th><td class="field-body"><p class="first">Target url</p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">data:</th><td class="field-body"><p class="first">Dictionary with parameters</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">method:</th><td class="field-body"><p class="first">(optional, default <code class="docutils literal"><span class="pre">GET</span></code>)
+HTTP method, possible values:</p>
+<blockquote>
+<div><ul class="simple">
+<li><code class="docutils literal"><span class="pre">GET</span></code></li>
+<li><code class="docutils literal"><span class="pre">POST</span></code></li>
+<li><code class="docutils literal"><span class="pre">PUT</span></code></li>
+<li><code class="docutils literal"><span class="pre">DELETE</span></code></li>
+</ul>
+</div></blockquote>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">headers:</th><td class="field-body"><p class="first last">(optional, default <code class="docutils literal"><span class="pre">{}</span></code>)
+Dictionary with header values</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="function">
+<dt id="upwork.raise_http_error">
+<code class="descclassname">upwork.</code><code class="descname">raise_http_error</code><span class="sig-paren">(</span><em>url</em>, <em>response</em><span class="sig-paren">)</span><a class="headerlink" href="#upwork.raise_http_error" title="Permalink to this definition">¶</a></dt>
+<dd><p>Raise custom <code class="docutils literal"><span class="pre">urllib2.HTTPError</span></code> exception.</p>
+<dl class="docutils">
+<dt><em>Parameters:</em></dt>
+<dd><table class="first last docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">url:</th><td class="field-body">Url that caused an error</td>
+</tr>
+<tr class="field-even field"><th class="field-name">response:</th><td class="field-body"><code class="docutils literal"><span class="pre">urllib3</span></code> response object</td>
+</tr>
+</tbody>
+</table>
+</dd>
+</dl>
+</dd></dl>
+
+</div>
 </div>
 
 
@@ -869,7 +1402,7 @@ headers</td>
         <li class="right" >
           <a href="../reference_docs.html" title="Reference Documentation: Classes and Methods"
              >previous</a> |</li>
-        <li class="nav-item nav-item-0"><a href="../index.html">python-upwork 1.2.1 documentation</a> &raquo;</li>
+        <li class="nav-item nav-item-0"><a href="../index.html">python-upwork 1.2.3 documentation</a> &raquo;</li>
           <li class="nav-item nav-item-1"><a href="../reference_docs.html" >Reference Documentation: Classes and Methods</a> &raquo;</li> 
       </ul>
     </div>

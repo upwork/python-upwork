@@ -6,24 +6,24 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>upwork.routers package &mdash; python-upwork 1.2.1 documentation</title>
+    <title>upwork.routers package &mdash; python-upwork 1.2.3 documentation</title>
     
-    <link rel="stylesheet" href="../static/sphinxdoc.css" type="text/css" />
-    <link rel="stylesheet" href="../static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/sphinxdoc.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
     
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../',
-        VERSION:     '1.2.1',
+        VERSION:     '1.2.3',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
       };
     </script>
-    <script type="text/javascript" src="../static/jquery.js"></script>
-    <script type="text/javascript" src="../static/underscore.js"></script>
-    <script type="text/javascript" src="../static/doctools.js"></script>
-    <link rel="top" title="python-upwork 1.2.1 documentation" href="../index.html" />
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <link rel="top" title="python-upwork 1.2.3 documentation" href="../index.html" />
     <link rel="up" title="upwork package" href="upwork.html" />
     <link rel="next" title="Changelog" href="../changelog.html" />
     <link rel="prev" title="upwork package" href="upwork.html" /> 
@@ -44,7 +44,7 @@
         <li class="right" >
           <a href="upwork.html" title="upwork package"
              accesskey="P">previous</a> |</li>
-        <li class="nav-item nav-item-0"><a href="../index.html">python-upwork 1.2.1 documentation</a> &raquo;</li>
+        <li class="nav-item nav-item-0"><a href="../index.html">python-upwork 1.2.3 documentation</a> &raquo;</li>
           <li class="nav-item nav-item-1"><a href="../reference_docs.html" >Reference Documentation: Classes and Methods</a> &raquo;</li>
           <li class="nav-item nav-item-2"><a href="upwork.html" accesskey="U">upwork package</a> &raquo;</li> 
       </ul>
@@ -54,7 +54,6 @@
   <h3><a href="../index.html">Table Of Contents</a></h3>
   <ul>
 <li><a class="reference internal" href="#">upwork.routers package</a><ul>
-<li><a class="reference internal" href="#module-upwork.routers">Module contents</a></li>
 <li><a class="reference internal" href="#submodules">Submodules</a></li>
 <li><a class="reference internal" href="#module-upwork.routers.finreport">upwork.routers.finreport module</a></li>
 <li><a class="reference internal" href="#module-upwork.routers.hr">upwork.routers.hr module</a></li>
@@ -65,6 +64,7 @@
 <li><a class="reference internal" href="#module-upwork.routers.task">upwork.routers.task module</a></li>
 <li><a class="reference internal" href="#module-upwork.routers.team">upwork.routers.team module</a></li>
 <li><a class="reference internal" href="#module-upwork.routers.timereport">upwork.routers.timereport module</a></li>
+<li><a class="reference internal" href="#module-upwork.routers">Module contents</a></li>
 </ul>
 </li>
 </ul>
@@ -78,7 +78,7 @@
   <div role="note" aria-label="source link">
     <h3>This Page</h3>
     <ul class="this-page-menu">
-      <li><a href="../sources/reference-docs/upwork.routers.txt"
+      <li><a href="../_sources/reference-docs/upwork.routers.txt"
             rel="nofollow">Show Source</a></li>
     </ul>
    </div>
@@ -102,13 +102,6 @@
             
   <div class="section" id="upwork-routers-package">
 <h1>upwork.routers package<a class="headerlink" href="#upwork-routers-package" title="Permalink to this headline">¶</a></h1>
-<div class="section" id="module-upwork.routers">
-<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-upwork.routers" title="Permalink to this headline">¶</a></h2>
-<p>Routers package.</p>
-<p>All communication with Upwork API is handled by the routers.</p>
-<p>When you import <code class="docutils literal"><span class="pre">upwork</span></code> package and instantiate <code class="docutils literal"><span class="pre">upwork.Client</span></code> class,
-routers are dynamically attatched to your <code class="docutils literal"><span class="pre">client</span></code> object.</p>
-</div>
 <div class="section" id="submodules">
 <h2>Submodules<a class="headerlink" href="#submodules" title="Permalink to this headline">¶</a></h2>
 </div>
@@ -1752,7 +1745,7 @@ in number of entries</td>
 
 <dl class="method">
 <dt id="upwork.routers.hr.HR_V4.list_freelancer_applications">
-<code class="descname">list_freelancer_applications</code><span class="sig-paren">(</span><em>status=None</em><span class="sig-paren">)</span><a class="headerlink" href="#upwork.routers.hr.HR_V4.list_freelancer_applications" title="Permalink to this definition">¶</a></dt>
+<code class="descname">list_freelancer_applications</code><span class="sig-paren">(</span><em>status=None</em>, <em>page_offset=None</em>, <em>page_size=None</em><span class="sig-paren">)</span><a class="headerlink" href="#upwork.routers.hr.HR_V4.list_freelancer_applications" title="Permalink to this definition">¶</a></dt>
 <dd><p>List job applications as a freelancer.</p>
 <dl class="docutils">
 <dt><em>Parameters:</em></dt>
@@ -1762,6 +1755,11 @@ in number of entries</td>
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">status:</th><td class="field-body">(optional) The current status of the job application.
 Valid values: <code class="docutils literal"><span class="pre">interviews</span></code>, <code class="docutils literal"><span class="pre">invites</span></code>, <code class="docutils literal"><span class="pre">active</span></code>.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">page_offset:</th><td class="field-body">(optional) Number of entries to skip</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">page_size:</th><td class="field-body">(optional: default 20) Page size
+in number of entries</td>
 </tr>
 </tbody>
 </table>
@@ -3770,6 +3768,13 @@ Default: <code class="docutils literal"><span class="pre">False</span></code></t
 </dd></dl>
 
 </div>
+<div class="section" id="module-upwork.routers">
+<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-upwork.routers" title="Permalink to this headline">¶</a></h2>
+<p>Routers package.</p>
+<p>All communication with Upwork API is handled by the routers.</p>
+<p>When you import <code class="docutils literal"><span class="pre">upwork</span></code> package and instantiate <code class="docutils literal"><span class="pre">upwork.Client</span></code> class,
+routers are dynamically attatched to your <code class="docutils literal"><span class="pre">client</span></code> object.</p>
+</div>
 </div>
 
 
@@ -3793,7 +3798,7 @@ Default: <code class="docutils literal"><span class="pre">False</span></code></t
         <li class="right" >
           <a href="upwork.html" title="upwork package"
              >previous</a> |</li>
-        <li class="nav-item nav-item-0"><a href="../index.html">python-upwork 1.2.1 documentation</a> &raquo;</li>
+        <li class="nav-item nav-item-0"><a href="../index.html">python-upwork 1.2.3 documentation</a> &raquo;</li>
           <li class="nav-item nav-item-1"><a href="../reference_docs.html" >Reference Documentation: Classes and Methods</a> &raquo;</li>
           <li class="nav-item nav-item-2"><a href="upwork.html" >upwork package</a> &raquo;</li> 
       </ul>
