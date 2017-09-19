@@ -3,6 +3,7 @@
 # (C) 2010-2015 Upwork
 
 from upwork.namespaces import Namespace
+from urllib import quote
 
 
 class Provider(Namespace):
@@ -20,7 +21,7 @@ class Provider(Namespace):
         """
         if isinstance(provider_ciphertext, (list, tuple)):
             provider_ciphertext = map(str, provider_ciphertext)
-            provider_ciphertext = ';'.join(provider_ciphertext[:20])
+            provider_ciphertext = quote(';').join(provider_ciphertext[:20])
 
         url = 'providers/{0}'.format(provider_ciphertext)
         result = self.get(url)
