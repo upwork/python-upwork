@@ -3,11 +3,11 @@
 # (C) 2010-2015 Upwork
 
 import time
-import urlparse
 import urllib
 import oauth2 as oauth
 import logging
 
+from .compatibility import urlparse
 from .config import BASE_URL
 
 
@@ -115,7 +115,7 @@ class OAuth(Namespace):
         try:
             request_token = self.request_token
             request_token_secret = self.request_token_secret
-        except AttributeError, e:
+        except AttributeError as e:
             logger = logging.getLogger('python-upwork')
             logger.debug(e)
             raise Exception("At first you need to call get_authorize_url")

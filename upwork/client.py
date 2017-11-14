@@ -6,10 +6,10 @@ import os
 import json
 import logging
 import urllib3
-import ca_certs_locater
 
 from urllib3 import Retry
 
+from upwork import ca_certs_locater
 from upwork.oauth import OAuth
 from upwork.http import raise_http_error
 from upwork.utils import decimal_default

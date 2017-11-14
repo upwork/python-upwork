@@ -3,8 +3,7 @@
 # (C) 2010-2015 Upwork
 
 import logging
-import urllib2
-import httplib
+from .compatibility import HTTPError, httplib
 
 from upwork.exceptions import HTTP400BadRequestError, HTTP401UnauthorizedError,\
     HTTP403ForbiddenError, HTTP404NotFoundError
@@ -47,7 +46,7 @@ def raise_http_error(url, response):
         raise HTTP404NotFoundError(url, status_code, formatted_msg,
                                    headers, None)
     else:
-        error = urllib2.HTTPError(url, status_code, formatted_msg,
+        error = HTTPError(url, status_code, formatted_msg,
                                   headers, None)
         logger = logging.getLogger('python-upwork')
         logger.debug(str(error))
