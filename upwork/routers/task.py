@@ -2,9 +2,7 @@
 # python-upwork version 0.5
 # (C) 2010-2015 Upwork
 
-import urllib
-
-
+from upwork.compatibility import quote
 from upwork.namespaces import Namespace
 
 
@@ -87,7 +85,7 @@ class Task(Namespace):
         """
         task_codes = self._encode_task_codes(task_codes)
         url = 'tasks/companies/{0}/teams/{1}/tasks/{2}'.format(
-            company_id, team_id, urllib.quote(task_codes))
+            company_id, team_id, quote(task_codes))
         result = self.get(url)
         try:
             return result["tasks"] or []
@@ -236,7 +234,7 @@ class Task(Namespace):
 
         """
         put_url = 'tasks/companies/{0}/teams/{1}/tasks/{2}'.format(
-            company_id, team_id, urllib.quote(str(code)))
+            company_id, team_id, quote(str(code)))
         data = {'code': code,
                 'description': description,
                 'url': url}
@@ -307,7 +305,7 @@ class Task(Namespace):
         task_code = self._encode_task_codes(task_code)
 
         url = 'tasks/companies/{0}/teams/{1}/archive/{2}'.format(
-            company_id, team_id, urllib.quote(task_code))
+            company_id, team_id, quote(task_code))
         return self.put(url, data={})
 
     def archive_company_task(self, company_id, task_code):
@@ -344,7 +342,7 @@ class Task(Namespace):
         task_code = self._encode_task_codes(task_code)
 
         url = 'tasks/companies/{0}/teams/{1}/unarchive/{2}'.format(
-            company_id, team_id, urllib.quote(task_code))
+            company_id, team_id, quote(task_code))
         return self.put(url, data={})
 
     def unarchive_company_task(self, company_id, task_code):

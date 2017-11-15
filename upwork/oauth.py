@@ -3,11 +3,10 @@
 # (C) 2010-2015 Upwork
 
 import time
-import urllib
 import oauth2 as oauth
 import logging
 
-from .compatibility import urlparse
+from .compatibility import urlparse, urlencode
 from .config import BASE_URL
 
 
@@ -102,10 +101,10 @@ class OAuth(Namespace):
         oauth_token = getattr(self, 'request_token', None) or\
             self.get_request_token()[0]
         if callback_url:
-            params = urllib.urlencode({'oauth_token': oauth_token,\
+            params = urlencode({'oauth_token': oauth_token,\
                 'oauth_callback': callback_url})
         else:
-            params = urllib.urlencode({'oauth_token': oauth_token})
+            params = urlencode({'oauth_token': oauth_token})
         return '{0}?{1}'.format(self.authorize_url, params)
 
     def get_access_token(self, verifier):
