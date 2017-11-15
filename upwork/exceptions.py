@@ -20,7 +20,7 @@ class BaseException(Exception):
         try:
             convert = unicode
         except NameError:
-            convert = lambda x: x
+            convert = str
         logger.debug('{0}: {1}'.format(
             self.__class__.__name__,
             ', '.join(map(convert, args))))
