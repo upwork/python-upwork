@@ -23,9 +23,7 @@ from upwork.http import UPWORK_ERROR_CODE, UPWORK_ERROR_MESSAGE
 
 from nose.tools import eq_, ok_
 from mock import Mock, patch
-import urlparse
-import urllib2
-import httplib
+from upwork.compatibility import HTTPError, httplib, urlparse
 
 try:
     import json
@@ -205,7 +203,7 @@ def test_client_read():
         client.read(url=test_url, format='yaml')
         raise NotJsonException("Client.read() doesn't produce error on "
                                "yaml format")
-    except NotJsonException, e:
+    except NotJsonException as e:
         raise e
     except Exception:
         pass
@@ -222,51 +220,51 @@ def test_client_read():
                "incorrect json response: {0}".format(result))
     except IncorrectJsonResponseError:
         pass
-    except Exception, e:
+    except Exception as e:
         assert 0, "Incorrect exception raised for 200 code " \
             "and incorrect json response: " + str(e)
 
     # Test get, 400 error
     try:
         result = client_read_400(client=client, url=test_url)
-    except HTTP400BadRequestError, e:
+    except HTTP400BadRequestError as e:
         pass
-    except Exception, e:
+    except Exception as e:
         assert 0, "Incorrect exception raised for 400 code: " + str(e)
 
     # Test get, 401 error
     try:
         result = client_read_401(client=client, url=test_url)
-    except HTTP401UnauthorizedError, e:
+    except HTTP401UnauthorizedError as e:
         pass
-    except Exception, e:
+    except Exception as e:
         assert 0, "Incorrect exception raised for 401 code: " + str(e)
 
     # Test get, 403 error
     try:
         result = client_read_403(client=client, url=test_url)
-    except HTTP403ForbiddenError, e:
+    except HTTP403ForbiddenError as e:
         pass
-    except Exception, e:
+    except Exception as e:
         assert 0, "Incorrect exception raised for 403 code: " + str(e)
 
     # Test get, 404 error
     try:
         result = client_read_404(client=client, url=test_url)
-    except HTTP404NotFoundError, e:
+    except HTTP404NotFoundError as e:
         pass
-    except Exception, e:
+    except Exception as e:
         assert 0, "Incorrect exception raised for 404 code: " + str(e)
 
     # Test get, 500 error
     try:
         result = client_read_500(client=client, url=test_url)
-    except urllib2.HTTPError, e:
+    except HTTPError as e:
         if e.code == httplib.INTERNAL_SERVER_ERROR:
             pass
         else:
             assert 0, "Incorrect exception raised for 500 code: " + str(e)
-    except Exception, e:
+    except Exception as e:
         assert 0, "Incorrect exception raised for 500 code: " + str(e)
 
 
@@ -1441,17 +1439,17 @@ def test_single_job_profile():
     try:
         job.get_job_profile({})
         raise Exception('Request should raise ValueError exception.')
-    except ValueError, e:
+    except ValueError as e:
         assert 'Invalid job key' in str(e)
     try:
         job.get_job_profile(['~~{0}'.format(x) for x in range(21)])
         raise Exception('Request should raise ValueError exception.')
-    except ValueError, e:
+    except ValueError as e:
         assert 'Number of keys per request is limited' in str(e)
     try:
         job.get_job_profile(['~~111111', 123456])
         raise Exception('Request should raise ValueError exception.')
-    except ValueError, e:
+    except ValueError as e:
         assert 'List should contain only job keys not recno' in str(e)
 
     # Get single job profile test

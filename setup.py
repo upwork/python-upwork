@@ -1,15 +1,15 @@
 # Copyright (c) 2010-2014, Upwork http://www.upwork.com
 # All rights reserved.
+from __future__ import print_function
+
 import re
 import os
 from setuptools import setup, find_packages
 from distutils.core import Command
 
-
 readme = open(os.path.join(os.path.dirname(__file__), 'README.rst'))
 README = readme.read()
 readme.close()
-
 
 VERSION = (1, 2, 3, 0, 0)
 
@@ -32,7 +32,7 @@ def update_init(version):
     """Update version number in the ``upwork/__init__.py``.
 
     """
-    print 'Updating ``upwork/__init__.py`` to version "{0}"'.format(version)
+    print('Updating ``upwork/__init__.py`` to version "{0}"'.format(version))
     # Update 'VERSION' variable in ``upwork/__init__.py``
     with open('upwork/__init__.py', 'r') as f:
         init_contents = f.read()
@@ -49,7 +49,7 @@ def update_init(version):
     with open('upwork/__init__.py', 'w') as f:
         f.write(new_init)
 
-    print 'OK'
+    print('OK')
 
 
 class UpdateVersion(Command):
@@ -76,7 +76,7 @@ setup(cmdclass={'update_version': UpdateVersion},
       author_email='python@upwork.com',
       maintainer='Maksym Novozhylov',
       maintainer_email='mnovozhilov@upwork.com',
-      install_requires=['oauth2==1.5.211', 'urllib3==1.10', 'httplib2.system-ca-certs-locater==0.1.2'],
+      install_requires=['oauth2==1.9.0.post1', 'urllib3==1.22'],
       packages=find_packages(),
       license='BSD',
       download_url='http://github.com/upwork/python-upwork',
