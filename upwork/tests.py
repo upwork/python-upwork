@@ -2,7 +2,7 @@
 
 # Python bindings to Upwork API
 # python-upwork version 0.5
-# (C) 2010-2015 Upwork
+# (C) 2010-2018 Upwork
 
 from decimal import Decimal
 
@@ -18,7 +18,7 @@ from upwork.exceptions import (HTTP400BadRequestError,
 
 from upwork.namespaces import Namespace
 from upwork.oauth import OAuth
-from upwork.routers.team import Team, Team_V2
+from upwork.routers.team import Team_V3
 from upwork.http import UPWORK_ERROR_CODE, UPWORK_ERROR_MESSAGE
 
 from nose.tools import eq_, ok_
@@ -332,69 +332,49 @@ teamrooms_dict = {'teamrooms':
                     u'id': u'upwork:some'}},
                   'teamroom': {'snapshot': 'test snapshot'},
                   'snapshots': {'user': 'test', 'snapshot': 'test'},
+                  'data': {'user': 'test', 'snapshot': 'test'},
                   'snapshot': {'status': 'private'}
                  }
 
 
-def patched_urlopen_teamrooms(*args, **kwargs):
+def patched_urlopen_team(*args, **kwargs):
     return MicroMock(data=json.dumps(teamrooms_dict), status=200)
 
 
-@patch('urllib3.PoolManager.urlopen', patched_urlopen_teamrooms)
+@patch('urllib3.PoolManager.urlopen', patched_urlopen_team)
 def test_team():
-    te = Team(get_client())
-    te_v2 = Team_V2(get_client())
+    te_v3 = Team_V3(get_client())
 
     #test full_url
-    full_url = te.full_url('test')
-    assert full_url == 'https://www.upwork.com/api/team/v1/test', full_url
-
-    #test get_teamrooms
-    assert te_v2.get_teamrooms() == \
-        [teamrooms_dict['teamrooms']['teamroom']], te_v2.get_teamrooms()
-
-    #test get_snapshots
-    assert te_v2.get_snapshots(1) == \
-        [teamrooms_dict['teamroom']['snapshot']], te_v2.get_snapshots(1)
+    full_url = te_v3.full_url('test')
+    assert full_url == 'https://www.upwork.com/api/team/v3/test', full_url
 
     #test get_snapshot by contract
-    assert te_v2.get_snapshot_by_contract(1) == teamrooms_dict['snapshot'], \
-        te_v2.get_snapshot_by_contract(1)
+    assert te_v3.get_snapshot_by_contract(1, 1) == teamrooms_dict['snapshot'], \
+        te_v3.get_snapshot_by_contract(1, 1)
 
     #test update_snapshot by contract
-    assert te_v2.update_snapshot_by_contract(1, memo='memo') == teamrooms_dict, \
-        te_v2.update_snapshot_by_contract(1, memo='memo')
+    assert te_v3.update_snapshot_by_contract(1, 1, memo='memo', task='1234', task_desc='desc') == teamrooms_dict, \
+        te_v3.update_snapshot_by_contract(1, 1, memo='memo', task='1234', task_desc='desc')
 
-    #test update_snapshot by contract
-    assert te_v2.delete_snapshot_by_contract(1) == teamrooms_dict, te_v2.delete_snapshot_by_contract(1)
-
-    #test get_snapshot
-    assert te.get_snapshot(1, 1) == teamrooms_dict['snapshot'], \
-        te.get_snapshot(1, 1)
-
-    #test update_snapshot
-    assert te.update_snapshot(1, 1, memo='memo') == teamrooms_dict, \
-        te.update_snapshot(1, 1, memo='memo')
-
-    #test update_snapshot
-    assert te.delete_snapshot(1, 1) == teamrooms_dict, te.delete_snapshot(1, 1)
+    #test delete_snapshot by contract
+    assert te_v3.delete_snapshot_by_contract(1, 1) == teamrooms_dict, \
+        te_v3.delete_snapshot_by_contract(1, 1)
 
     #test get_workdiaries
-    eq_(te.get_workdiaries(1, 1, 1), (teamrooms_dict['snapshots']['user'],
-        [teamrooms_dict['snapshots']['snapshot']]))
+    eq_(te_v3.get_workdiaries(1, 1), [])
 
     #test get_workdiaries_by_contract
-    eq_(te_v2.get_workdiaries_by_contract(1, 1), (teamrooms_dict['snapshots']['user'],
-        [teamrooms_dict['snapshots']['snapshot']]))
+    eq_(te_v3.get_workdiaries_by_contract(1, 1), [])
 
     #test get_workdays
-    eq_(te_v2.get_workdays_by_company(1, 1, 1), {})
+    eq_(te_v3.get_workdays_by_company(1, 1, 1), {})
 
     #test get_workdays_by_contract
-    eq_(te_v2.get_workdays_by_contract(1, 1, 1), {})
+    eq_(te_v3.get_workdays_by_contract(1, 1, 1), {})
 
     #test get_snapshot_by_contract
-    eq_(te_v2.get_snapshot_by_contract(1), {'status':'private'})
+    eq_(te_v3.get_snapshot_by_contract(1, 1), {'status':'private'})
 
 
 teamrooms_dict_none = {'teamrooms': '',
@@ -410,21 +390,11 @@ def patched_urlopen_teamrooms_none(*args, **kwargs):
 
 @patch('urllib3.PoolManager.urlopen', patched_urlopen_teamrooms_none)
 def test_teamrooms_none():
-    te = Team(get_client())
-    te_v2 = Team_V2(get_client())
+    te_v3 = Team_V3(get_client())
 
     #test full_url
-    full_url = te.full_url('test')
-    assert full_url == 'https://www.upwork.com/api/team/v1/test', full_url
-
-    #test get_teamrooms
-    assert te_v2.get_teamrooms() == [], te_v2.get_teamrooms()
-
-    #test get_snapshots
-    assert te_v2.get_snapshots(1) == [], te_v2.get_snapshots(1)
-
-    #test get_snapshot
-    eq_(te.get_snapshot(1, 1), teamrooms_dict_none['snapshot'])
+    full_url = te_v3.full_url('test')
+    assert full_url == 'https://www.upwork.com/api/team/v3/test', full_url
 
 
 userroles = {u'userrole':
