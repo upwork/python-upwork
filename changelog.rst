@@ -5,9 +5,9 @@
 Changelog
 ***************
 
-.. _1.2.4:
+.. _1.3.0:
 
-Version 1.2.4
+Version 1.3.0
 -------------
 * Stop supporting deprecated Teamrooms API
 * Migrate Workdiaries, Workdays and Snapshots API to v3
