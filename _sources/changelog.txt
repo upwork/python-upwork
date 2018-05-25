@@ -11,6 +11,7 @@ Version 1.3.0
 -------------
 * Stop supporting deprecated Teamrooms API
 * Migrate Workdiaries, Workdays and Snapshots API to v3
+* Python 3 compatibility PR has been merged
 
 .. _1.2.3:
 

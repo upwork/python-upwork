@@ -85,7 +85,7 @@
 All rights reserved.</p>
 <div class="section" id="upwork-api">
 <h1>Upwork API<a class="headerlink" href="#upwork-api" title="Permalink to this headline">¶</a></h1>
-<p>These are Python bindings for Upwork Public API <a class="reference external" href="https://developers.upwork.com/">https://developers.upwork.com/</a>
+<p>These are Python (2 and 3) bindings for Upwork Public API <a class="reference external" href="https://developers.upwork.com/">https://developers.upwork.com/</a>
 You can use the API to build apps that will help you:</p>
 <ul class="simple">
 <li>Manage your distributed team</li>
@@ -97,10 +97,9 @@ You can use the API to build apps that will help you:</p>
 <p>The API is the best way to communicate between apps.</p>
 <div class="section" id="requirements">
 <h2>Requirements<a class="headerlink" href="#requirements" title="Permalink to this headline">¶</a></h2>
-<p>httplib2==0.9
-oauth2==1.5.211
-urllib3==1.10
-httplib2.system-ca-certs-locater==0.1.1</p>
+<p>httplib2
+oauth2
+urllib3</p>
 </div>
 <div class="section" id="installation">
 <h2>Installation<a class="headerlink" href="#installation" title="Permalink to this headline">¶</a></h2>
@@ -110,11 +109,7 @@ httplib2.system-ca-certs-locater==0.1.1</p>
 </div>
 <div class="section" id="ssl-certificates-note">
 <h2>SSL Certificates Note<a class="headerlink" href="#ssl-certificates-note" title="Permalink to this headline">¶</a></h2>
-<p>We recommend installing the package <code class="docutils literal"><span class="pre">httplib2.system_ca_certs_locater</span></code> (it is installed by default during <code class="docutils literal"><span class="pre">python_upwork</span></code> installation):</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">pip</span> <span class="n">install</span> <span class="n">pbr</span> <span class="n">httplib2</span><span class="o">.</span><span class="n">system_ca_certs_locater</span>
-</pre></div>
-</div>
-<p>It will force <code class="docutils literal"><span class="pre">httplib2</span></code> to use the OS&#8217;s certificates file.</p>
+<p>Package forces <code class="docutils literal"><span class="pre">httplib2</span></code> to use the OS&#8217;s certificates file by default.</p>
 <p>If you want to use your own certificates, introduce the following code during initialization:</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="p">[</span><span class="s1">&#39;HTTPLIB_CA_CERTS_PATH&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;/path/to/my/ca_certs.txt&#39;</span>
 </pre></div>
