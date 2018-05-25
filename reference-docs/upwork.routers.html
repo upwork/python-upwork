@@ -6,7 +6,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>upwork.routers package &mdash; python-upwork 1.2.3 documentation</title>
+    <title>upwork.routers package &mdash; python-upwork 1.3.0 documentation</title>
     
     <link rel="stylesheet" href="../_static/sphinxdoc.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
@@ -14,7 +14,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../',
-        VERSION:     '1.2.3',
+        VERSION:     '1.3.0',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -23,7 +23,7 @@
     <script type="text/javascript" src="../_static/jquery.js"></script>
     <script type="text/javascript" src="../_static/underscore.js"></script>
     <script type="text/javascript" src="../_static/doctools.js"></script>
-    <link rel="top" title="python-upwork 1.2.3 documentation" href="../index.html" />
+    <link rel="top" title="python-upwork 1.3.0 documentation" href="../index.html" />
     <link rel="up" title="upwork package" href="upwork.html" />
     <link rel="next" title="Changelog" href="../changelog.html" />
     <link rel="prev" title="upwork package" href="upwork.html" /> 
@@ -44,7 +44,7 @@
         <li class="right" >
           <a href="upwork.html" title="upwork package"
              accesskey="P">previous</a> |</li>
-        <li class="nav-item nav-item-0"><a href="../index.html">python-upwork 1.2.3 documentation</a> &raquo;</li>
+        <li class="nav-item nav-item-0"><a href="../index.html">python-upwork 1.3.0 documentation</a> &raquo;</li>
           <li class="nav-item nav-item-1"><a href="../reference_docs.html" >Reference Documentation: Classes and Methods</a> &raquo;</li>
           <li class="nav-item nav-item-2"><a href="upwork.html" accesskey="U">upwork package</a> &raquo;</li> 
       </ul>
@@ -54,6 +54,7 @@
   <h3><a href="../index.html">Table Of Contents</a></h3>
   <ul>
 <li><a class="reference internal" href="#">upwork.routers package</a><ul>
+<li><a class="reference internal" href="#module-upwork.routers">Module contents</a></li>
 <li><a class="reference internal" href="#submodules">Submodules</a></li>
 <li><a class="reference internal" href="#module-upwork.routers.finreport">upwork.routers.finreport module</a></li>
 <li><a class="reference internal" href="#module-upwork.routers.hr">upwork.routers.hr module</a></li>
@@ -64,7 +65,6 @@
 <li><a class="reference internal" href="#module-upwork.routers.task">upwork.routers.task module</a></li>
 <li><a class="reference internal" href="#module-upwork.routers.team">upwork.routers.team module</a></li>
 <li><a class="reference internal" href="#module-upwork.routers.timereport">upwork.routers.timereport module</a></li>
-<li><a class="reference internal" href="#module-upwork.routers">Module contents</a></li>
 </ul>
 </li>
 </ul>
@@ -102,6 +102,13 @@
             
   <div class="section" id="upwork-routers-package">
 <h1>upwork.routers package<a class="headerlink" href="#upwork-routers-package" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="module-upwork.routers">
+<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-upwork.routers" title="Permalink to this headline">¶</a></h2>
+<p>Routers package.</p>
+<p>All communication with Upwork API is handled by the routers.</p>
+<p>When you import <code class="docutils literal"><span class="pre">upwork</span></code> package and instantiate <code class="docutils literal"><span class="pre">upwork.Client</span></code> class,
+routers are dynamically attatched to your <code class="docutils literal"><span class="pre">client</span></code> object.</p>
+</div>
 <div class="section" id="submodules">
 <h2>Submodules<a class="headerlink" href="#submodules" title="Permalink to this headline">¶</a></h2>
 </div>
@@ -3232,186 +3239,18 @@ hiring manager permissions.</p>
 <div class="section" id="module-upwork.routers.team">
 <span id="upwork-routers-team-module"></span><h2>upwork.routers.team module<a class="headerlink" href="#module-upwork.routers.team" title="Permalink to this headline">¶</a></h2>
 <dl class="class">
-<dt id="upwork.routers.team.Team">
-<em class="property">class </em><code class="descclassname">upwork.routers.team.</code><code class="descname">Team</code><span class="sig-paren">(</span><em>client</em><span class="sig-paren">)</span><a class="headerlink" href="#upwork.routers.team.Team" title="Permalink to this definition">¶</a></dt>
+<dt id="upwork.routers.team.Team_V3">
+<em class="property">class </em><code class="descclassname">upwork.routers.team.</code><code class="descname">Team_V3</code><span class="sig-paren">(</span><em>client</em><span class="sig-paren">)</span><a class="headerlink" href="#upwork.routers.team.Team_V3" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="upwork.html#upwork.namespaces.Namespace" title="upwork.namespaces.Namespace"><code class="xref py py-class docutils literal"><span class="pre">upwork.namespaces.Namespace</span></code></a></p>
 <dl class="attribute">
-<dt id="upwork.routers.team.Team.TZ_CHOICES">
-<code class="descname">TZ_CHOICES</code><em class="property"> = ('mine', 'user', 'gmt')</em><a class="headerlink" href="#upwork.routers.team.Team.TZ_CHOICES" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="attribute">
-<dt id="upwork.routers.team.Team.api_url">
-<code class="descname">api_url</code><em class="property"> = 'team/'</em><a class="headerlink" href="#upwork.routers.team.Team.api_url" title="Permalink to this definition">¶</a></dt>
+<dt id="upwork.routers.team.Team_V3.api_url">
+<code class="descname">api_url</code><em class="property"> = 'team/'</em><a class="headerlink" href="#upwork.routers.team.Team_V3.api_url" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="method">
-<dt id="upwork.routers.team.Team.delete_snapshot">
-<code class="descname">delete_snapshot</code><span class="sig-paren">(</span><em>company_id</em>, <em>user_id</em>, <em>datetime=None</em><span class="sig-paren">)</span><a class="headerlink" href="#upwork.routers.team.Team.delete_snapshot" title="Permalink to this definition">¶</a></dt>
-<dd><p>Delete a company&#8217;s user snapshot memo at given time or &#8216;now&#8217;.</p>
-<dl class="docutils">
-<dt><em>Parameters:</em></dt>
-<dd><table class="first last docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">company_id:</th><td class="field-body"><p class="first">The Company ID</p>
-</td>
-</tr>
-<tr class="field-even field"><th class="field-name">user_id:</th><td class="field-body"><p class="first">The User ID</p>
-</td>
-</tr>
-<tr class="field-odd field"><th class="field-name">datetime:</th><td class="field-body"><p class="first">(optional)(default &#8216;now&#8217;)
-Timestamp either a datetime object
-or a string in ISO 8601 format (in UTC)
-<code class="docutils literal"><span class="pre">yyyymmddTHHMMSSZ</span></code>
-or a string with UNIX timestamp (number of
-seconds after epoch)</p>
-<p>More than one timestamps can be specified either
-as a range or as a list of values:</p>
-<blockquote class="last">
-<div><ul class="simple">
-<li>range: use the comma character (,) e.g.
-20081205T090351Z,20081205T091853Z</li>
-<li>list: use the semicolon character (;) e.g.
-20081205T090351Z;20081405T090851Z;20081705T091853Z</li>
-</ul>
-</div></blockquote>
-</td>
-</tr>
-</tbody>
-</table>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="method">
-<dt id="upwork.routers.team.Team.get_snapshot">
-<code class="descname">get_snapshot</code><span class="sig-paren">(</span><em>company_id</em>, <em>user_id</em>, <em>datetime=None</em><span class="sig-paren">)</span><a class="headerlink" href="#upwork.routers.team.Team.get_snapshot" title="Permalink to this definition">¶</a></dt>
-<dd><p>Retrieve a company&#8217;s user snapshots during given time or &#8216;now&#8217;.</p>
-<dl class="docutils">
-<dt><em>Parameters:</em></dt>
-<dd><table class="first last docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">company_id:</th><td class="field-body">The Company ID</td>
-</tr>
-<tr class="field-even field"><th class="field-name">user_id:</th><td class="field-body">The User ID</td>
-</tr>
-<tr class="field-odd field"><th class="field-name">datetime:</th><td class="field-body">(optional)(default: &#8216;now&#8217;)
-Timestamp either a datetime object
-or a string in ISO 8601 format (in UTC)
-<code class="docutils literal"><span class="pre">yyyymmddTHHMMSSZ</span></code>
-or a string with UNIX timestamp (number of
-seconds after epoch)</td>
-</tr>
-</tbody>
-</table>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="method">
-<dt id="upwork.routers.team.Team.get_workdiaries">
-<code class="descname">get_workdiaries</code><span class="sig-paren">(</span><em>team_id</em>, <em>username</em>, <em>date=None</em>, <em>tz=None</em><span class="sig-paren">)</span><a class="headerlink" href="#upwork.routers.team.Team.get_workdiaries" title="Permalink to this definition">¶</a></dt>
-<dd><p>Retrieve a team member&#8217;s workdiaries for given date or today.</p>
-<p><em>Parameters:</em></p>
-<blockquote>
-<div><table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">team_id:</th><td class="field-body">The Team ID</td>
-</tr>
-<tr class="field-even field"><th class="field-name">username:</th><td class="field-body">The Team Member&#8217;s username</td>
-</tr>
-<tr class="field-odd field"><th class="field-name">date:</th><td class="field-body">(optional) A datetime object or a string in yyyymmdd
-format</td>
-</tr>
-<tr class="field-even field"><th class="field-name">tz:</th><td class="field-body">(optional) Time zone to use. Possible values:
-* &#8216;mine&#8217; (default)
-* &#8216;user&#8217;
-* &#8216;gmt&#8217;</td>
-</tr>
-</tbody>
-</table>
-</div></blockquote>
-</dd></dl>
-
-<dl class="method">
-<dt id="upwork.routers.team.Team.update_snapshot">
-<code class="descname">update_snapshot</code><span class="sig-paren">(</span><em>company_id</em>, <em>user_id</em>, <em>memo</em>, <em>datetime=None</em><span class="sig-paren">)</span><a class="headerlink" href="#upwork.routers.team.Team.update_snapshot" title="Permalink to this definition">¶</a></dt>
-<dd><p>Update a company&#8217;s user snapshot memo at given time or &#8216;now&#8217;.</p>
-<dl class="docutils">
-<dt><em>Parameters:</em></dt>
-<dd><table class="first last docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">company_id:</th><td class="field-body"><p class="first">The Company ID</p>
-</td>
-</tr>
-<tr class="field-even field"><th class="field-name">user_id:</th><td class="field-body"><p class="first">The User ID</p>
-</td>
-</tr>
-<tr class="field-odd field"><th class="field-name">memo:</th><td class="field-body"><p class="first">The Memo text</p>
-</td>
-</tr>
-<tr class="field-even field"><th class="field-name">datetime:</th><td class="field-body"><p class="first">(optoinal)(default &#8216;now&#8217;)
-Timestamp either a datetime object
-or a string in ISO 8601 format (in UTC)
-<code class="docutils literal"><span class="pre">yyyymmddTHHMMSSZ</span></code>
-or a string with UNIX timestamp (number of
-seconds after epoch)</p>
-<p>More than one timestamps can be specified either
-as a range or as a list of values:</p>
-<blockquote class="last">
-<div><ul class="simple">
-<li>range: use the comma character (,) e.g.
-<code class="docutils literal"><span class="pre">20081205T090351Z,20081205T091853Z</span></code></li>
-<li>list: use the semicolon character (;) e.g.
-<code class="docutils literal"><span class="pre">20081205T090351Z;20081405T090851Z;20081705T091853Z</span></code></li>
-</ul>
-</div></blockquote>
-</td>
-</tr>
-</tbody>
-</table>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="attribute">
-<dt id="upwork.routers.team.Team.version">
-<code class="descname">version</code><em class="property"> = 1</em><a class="headerlink" href="#upwork.routers.team.Team.version" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-</dd></dl>
-
-<dl class="class">
-<dt id="upwork.routers.team.Team_V2">
-<em class="property">class </em><code class="descclassname">upwork.routers.team.</code><code class="descname">Team_V2</code><span class="sig-paren">(</span><em>client</em><span class="sig-paren">)</span><a class="headerlink" href="#upwork.routers.team.Team_V2" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <a class="reference internal" href="upwork.html#upwork.namespaces.Namespace" title="upwork.namespaces.Namespace"><code class="xref py py-class docutils literal"><span class="pre">upwork.namespaces.Namespace</span></code></a></p>
-<dl class="attribute">
-<dt id="upwork.routers.team.Team_V2.DISABLED_CHOICES">
-<code class="descname">DISABLED_CHOICES</code><em class="property"> = ('yes', 'no')</em><a class="headerlink" href="#upwork.routers.team.Team_V2.DISABLED_CHOICES" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="attribute">
-<dt id="upwork.routers.team.Team_V2.ONLINE_CHOICES">
-<code class="descname">ONLINE_CHOICES</code><em class="property"> = ('now', 'last_24h', 'all')</em><a class="headerlink" href="#upwork.routers.team.Team_V2.ONLINE_CHOICES" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="attribute">
-<dt id="upwork.routers.team.Team_V2.api_url">
-<code class="descname">api_url</code><em class="property"> = 'team/'</em><a class="headerlink" href="#upwork.routers.team.Team_V2.api_url" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="method">
-<dt id="upwork.routers.team.Team_V2.delete_snapshot_by_contract">
-<code class="descname">delete_snapshot_by_contract</code><span class="sig-paren">(</span><em>contract_id</em>, <em>datetime=None</em><span class="sig-paren">)</span><a class="headerlink" href="#upwork.routers.team.Team_V2.delete_snapshot_by_contract" title="Permalink to this definition">¶</a></dt>
-<dd><p>Delete a company&#8217;s user snapshot by contract ID at given time or &#8216;now&#8217;.</p>
+<dt id="upwork.routers.team.Team_V3.delete_snapshot_by_contract">
+<code class="descname">delete_snapshot_by_contract</code><span class="sig-paren">(</span><em>contract_id</em>, <em>datetime</em>, <em>only_webcam=None</em><span class="sig-paren">)</span><a class="headerlink" href="#upwork.routers.team.Team_V3.delete_snapshot_by_contract" title="Permalink to this definition">¶</a></dt>
+<dd><p>Delete a company&#8217;s user snapshot by contract ID at given time.</p>
 <dl class="docutils">
 <dt><em>Parameters:</em></dt>
 <dd><table class="first last docutils field-list" frame="void" rules="none">
@@ -3421,22 +3260,20 @@ as a range or as a list of values:</p>
 <tr class="field-odd field"><th class="field-name">contract_id:</th><td class="field-body"><p class="first">The Contract ID</p>
 </td>
 </tr>
-<tr class="field-even field"><th class="field-name">datetime:</th><td class="field-body"><p class="first">(optional)(default &#8216;now&#8217;)
-Timestamp either a datetime object
-or a string in ISO 8601 format (in UTC)
-<code class="docutils literal"><span class="pre">yyyymmddTHHMMSSZ</span></code>
+<tr class="field-even field"><th class="field-name">datetime:</th><td class="field-body"><p class="first">Timestamp either a datetime object
 or a string with UNIX timestamp (number of
 seconds after epoch)</p>
 <p>More than one timestamps can be specified either
 as a range or as a list of values:</p>
-<blockquote class="last">
+<blockquote>
 <div><ul class="simple">
-<li>range: use the comma character (,) e.g.
-20081205T090351Z,20081205T091853Z</li>
 <li>list: use the semicolon character (;) e.g.
 20081205T090351Z;20081405T090851Z;20081705T091853Z</li>
 </ul>
 </div></blockquote>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">only_webcam:</th><td class="field-body"><p class="first last">Delete only webcam image</p>
 </td>
 </tr>
 </tbody>
@@ -3446,9 +3283,9 @@ as a range or as a list of values:</p>
 </dd></dl>
 
 <dl class="method">
-<dt id="upwork.routers.team.Team_V2.get_snapshot_by_contract">
-<code class="descname">get_snapshot_by_contract</code><span class="sig-paren">(</span><em>contract_id</em>, <em>datetime=None</em><span class="sig-paren">)</span><a class="headerlink" href="#upwork.routers.team.Team_V2.get_snapshot_by_contract" title="Permalink to this definition">¶</a></dt>
-<dd><p>Retrieve a company&#8217;s user snapshots by contract ID during given time or &#8216;now&#8217;.</p>
+<dt id="upwork.routers.team.Team_V3.get_snapshot_by_contract">
+<code class="descname">get_snapshot_by_contract</code><span class="sig-paren">(</span><em>contract_id</em>, <em>datetime</em><span class="sig-paren">)</span><a class="headerlink" href="#upwork.routers.team.Team_V3.get_snapshot_by_contract" title="Permalink to this definition">¶</a></dt>
+<dd><p>Retrieve a company&#8217;s user snapshots by contract ID during given time.</p>
 <dl class="docutils">
 <dt><em>Parameters:</em></dt>
 <dd><table class="first last docutils field-list" frame="void" rules="none">
@@ -3457,10 +3294,7 @@ as a range or as a list of values:</p>
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">contract_id:</th><td class="field-body">The Contract ID</td>
 </tr>
-<tr class="field-even field"><th class="field-name">datetime:</th><td class="field-body">(optional)(default: &#8216;now&#8217;)
-Timestamp either a datetime object
-or a string in ISO 8601 format (in UTC)
-<code class="docutils literal"><span class="pre">yyyymmddTHHMMSSZ</span></code>
+<tr class="field-even field"><th class="field-name">datetime:</th><td class="field-body">Timestamp either a datetime object
 or a string with UNIX timestamp (number of
 seconds after epoch)</td>
 </tr>
@@ -3471,56 +3305,8 @@ seconds after epoch)</td>
 </dd></dl>
 
 <dl class="method">
-<dt id="upwork.routers.team.Team_V2.get_snapshots">
-<code class="descname">get_snapshots</code><span class="sig-paren">(</span><em>company_or_team_id</em>, <em>online=None</em>, <em>disabled=None</em><span class="sig-paren">)</span><a class="headerlink" href="#upwork.routers.team.Team_V2.get_snapshots" title="Permalink to this definition">¶</a></dt>
-<dd><p>Retrieve team member snapshots.</p>
-<dl class="docutils">
-<dt><em>Parameters:</em></dt>
-<dd><table class="first last docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name" colspan="2">company_or_team_id:</th></tr>
-<tr class="field-odd field"><td>&nbsp;</td><td class="field-body"><p class="first">The Company ID or Team ID</p>
-</td>
-</tr>
-<tr class="field-even field"><th class="field-name">online:</th><td class="field-body"><p class="first">(optional) Filter user by work hours.
-Possible values are (default):</p>
-<blockquote>
-<div><ul class="simple">
-<li>&#8216;now&#8217; (default)</li>
-<li>&#8216;last_24h&#8217;</li>
-<li>&#8216;all&#8217;</li>
-</ul>
-</div></blockquote>
-</td>
-</tr>
-<tr class="field-odd field"><th class="field-name">disabled:</th><td class="field-body"><p class="first">(optional) Whether disabled users
-need to be returned in response.
-Possible values are (default):</p>
-<blockquote class="last">
-<div><ul class="simple">
-<li>&#8216;no&#8217; (default)</li>
-<li>&#8216;yes&#8217;</li>
-</ul>
-</div></blockquote>
-</td>
-</tr>
-</tbody>
-</table>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="method">
-<dt id="upwork.routers.team.Team_V2.get_teamrooms">
-<code class="descname">get_teamrooms</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#upwork.routers.team.Team_V2.get_teamrooms" title="Permalink to this definition">¶</a></dt>
-<dd><p>Retrieve all teamrooms accessible to the authenticated user.</p>
-</dd></dl>
-
-<dl class="method">
-<dt id="upwork.routers.team.Team_V2.get_workdays_by_company">
-<code class="descname">get_workdays_by_company</code><span class="sig-paren">(</span><em>company_id</em>, <em>from_date</em>, <em>till_date</em>, <em>tz=None</em><span class="sig-paren">)</span><a class="headerlink" href="#upwork.routers.team.Team_V2.get_workdays_by_company" title="Permalink to this definition">¶</a></dt>
+<dt id="upwork.routers.team.Team_V3.get_workdays_by_company">
+<code class="descname">get_workdays_by_company</code><span class="sig-paren">(</span><em>company_id</em>, <em>from_date</em>, <em>till_date</em>, <em>offset=None</em><span class="sig-paren">)</span><a class="headerlink" href="#upwork.routers.team.Team_V3.get_workdays_by_company" title="Permalink to this definition">¶</a></dt>
 <dd><p>Retrieve workdays by company</p>
 <dl class="docutils">
 <dt><em>Parameters:</em></dt>
@@ -3534,10 +3320,7 @@ Possible values are (default):</p>
 </tr>
 <tr class="field-odd field"><th class="field-name">end_date:</th><td class="field-body">The target end date in <cite>yyyymmdd</cite> format.</td>
 </tr>
-<tr class="field-even field"><th class="field-name">tz:</th><td class="field-body">(optional) Time zone to use. Possible values:
-* &#8216;mine&#8217; (default)
-* &#8216;user&#8217;
-* &#8216;gmt&#8217;</td>
+<tr class="field-even field"><th class="field-name">offset:</th><td class="field-body">(optional) Time zone offset.</td>
 </tr>
 </tbody>
 </table>
@@ -3546,8 +3329,8 @@ Possible values are (default):</p>
 </dd></dl>
 
 <dl class="method">
-<dt id="upwork.routers.team.Team_V2.get_workdays_by_contract">
-<code class="descname">get_workdays_by_contract</code><span class="sig-paren">(</span><em>contract_id</em>, <em>from_date</em>, <em>till_date</em>, <em>tz=None</em><span class="sig-paren">)</span><a class="headerlink" href="#upwork.routers.team.Team_V2.get_workdays_by_contract" title="Permalink to this definition">¶</a></dt>
+<dt id="upwork.routers.team.Team_V3.get_workdays_by_contract">
+<code class="descname">get_workdays_by_contract</code><span class="sig-paren">(</span><em>contract_id</em>, <em>from_date</em>, <em>till_date</em>, <em>offset=None</em><span class="sig-paren">)</span><a class="headerlink" href="#upwork.routers.team.Team_V3.get_workdays_by_contract" title="Permalink to this definition">¶</a></dt>
 <dd><p>Retrieve workdays by contract</p>
 <dl class="docutils">
 <dt><em>Parameters:</em></dt>
@@ -3561,10 +3344,7 @@ Possible values are (default):</p>
 </tr>
 <tr class="field-odd field"><th class="field-name">end_date:</th><td class="field-body">The target end date in <cite>yyyymmdd</cite> format.</td>
 </tr>
-<tr class="field-even field"><th class="field-name">tz:</th><td class="field-body">(optional) Time zone to use. Possible values:
-* &#8216;mine&#8217; (default)
-* &#8216;user&#8217;
-* &#8216;gmt&#8217;</td>
+<tr class="field-even field"><th class="field-name">offset:</th><td class="field-body">(optional) Time zone offset.</td>
 </tr>
 </tbody>
 </table>
@@ -3573,8 +3353,35 @@ Possible values are (default):</p>
 </dd></dl>
 
 <dl class="method">
-<dt id="upwork.routers.team.Team_V2.get_workdiaries_by_contract">
-<code class="descname">get_workdiaries_by_contract</code><span class="sig-paren">(</span><em>contract_id</em>, <em>date</em>, <em>tz=None</em><span class="sig-paren">)</span><a class="headerlink" href="#upwork.routers.team.Team_V2.get_workdiaries_by_contract" title="Permalink to this definition">¶</a></dt>
+<dt id="upwork.routers.team.Team_V3.get_workdiaries">
+<code class="descname">get_workdiaries</code><span class="sig-paren">(</span><em>team_id</em>, <em>date</em>, <em>sort_by=None</em>, <em>activity=None</em>, <em>freelancer=None</em>, <em>paging=None</em><span class="sig-paren">)</span><a class="headerlink" href="#upwork.routers.team.Team_V3.get_workdiaries" title="Permalink to this definition">¶</a></dt>
+<dd><p>Retrieve a team member&#8217;s workdiaries for given date or today.
+<em>Parameters:</em></p>
+<blockquote>
+<div><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">team_id:</th><td class="field-body">The Team ID.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">date:</th><td class="field-body">A datetime object or a string in yyyymmdd format.</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">sort_by:</th><td class="field-body">(optional) Sort parameter.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">activity:</th><td class="field-body">(optional) Activity.</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">freelancer:</th><td class="field-body">(optional) Freelancer filter.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">paging:</th><td class="field-body">(optional) Paging.</td>
+</tr>
+</tbody>
+</table>
+</div></blockquote>
+</dd></dl>
+
+<dl class="method">
+<dt id="upwork.routers.team.Team_V3.get_workdiaries_by_contract">
+<code class="descname">get_workdiaries_by_contract</code><span class="sig-paren">(</span><em>contract_id</em>, <em>date</em>, <em>offset=None</em><span class="sig-paren">)</span><a class="headerlink" href="#upwork.routers.team.Team_V3.get_workdiaries_by_contract" title="Permalink to this definition">¶</a></dt>
 <dd><p>Retrieve workdiary snapshots by contract</p>
 <dl class="docutils">
 <dt><em>Parameters:</em></dt>
@@ -3586,10 +3393,7 @@ Possible values are (default):</p>
 </tr>
 <tr class="field-even field"><th class="field-name">date:</th><td class="field-body">The target date in <cite>yyyymmdd</cite> format.</td>
 </tr>
-<tr class="field-odd field"><th class="field-name">tz:</th><td class="field-body">(optional) Time zone to use. Possible values:
-* &#8216;mine&#8217; (default)
-* &#8216;user&#8217;
-* &#8216;gmt&#8217;</td>
+<tr class="field-odd field"><th class="field-name">offset:</th><td class="field-body">(optional) Time zone offset.</td>
 </tr>
 </tbody>
 </table>
@@ -3598,9 +3402,9 @@ Possible values are (default):</p>
 </dd></dl>
 
 <dl class="method">
-<dt id="upwork.routers.team.Team_V2.update_snapshot_by_contract">
-<code class="descname">update_snapshot_by_contract</code><span class="sig-paren">(</span><em>contract_id</em>, <em>memo</em>, <em>datetime=None</em><span class="sig-paren">)</span><a class="headerlink" href="#upwork.routers.team.Team_V2.update_snapshot_by_contract" title="Permalink to this definition">¶</a></dt>
-<dd><p>Update a company&#8217;s user snapshot memo by contract ID at given time or &#8216;now&#8217;.</p>
+<dt id="upwork.routers.team.Team_V3.update_snapshot_by_contract">
+<code class="descname">update_snapshot_by_contract</code><span class="sig-paren">(</span><em>contract_id</em>, <em>datetime</em>, <em>memo</em>, <em>task</em>, <em>task_desc</em><span class="sig-paren">)</span><a class="headerlink" href="#upwork.routers.team.Team_V3.update_snapshot_by_contract" title="Permalink to this definition">¶</a></dt>
+<dd><p>Update a company&#8217;s user snapshot memo by contract ID at given time.</p>
 <dl class="docutils">
 <dt><em>Parameters:</em></dt>
 <dd><table class="first last docutils field-list" frame="void" rules="none">
@@ -3610,25 +3414,26 @@ Possible values are (default):</p>
 <tr class="field-odd field"><th class="field-name">contract_id:</th><td class="field-body"><p class="first">The Contract ID</p>
 </td>
 </tr>
-<tr class="field-even field"><th class="field-name">memo:</th><td class="field-body"><p class="first">The Memo text</p>
-</td>
-</tr>
-<tr class="field-odd field"><th class="field-name">datetime:</th><td class="field-body"><p class="first">(optoinal)(default &#8216;now&#8217;)
-Timestamp either a datetime object
-or a string in ISO 8601 format (in UTC)
-<code class="docutils literal"><span class="pre">yyyymmddTHHMMSSZ</span></code>
+<tr class="field-even field"><th class="field-name">datetime:</th><td class="field-body"><p class="first">Timestamp either a datetime object
 or a string with UNIX timestamp (number of
 seconds after epoch)</p>
 <p>More than one timestamps can be specified either
 as a range or as a list of values:</p>
-<blockquote class="last">
+<blockquote>
 <div><ul class="simple">
-<li>range: use the comma character (,) e.g.
-<code class="docutils literal"><span class="pre">20081205T090351Z,20081205T091853Z</span></code></li>
 <li>list: use the semicolon character (;) e.g.
 <code class="docutils literal"><span class="pre">20081205T090351Z;20081405T090851Z;20081705T091853Z</span></code></li>
 </ul>
 </div></blockquote>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">memo:</th><td class="field-body"><p class="first">The Memo text</p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">task:</th><td class="field-body"><p class="first">Task ID</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">task_desc:</th><td class="field-body"><p class="first last">Task description</p>
 </td>
 </tr>
 </tbody>
@@ -3638,8 +3443,8 @@ as a range or as a list of values:</p>
 </dd></dl>
 
 <dl class="attribute">
-<dt id="upwork.routers.team.Team_V2.version">
-<code class="descname">version</code><em class="property"> = 2</em><a class="headerlink" href="#upwork.routers.team.Team_V2.version" title="Permalink to this definition">¶</a></dt>
+<dt id="upwork.routers.team.Team_V3.version">
+<code class="descname">version</code><em class="property"> = 3</em><a class="headerlink" href="#upwork.routers.team.Team_V3.version" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 </dd></dl>
@@ -3768,13 +3573,6 @@ Default: <code class="docutils literal"><span class="pre">False</span></code></t
 </dd></dl>
 
 </div>
-<div class="section" id="module-upwork.routers">
-<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-upwork.routers" title="Permalink to this headline">¶</a></h2>
-<p>Routers package.</p>
-<p>All communication with Upwork API is handled by the routers.</p>
-<p>When you import <code class="docutils literal"><span class="pre">upwork</span></code> package and instantiate <code class="docutils literal"><span class="pre">upwork.Client</span></code> class,
-routers are dynamically attatched to your <code class="docutils literal"><span class="pre">client</span></code> object.</p>
-</div>
 </div>
 
 
@@ -3798,7 +3596,7 @@ routers are dynamically attatched to your <code class="docutils literal"><span c
         <li class="right" >
           <a href="upwork.html" title="upwork package"
              >previous</a> |</li>
-        <li class="nav-item nav-item-0"><a href="../index.html">python-upwork 1.2.3 documentation</a> &raquo;</li>
+        <li class="nav-item nav-item-0"><a href="../index.html">python-upwork 1.3.0 documentation</a> &raquo;</li>
           <li class="nav-item nav-item-1"><a href="../reference_docs.html" >Reference Documentation: Classes and Methods</a> &raquo;</li>
           <li class="nav-item nav-item-2"><a href="upwork.html" >upwork package</a> &raquo;</li> 
       </ul>
