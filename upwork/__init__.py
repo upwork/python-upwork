@@ -1,6 +1,6 @@
 # Python bindings to Upwork API
 # python-upwork version 0.5
-# (C) 2010-2015 Upwork
+# (C) 2010-2018 Upwork
 
 # Updated by the script
 """Main package of the python bindings for Upwork API.
@@ -13,7 +13,7 @@ so you can use::
 
 """
 
-VERSION = '1.2.3'
+VERSION = '1.3.0'
 
 
 def get_version():

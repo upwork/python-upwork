@@ -157,9 +157,8 @@ class Client(object):
             self.task_v2 = Task_V2(self)
 
         if team:
-            from upwork.routers.team import Team, Team_V2
-            self.team = Team(self)
-            self.team_v2 = Team_V2(self)
+            from upwork.routers.team import Team_V3
+            self.team_v3 = Team_V3(self)
 
         if timereport:
             from upwork.routers.timereport import TimeReport
