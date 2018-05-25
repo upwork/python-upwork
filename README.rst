@@ -21,7 +21,7 @@ All rights reserved.
 ============================
 Upwork API
 ============================
-These are Python bindings for Upwork Public API https://developers.upwork.com/
+These are Python (2 and 3) bindings for Upwork Public API https://developers.upwork.com/
 You can use the API to build apps that will help you:
 
 * Manage your distributed team
@@ -35,10 +35,9 @@ The API is the best way to communicate between apps.
 
 Requirements
 ============
-httplib2==0.9
-oauth2==1.5.211
-urllib3==1.10
-httplib2.system-ca-certs-locater==0.1.1
+httplib2
+oauth2
+urllib3
 
 
 Installation
@@ -51,11 +50,7 @@ All the dependencies will be automatically installed as well.
 
 SSL Certificates Note
 =====================
-We recommend installing the package ``httplib2.system_ca_certs_locater`` (it is installed by default during ``python_upwork`` installation)::
-
-    pip install pbr httplib2.system_ca_certs_locater
-
-It will force ``httplib2`` to use the OS's certificates file.
+Package forces ``httplib2`` to use the OS's certificates file by default.
 
 If you want to use your own certificates, introduce the following code during initialization::
 

@@ -3,7 +3,7 @@
 # (C) 2010-2015 Upwork
 
 import logging
-import urllib2
+from upwork.compatibility import HTTPError
 
 
 class BaseException(Exception):
@@ -17,12 +17,16 @@ class BaseException(Exception):
 
     def upwork_debug(self, *args, **kwargs):
         logger = logging.getLogger('python-upwork')
+        try:
+            convert = unicode
+        except NameError:
+            convert = str
         logger.debug('{0}: {1}'.format(
             self.__class__.__name__,
-            ', '.join(map(unicode, args))))
+            ', '.join(map(convert, args))))
 
 
-class BaseHttpException(urllib2.HTTPError, BaseException):
+class BaseHttpException(HTTPError, BaseException):
 
     def __init__(self, *args, **kwargs):
         self.upwork_debug(*args, **kwargs)

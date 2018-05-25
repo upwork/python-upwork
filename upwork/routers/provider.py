@@ -3,7 +3,7 @@
 # (C) 2010-2015 Upwork
 
 from upwork.namespaces import Namespace
-from urllib import quote
+from upwork.compatibility import quote
 
 
 class Provider(Namespace):

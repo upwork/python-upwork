@@ -1,6 +1,12 @@
+from __future__ import print_function
+
 import upwork
 from pprint import pprint
 
+try:
+   input = raw_input
+except NameError:
+   pass
 
 def desktop_app():
     """Emulation of desktop app.
@@ -9,20 +15,20 @@ def desktop_app():
     Returns: ``upwork.Client`` instance ready to work.
 
     """
-    print "Emulating desktop app"
+    print("Emulating desktop app")
 
-    public_key = raw_input('Please enter public key: > ')
-    secret_key = raw_input('Please enter secret key: > ')
+    public_key = input('Please enter public key: > ')
+    secret_key = input('Please enter secret key: > ')
 
     client = upwork.Client(public_key, secret_key)
-    verifier = raw_input(
+    verifier = input(
         'Please enter the verification code you get '
         'following this link:\n{0}\n\n> '.format(
             client.auth.get_authorize_url()))
 
-    print 'Retrieving keys.... '
+    print('Retrieving keys.... ')
     access_token, access_token_secret = client.auth.get_access_token(verifier)
-    print 'OK'
+    print('OK')
 
     # For further use you can store ``access_toket`` and
     # ``access_token_secret`` somewhere
@@ -36,19 +42,19 @@ if __name__ == '__main__':
     client = desktop_app()
 
     try:
-        print "My info"
+        print("My info")
         pprint(client.auth.get_info())
-        print "Team rooms:"
+        print("Team rooms:")
         pprint(client.team.get_teamrooms())
         #HRv2 API
-        print "HR: companies"
+        print("HR: companies")
         pprint(client.hr.get_companies())
-        print "HR: teams"
+        print("HR: teams")
         pprint(client.hr.get_teams())
-        print "HR: userroles"
+        print("HR: userroles")
         pprint(client.hr.get_user_roles())
-        print "Get jobs"
+        print("Get jobs")
         pprint(client.provider.search_jobs({'q': 'python'}))
-    except Exception, e:
-        print "Exception at %s %s" % (client.last_method, client.last_url)
+    except Exception as e:
+        print("Exception at %s %s" % (client.last_method, client.last_url))
         raise e
