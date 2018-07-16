@@ -1013,42 +1013,10 @@ def test_get_provider_billings():
 
 
 @patch('urllib3.PoolManager.urlopen', patched_urlopen_fin_report_content)
-def test_get_provider_teams_billings():
-    fr = get_client().finreport
-
-    read = fr.get_provider_teams_billings('test', utils.Query(select=['1', '2', '3'], where=(utils.Q('2') > 1)))
-    assert read == fin_report_dict, read
-
-
-@patch('urllib3.PoolManager.urlopen', patched_urlopen_fin_report_content)
-def test_get_provider_companies_billings():
-    fr = get_client().finreport
-
-    read = fr.get_provider_companies_billings('test', utils.Query(select=['1', '2', '3'], where=(utils.Q('2') > 1)))
-    assert read == fin_report_dict, read
-
-
-@patch('urllib3.PoolManager.urlopen', patched_urlopen_fin_report_content)
 def test_get_provider_earnings():
     fr = get_client().finreport
 
     read = fr.get_provider_earnings('test', utils.Query(select=['1', '2', '3'], where=(utils.Q('2') > 1)))
-    assert read == fin_report_dict, read
-
-
-@patch('urllib3.PoolManager.urlopen', patched_urlopen_fin_report_content)
-def test_get_provider_teams_earnings():
-    fr = get_client().finreport
-
-    read = fr.get_provider_teams_earnings('test', utils.Query(select=['1', '2', '3'], where=(utils.Q('2') > 1)))
-    assert read == fin_report_dict, read
-
-
-@patch('urllib3.PoolManager.urlopen', patched_urlopen_fin_report_content)
-def test_get_provider_companies_earnings():
-    fr = get_client().finreport
-
-    read = fr.get_provider_companies_earnings('test', utils.Query(select=['1', '2', '3'], where=(utils.Q('2') > 1)))
     assert read == fin_report_dict, read
 
 
@@ -1089,14 +1057,6 @@ def test_get_financial_entities():
     fr = get_client().finreport
 
     read = fr.get_financial_entities('test', utils.Query(select=['1', '2', '3'], where=(utils.Q('2') > 1)))
-    assert read == fin_report_dict, read
-
-
-@patch('urllib3.PoolManager.urlopen', patched_urlopen_fin_report_content)
-def test_get_financial_entities_provider():
-    fr = get_client().finreport
-
-    read = fr.get_financial_entities_provider('test', utils.Query(select=['1', '2', '3'], where=(utils.Q('2') > 1)))
     assert read == fin_report_dict, read
 
 

@@ -5,6 +5,13 @@
 Changelog
 ***************
 
+.. _1.4.0:
+
+Version 1.4.0
+-------------
+* Added ``examples`` directory
+* Removed some Reports API according to announce from Thursday, 2018-06-28
+
 .. _1.3.0:
 
 Version 1.3.0

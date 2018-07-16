@@ -24,39 +24,6 @@ class Finreports(GdsNamespace):
         result = self.get(url, data={'tq': tq})
         return result
 
-    def get_provider_teams_billings(self, provider_team_id, query):
-        """
-        Generate Billing Reports for a Specific Provider's Team.
-        The authenticated user must be an admin or
-        a staffing manager of the team.
-
-        *Parameters:*
-          :provider_team_id:  Provider's Team ID
-
-          :query:             The GDS query string
-
-        """
-        url = 'provider_teams/{0}/billings'.format(provider_team_id)
-        tq = str(query)
-        result = self.get(url, data={'tq': tq})
-        return result
-
-    def get_provider_companies_billings(self, provider_company_id, query):
-        """
-        Generate Billing Reports for a Specific Provider's Company.
-        The authenticated user must be the company owner
-
-        *Parameters:*
-          :provider_company_id:   Provider's Company ID
-
-          :query:                 The GDS query string
-
-        """
-        url = 'provider_companies/{0}/billings'.format(provider_company_id)
-        tq = str(query)
-        result = self.get(url, data={'tq': tq})
-        return result
-
     def get_provider_earnings(self, provider_id, query):
         """
         Generate Earning Reports for a Specific Provider
@@ -68,36 +35,6 @@ class Finreports(GdsNamespace):
 
         """
         url = 'providers/{0}/earnings'.format(provider_id)
-        tq = str(query)
-        result = self.get(url, data={'tq': tq})
-        return result
-
-    def get_provider_teams_earnings(self, provider_team_id, query):
-        """
-        Generate Earning Reports for a Specific Provider's Team.
-
-        *Parameters:*
-          :provider_team_id:  Provider's Team ID
-
-          :query:             The GDS query string
-
-        """
-        url = 'provider_teams/{0}/earnings'.format(provider_team_id)
-        tq = str(query)
-        result = self.get(url, data={'tq': tq})
-        return result
-
-    def get_provider_companies_earnings(self, provider_company_id, query):
-        """
-        Generate Earning Reports for a Specific Provider's Company.
-
-        *Parameters:*
-          :provider_company_id:   Provider's Team ID
-
-          :query:                 The GDS query string
-
-        """
-        url = 'provider_companies/{0}/earnings'.format(provider_company_id)
         tq = str(query)
         result = self.get(url, data={'tq': tq})
         return result
@@ -175,21 +112,6 @@ class Finreports(GdsNamespace):
 
         """
         url = 'financial_accounts/{0}'.format(accounting_id)
-        tq = str(query)
-        result = self.get(url, data={'tq': tq})
-        return result
-
-    def get_financial_entities_provider(self, provider_id, query):
-        """
-        Generate Financial Reports for an owned Account.
-
-        *Parameters:*
-          :provider_id:       Provider ID
-
-          :query:             The GDS query string
-
-        """
-        url = 'financial_account_owner/{0}'.format(provider_id)
         tq = str(query)
         result = self.get(url, data={'tq': tq})
         return result

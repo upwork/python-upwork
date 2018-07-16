@@ -66,7 +66,7 @@ Simple Example
 This example is very easy to follow in Python interactive console,
 we also recommend to use improved interactive console - IPython.
 
-You can see the full code of examples in ``upwork/examples`` folder.
+You can see the full code of examples in ``examples`` folder.
 
 Here is the simple example if you are using web API keys.
 
