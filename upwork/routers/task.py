@@ -18,7 +18,7 @@ class Task(Namespace):
         This call returns both archived and active activities.
 
         The user authenticated must have been granted the appropriate
-        hiring manager permissions.
+        access to the team.
 
         *Parameters:*
           :company_id:    Company ID. Use the ``parent_team__id`` value
@@ -49,7 +49,7 @@ class Task(Namespace):
         This call returns both archived and active activities.
 
         The user authenticated must have been granted the appropriate
-        hiring manager permissions.
+        access to the company.
 
         *Parameters:*
           :company_id:    Company ID. Use the ``parent_team__id`` value
