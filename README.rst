@@ -14,14 +14,14 @@
    :target: http://travis-ci.org/upwork/python-upwork
    :alt: Build status
 
-Copyright (c) 2010-2015, Upwork http://www.upwork.com
+Copyright (c) 2010-2018, Upwork http://www.upwork.com
 All rights reserved.
 
 
 ============================
 Upwork API
 ============================
-These are Python (2 and 3) bindings for Upwork Public API https://developers.upwork.com/
+These are Python (2, for 3 please check unofficial PR #28) bindings for Upwork Public API https://developers.upwork.com/
 You can use the API to build apps that will help you:
 
 * Manage your distributed team
