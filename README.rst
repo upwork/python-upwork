@@ -21,7 +21,7 @@ All rights reserved.
 ============================
 Upwork API
 ============================
-These are Python (2, for 3 please check unofficial PR #28) bindings for Upwork Public API https://developers.upwork.com/
+These are Python (2, for 3 please check unofficial PR #27) bindings for Upwork Public API https://developers.upwork.com/
 You can use the API to build apps that will help you:
 
 * Manage your distributed team
