@@ -360,7 +360,7 @@ def test_team():
         te_v3.delete_snapshot_by_contract(1, 1)
 
     #test get_workdiaries
-    eq_(te_v3.get_workdiaries(1, 1), [])
+    eq_(te_v3.get_workdiaries(1, 1), [{'snapshot':'test', 'user':'test'}])
 
     #test get_workdiaries_by_contract
     eq_(te_v3.get_workdiaries_by_contract(1, 1), [])
