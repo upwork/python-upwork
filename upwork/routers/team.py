@@ -109,7 +109,7 @@ class Team_V3(Namespace):
         if paging:
             data['paging'] = paging
 
-        snapshots = result.get('data', data).get('data', [])
+        snapshots = result.get('data', data)
         if not isinstance(snapshots, list):
             snapshots = [snapshots]
         #not sure we need to return user
