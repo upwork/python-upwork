@@ -5,6 +5,12 @@
 Changelog
 ***************
 
+.. _1.3.1:
+
+Version 1.3.1
+-------------
+* Fix broken get_workdiaries which returned empty response all the time after upgrading related API to V3
+
 .. _1.3.0:
 
 Version 1.3.0
