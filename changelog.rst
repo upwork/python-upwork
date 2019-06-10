@@ -5,6 +5,12 @@
 Changelog
 ***************
 
+.. _1.3.2:
+
+Version 1.3.2
+-------------
+* Update urllib3 dependency to 1.25 (CVE-2019-11324)
+
 .. _1.3.1:
 
 Version 1.3.1
