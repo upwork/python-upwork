@@ -91,10 +91,6 @@ class Team_V3(Namespace):
 
         """
         url = 'workdiaries/companies/{0}/{1}'.format(team_id, date)
-        result = self.get(url)
-        if 'error' in result:
-            return result
-
         data = {}
 
         if sort_by:
@@ -108,6 +104,10 @@ class Team_V3(Namespace):
 
         if paging:
             data['paging'] = paging
+
+        result = self.get(url, data)
+        if 'error' in result:
+            return result
 
         snapshots = result.get('data', data)
         if not isinstance(snapshots, list):
