@@ -5,6 +5,14 @@
 Changelog
 ***************
 
+.. _1.3.3:
+
+Version 1.3.3
+-------------
+* Fix Team_V3.get_workdiaries - parameters were not sent
+* Default `timeout` parameter for urllib3 has been set to the maximum 8 seconds
+* The `retries` parameter for urllib3 has been set to `False`
+
 .. _1.3.2:
 
 Version 1.3.2

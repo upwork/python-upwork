@@ -90,7 +90,7 @@ class Client(object):
                                   Whether to attach
                                   :py:mod:`upwork.routers.job` router
 
-      :timeout:                   (optional, default ``3 secs``)
+      :timeout:                   (optional, default ``8 secs``)
                                   Socket operations timeout.
     """
 
@@ -98,7 +98,7 @@ class Client(object):
                  oauth_access_token=None, oauth_access_token_secret=None,
                  fmt='json', finreport=True, hr=True, messages=True,
                  offers=True, provider=True, task=True, team=True,
-                 timereport=True, job=True, timeout=3):
+                 timereport=True, job=True, timeout=8):
 
         self.public_key = public_key
         self.secret_key = secret_key
@@ -117,8 +117,8 @@ class Client(object):
         self.http = urllib3.PoolManager(
             cert_reqs='CERT_REQUIRED',
             ca_certs=ca_certs_locater.get(),
-            timeout=int(timeout),
-            retries=Retry(2, backoff_factor=0.5)
+            timeout=urllib3.Timeout(connect=0.5, read=float(timeout)),
+            retries=False
         )
 
         self.oauth_access_token = oauth_access_token
