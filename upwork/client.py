@@ -9,22 +9,19 @@ import urllib3
 
 from urllib3 import Retry
 
-from upwork import ca_certs_locater
 from upwork.oauth import OAuth
 from upwork.http import raise_http_error
 from upwork.utils import decimal_default
 from upwork.exceptions import IncorrectJsonResponseError
 
-
 __all__ = ["Client"]
-
 
 logger = logging.getLogger('python-upwork')
 
 if os.environ.get("PYTHON_UPWORK_DEBUG", False):
     if os.environ.get("PYTHON_UPWORK_DEBUG_FILE", False):
         fh = logging.FileHandler(filename=os.environ["PYTHON_UPWORK_DEBUG_FILE"]
-            )
+                                 )
         fh.setLevel(logging.DEBUG)
         logger.addHandler(fh)
     else:
@@ -92,13 +89,17 @@ class Client(object):
 
       :timeout:                   (optional, default ``8 secs``)
                                   Socket operations timeout.
+
+      :poolmanager:               (optional, default ``None``)
+                                  http connection pool manager
+                                  from :py:mod:`urllib3.poolmanager`
     """
 
     def __init__(self, public_key, secret_key,
                  oauth_access_token=None, oauth_access_token_secret=None,
                  fmt='json', finreport=True, hr=True, messages=True,
                  offers=True, provider=True, task=True, team=True,
-                 timereport=True, job=True, timeout=8):
+                 timereport=True, job=True, timeout=8, poolmanager=None):
 
         self.public_key = public_key
         self.secret_key = secret_key
@@ -114,17 +115,20 @@ class Client(object):
         # """
         # The warning will appear only in logs
         logging.captureWarnings(True)
-        self.http = urllib3.PoolManager(
-            cert_reqs='CERT_REQUIRED',
-            ca_certs=ca_certs_locater.get(),
-            timeout=urllib3.Timeout(connect=0.5, read=float(timeout)),
-            retries=False
-        )
+        if poolmanager is None:
+            from upwork import ca_certs_locater
+            poolmanager = urllib3.PoolManager(
+                cert_reqs='CERT_REQUIRED',
+                ca_certs=ca_certs_locater.get(),
+                timeout=urllib3.Timeout(connect=0.5, read=float(timeout)),
+                retries=False
+            )
+        self.http = poolmanager
 
         self.oauth_access_token = oauth_access_token
         self.oauth_access_token_secret = oauth_access_token_secret
 
-        #Namespaces
+        # Namespaces
         self.auth = OAuth(self)
 
         if finreport:
@@ -168,7 +172,7 @@ class Client(object):
             from upwork.routers.job import Job
             self.job = Job(self)
 
-    #Shortcuts for HTTP methods
+    # Shortcuts for HTTP methods
     def get(self, url, data=None):
         return self.read(url, data, method='GET', fmt=self.fmt)
 
@@ -231,7 +235,7 @@ class Client(object):
             return self.http.urlopen(
                 method, url, body=post_data,
                 headers={'Content-Type':
-                         'application/x-www-form-urlencoded;charset=UTF-8'})
+                             'application/x-www-form-urlencoded;charset=UTF-8'})
         elif method in ('PUT', 'DELETE'):
             url = '{0}?{1}'.format(url, post_data)
             headers['Content-Type'] = 'application/json'
@@ -307,4 +311,5 @@ class Client(object):
 
 if __name__ == "__main__":
     import doctest
+
     doctest.testmod()
