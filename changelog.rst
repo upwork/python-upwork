@@ -5,6 +5,13 @@
 Changelog
 ***************
 
+.. _1.3.4:
+
+Version 1.3.4
+-------------
+* allow for custom ssl cert paths
+* allow specifying custom pool managers
+
 .. _1.3.3:
 
 Version 1.3.3

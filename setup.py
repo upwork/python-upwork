@@ -11,7 +11,7 @@ readme = open(os.path.join(os.path.dirname(__file__), 'README.rst'))
 README = readme.read()
 readme.close()
 
-VERSION = (1, 3, 3, 0, 0)
+VERSION = (1, 3, 4, 0, 0)
 
 
 def get_version():

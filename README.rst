@@ -14,7 +14,7 @@
    :target: http://travis-ci.org/upwork/python-upwork
    :alt: Build status
 
-Copyright (c) 2010-2018, Upwork http://www.upwork.com
+Copyright (c) 2010-2019, Upwork http://www.upwork.com
 All rights reserved.
 
 
