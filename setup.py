@@ -11,7 +11,7 @@ readme = open(os.path.join(os.path.dirname(__file__), 'README.rst'))
 README = readme.read()
 readme.close()
 
-VERSION = (1, 3, 4, 0, 0)
+VERSION = (1, 3, 5, 0, 0)
 
 
 def get_version():
@@ -76,7 +76,7 @@ setup(cmdclass={'update_version': UpdateVersion},
       author_email='python@upwork.com',
       maintainer='Maksym Novozhylov',
       maintainer_email='mnovozhilov@upwork.com',
-      install_requires=['oauth2==1.9.0.post1', 'urllib3==1.25.3'],
+      install_requires=['oauth2==1.9.0.post1', 'urllib3==1.24.2'],
       packages=find_packages(),
       license='BSD',
       download_url='http://github.com/upwork/python-upwork',
