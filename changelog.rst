@@ -5,6 +5,12 @@
 Changelog
 ***************
 
+.. _1.3.5:
+
+Version 1.3.5
+-------------
+* move from urllib3 1.25 to 1.24.2 because of the issue#37
+
 .. _1.3.4:
 
 Version 1.3.4
