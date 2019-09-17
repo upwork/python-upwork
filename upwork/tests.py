@@ -24,6 +24,7 @@ from upwork.http import UPWORK_ERROR_CODE, UPWORK_ERROR_MESSAGE
 from nose.tools import eq_, ok_
 from mock import Mock, patch
 from upwork.compatibility import HTTPError, httplib, urlparse
+import six
 
 try:
     import json
@@ -1277,8 +1278,10 @@ def test_oauth_full_url():
 
 
 def patched_httplib2_request(*args, **kwargs):
-    return {'status': '200'},\
-        'oauth_callback_confirmed=1&oauth_token=709d434e6b37a25c50e95b0e57d24c46&oauth_token_secret=193ef27f57ab4e37'
+    content = 'oauth_callback_confirmed=1&oauth_token=709d434e6b37a25c50e95b0e57d24c46&oauth_token_secret=193ef27f57ab4e37'
+    if six.PY3:
+        content = six.binary_type(content, 'utf-8')
+    return {'status': '200'}, content
 
 @patch('httplib2.Http.request', patched_httplib2_request)
 def test_oauth_get_request_token():
@@ -1296,8 +1299,11 @@ def test_oauth_get_authorize_url():
         'https://www.upwork.com/services/api/auth?oauth_token=709d434e6b37a25c50e95b0e57d24c46&oauth_callback=http%3A%2F%2Fexample.com%2Foauth%2Fcomplete'
 
 def patched_httplib2_access(*args, **kwargs):
-    return {'status': '200'},\
-        'oauth_token=aedec833d41732a584d1a5b4959f9cd6&oauth_token_secret=9d9cccb363d2b13e'
+    content = 'oauth_token=aedec833d41732a584d1a5b4959f9cd6&oauth_token_secret=9d9cccb363d2b13e'
+    if six.PY3:
+        content = six.binary_type(content, 'utf-8')
+
+    return {'status': '200'}, content
 
 
 @patch('httplib2.Http.request', patched_httplib2_access)
