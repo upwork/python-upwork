@@ -89,6 +89,15 @@ class Provider(Namespace):
         result = self.get(url, data)
         return result.get('reasons', result)
 
+    def get_specialties_metadata(self):
+        """
+        Returns list of all specialties available for job/contractor profiles.
+
+        """
+        url = 'metadata/specialties'
+        result = self.get(url)
+        return result.get('specialties', result)
+
 
 class Provider_V2(Namespace):
     api_url = 'profiles/'
@@ -338,3 +347,12 @@ class Provider_V2(Namespace):
         result = self.get(url, data=search_data)
 
         return result.get('jobs', result)
+
+    def get_skills_metadata(self):
+        """
+        Returns list of all V2 skills available for job/contractor profiles.
+
+        """
+        url = 'metadata/skills'
+        result = self.get(url)
+        return result.get('skills', result)

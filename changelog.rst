@@ -5,6 +5,13 @@
 Changelog
 ***************
 
+.. _1.3.6:
+
+Version 1.3.6
+-------------
+* Add Specialties API
+* Add Skills V2 API
+
 .. _1.3.5:
 
 Version 1.3.5

@@ -787,6 +787,7 @@ provider_dict = {'profile':
                    'jobs': {'test': 'test'},
                    'otherexp': 'experiences',
                    'skills': 'skills',
+                   'specialties': 'specialties',
                    'tests': 'tests',
                    'certificates': 'certificates',
                    'employments': 'employments',
@@ -820,6 +821,9 @@ def test_provider():
 
     result = pr.get_skills_metadata()
     assert result == provider_dict['skills']
+
+    result = pr.get_specialties_metadata()
+    assert result == provider_dict['specialties']
 
     result = pr.get_regions_metadata()
     assert result == provider_dict['regions']
