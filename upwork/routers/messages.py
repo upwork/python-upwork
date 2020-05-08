@@ -39,10 +39,11 @@ class Messages(Namespace):
         """
         url = '{0}/rooms/{1}'.format(company, room_id)
         result = self.get(url, data=params)
+        return result.get(url, result)
 
     def get_room_messages(self, company, room_id, params = {}):
         """
-        Get a specific room information
+        Get messages from a specific room
 
         *Parameters:*
           :company:          Company ID
