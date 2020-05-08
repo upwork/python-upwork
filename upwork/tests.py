@@ -862,14 +862,6 @@ def test_get_room_details():
 	room_dict, messages.get_room_details("testcompany", "room-id")
 
 @patch('urllib3.PoolManager.urlopen', patched_urlopen_room)
-def test_get_room_messages():
-    messages = get_client().messages
-
-    #test get_room_messages
-    assert messages.get_room_messages("testcompany", "room-id") ==\
-	room_dict, messages.get_room_messages("testcompany", "room-id")
-
-@patch('urllib3.PoolManager.urlopen', patched_urlopen_room)
 def test_get_room_by_offer():
     messages = get_client().messages
 
