@@ -39,6 +39,21 @@ class Messages(Namespace):
         """
         url = '{0}/rooms/{1}'.format(company, room_id)
         result = self.get(url, data=params)
+
+    def get_room_messages(self, company, room_id, params = {}):
+        """
+        Get a specific room information
+
+        *Parameters:*
+          :company:          Company ID
+
+          :room_id           Room ID
+
+          :params:           List of parameters
+
+        """
+        url = '{0}/rooms/{1}/stories'.format(company, room_id)
+        result = self.get(url, data=params)
         return result.get(url, result)
 
     def get_room_by_offer(self, company, offer_id, params = {}):
