@@ -5,6 +5,12 @@
 Changelog
 ***************
 
+.. _1.3.7:
+
+Version 1.3.7
+-------------
+* Add Room Messages API
+
 .. _1.3.6:
 
 Version 1.3.6
