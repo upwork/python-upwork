@@ -1,0 +1,8 @@
+include *
+include *.md LICENSE
+
+recursive-include example *
+
+exclude .flake8 noxfile.py .coverage .coveragerc .gitignore .travis.yml .tests .docgen Pipfile*
+prune example
+prune tests
