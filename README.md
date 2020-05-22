@@ -57,7 +57,7 @@ To integrate this library you need to have:
 
 ## Installation
 
-    pip install python-upwork
+    pip3 install python-upwork
 
 All the dependencies will be automatically installed as well.
 
