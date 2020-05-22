@@ -52,7 +52,7 @@ The usage of this API is ruled by the Terms of Use at:
 # Requirements
 To integrate this library you need to have:
 
-* Python 3.7+
+* Python 3.8+
 * requests_oauthlib >= 1.3.0
 
 ## Installation
