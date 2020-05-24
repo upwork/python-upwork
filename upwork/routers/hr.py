@@ -1324,27 +1324,49 @@ class HR_V4(Namespace):
         url = 'clients/applications/{0}'.format(application_id)
         return self.get(url, data)
 
-    def list_freelancer_applications(self, status=None, page_offset=None, page_size=None):
+    def list_freelancer_applications(self, company_reference=None,
+                                     job_key=None, status=None,
+                                     cursor=None, cursor_limit=20):
         """
         List job applications as a freelancer.
 
         *Parameters:*
-          :status:                 (optional) The current status of the job application.
-                                   Valid values: ``interviews``, ``invites``, ``active``.
+          :company_reference (int): (optional) The reference ID of a team. It allows
+                                    getting applications for a specific team.
+                                    Example: `34567`. Use 'List Teams' API call to get it.
 
-          :page_offset:            (optional) Number of entries to skip
+          :job_key (string):        (optional) Filter job results by a specific job(s). 
+                                    Use `,` as a delimiter to specify a couple jobs. 
+                                    Example: `~01d54a7xxxxx125731`.
 
-          :page_size:              (optional: default 20) Page size
-                                   in number of entries
+          :status (string):         (optional) The current status of the job application.
+                                    Valid values: ``interviews``, ``invites``, ``active``.
+
+          :cursor (string):         (optional) Pagination cursor returned as an `offset`
+                                    value in the previous request.
+
+
+          :cursor_limit (int):      (optional: default 20) The maximum amount of records
+                                    to be returned.
+                                    
 
         """
         data = {}
 
+        data['cursor_limit'] = cursor_limit
+
+        if cursor:
+            data['cursor'] = cursor
+
         if status:
             data['status'] = status
+        
+        if company_reference:
+            data['company_reference'] = company_reference
+        
+        if job_key:
+            data['job_key'] = job_key
 
-        if page_offset and page_size:
-            data['page'] = '{0};{1}'.format(page_offset, page_size)
 
         url = 'contractors/applications'
         return self.get(url, data)
