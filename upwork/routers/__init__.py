@@ -1,11 +1,20 @@
-# Python bindings to Upwork API
-# python-upwork version 0.5
-# (C) 2010-2015 Upwork
-"""Routers package.
+"""routers"""
+from . import activities, auth, freelancers, hr, jobs
+from . import messages, metadata, organization, payments
+from . import reports, snapshots, workdays, workdiary
 
-All communication with Upwork API is handled by the routers.
-
-When you import ``upwork`` package and instantiate ``upwork.Client`` class,
-routers are dynamically attatched to your ``client`` object.
-
-"""
+__all__ = (
+    "activities",
+    "auth",
+    "freelancers",
+    "hr",
+    "jobs",
+    "messages",
+    "metadata",
+    "organization",
+    "payments",
+    "reports",
+    "snapshots",
+    "workdays",
+    "workdiary"
+)

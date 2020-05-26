@@ -1,15 +1,16 @@
 language: python
+os: linux
+cache:
+    pip: true
+matrix:
+    include:
+        - python: "3.8"
+          env: NOXSESSION="tests-3.8"
+        - python: "3.8"
+          env: NOXSESSION="lint"
+          dist: xenial
+install:
+    - pip install nox
 
-python:
-  - "2.7"
-  - "3.6"
-
-install: "pip install -r requirements.py"
-
-script: nosetests
-
-notifications:
-  email:
-    recipients:
-      - apisupport@upwork.com
-    on_failure: change
+script:
+    - nox --non-interactive --session "$NOXSESSION"
