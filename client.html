@@ -4,8 +4,8 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1" />
 <meta name="generator" content="pdoc 0.8.1" />
-<title>upwork API documentation</title>
-<meta name="description" content="Top-level package for python-upwork." />
+<title>upwork.client API documentation</title>
+<meta name="description" content="" />
 <link href='https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.0/normalize.min.css' rel='stylesheet'>
 <link href='https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/8.0.0/sanitize.min.css' rel='stylesheet'>
 <link href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css" rel="stylesheet">
@@ -17,56 +17,284 @@
 <main>
 <article id="content">
 <header>
-<h1 class="title">Package <code>upwork</code></h1>
+<h1 class="title">Module <code>upwork.client</code></h1>
 </header>
 <section id="section-intro">
-<p>Top-level package for python-upwork.</p>
 <details class="source">
 <summary>
 <span>Expand source code</span>
 </summary>
-<pre><code class="python">&#34;&#34;&#34;Top-level package for python-upwork.&#34;&#34;&#34;
+<pre><code class="python"># Licensed under the Upwork&#39;s API Terms of Use;
+# you may not use this file except in compliance with the Terms.
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an &#34;AS IS&#34; BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+#
+# Author::    Maksym Novozhylov (mnovozhilov@upwork.com)
+# Copyright:: Copyright 2020(c) Upwork.com
+# License::   See LICENSE.txt and TOS - https://developers.upwork.com/api-tos.html
 
-from upwork.config import Config
-from upwork.client import Client
-from . import routers
+import requests
+from . import upwork
+from requests_oauthlib import OAuth1 # type: ignore
+from urllib.parse import parse_qsl, urlencode
 
-__author__ = &#34;&#34;&#34;Maksym Novozhylov&#34;&#34;&#34;
-__email__ = &#34;mnovozhilov@upwork.com&#34;
-__version__ = &#34;2.0.0&#34;
 
-__all__ = (&#34;Config&#34;, &#34;Client&#34;, &#34;routers&#34;)</code></pre>
+class Client(object):
+    &#34;&#34;&#34;API client for OAuth1 authorization
+    
+    *Parameters:*
+    :config: An instance of upwork.Config class, which contains the configuration keys and tokens
+    &#34;&#34;&#34;
+
+    __data_format = &#34;json&#34;
+    __overload_var = &#34;http_method&#34;
+
+    __uri_auth = &#34;/services/api/auth&#34;
+    __uri_rtoken = &#34;/auth/v1/oauth/token/request&#34;
+    __uri_atoken = &#34;/auth/v1/oauth/token/access&#34;
+
+    epoint = upwork.DEFAULT_EPOINT
+
+    def __init__(self, config):
+        self.config = config
+
+    def get_request_token(self):
+        &#34;&#34;&#34;Get request token&#34;&#34;&#34;
+        oauth = OAuth1(self.config.consumer_key, self.config.consumer_secret)
+        request_token_url = full_url(self.__uri_rtoken, upwork.DEFAULT_EPOINT)
+
+        try:
+            r = requests.post(url=request_token_url, auth=oauth)
+        except Exception as e:
+            raise e
+
+        rtoken_response = dict(parse_qsl(r.content.decode(&#34;utf8&#34;)))
+        self.request_token = rtoken_response.get(&#34;oauth_token&#34;)
+        self.request_token_secret = rtoken_response.get(&#34;oauth_token_secret&#34;)
+
+        return self.request_token, self.request_token_secret
+
+    def get_authorization_url(self, callback_url=None):
+        &#34;&#34;&#34;Get authorization URL
+
+        :param callback_url:  (Default value = None)
+
+        &#34;&#34;&#34;
+        oauth_token = (
+            getattr(self, &#34;request_token&#34;, None) or self.get_request_token()[0]
+        )
+
+        if callback_url:
+            params = urlencode(
+                {&#34;oauth_token&#34;: oauth_token, &#34;oauth_callback&#34;: callback_url}
+            )
+        else:
+            params = urlencode({&#34;oauth_token&#34;: oauth_token})
+
+        return &#34;{0}{1}?{2}&#34;.format(upwork.BASE_HOST, self.__uri_auth, params)
+
+    def get_access_token(self, verifier):
+        &#34;&#34;&#34;Returns access token and access token secret
+
+        :param verifier: 
+
+        &#34;&#34;&#34;
+        try:
+            request_token = self.request_token
+            request_token_secret = self.request_token_secret
+        except AttributeError as e:
+            raise Exception(
+                &#34;Request token pair not found. You need to call get_authorization_url&#34;
+            )
+
+        oauth = OAuth1(
+            self.config.consumer_key,
+            client_secret=self.config.consumer_secret,
+            resource_owner_key=self.request_token,
+            resource_owner_secret=self.request_token_secret,
+            verifier=verifier,
+        )
+
+        access_token_url = full_url(self.__uri_atoken, upwork.DEFAULT_EPOINT)
+
+        try:
+            r = requests.post(url=access_token_url, auth=oauth)
+        except Exception as e:
+            raise e
+
+        atoken_response = dict(parse_qsl(r.content.decode(&#34;utf8&#34;)))
+        self.config.access_token = atoken_response.get(&#34;oauth_token&#34;)
+        self.config.access_token_secret = atoken_response.get(&#34;oauth_token_secret&#34;)
+
+        return self.config.access_token, self.config.access_token_secret
+
+    def get(self, uri, params=None):
+        &#34;&#34;&#34;Execute GET request
+
+        :param uri: 
+        :param params:  (Default value = None)
+
+        &#34;&#34;&#34;
+        return self.send_request(uri, &#34;get&#34;, params)
+
+    def post(self, uri, params=None):
+        &#34;&#34;&#34;Execute POST request
+
+        :param uri: 
+        :param params:  (Default value = None)
+
+        &#34;&#34;&#34;
+        return self.send_request(uri, &#34;post&#34;, params)
+
+    def put(self, uri, params=None):
+        &#34;&#34;&#34;Execute PUT request
+
+        :param uri: 
+        :param params:  (Default value = None)
+
+        &#34;&#34;&#34;
+        return self.send_request(uri, &#34;put&#34;, params)
+
+    def delete(self, uri, params=None):
+        &#34;&#34;&#34;Execute DELETE request
+
+        :param uri: 
+        :param params:  (Default value = None)
+
+        &#34;&#34;&#34;
+        return self.send_request(uri, &#34;delete&#34;, params)
+
+    def send_request(self, uri, method=&#34;get&#34;, params={}):
+        &#34;&#34;&#34;Send request
+
+        :param uri: 
+        :param method:  (Default value = &#39;get&#39;)
+        :param params:  (Default value = {})
+
+        &#34;&#34;&#34;
+        # delete does not support passing the parameters
+        if method == &#34;delete&#34;:
+            params[self.__overload_var] = method
+
+        oauth = OAuth1(
+            self.config.consumer_key,
+            client_secret=self.config.consumer_secret,
+            resource_owner_key=self.config.access_token,
+            resource_owner_secret=self.config.access_token_secret,
+            signature_type=&#34;query&#34;,
+        )
+
+        url = full_url(get_uri_with_format(uri, self.epoint), self.epoint)
+
+        if method == &#34;get&#34;:
+            r = requests.get(url, params=params, auth=oauth)
+        elif method == &#34;put&#34;:
+            headers = {&#34;Content-type&#34;: &#34;application/json&#34;}
+            r = requests.put(url, json=params, headers=headers, auth=oauth)
+        elif method in {&#34;post&#34;, &#34;delete&#34;}:
+            headers = {&#34;Content-type&#34;: &#34;application/json&#34;}
+            r = requests.post(url, json=params, headers=headers, auth=oauth)
+        else:
+            raise ValueError(
+                &#39;Do not know how to handle http method &#34;{0}&#34;&#39;.format(method)
+            )
+
+        return r.json()
+
+
+&#34;&#34;&#34;
+
+&#34;&#34;&#34;
+
+
+def full_url(uri, epoint=None):
+    &#34;&#34;&#34;Get full URL
+
+    :param uri: 
+    :param epoint:  (Default value = None)
+
+    &#34;&#34;&#34;
+    if not epoint:
+        epoint = upwork.DEFAULT_EPOINT
+    return &#34;{0}/{1}{2}&#34;.format(upwork.BASE_HOST, epoint, uri)
+
+
+def get_uri_with_format(uri, epoint):
+    &#34;&#34;&#34;Get URI with format ending
+
+    :param uri: 
+    :param epoint: 
+
+    &#34;&#34;&#34;
+    if epoint == upwork.DEFAULT_EPOINT:
+        uri += &#34;.json&#34;
+    return uri</code></pre>
 </details>
 </section>
 <section>
-<h2 class="section-title" id="header-submodules">Sub-modules</h2>
+</section>
+<section>
+</section>
+<section>
+<h2 class="section-title" id="header-functions">Functions</h2>
 <dl>
-<dt><code class="name"><a title="upwork.client" href="client.html">upwork.client</a></code></dt>
+<dt id="upwork.client.full_url"><code class="name flex">
+<span>def <span class="ident">full_url</span></span>(<span>uri, epoint=None)</span>
+</code></dt>
 <dd>
-<div class="desc"></div>
+<div class="desc"><p>Get full URL</p>
+<p>:param uri:
+:param epoint:
+(Default value = None)</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def full_url(uri, epoint=None):
+    &#34;&#34;&#34;Get full URL
+
+    :param uri: 
+    :param epoint:  (Default value = None)
+
+    &#34;&#34;&#34;
+    if not epoint:
+        epoint = upwork.DEFAULT_EPOINT
+    return &#34;{0}/{1}{2}&#34;.format(upwork.BASE_HOST, epoint, uri)</code></pre>
+</details>
 </dd>
-<dt><code class="name"><a title="upwork.config" href="config.html">upwork.config</a></code></dt>
+<dt id="upwork.client.get_uri_with_format"><code class="name flex">
+<span>def <span class="ident">get_uri_with_format</span></span>(<span>uri, epoint)</span>
+</code></dt>
 <dd>
-<div class="desc"></div>
-</dd>
-<dt><code class="name"><a title="upwork.routers" href="routers/index.html">upwork.routers</a></code></dt>
-<dd>
-<div class="desc"><p>routers</p></div>
-</dd>
-<dt><code class="name"><a title="upwork.upwork" href="upwork.html">upwork.upwork</a></code></dt>
-<dd>
-<div class="desc"><p>Main module.</p></div>
+<div class="desc"><p>Get URI with format ending</p>
+<p>:param uri:
+:param epoint:</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def get_uri_with_format(uri, epoint):
+    &#34;&#34;&#34;Get URI with format ending
+
+    :param uri: 
+    :param epoint: 
+
+    &#34;&#34;&#34;
+    if epoint == upwork.DEFAULT_EPOINT:
+        uri += &#34;.json&#34;
+    return uri</code></pre>
+</details>
 </dd>
 </dl>
 </section>
 <section>
-</section>
-<section>
-</section>
-<section>
 <h2 class="section-title" id="header-classes">Classes</h2>
 <dl>
-<dt id="upwork.Client"><code class="flex name class">
+<dt id="upwork.client.Client"><code class="flex name class">
 <span>class <span class="ident">Client</span></span>
 <span>(</span><span>config)</span>
 </code></dt>
@@ -242,14 +470,14 @@ __all__ = (&#34;Config&#34;, &#34;Client&#34;, &#34;routers&#34;)</code></pre>
 </details>
 <h3>Class variables</h3>
 <dl>
-<dt id="upwork.Client.epoint"><code class="name">var <span class="ident">epoint</span></code></dt>
+<dt id="upwork.client.Client.epoint"><code class="name">var <span class="ident">epoint</span></code></dt>
 <dd>
 <div class="desc"></div>
 </dd>
 </dl>
 <h3>Methods</h3>
 <dl>
-<dt id="upwork.Client.delete"><code class="name flex">
+<dt id="upwork.client.Client.delete"><code class="name flex">
 <span>def <span class="ident">delete</span></span>(<span>self, uri, params=None)</span>
 </code></dt>
 <dd>
@@ -271,7 +499,7 @@ __all__ = (&#34;Config&#34;, &#34;Client&#34;, &#34;routers&#34;)</code></pre>
     return self.send_request(uri, &#34;delete&#34;, params)</code></pre>
 </details>
 </dd>
-<dt id="upwork.Client.get"><code class="name flex">
+<dt id="upwork.client.Client.get"><code class="name flex">
 <span>def <span class="ident">get</span></span>(<span>self, uri, params=None)</span>
 </code></dt>
 <dd>
@@ -293,7 +521,7 @@ __all__ = (&#34;Config&#34;, &#34;Client&#34;, &#34;routers&#34;)</code></pre>
     return self.send_request(uri, &#34;get&#34;, params)</code></pre>
 </details>
 </dd>
-<dt id="upwork.Client.get_access_token"><code class="name flex">
+<dt id="upwork.client.Client.get_access_token"><code class="name flex">
 <span>def <span class="ident">get_access_token</span></span>(<span>self, verifier)</span>
 </code></dt>
 <dd>
@@ -339,7 +567,7 @@ __all__ = (&#34;Config&#34;, &#34;Client&#34;, &#34;routers&#34;)</code></pre>
     return self.config.access_token, self.config.access_token_secret</code></pre>
 </details>
 </dd>
-<dt id="upwork.Client.get_authorization_url"><code class="name flex">
+<dt id="upwork.client.Client.get_authorization_url"><code class="name flex">
 <span>def <span class="ident">get_authorization_url</span></span>(<span>self, callback_url=None)</span>
 </code></dt>
 <dd>
@@ -370,7 +598,7 @@ __all__ = (&#34;Config&#34;, &#34;Client&#34;, &#34;routers&#34;)</code></pre>
     return &#34;{0}{1}?{2}&#34;.format(upwork.BASE_HOST, self.__uri_auth, params)</code></pre>
 </details>
 </dd>
-<dt id="upwork.Client.get_request_token"><code class="name flex">
+<dt id="upwork.client.Client.get_request_token"><code class="name flex">
 <span>def <span class="ident">get_request_token</span></span>(<span>self)</span>
 </code></dt>
 <dd>
@@ -396,7 +624,7 @@ __all__ = (&#34;Config&#34;, &#34;Client&#34;, &#34;routers&#34;)</code></pre>
     return self.request_token, self.request_token_secret</code></pre>
 </details>
 </dd>
-<dt id="upwork.Client.post"><code class="name flex">
+<dt id="upwork.client.Client.post"><code class="name flex">
 <span>def <span class="ident">post</span></span>(<span>self, uri, params=None)</span>
 </code></dt>
 <dd>
@@ -418,7 +646,7 @@ __all__ = (&#34;Config&#34;, &#34;Client&#34;, &#34;routers&#34;)</code></pre>
     return self.send_request(uri, &#34;post&#34;, params)</code></pre>
 </details>
 </dd>
-<dt id="upwork.Client.put"><code class="name flex">
+<dt id="upwork.client.Client.put"><code class="name flex">
 <span>def <span class="ident">put</span></span>(<span>self, uri, params=None)</span>
 </code></dt>
 <dd>
@@ -440,7 +668,7 @@ __all__ = (&#34;Config&#34;, &#34;Client&#34;, &#34;routers&#34;)</code></pre>
     return self.send_request(uri, &#34;put&#34;, params)</code></pre>
 </details>
 </dd>
-<dt id="upwork.Client.send_request"><code class="name flex">
+<dt id="upwork.client.Client.send_request"><code class="name flex">
 <span>def <span class="ident">send_request</span></span>(<span>self, uri, method='get', params={})</span>
 </code></dt>
 <dd>
@@ -494,32 +722,6 @@ __all__ = (&#34;Config&#34;, &#34;Client&#34;, &#34;routers&#34;)</code></pre>
 </dd>
 </dl>
 </dd>
-<dt id="upwork.Config"><code class="flex name class">
-<span>class <span class="ident">Config</span></span>
-<span>(</span><span>config)</span>
-</code></dt>
-<dd>
-<div class="desc"><p>Configuration container</p></div>
-<details class="source">
-<summary>
-<span>Expand source code</span>
-</summary>
-<pre><code class="python">class Config:
-    &#34;&#34;&#34;Configuration container&#34;&#34;&#34;
-
-    def __init__(self, config):
-        self.consumer_key, self.consumer_secret = (
-            config[&#34;consumer_key&#34;],
-            config[&#34;consumer_secret&#34;],
-        )
-
-        if &#34;access_token&#34; in config:
-            self.access_token = config[&#34;access_token&#34;]
-
-        if &#34;access_token_secret&#34; in config:
-            self.access_token_secret = config[&#34;access_token_secret&#34;]</code></pre>
-</details>
-</dd>
 </dl>
 </section>
 </article>
@@ -529,32 +731,32 @@ __all__ = (&#34;Config&#34;, &#34;Client&#34;, &#34;routers&#34;)</code></pre>
 <ul></ul>
 </div>
 <ul id="index">
-<li><h3><a href="#header-submodules">Sub-modules</a></h3>
+<li><h3>Super-module</h3>
 <ul>
-<li><code><a title="upwork.client" href="client.html">upwork.client</a></code></li>
-<li><code><a title="upwork.config" href="config.html">upwork.config</a></code></li>
-<li><code><a title="upwork.routers" href="routers/index.html">upwork.routers</a></code></li>
-<li><code><a title="upwork.upwork" href="upwork.html">upwork.upwork</a></code></li>
+<li><code><a title="upwork" href="index.html">upwork</a></code></li>
+</ul>
+</li>
+<li><h3><a href="#header-functions">Functions</a></h3>
+<ul class="">
+<li><code><a title="upwork.client.full_url" href="#upwork.client.full_url">full_url</a></code></li>
+<li><code><a title="upwork.client.get_uri_with_format" href="#upwork.client.get_uri_with_format">get_uri_with_format</a></code></li>
 </ul>
 </li>
 <li><h3><a href="#header-classes">Classes</a></h3>
 <ul>
 <li>
-<h4><code><a title="upwork.Client" href="#upwork.Client">Client</a></code></h4>
+<h4><code><a title="upwork.client.Client" href="#upwork.client.Client">Client</a></code></h4>
 <ul class="">
-<li><code><a title="upwork.Client.delete" href="#upwork.Client.delete">delete</a></code></li>
-<li><code><a title="upwork.Client.epoint" href="#upwork.Client.epoint">epoint</a></code></li>
-<li><code><a title="upwork.Client.get" href="#upwork.Client.get">get</a></code></li>
-<li><code><a title="upwork.Client.get_access_token" href="#upwork.Client.get_access_token">get_access_token</a></code></li>
-<li><code><a title="upwork.Client.get_authorization_url" href="#upwork.Client.get_authorization_url">get_authorization_url</a></code></li>
-<li><code><a title="upwork.Client.get_request_token" href="#upwork.Client.get_request_token">get_request_token</a></code></li>
-<li><code><a title="upwork.Client.post" href="#upwork.Client.post">post</a></code></li>
-<li><code><a title="upwork.Client.put" href="#upwork.Client.put">put</a></code></li>
-<li><code><a title="upwork.Client.send_request" href="#upwork.Client.send_request">send_request</a></code></li>
+<li><code><a title="upwork.client.Client.delete" href="#upwork.client.Client.delete">delete</a></code></li>
+<li><code><a title="upwork.client.Client.epoint" href="#upwork.client.Client.epoint">epoint</a></code></li>
+<li><code><a title="upwork.client.Client.get" href="#upwork.client.Client.get">get</a></code></li>
+<li><code><a title="upwork.client.Client.get_access_token" href="#upwork.client.Client.get_access_token">get_access_token</a></code></li>
+<li><code><a title="upwork.client.Client.get_authorization_url" href="#upwork.client.Client.get_authorization_url">get_authorization_url</a></code></li>
+<li><code><a title="upwork.client.Client.get_request_token" href="#upwork.client.Client.get_request_token">get_request_token</a></code></li>
+<li><code><a title="upwork.client.Client.post" href="#upwork.client.Client.post">post</a></code></li>
+<li><code><a title="upwork.client.Client.put" href="#upwork.client.Client.put">put</a></code></li>
+<li><code><a title="upwork.client.Client.send_request" href="#upwork.client.Client.send_request">send_request</a></code></li>
 </ul>
-</li>
-<li>
-<h4><code><a title="upwork.Config" href="#upwork.Config">Config</a></code></h4>
 </li>
 </ul>
 </li>
