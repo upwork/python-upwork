@@ -42,7 +42,7 @@ class Client(object):
         request_token_url = full_url(self.__uri_rtoken, upwork.DEFAULT_EPOINT)
 
         try:
-            r = requests.post(url=request_token_url, auth=oauth)
+            r = requests.post(url=request_token_url, auth=oauth, verify=self.config.verify_ssl)
         except Exception as e:
             raise e
 
@@ -96,7 +96,7 @@ class Client(object):
         access_token_url = full_url(self.__uri_atoken, upwork.DEFAULT_EPOINT)
 
         try:
-            r = requests.post(url=access_token_url, auth=oauth)
+            r = requests.post(url=access_token_url, auth=oauth, verify=self.config.verify_ssl)
         except Exception as e:
             raise e
 
@@ -165,17 +165,18 @@ class Client(object):
         url = full_url(get_uri_with_format(uri, self.epoint), self.epoint)
 
         if method == "get":
-            r = requests.get(url, params=params, auth=oauth)
+            r = requests.get(url, params=params, auth=oauth, verify=self.config.verify_ssl)
         elif method == "put":
             headers = {"Content-type": "application/json"}
-            r = requests.put(url, json=params, headers=headers, auth=oauth)
+            r = requests.put(url, json=params, headers=headers, auth=oauth, verify=self.config.verify_ssl)
         elif method in {"post", "delete"}:
             headers = {"Content-type": "application/json"}
-            r = requests.post(url, json=params, headers=headers, auth=oauth)
+            r = requests.post(url, json=params, headers=headers, auth=oauth, verify=self.config.verify_ssl)
         else:
             raise ValueError(
                 'Do not know how to handle http method "{0}"'.format(method)
             )
+        print(r)
 
         return r.json()
 

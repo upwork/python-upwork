@@ -15,6 +15,8 @@
 class Config:
     """Configuration container"""
 
+    verify_ssl = True
+
     def __init__(self, config):
         self.consumer_key, self.consumer_secret = (
             config["consumer_key"],
@@ -26,3 +28,6 @@ class Config:
 
         if "access_token_secret" in config:
             self.access_token_secret = config["access_token_secret"]
+
+        if "verify_ssl" in config:
+            self.verify_ssl = config["verify_ssl"]
