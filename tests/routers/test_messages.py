@@ -55,6 +55,12 @@ def test_send_message_to_room(mocked_method):
     mocked_method.assert_called_with("/messages/v3/company/rooms/room_id/stories", {})
 
 
+@patch.object(upwork.Client, "post")
+def test_send_message_to_rooms(mocked_method):
+    messages.Api(upwork.Client).send_message_to_rooms("company")
+    mocked_method.assert_called_with("/messages/v3/company/stories/batch", {})
+
+
 @patch.object(upwork.Client, "put")
 def test_get_update_room_settings(mocked_method):
     messages.Api(upwork.Client).update_room_settings("company", "room_id", "username")

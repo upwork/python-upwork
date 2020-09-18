@@ -108,15 +108,27 @@ class Api:
 
     def send_message_to_room(self, company, room_id, params={}):
         """Send a message to a room
-        
+
         Parameters:
-        :param company: 
+        :param company:
         :param room_id: 
         :param params:  (Default value = {})
 
         """
         return self.client.post(
             "/messages/v3/{0}/rooms/{1}/stories".format(company, room_id), params
+        )
+
+    def send_message_to_rooms(self, company, params={}):
+        """Send a message to a batch of rooms
+
+        Parameters:
+        :param company:
+        :param params:  (Default value = {})
+
+        """
+        return self.client.post(
+            "/messages/v3/{0}/stories/batch".format(company), params
         )
 
     def update_room_settings(self, company, room_id, username, params={}):
