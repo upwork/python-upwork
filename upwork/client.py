@@ -176,7 +176,6 @@ class Client(object):
             raise ValueError(
                 'Do not know how to handle http method "{0}"'.format(method)
             )
-        print(r)
 
         return r.json()
 
