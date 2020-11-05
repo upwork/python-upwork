@@ -14,6 +14,13 @@ class TestClient(unittest.TestCase):
         ),
     )
     def test_get_request_token(self, mocked_post):
+        """
+        Gets the access token.
+
+        Args:
+            self: (todo): write your description
+            mocked_post: (str): write your description
+        """
         cfg = config.Config(
             {
                 "consumer_key": "keyxxxxxxxxxxxxxxxxxxxx",
@@ -28,6 +35,13 @@ class TestClient(unittest.TestCase):
 
     @patch.object(requests, "post", side_effect=Exception("error"))
     def test_get_request_token_failed_post(self, mocked_post):
+        """
+        Get the token request token.
+
+        Args:
+            self: (todo): write your description
+            mocked_post: (str): write your description
+        """
         cfg = config.Config(
             {
                 "consumer_key": "keyxxxxxxxxxxxxxxxxxxxx",
@@ -46,6 +60,13 @@ class TestClient(unittest.TestCase):
         ),
     )
     def test_get_access_token(self, mocked_post):
+        """
+        Get the access token.
+
+        Args:
+            self: (todo): write your description
+            mocked_post: (todo): write your description
+        """
         cfg = config.Config(
             {
                 "consumer_key": "keyxxxxxxxxxxxxxxxxxxxx",
@@ -61,6 +82,12 @@ class TestClient(unittest.TestCase):
         assert cl.config.access_token_secret == "secret"
 
     def test_get_access_token_not_ready(self):
+        """
+        Get the access token.
+
+        Args:
+            self: (todo): write your description
+        """
         cl = client.Client(object)
 
         with self.assertRaises(Exception):
@@ -68,6 +95,13 @@ class TestClient(unittest.TestCase):
 
     @patch.object(requests, "post", side_effect=Exception("error"))
     def test_get_access_token_failed_post(self, mocked_post):
+        """
+        Get the access token.
+
+        Args:
+            self: (todo): write your description
+            mocked_post: (str): write your description
+        """
         cfg = config.Config(
             {
                 "consumer_key": "keyxxxxxxxxxxxxxxxxxxxx",
@@ -94,6 +128,16 @@ class TestClient(unittest.TestCase):
         requests, "delete", return_value=Mock(status_code=200, json=lambda: {"a": "b"})
     )
     def test_send_request(self, mocked_get, mocked_post, mocked_put, mocked_delete):
+        """
+        Perform a test.
+
+        Args:
+            self: (todo): write your description
+            mocked_get: (todo): write your description
+            mocked_post: (todo): write your description
+            mocked_put: (todo): write your description
+            mocked_delete: (todo): write your description
+        """
         cfg = config.Config(
             {
                 "consumer_key": "keyxxxxxxxxxxxxxxxxxxxx",
@@ -112,6 +156,12 @@ class TestClient(unittest.TestCase):
             cl.send_request("/test/uri", "method", {})
 
     def test_get_authorization_url(self):
+        """
+        Gets the authorization url.
+
+        Args:
+            self: (todo): write your description
+        """
         cl = client.Client(object)
         cl.request_token = "token"
 
@@ -125,11 +175,23 @@ class TestClient(unittest.TestCase):
         )
 
     def test_full_url(self):
+        """
+        Returns full url of the full url.
+
+        Args:
+            self: (todo): write your description
+        """
         assert client.full_url("/test/uri") == "https://www.upwork.com/api/test/uri"
         assert (
             client.full_url("/test/uri", "gds") == "https://www.upwork.com/gds/test/uri"
         )
 
     def test_get_uri_with_format(self):
+        """
+        Gets the uri for the given uri.
+
+        Args:
+            self: (todo): write your description
+        """
         assert client.get_uri_with_format("/test/uri", "api") == "/test/uri.json"
         assert client.get_uri_with_format("/test/uri", "gds") == "/test/uri"

@@ -18,6 +18,13 @@ class Api:
     client = None
 
     def __init__(self, client):
+        """
+        Initialize the client.
+
+        Args:
+            self: (todo): write your description
+            client: (todo): write your description
+        """
         self.client = client
 
     def get_by_company(self, company, from_date, till_date, params={}):

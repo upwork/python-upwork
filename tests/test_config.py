@@ -2,6 +2,11 @@ from upwork import config
 
 
 def test_config_initialization():
+    """
+    Initialize the config.
+
+    Args:
+    """
     cfg = config.Config(
         {
             "consumer_key": "keyxxxxxxxxxxxxxxxxxxxx",
