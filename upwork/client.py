@@ -34,6 +34,13 @@ class Client(object):
     epoint = upwork.DEFAULT_EPOINT
 
     def __init__(self, config):
+        """
+        Initialize the configuration.
+
+        Args:
+            self: (todo): write your description
+            config: (todo): write your description
+        """
         self.config = config
 
     def get_request_token(self):

@@ -19,6 +19,13 @@ class Gds:
     entry_point = "gds"
 
     def __init__(self, client):
+        """
+        Initialize the client.
+
+        Args:
+            self: (todo): write your description
+            client: (todo): write your description
+        """
         self.client = client
         self.client.epoint = self.entry_point
 

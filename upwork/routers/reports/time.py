@@ -19,6 +19,13 @@ class Gds:
     entry_point = "gds"
 
     def __init__(self, client):
+        """
+        Initialize the client.
+
+        Args:
+            self: (todo): write your description
+            client: (todo): write your description
+        """
         self.client = client
         self.client.epoint = self.entry_point
 
@@ -96,6 +103,17 @@ class Gds:
         )
 
     def __get_by_type(self, company, team, agency, params, hide_fin_data):
+        """
+        Gets company by company by company.
+
+        Args:
+            self: (todo): write your description
+            company: (str): write your description
+            team: (todo): write your description
+            agency: (str): write your description
+            params: (dict): write your description
+            hide_fin_data: (str): write your description
+        """
         url = ""
         if team is not None:
             url = "/teams/{0}".format(team)

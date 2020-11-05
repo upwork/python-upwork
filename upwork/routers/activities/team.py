@@ -18,6 +18,13 @@ class Api:
     client = None
 
     def __init__(self, client):
+        """
+        Initialize the client.
+
+        Args:
+            self: (todo): write your description
+            client: (todo): write your description
+        """
         self.client = client
 
     def get_list(self, company, team):
@@ -111,6 +118,15 @@ class Api:
         )
 
     def __get_by_type(self, company, team, code=None):
+        """
+        Get company by company id
+
+        Args:
+            self: (todo): write your description
+            company: (str): write your description
+            team: (todo): write your description
+            code: (str): write your description
+        """
         url = ""
         if code is not None:
             url = "/" + code

@@ -18,6 +18,13 @@ class Config:
     verify_ssl = True
 
     def __init__(self, config):
+        """
+        Initialize a new secrets.
+
+        Args:
+            self: (todo): write your description
+            config: (todo): write your description
+        """
         self.consumer_key, self.consumer_secret = (
             config["consumer_key"],
             config["consumer_secret"],
