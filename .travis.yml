@@ -4,9 +4,9 @@ cache:
     pip: true
 matrix:
     include:
-        - python: "3.8"
-          env: NOXSESSION="tests-3.8"
-        - python: "3.8"
+        - python: "3.9"
+          env: NOXSESSION="tests-3.9"
+        - python: "3.9"
           env: NOXSESSION="lint"
           dist: xenial
 install:
