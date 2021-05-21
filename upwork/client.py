@@ -13,6 +13,8 @@
 
 import requests
 from . import upwork
+from requests.adapters import HTTPAdapter
+from requests.packages.urllib3.util.retry import Retry
 from requests_oauthlib import OAuth1 # type: ignore
 from urllib.parse import parse_qsl, urlencode
 
@@ -35,6 +37,9 @@ class Client(object):
 
     def __init__(self, config):
         self.config = config
+
+        self.requests = requests.Session()
+        self.requests.mount('https://', HTTPAdapter(max_retries=Retry(total=0)))
 
     def get_request_token(self):
         """Get request token"""
@@ -165,13 +170,13 @@ class Client(object):
         url = full_url(get_uri_with_format(uri, self.epoint), self.epoint)
 
         if method == "get":
-            r = requests.get(url, params=params, auth=oauth, verify=self.config.verify_ssl)
+            r = self.requests.get(url, params=params, auth=oauth, verify=self.config.verify_ssl)
         elif method == "put":
             headers = {"Content-type": "application/json"}
-            r = requests.put(url, json=params, headers=headers, auth=oauth, verify=self.config.verify_ssl)
+            r = self.requests.put(url, json=params, headers=headers, auth=oauth, verify=self.config.verify_ssl)
         elif method in {"post", "delete"}:
             headers = {"Content-type": "application/json"}
-            r = requests.post(url, json=params, headers=headers, auth=oauth, verify=self.config.verify_ssl)
+            r = self.requests.post(url, json=params, headers=headers, auth=oauth, verify=self.config.verify_ssl)
         else:
             raise ValueError(
                 'Do not know how to handle http method "{0}"'.format(method)

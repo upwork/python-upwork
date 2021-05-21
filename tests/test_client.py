@@ -103,6 +103,7 @@ class TestClient(unittest.TestCase):
             }
         )
         cl = client.Client(cfg)
+        cl.requests = requests
         assert cl.get("/test/uri", {}) == {"a": "b"}
         assert cl.post("/test/uri", {}) == {"a": "b"}
         assert cl.put("/test/uri", {}) == {"a": "b"}
