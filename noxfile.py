@@ -35,7 +35,7 @@ def cover(session):
     session.run("coverage", "erase")
 
 
-@nox.session(python="3.8")
+@nox.session(python="3.9")
 def lint(session):
     session.install(*lint_dependencies)
     files = ["tests"] + [str(p) for p in Path(".").glob("*.py")]
@@ -49,7 +49,7 @@ def lint(session):
         session.run("check-manifest")
 
 
-@nox.session(python="3.8")
+@nox.session(python="3.9")
 def build(session):
     session.install("setuptools")
     session.install("wheel")
@@ -58,7 +58,7 @@ def build(session):
     session.run("python", "setup.py", "--quiet", "sdist", "bdist_wheel")
 
 
-@nox.session(python="3.8")
+@nox.session(python="3.9")
 def publish(session):
     build(session)
     print("REMINDER: Has the changelog been updated?")
