@@ -29,4 +29,5 @@ jobs:
       - run: pip install nox
       - run: pip install types-requests
       # step 2: run test
-      - run: nox
+      - run: --non-interactive --session "tests-${{ matrix.python }}"
+      - run: --non-interactive --session "lint"
