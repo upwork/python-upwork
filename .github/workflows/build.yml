@@ -24,7 +24,7 @@ jobs:
       - name: Setup python
         uses: actions/setup-python@v2
         with:
-          node-version: ${{ matrix.python }}
+          python-version: ${{ matrix.python }}
       # step 1: install dependencies
       - run: pip install nox
       - run: pip install types-requests
