@@ -1,0 +1,31 @@
+name: build
+
+on:
+  push:
+    paths-ignore:
+      - '**.md'
+  pull_request:
+    paths-ignore:
+      - '**.md'
+
+jobs:
+  test:
+
+    runs-on: ${{ matrix.os }}
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest, macos-latest]
+        python: [ '3.8' ]
+
+    name: Python ${{ matrix.python }}
+    steps:
+      - uses: actions/checkout@v2
+      - name: Setup python
+        uses: actions/setup-python@v2
+        with:
+          node-version: ${{ matrix.python }}
+      # step 1: install dependencies
+      - run: pip install nox
+      # step 2: run test
+      - run: nox

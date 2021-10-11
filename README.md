@@ -4,7 +4,7 @@ Python bindings for Upwork API (OAuth1)
 [![License](https://img.shields.io/github/license/upwork/python-upwork)](http://www.apache.org/licenses/LICENSE-2.0.html)
 [![PyPI Version](https://badge.fury.io/py/python-upwork.svg)](http://badge.fury.io/py/python-upwork)
 [![GitHub release](https://img.shields.io/github/release/upwork/python-upwork.svg)](https://github.com/upwork/python-upwork/releases)
-[![Build Status](https://travis-ci.org/upwork/python-upwork.svg)](https://travis-ci.org/upwork/python-upwork)
+[![Build Status](https://github.com/upwork/python-upwork/workflows/build/badge.svg)](https://github.com/upwork/python-upwork/actions)
 
 # Upwork API
 
