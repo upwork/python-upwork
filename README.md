@@ -1,4 +1,4 @@
-Python bindings for Upwork API (OAuth1)
+Python bindings for Upwork API (OAuth1) - DEPRECATED
 ============
 
 [![License](https://img.shields.io/github/license/upwork/python-upwork)](http://www.apache.org/licenses/LICENSE-2.0.html)
